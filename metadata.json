@@ -1,0 +1,6 @@
+{
+  "name": "DIEPS",
+  "description": "An Intent-Centric Swap Application on blockvision gRPC/RPC from Sui Blockchain, optimized by a Modified Moore-Bellman-Ford Router and protected by a Bayesian Guardian.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
