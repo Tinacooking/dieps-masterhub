@@ -14,20 +14,26 @@ app.use(express.json());
 // Initialize Gemini SDK with recommended pattern
 const ai = process.env.GEMINI_API_KEY
   ? new GoogleGenAI({
-      apiKey: process.env.GEMINI_API_KEY,
-      httpOptions: {
-        headers: {
-          "User-Agent": "aistudio-build",
-        },
+    apiKey: process.env.GEMINI_API_KEY,
+    httpOptions: {
+      headers: {
+        "User-Agent": "aistudio-build",
       },
-    })
+    },
+  })
   : null;
 
 // SUI Standard Addresses & Constants
 const SUI_ADDR = "0x2::sui::SUI";
 const USDC_ADDR = "0x5d4b302506645c37ff133b98c4b50a5ae14841619730029945a51a902cb3c40a::coin::COIN";
 const CETUS_ADDR = "0x06864778273d15190ac879013b33da50248e4b0171a505ad36fc19e5d4444444::cetus::CETUS";
-
+const DEEP_ADDR = "0xdeeb7a4662e9753a32453920dbec9ccc8e3b140cfca11d52bcda33c60b115024::deep::DEEP";
+const TURBOS_ADDR = "0x4ece94f6af0536c4b2bda85295c187063fcf1150243452bd1e604ec2db1e604e::turbos::TURBOS";
+const USDT_ADDR = "0xc060005fc505ada36fc19e52bcda33c024823a3520dbcb29945a51a902cb3c40a::coin::COIN";
+const ATH_ADDR = "0xa7424fbcf2db24c53920dbec9ccc8e3b520dbcb29945a51a902cb30792cb3356::ath::ATH";
+const BUCK_ADDR = "0x3615da0cd152da36fc19e52bcda33c024823a3520dbcb29945a51a902cb3c40a::buck::BUCK";
+const FUD_ADDR = "0x76c659d334e2daf144e183a040d2ba510dbef29945a51a902cb3c40a322def102::fud::FUD";
+const SCA_ADDR = "0x701833502506645c37ff133b98c4b50a5ae14841619730029945a51a902cb3c4a2::sca::SCA";
 // Types
 interface PoolData {
   pool_id: string;
@@ -459,7 +465,7 @@ app.get("/api/wallet-balances", async (req, res) => {
 
         const suiDecimals = 9;
         const usdcDecimals = 6;
-        
+
         return res.json({
           address,
           sui: Number(suiRaw) / Math.pow(10, suiDecimals),
