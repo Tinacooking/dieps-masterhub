@@ -49,9 +49,7 @@ The Guardian analyzes the probability of catastrophic failure (Black Swan) or ma
 2.  **Evidence Matrix ($E$):** We collect real-time data features: `Slippage_Variance`, `Concentration_Index`, and `Contract_Age`.
 3.  **Posterior Update:** 
 
-    ```math
-    P(Risk \mid E) = \frac{P(E \mid Risk) \times P(Risk)}{P(E)}
-    ```
+    $$ P(Risk \mid E) = \frac{P(E \mid Risk) \times P(Risk)}{P(E)} $$
 
 If the resulting posterior probability threshold crosses `0.85`, the execution is flagged as **HIGH RISK** and blocked by the PTB Assembler.
 
