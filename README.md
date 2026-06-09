@@ -107,13 +107,14 @@ npm run start
 
 ## 🚀 4. Algorithm Processing & System Novelty
 
-### The Advanced Routing Algorithm (Modified Bellman-Ford)
-What sets DIEPS apart from traditional DEX aggregators is our proprietary implementation of the **Modified Bellman-Ford** routing algorithm. Traditional routing engines often struggle with latency when computing paths across highly fragmented liquidity states. 
+### The Advanced Routing Algorithm
+
+What sets DIEPS apart from traditional DEX aggregators is our proprietary implementation of the **Routing Algorithm**. Traditional routing engines often struggle with latency when computing paths across highly fragmented liquidity states. 
 
 Our team has specifically developed and fine-tuned this routing algorithm to achieve unprecedented practical processing speeds. This optimization is crucial for the **Intent Engine**, allowing it to instantly interpret user desires and compute the most optimal path in real-time.
 
 ### Why this matters for the Ecosystem:
-- **Ultra-Fast Execution:** By drastically reducing the graph traversal time, the Modified Bellman-Ford algorithm ensures that users get the best possible rates before market conditions change.
+- **Ultra-Fast Execution:** By drastically reducing the graph traversal time, the Routing algorithm ensures that users get the best possible rates before market conditions change.
 - **Empowering New Users:** The blazing-fast intent resolution abstracts away the complexities of decentralized finance. New users don't need to manually compare DEXs or understand slippage intricacies; the engine handles it optimally and instantly.
 - **Attracting Liquidity and Volume:** Providing a seamless, zero-latency execution experience is key to onboarding the next wave of users into the Sui ecosystem, ultimately driving higher volume and liquidity utilization across all integrated protocols.
 
