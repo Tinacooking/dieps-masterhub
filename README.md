@@ -83,8 +83,8 @@ Follow these steps to clone and run the DIEPS Engine locally.
 
 1. **Clone the repository** (or download the ZIP):
    ```bash
-   git clone https://github.com/your-org/dieps-protocol.git
-   cd dieps-protocol
+   git clone https://github.com/Tinacooking/dieps-masterhub.git
+   cd dieps-masterhub
    ```
 
 2. **Install dependencies**:
