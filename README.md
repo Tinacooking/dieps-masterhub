@@ -34,7 +34,8 @@ The core architecture runs on a 4-step pipeline designed to securely transition 
 
 ## 🧮 2. Mathematical Algorithms
 
-### A. Routing Subgraph Concept (Modified Bellman-Ford)
+### A. Routing Subgraph Algorithm
+
 To find the maximum output route, we invert the traditional shortest-path algorithm. Edge weights $W_{i,j}$ are represented by the negative log of the expected pool exchange rate $R$, adjusting for the percentage fee $F$ and slippage factor $S(x)$ dependent on trade size $x$.
 
 $$ W_{u,v} = -\log \left( R_{u,v} \times (1 - F_{u,v}) \times (1 - S_{u,v}(x)) \right) $$
