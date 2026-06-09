@@ -34,8 +34,7 @@ The core architecture runs on a 4-step pipeline designed to securely transition 
 
 ## 🧮 2. Mathematical Algorithms
 
-### A. Routing Subgraph Algorithm
-
+### A. Routing Subgraph Concept (Modified Bellman-Ford)
 To find the maximum output route, we invert the traditional shortest-path algorithm. Edge weights $W_{i,j}$ are represented by the negative log of the expected pool exchange rate $R$, adjusting for the percentage fee $F$ and slippage factor $S(x)$ dependent on trade size $x$.
 
 $$ W_{u,v} = -\log \left( R_{u,v} \times (1 - F_{u,v}) \times (1 - S_{u,v}(x)) \right) $$
@@ -43,15 +42,31 @@ $$ W_{u,v} = -\log \left( R_{u,v} \times (1 - F_{u,v}) \times (1 - S_{u,v}(x)) \
 The engine calculates paths minimizing the total $W$, which directly translates to maximizing the compound token output.
 
 ### B. Bayesian Guardian Risk Engine
-The Guardian analyzes the probability of catastrophic failure (Black Swan) or malicious pool manipulation (Toxic Liquidity). We utilize a Bayesian Posterior calculation using a Beta distribution prior.
+The Guardian analyzes the probability of catastrophic failure (Black Swan) or malicious pool manipulation (Toxic Liquidity). We utilize a dynamic Bayesian Posterior calculation using a Beta distribution prior. This approach continuously learns from real-time network states to proactively block harmful transactions before they reach the mempool.
 
-1.  **Prior Belief:** We start with a strong "Safe" prior, represented as $Beta(2, 10)$, meaning there's inherently a low base rate of failure.
-2.  **Evidence Matrix ($E$):** We collect real-time data features: `Slippage_Variance`, `Concentration_Index`, and `Contract_Age`.
-3.  **Posterior Update:** 
+1.  **Prior Belief (The Beta Distribution):** 
+    We start with a strong "Safe" prior, mathematically represented as a Beta distribution: $Beta(\alpha=2, \beta=10)$. This means that without any immediate evidence, the engine inherently assumes a low base rate of failure (most paths on legitimate DEXs are safe).
+    *   $\alpha$ (Alpha): Represents pseudo-counts of 'risky' observations.
+    *   $\beta$ (Beta): Represents pseudo-counts of 'safe' observations.
 
-    $$ P(Risk \mid E) = \frac{P(E \mid Risk) \times P(Risk)}{P(E)} $$
+2.  **Evidence Matrix ($E$) & Live Signals:** 
+    During routing, the engine collects multi-dimensional real-time data features across the selected path:
+    *   **$\Delta S(x)$ - Slippage Variance:** Sudden spikes in expected slippage for normal-sized trades compared to historical moving averages.
+    *   **$C_{idx}$ - Concentration Index:** Measures if a disproportionate amount of pool liquidity is held by a localized number of wallets.
+    *   **$T_{age}$ - Contract Age:** Penalizes newly deployed, unverified smart contracts that lack historical stability.
 
-If the resulting posterior probability threshold crosses `0.85`, the execution is flagged as **HIGH RISK** and blocked by the PTB Assembler.
+3.  **Posterior Probability Update:** 
+    Upon gathering the evidence matrix $E$, the Guardian mathematically updates its belief system. Using Bayes' Theorem, the specific likelihood of a path being risky given the new evidence is calculated:
+    
+    $$ P(\text{Risk} \mid E) = \frac{P(E \mid \text{Risk}) \times P(\text{Risk})}{P(E \mid \text{Risk}) \times P(\text{Risk}) + P(E \mid \text{Safe}) \times P(\text{Safe})} $$
+    
+    By mapping our real-time signals (e.g., an exorbitant slippage floating $> 5\%$) to the likelihood function $P(E \mid \text{Risk})$, we significantly shift the posterior probability to reflect live danger.
+
+4.  **Deterministic Execution Thresholds:**
+    Based on the newly updated posterior probability ($P$), the engine makes sub-second discrete routing decisions:
+    *   **$P < 0.40$:** Categorized as **SAFE** (Green Light). The routing sequence is immediately passed to the PTB assembler.
+    *   **$0.40 \le P < 0.85$:** Categorized as **MEDIUM RISK** (Yellow Light). The engine may trigger fallback paths or warn the user regarding shallow liquidity depth.
+    *   **$P \ge 0.85$:** Categorized as **HIGH RISK / TOXIC** (Red Light). Execution is mathematically flagged as actively hostile and is unconditionally blocked from blockchain submission.
 
 ---
 
