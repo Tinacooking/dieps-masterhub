@@ -2,22 +2,22 @@
   <defs>
     <radialGradient id="glow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#9D6BFF" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <style>
-    .rect-bg { fill: #050505; rx: 20; stroke: #222; stroke-width: 1; }
-    .node { fill: #0a0a0a; stroke: #333; stroke-width: 2; rx: 12; }
-    .node-active { fill: #111; stroke: #9D6BFF; stroke-width: 2; rx: 12; }
-    .node-safe { fill: #111; stroke: #00FF66; stroke-width: 2; rx: 12; }
-    .text { fill: #FFF; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; font-size: 14px; text-anchor: middle; font-weight: bold; }
-    .text-sub { fill: #888; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 10px; text-transform: uppercase; text-anchor: middle; letter-spacing: 1px; }
-    .line { fill: none; stroke: #333; stroke-width: 2; stroke-dasharray: 4 4; }
+    .rect-bg { fill: #000000; rx: 20; stroke: #1A1A1A; stroke-width: 1; }
+    .node { fill: #0D0D0D; stroke: #262626; stroke-width: 2; rx: 12; }
+    .node-active { fill: #0D0D0D; stroke: #9D6BFF; stroke-width: 2; rx: 12; }
+    .node-safe { fill: #0D0D0D; stroke: #00FF66; stroke-width: 2; rx: 12; }
+    .text { fill: #FFFFFF; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; font-size: 14px; text-anchor: middle; font-weight: bold; }
+    .text-sub { fill: #8F8F8F; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 10px; text-transform: uppercase; text-anchor: middle; letter-spacing: 1px; }
+    .line { fill: none; stroke: #262626; stroke-width: 2; stroke-dasharray: 4 4; }
     .flow-path { fill: none; stroke: #9D6BFF; stroke-width: 3; stroke-dasharray: 12 12; animation: dash 2s linear infinite; }
     .flow-path-fast { fill: none; stroke: #00FF66; stroke-width: 3; stroke-dasharray: 12 12; animation: dash 1s linear infinite; }
     @keyframes dash { to { stroke-dashoffset: -48; } }
-    @keyframes pulseBorder { 0% { stroke: #333; } 50% { stroke: #9D6BFF; } 100% { stroke: #333; } }
-    @keyframes pulseSafe { 0% { stroke: #333; } 50% { stroke: #00FF66; } 100% { stroke: #333; } }
+    @keyframes pulseBorder { 0% { stroke: #262626; } 50% { stroke: #9D6BFF; } 100% { stroke: #262626; } }
+    @keyframes pulseSafe { 0% { stroke: #262626; } 50% { stroke: #00FF66; } 100% { stroke: #262626; } }
     .pulse-anim { animation: pulseBorder 2s infinite; }
     .pulse-safe-anim { animation: pulseSafe 2.5s infinite; }
   </style>
