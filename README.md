@@ -10,6 +10,10 @@
 
 ## 🌊 1. System Processing Flow
 
+<p align="center">
+  <img src="public/workflow-animation.svg" width="100%" alt="DIEPS Animated Workflow Diagram">
+</p>
+
 The core architecture runs on a 4-step pipeline designed to securely transition abstract user intent into deterministic blockchain execution:
 
 1.  **Intent Parsing Engine (Solver):**
