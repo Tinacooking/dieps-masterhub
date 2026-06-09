@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { TOKEN_LOGOS } from '../constants';
+import { TokenLogo } from './TokenLogo';
 
 export function TokenSelectorModal({ isOpen, onClose, onSelect, selectedToken }: { isOpen: boolean, onClose: () => void, onSelect: (token: string) => void, selectedToken: string }) {
   const [search, setSearch] = useState('');
@@ -41,12 +42,8 @@ export function TokenSelectorModal({ isOpen, onClose, onSelect, selectedToken }:
                 className={`w-full flex items-center justify-between p-4 rounded-[16px] border transition-all ${selectedToken === token ? 'bg-[#9D6BFF]/10 border-[#9D6BFF]/30' : 'bg-transparent border-transparent hover:bg-white/5'}`}
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full overflow-hidden bg-white/5 flex items-center justify-center">
-                    {TOKEN_LOGOS[token] ? (
-                      <img src={TOKEN_LOGOS[token]} alt={token} className="w-8 h-8 object-contain" />
-                    ) : (
-                      <span className="font-display text-[10px] text-white">{token.slice(0, 3)}</span>
-                    )}
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                    <TokenLogo symbol={token} className="w-8 h-8" />
                   </div>
                   <span className="font-display font-medium text-white">{token}</span>
                 </div>

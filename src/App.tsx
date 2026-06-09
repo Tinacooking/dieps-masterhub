@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { TOKEN_LOGOS } from './constants';
+import { TokenLogo } from './components/TokenLogo';
 import { TokenSelectorModal } from './components/TokenSelectorModal';
 import { useCurrentAccount, ConnectModal, ConnectButton, useDisconnectWallet } from '@mysten/dapp-kit';
 import { Hero, About, Services, Projects, Testimonials, Contact, Footer } from './components/LandingComponents';
@@ -366,15 +367,11 @@ export default function App() {
                             className={`w-12 h-12 rounded-full flex items-center justify-center relative group cursor-pointer hover:border-[#9D6BFF] transition-all overflow-hidden bg-[#111111] border border-white/10 shadow-[0_0_30px_rgba(157,107,255,0.15)] ${executionState === 'success' ? 'border-[#9D6BFF] shadow-[0_0_30px_rgba(157,107,255,0.4)]' : ''}`}
                           >
                             <div className={`absolute inset-0 rounded-full border border-[#9D6BFF]/50 opacity-0 group-hover:opacity-100 transition-opacity ${executionState === 'executing' ? 'animate-ping opacity-50' : ''}`}></div>
-                            {TOKEN_LOGOS[sourceToken] ? (
-                              <img src={TOKEN_LOGOS[sourceToken]} alt={sourceToken} className="w-8 h-8 object-contain relative z-10" />
-                            ) : (
-                              <span className="font-display font-medium text-[14px] text-white relative z-10 tracking-widest">{sourceToken.slice(0, 4)}</span>
-                            )}
+                            <TokenLogo symbol={sourceToken} className="w-8 h-8 relative z-10" />
                           </div>
                           <div className="text-center">
                             <div className="font-mono text-[9px] uppercase text-[#888] font-medium tracking-widest mb-1">Input</div>
-                            <div className="font-body text-[13px] font-semibold text-white">{!isNaN(parseFloat(amount)) ? parseFloat(amount).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 6}) : '0.00'}</div>
+                            <div className="font-body text-[13px] font-semibold text-white">{!isNaN(parseFloat(amount)) ? parseFloat(amount).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 6}) : '0.00'} {sourceToken}</div>
                           </div>
                         </div>
 
@@ -411,15 +408,11 @@ export default function App() {
                             onClick={() => setTokenModalMode('dest')}
                             className={`w-12 h-12 rounded-full flex items-center justify-center relative group cursor-pointer hover:border-[#9D6BFF]/50 transition-all bg-[#111111] border-dashed border-white/20 overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] ${executionState === 'success' ? 'border-solid border-[#9D6BFF] bg-[#9D6BFF]/10 shadow-[0_0_40px_rgba(157,107,255,0.5)]' : ''}`}
                           >
-                            {TOKEN_LOGOS[destToken] ? (
-                              <img src={TOKEN_LOGOS[destToken]} alt={destToken} className="w-8 h-8 object-contain relative z-10" />
-                            ) : (
-                              <span className="font-display font-medium text-[14px] text-white relative z-10 tracking-widest">{destToken.slice(0, 4)}</span>
-                            )}
+                            <TokenLogo symbol={destToken} className="w-8 h-8 relative z-10" />
                           </div>
                           <div className="text-center">
                             <div className="font-mono text-[9px] uppercase text-[#888] font-medium tracking-widest mb-1">Est. Output</div>
-                            <div className="font-body text-[13px] font-semibold text-white shimmer-bg px-2 rounded-md">{estOutput}</div>
+                            <div className="font-body text-[13px] font-semibold text-white shimmer-bg px-2 rounded-md">{estOutput} {destToken}</div>
                           </div>
                         </div>
 
