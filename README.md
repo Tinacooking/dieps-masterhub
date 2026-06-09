@@ -41,7 +41,7 @@ $$ W_{u,v} = -\log \left( R_{u,v} \times (1 - F_{u,v}) \times (1 - S_{u,v}(x)) \
 
 The engine calculates paths minimizing the total $W$, which directly translates to maximizing the compound token output.
 
-### B. Bayesian Guardian Risk Engine
+### B. Guardian Risk Engine
 The Guardian analyzes the probability of catastrophic failure (Black Swan) or malicious pool manipulation (Toxic Liquidity). We utilize a dynamic Bayesian Posterior calculation using a Beta distribution prior. This approach continuously learns from real-time network states to proactively block harmful transactions before they reach the mempool.
 
 1.  **Prior Belief (The Beta Distribution):** 
