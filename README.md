@@ -1,118 +1,113 @@
-#   <br>  <p align="center"><img src="https://raw.githubusercontent.com/lucide-react/lucide/main/icons/shield-alert.svg" width="80" height="80" alt="DIEPS Logo" /></p>  <h1 align="center">D I E P S</h1>  <p align="center"><b>Intent-Based Routing & Real-Time Risk Protection Core on Sui Network</b></p>  <p align="center">    <img src="https://img.shields.io/badge/Blockchain-Sui%20Testnet-blue?style=for-the-badge&logo=sui&logoColor=white" />    <img src="https://img.shields.io/badge/Node.js-v18%2B-green?style=for-the-badge&logo=node.js&logoColor=white" />    <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />    <img src="https://img.shields.io/badge/Built%20With-TypeScript-blue?style=for-the-badge&logo=typescript&logoColor=white" />  </p><br>
+# 🧠 DIEPS: AI-Powered Intent Execution Protocol
 
-DIEPS is a next-generation decentralized application (dApp) designed to simplify multi-hop asset swappings and mitigate real-time transaction hazards on the Sui Network. Utilizing natural language execution protocols, an optimized multi-pool path finder, and dynamic risk verification modules, DIEPS bridges high-efficiency algorithmic routing with unmatched user-centric security.
+![Network](https://img.shields.io/badge/Network-Sui_Network-4AA181?style=for-the-badge&logo=sui)
+![Stack](https://img.shields.io/badge/Stack-React_%7C_Vite_%7C_Express-212121?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Beta_v2.0-8A2BE2?style=for-the-badge)
 
----
-
-## 🌟 Key Capabilities & Design Features
-
-| Feature | Description | Key Tech Stack |
-| :--- | :--- | :--- |
-| 🗣️ **Simplifying Intents (NLP)** | Translates plain-English sentences into executable swap paths instantly. | Node Server API + LLM Parser |
-| 📊 **Real-Time DEX Telemetry** | Polls live-market SUI/USDC/CETUS pool reserves every 1s from DexScreener. | DexScreener Public API |
-| 🧭 **Multi-Hop Path Routing** | Continuous constant-product optimization to extract the absolute maximum output. | Optimized Golden-Section Pathfinder |
-| 🛡️ **Risk Shield Guardian** | Continuously audits pools for adversarial slippage, low depth, and trading staleness. | Multi-Factor Algorithmic Risk Shield |
-| 🔌 **Sui Wallet Standard** | Authentic cryptographic handshakes with browser extensions (Sui, Suiet, Okx, etc.). | Sui Wallet-Standard Protocol |
+**DIEPS (Decentralized Intent Execution Protocol System)** is a next-generation liquidity intelligence and execution layer. It allows users to express their trading desires in natural language (e.g., *"Swap 1000 SUI for USDC with the safest route"*), dynamically resolves the optimal algorithmic path across all Sui DEXs (Cetus, Turbos, etc.), passes the route through a Bayesian risk guardian, and seamlessly outputs a secure Programmable Transaction Block (PTB).
 
 ---
 
-## 🛠️ Algorithmic Deep-Dive
+## 🌊 1. System Processing Flow
 
-### 1. Multi-Hop Path Routing Optimization
+The core architecture runs on a 4-step pipeline designed to securely transition abstract user intent into deterministic blockchain execution:
 
-To route volatile tokens like **SUI** to **CETUS** via intermediary pools with maximal capital efficiency, the system calculates precise input allocation splits. Given a path:
-
-$$P = [\text{pool}_1, \text{pool}_2, \dots, \text{pool}_k]$$
-
-For each pool operating on a constant-product formula ($x \cdot y = k$), the input-output routing with fee $f$ is evaluated as:
-
-$$\Delta b = \frac{\Delta a \cdot R_{\text{out}} \cdot (1 - f)}{R_{\text{in}} + \Delta a \cdot (1 - f)}$$
-
-Using these exact non-linear mechanics, our multi-pool pathfinder runs a robust **bisection search** algorithm to yield precise outputs with near-zero tracking error.
-
-```
-[User Input SUI] ──> (SUI/USDC Liquidity Pool) ──> [Intermediate USDC] ──> (USDC/CETUS Pool) ──> [Output CETUS]
-```
-
-### 2. Risk Evaluation Engine (The Guardian Protection)
-
-The Risk Shield protects users from on-chain MEV attacks and high-volatility threats by updating risk states over four steps:
-
-- 📉 **Algorithmic Slippage Risk**: Compares the simulated bisection rate against the live pool spot price to detect front-running vectors.
-- 🌊 **Pool Concentration Ratio**: Gauges overall pool asset reserve health. Low depth triggers block alerts.
-- ⏱️ **Staleness Gap Metric**: Evaluates timespan since the latest transaction. Stale pools receive higher danger weights.
-- 🔒 **Dynamic Control Blocker**: If the aggregated warning score exceeds the **85.0%** threshold, execution of the Programmable Transaction Block (PTB) is blocked.
+1.  **Intent Parsing Engine (Solver):**
+    *   Users input natural language requests.
+    *   The engine extracts quantitative parameters (Source Token, Destination Token, Amount) and qualitative constraints (e.g., Safest, Fastest, Max Output).
+    *   *Output:* A normalized Intent Object.
+2.  **Graph State Manager (In-Memory Persistence):**
+    *   Maintains an ultra-low latency (`< 200ms` refresh) directed acyclic graph (DAG) of actively monitored liquidity pools across various decentralized exchanges.
+    *   *Output:* Current liquidity depth, fee ratios, and token balances.
+3.  **Defensive Routing Engine:**
+    *   Processes the structured intent against the live graph state to construct the mathematically optimal trade route. 
+    *   *Output:* Multi-hop array (e.g., `SUI -> CETUS -> USDC` with proportional splits).
+4.  **Bayesian Guardian & PTB Assembler:**
+    *   Evaluates the route for smart contract, liquidity, and toxic flow risks.
+    *   Upon clearing the risk threshold, the engine compiles a Sui Programmable Transaction Block (MoveCalls, Split/MergeCoins) ready for wallet signature.
 
 ---
 
-## 💻 Local Desktop Setup & Installation
+## 🧮 2. Mathematical Algorithms
 
-Follow these steps to deploy and run DIEPS on your local machine:
+### A. Routing Subgraph Concept (Modified Bellman-Ford)
+To find the maximum output route, we invert the traditional shortest-path algorithm. Edge weights $W_{i,j}$ are represented by the negative log of the expected pool exchange rate $R$, adjusting for the percentage fee $F$ and slippage factor $S(x)$ dependent on trade size $x$.
 
-### 📋 Prerequisites
-- **Node.js**: `v18.0.0` or higher
-- **Web3 Browser Wallet**: A compliant browser extension like [Sui Wallet](https://mystenlabs.com/), [Suiet](https://suiet.app/), or [OKX Wallet](https://www.okx.com/web3)
+$$ W_{u,v} = -\log \left( R_{u,v} \times (1 - F_{u,v}) \times (1 - S_{u,v}(x)) \right) $$
 
-### 📥 1. Clone & Install Dependencies
-Navigate into the project directory and install the required npm packages:
-```bash
-git clone <your-repository-url>
-cd dieps
-npm install
-```
+The engine calculates paths minimizing the total $W$, which directly translates to maximizing the compound token output.
 
-### ⚙️ 2. Environment Setup
-Configure your environment secrets. Create a `.env` file based on `.env.example`:
-```bash
-cp .env.example .env
-```
+### B. Bayesian Guardian Risk Engine
+The Guardian analyzes the probability of catastrophic failure (Black Swan) or malicious pool manipulation (Toxic Liquidity). We utilize a Bayesian Posterior calculation using a Beta distribution prior.
+
+1.  **Prior Belief:** We start with a strong "Safe" prior, represented as $Beta(2, 10)$, meaning there's inherently a low base rate of failure.
+2.  **Evidence Matrix ($E$):** We collect real-time data features: `Slippage_Variance`, `Concentration_Index`, and `Contract_Age`.
+3.  **Posterior Update:** 
+    $$ P(Risk \mid E) = \frac{P(E \mid Risk) \times P(Risk)}{P(E)} $$
+
+If the resulting posterior probability threshold crosses `0.85`, the execution is flagged as **HIGH RISK** and blocked by the PTB Assembler.
 
 ---
 
-## 🏃 Running the Application
+## 💻 3. Local Development Setup
 
-DIEPS operates on a secure full-stack layout. The back-end shields API calls, while the client operates as an elegant, interactive dashboard.
+Follow these steps to clone and run the DIEPS Engine locally.
 
-### 🧪 Run in Development Mode
-Launch both the Express backend API proxy and the Vite development environment on your machine:
+### Prerequisites
+*   **Node.js**: v18.0.0 or higher
+*   **npm** or **yarn**
+*   A Sui Ecosystem Wallet (Sui Wallet, Surf Wallet) installed in your browser.
+
+### Installation
+
+1. **Clone the repository** (or download the ZIP):
+   ```bash
+   git clone https://github.com/your-org/dieps-protocol.git
+   cd dieps-protocol
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**:
+   Copy the example environment variables and fill out API RPC endpoints if necessary.
+   ```bash
+   cp .env.example .env
+   ```
+   *Edit `.env` to configure your custom `SUI_GRPC_ENDPOINT` if you do not want to use the public default RPCs.*
+
+### Running the Application
+
+This is a Full-Stack application containing both the React/Vite Frontend and the Express API Backend.
+
+**Start the Development Server:**
 ```bash
 npm run dev
 ```
+> The development server will compile the backend on-the-fly and deploy Vite's HMR middleware. The application will be accessible at `http://localhost:3000`.
 
-The terminal will launch the interface:
-```text
-  ➜  Local:   http://localhost:3000
-```
-1. Open [http://localhost:3000](http://localhost:3000) in your browser.
-2. Click **Connect Wallet** in the top navigation panel.
-3. Accept the cryptographic connection request from your browser wallet extension. You are now ready to trade!
-
-### 🏗️ Build & Run in Production Mode
-Compile the TypeScript files and bundle them for production-grade hosting:
+**Build for Production:**
+Compile both the frontend SPA and bundle the backend TypeScript into a unified Node.js deployment.
 ```bash
-# 1. Bundles client code to dist/ and compiles server TS files with esbuild
 npm run build
-
-# 2. Bootstraps the application via the production bundle
-npm start
+npm run start
 ```
 
 ---
 
-## 🔗 Customizing Blockchain RPC Nodes
+## 🚀 4. Algorithm Processing & System Novelty
 
-To change network configurations, redirect your queries to alternate JSON-RPC nodes such as Sui Mainnet or custom developer indexes:
+### The Advanced Routing Algorithm (Modified Bellman-Ford)
+What sets DIEPS apart from traditional DEX aggregators is our proprietary implementation of the **Modified Bellman-Ford** routing algorithm. Traditional routing engines often struggle with latency when computing paths across highly fragmented liquidity states. 
 
-1. Open `/server.ts` in your workspace.
-2. Update the `rpcUrl` address endpoint to your custom destination:
-```typescript
-// Replace with SUI Mainnet or your custom RPC URL:
-const rpcUrl = "https://fullnode.testnet.sui.io"; 
-```
-3. Save the file and restart the server with `npm run dev` to apply configurations.
+Our team has specifically developed and fine-tuned this routing algorithm to achieve unprecedented practical processing speeds. This optimization is crucial for the **Intent Engine**, allowing it to instantly interpret user desires and compute the most optimal path in real-time.
 
----
+### Why this matters for the Ecosystem:
+- **Ultra-Fast Execution:** By drastically reducing the graph traversal time, the Modified Bellman-Ford algorithm ensures that users get the best possible rates before market conditions change.
+- **Empowering New Users:** The blazing-fast intent resolution abstracts away the complexities of decentralized finance. New users don't need to manually compare DEXs or understand slippage intricacies; the engine handles it optimally and instantly.
+- **Attracting Liquidity and Volume:** Providing a seamless, zero-latency execution experience is key to onboarding the next wave of users into the Sui ecosystem, ultimately driving higher volume and liquidity utilization across all integrated protocols.
 
-## 🛡️ Security Boundaries
-- 🔑 **Invisible Keys**: Private configurations are processed on the server-side, protecting user details from leaking into browser tools.
-- ✍️ **Safety Sign-Offs**: The dApp *never* persists or transmits your seed phrase or private key. Every transaction must be interactive and cryptographically verified inside your secure wallet dialog.
+## 🔒 Security Notice
+*This is an experimental interface running on Testnet endpoints by default. Real PTB submission and Move execution features simulate their states unless connected to mainnet RPC nodes.*
