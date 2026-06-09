@@ -48,7 +48,10 @@ The Guardian analyzes the probability of catastrophic failure (Black Swan) or ma
 1.  **Prior Belief:** We start with a strong "Safe" prior, represented as $Beta(2, 10)$, meaning there's inherently a low base rate of failure.
 2.  **Evidence Matrix ($E$):** We collect real-time data features: `Slippage_Variance`, `Concentration_Index`, and `Contract_Age`.
 3.  **Posterior Update:** 
-    $$ P(Risk \mid E) = \frac{P(E \mid Risk) \times P(Risk)}{P(E)} $$
+
+    $$
+    P(Risk \mid E) = \frac{P(E \mid Risk) \times P(Risk)}{P(E)}
+    $$
 
 If the resulting posterior probability threshold crosses `0.85`, the execution is flagged as **HIGH RISK** and blocked by the PTB Assembler.
 
