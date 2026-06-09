@@ -34,15 +34,14 @@ The core architecture runs on a 4-step pipeline designed to securely transition 
 
 ## 🧮 2. Mathematical Algorithms
 
-### A. Routing Subgraph Concept 
-
+### A. Routing Subgraph Concept (Routing DEX pools Algorithm)
 To find the maximum output route, we invert the traditional shortest-path algorithm. Edge weights $W_{i,j}$ are represented by the negative log of the expected pool exchange rate $R$, adjusting for the percentage fee $F$ and slippage factor $S(x)$ dependent on trade size $x$.
 
 $$ W_{u,v} = -\log \left( R_{u,v} \times (1 - F_{u,v}) \times (1 - S_{u,v}(x)) \right) $$
 
 The engine calculates paths minimizing the total $W$, which directly translates to maximizing the compound token output.
 
-### B. Guardian Risk Engine
+### B. Bayesian Guardian Risk Engine
 The Guardian analyzes the probability of catastrophic failure (Black Swan) or malicious pool manipulation (Toxic Liquidity). We utilize a dynamic Bayesian Posterior calculation using a Beta distribution prior. This approach continuously learns from real-time network states to proactively block harmful transactions before they reach the mempool.
 
 1.  **Prior Belief (The Beta Distribution):** 
@@ -122,7 +121,7 @@ npm run start
 ## 🚀 4. Algorithm Processing & System Novelty
 
 ### The Intent Engine & Advanced Routing Algorithm
-What fundamentally separates DIEPS from standard DEX aggregators is our **Intent Engine**, powered by a highly optimized, proprietary implementation of the **Modified Bellman-Ford** routing algorithm. Traditional swappers force users to understand liquidity fragmentation, hop paths, and route optimization. DIEPS flips this paradigm: users simply state their ultimate goal (their *intent*), and the engine independently handles the brutal mathematical complexity under the hood.
+What fundamentally separates DIEPS from standard DEX aggregators is our **Intent Engine**, powered by a highly optimized, proprietary implementation of the **Routing DEX pools Algorithm**. Traditional swappers force users to understand liquidity fragmentation, hop paths, and route optimization. DIEPS flips this paradigm: users simply state their ultimate goal (their *intent*), and the engine independently handles the brutal mathematical complexity under the hood.
 
 Our team has fine-tuned this algorithm to achieve unprecedented processing speeds. This zero-latency optimization is the lifeblood of the Intent Engine, allowing it to instantly parse natural language, compute multi-hop arbitrage paths across the Sui network, and synthesize the safest execution matrix in milliseconds.
 
@@ -133,6 +132,22 @@ Our technological breakthroughs translate directly into ecosystem growth for the
 - **Maximized Capital Efficiency:** By drastically reducing graph traversal time, our routing algorithm captures fleeting arbitrage opportunities and guarantees the absolute best exchange rates before market states evolve, ensuring users extract maximum value.
 - **Driving Deep Ecosystem Liquidity:** A seamless, zero-anxiety execution environment is the catalyst for retail and institutional adoption. By making Sui the easiest blockchain to transact on, DIEPS serves as a liquidity magnet, ultimately increasing trading volume, TVL, and utilization across all integrated protocols in the Sui ecosystem.
 
+---
+
+## ⚖️ 5. Competitive Landscape on Sui
+
+While the Sui ecosystem boasts robust DeFi infrastructure, DIEPS introduces an entirely new paradigm—shifting from manual aggregation to AI-driven intent execution. Here is how DIEPS compares to existing products on the Sui Blockchain:
+
+### 1. DIEPS Protocol vs. Hop Aggregator & Cetus Aggregator
+*   **Traditional Aggregators (Hop, Cetus):** Require the user to manually input specific tokens, select exact slippage limits, evaluate different routes, and construct the swap directly. The user bears the cognitive load of formulating the transaction.
+*   **DIEPS (Intent Engine):** The user simply types *"Swap 1000 SUI for the safest USDC route"*. DIEPS naturally parses this, uses its **Routing DEX pools Algorithm** to find the deepest path, runs the Bayesian Risk Guardian to ensure safety, and autonomously synthesizes the exact Programmable Transaction Block (PTB). **DIEPS moves aggregation to the background, elevating the user experience to pure intent.**
+
+### 2. DIEPS Protocol vs. Aftermath Finance (Smart Routing)
+*   **Aftermath Finance:** Offers excellent routing and multi-asset pools, focusing on complex pathfinding. However, the interface remains fundamentally deterministic and manual—tailored for experienced DeFi users who understand pool weights.
+*   **DIEPS (Intent Engine):** Not only matches the underlying multi-hop efficiency but adds a proactive **Bayesian Guardian Risk Engine**. If a route relies on a pool experiencing sudden high slippage or toxic concentration, DIEPS dynamically halts or reroutes the execution before submission. Furthermore, DIEPS allows new users to execute these complex, Aftermath-style multi-hop trades effortlessly through natural language, completely removing the steep learning curve.
+
+### Conclusion
+DIEPS does not replace aggregators; it acts as an intelligent overlay. By abstracting away the mechanical execution into natural language and reinforcing it with institutional-grade risk models, DIEPS aims to onboard the next one million retail users to the Sui Blockchain.
+
 ## 🔒 Security Notice
 *This is an experimental interface running on Testnet endpoints by default. Real PTB submission and Move execution features simulate their states unless connected to mainnet RPC nodes.*
-
