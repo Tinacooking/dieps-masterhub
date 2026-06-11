@@ -2,7 +2,7 @@ import fs from 'fs';
 import readline from 'readline';
 import Graph from 'graphology';
 import { bidirectional } from 'graphology-shortest-path/unweighted';
-import { SuiClient, getFullnodeUrl } from '@mysten/sui/client';
+import { SuiJsonRpcClient as SuiClient, getJsonRpcFullnodeUrl as getFullnodeUrl } from '@mysten/sui/jsonRpc';
 
 const suiClient = new SuiClient({ 
     url: process.env.SUI_RPC_ENDPOINT || getFullnodeUrl('mainnet') 
