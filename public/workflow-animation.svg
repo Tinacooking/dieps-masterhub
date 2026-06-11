@@ -54,7 +54,7 @@
   <g transform="translate(40, 160)">
     <rect class="node" width="100" height="80" />
     <text class="text" x="50" y="35">User Intent</text>
-    <text class="text-sub" x="50" y="55">Natural Lang</text>
+    <text class="text-sub" x="50" y="55">NLP</text>
   </g>
   
   <g transform="translate(210, 160)">
@@ -72,7 +72,7 @@
   <g transform="translate(390, 260)">
     <rect class="node-safe pulse-safe-anim" width="120" height="80" />
     <text class="text" x="60" y="35">Routing Engine</text>
-    <text class="text-sub" x="60" y="55">MMBF Algo</text>
+    <text class="text-sub" x="60" y="55">Routing Algo</text>
   </g>
   
   <g transform="translate(550, 160)">

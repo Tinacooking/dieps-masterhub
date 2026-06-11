@@ -54,19 +54,72 @@ class ModifiedMooreBellmanFordRouter:
 
     def fetch_live_pools(self):
         """
-        Query the Sui gRPC RPC endpoints (Blockvision) to fetch active liquidity pools.
-        Mainnet: sui-mainnet-grpc.blockvision.org:443
+        Query the Sui JSON-RPC endpoint to fetch active liquidity pools directly from on-chain state.
+        Uses ONLY the configuration provided in the .env file.
         """
-        # We establish a secure gRPC channel to the blockvision endpoint
-        # NOTE: A real implementation requires the Sui protobuf definitions to be compiled.
+        rpc_url = os.environ.get("SUI_RPC_ENDPOINT")
+        if not rpc_url:
+            print("Lỗi: SUI_RPC_ENDPOINT không được tìm thấy trong môi trường (.env). Vui lòng kiểm tra lại cấu hình!")
+            return
+            
+        api_key = os.environ.get("SUI_API_KEY")
+        headers = {"Content-Type": "application/json"}
+        if api_key:
+            headers["x-api-key"] = api_key
+            headers["Authorization"] = f"Bearer {api_key}"
+            
+        # Ví dụ ID của pool Cetus SUI/USDC
+        pool_object_ids = [
+            "0x5eb2dfcdd1b15d2021328258f6d5ec081e9a0050" 
+        ]
+        
+        payload = {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "sui_multiGetObjects",
+            "params": [
+                pool_object_ids,
+                {
+                    "showContent": True,
+                    "showType": True
+                }
+            ]
+        }
+        
         try:
-            channel = grpc.secure_channel('sui-mainnet-grpc.blockvision.org:443', grpc.ssl_channel_credentials())
-            # stub = sui_grpc.SuiServiceStub(channel)
-            # response = stub.GetLivePools(...)
-            # self.pools = parse_live_pools(...)
-            pass
+            with httpx.Client(timeout=10.0) as client:
+                response = client.post(rpc_url, json=payload, headers=headers)
+                response.raise_for_status()
+                data = response.json()
+                
+                if "result" in data:
+                    for item in data["result"]:
+                        if "error" in item:
+                            continue
+                            
+                        obj_data = item.get("data", {})
+                        obj_id = obj_data.get("objectId")
+                        content = obj_data.get("content", {})
+                        fields = content.get("fields", {})
+                        
+                        reserve_a = float(fields.get("coin_a", 0)) / 1e9
+                        reserve_b = float(fields.get("coin_b", 0)) / 1e6
+                        fee_rate = float(fields.get("fee_rate", 2500)) / 1000000 
+                        
+                        self.pools[obj_id] = PoolData(
+                            pool_id=obj_id,
+                            token_a_address="0x2::sui::SUI", 
+                            token_b_address="0x5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::COIN",
+                            reserve_a=reserve_a,
+                            reserve_b=reserve_b,
+                            fee_percentage=fee_rate,
+                            last_transaction_timestamp=int(time.time() * 1000)
+                        )
+                        
+            print(f"Successfully fetched {len(self.pools)} live pools from Sui RPC.")
+            
         except Exception as e:
-            print(f"Failed to fetch live pools via gRPC: {e}")
+            print(f"Failed to fetch live pools via Sui JSON-RPC: {e}")
 
     def build_base_graph(self):
         self.base_graph.clear()
