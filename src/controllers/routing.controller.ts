@@ -65,6 +65,7 @@ export const calculateOptimalRouteController = async (req: Request, res: Respons
       
       routeNodes = [{ dex: dexName, ratio: 100, fee: fee * 100, weight: weight }];
       outputAmount = parseFloat(amount) * exchangeRate * (1 - fee) * (1 - slippage);
+    }
 
     return res.json({
         route: routeNodes,
