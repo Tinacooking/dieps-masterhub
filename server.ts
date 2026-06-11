@@ -6,73 +6,6 @@ import { parseIntent, resolveToken } from "./src/services/nlp";
 import { initializeGraph, findSubGraphPools, fetchPoolsRealtime } from "./src/services/graph";
 import { evaluateGuardianRisk } from "./src/services/risk";
 
-const SUPPORTED_DEXES = ["cetus", "turbos", "kriya", "flowx"];
-
-// Helper to resolve token address dynamically via DexScreener
-async function resolveTokenAddress(symbol: string): Promise<string | null> {
-    const symbolUpper = symbol.toUpperCase();
-    if (symbolUpper === "SUI") return "0x2::sui::SUI"; // SUI is native, always known
-    
-    try {
-        const query = symbol.toLowerCase();
-        const res = await fetch(`https://api.dexscreener.com/latest/dex/search?q=${query}`);
-        const data = await res.json();
-        
-        if (data && data.pairs && data.pairs.length > 0) {
-            const validPairs = data.pairs.filter((p: any) => p.chainId === "sui");
-            if (validPairs.length > 0) {
-               // match symbol exactly if possible
-               const exactMatch = validPairs.find((p: any) => p.baseToken.symbol.toUpperCase() === symbolUpper);
-               if (exactMatch) return exactMatch.baseToken.address;
-               return validPairs[0].baseToken.address;
-            }
-        }
-        return null; // Return null if not found
-    } catch (e) {
-        console.error("Failed to dynamically fetch token address", e);
-        return null;
-    }
-}
-
-// Helper to find best pool using DexScreener
-async function findBestPoolForToken(symbolOrAddress: string) {
-  try {
-    if (!symbolOrAddress) return null;
-    const query = symbolOrAddress.toLowerCase();
-    const res = await fetch(`https://api.dexscreener.com/latest/dex/search?q=${query}`);
-    const data = await res.json();
-    
-    if (data && data.pairs && data.pairs.length > 0) {
-        // Filter by supported networks and dexes
-        const validPairs = data.pairs.filter((p: any) => 
-            p.chainId === "sui" && SUPPORTED_DEXES.includes(p.dexId.toLowerCase())
-        );
-
-        if (validPairs.length > 0) {
-            // Sort by liquidity
-            validPairs.sort((a: any, b: any) => {
-                const liqA = a.liquidity?.usd || 0;
-                const liqB = b.liquidity?.usd || 0;
-                return liqB - liqA;
-            });
-            const bestPair = validPairs[0];
-            return {
-                dex: bestPair.dexId,
-                address: bestPair.pairAddress,
-                baseToken: bestPair.baseToken,
-                quoteToken: bestPair.quoteToken,
-                priceUsd: bestPair.priceUsd,
-                liquidity: bestPair.liquidity?.usd || 0,
-                volume24h: bestPair.volume?.h24 || 0,
-            };
-        }
-    }
-    return null;
-  } catch (error) {
-    console.error("DexScreener fetch error:", error);
-    return null;
-  }
-}
 
 async function startServer() {
   const app = express();
@@ -200,12 +133,9 @@ async function startServer() {
                 poolId: selectedPool.poolId
             };
         }
-    } else {
-        // Fallback
-        bestPool = await findBestPoolForToken(poolSymbol);
     }
     
-    let routeNodes = [];
+    let routeNodes: any[] = [];
     let outputAmount = parseFloat(amount);
     let slippage = 0.05;
     
