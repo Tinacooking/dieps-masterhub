@@ -17,52 +17,69 @@ export async function initializeGraph(filePath: string): Promise<void> {
 
     staticGraph = new Graph();
     
-    // In a real scenario, we would parse each pool ID, fetch its tokens, and add edges.
-    // To avoid long startup times during development, we'll simulate building the adjacency list.
-    // We only add nodes if they don't exist.
+    // Start background scanner to parse 768k pool IDs over time
+    // We do not await this, it runs in the background.
+    startBackgroundScanner(filePath);
     
+    console.log(`[Graph Service] Background scanner initialized. Populating graph...`);
+}
+
+async function startBackgroundScanner(filePath: string) {
     const fileStream = fs.createReadStream(filePath);
     const rl = readline.createInterface({
         input: fileStream,
         crlfDelay: Infinity
     });
 
-    // Read the first 50 Pool IDs to build the initial real data subgraph
-    // (Processing 768k pool IDs via RPC would take hours and require a dedicated Indexer Database)
     let poolBatch: string[] = [];
     for await (const line of rl) {
         if (line.trim()) {
             poolBatch.push(line.trim());
         }
-        if (poolBatch.length >= 50) break; 
-    }
-    
-    // Fetch real Token Types for these pools
-    if (poolBatch.length > 0) {
-        try {
-            const res = await suiClient.multiGetObjects({
-                ids: poolBatch,
-                options: { showType: true, showContent: true }
-            });
-            
-            for (const obj of res) {
-                if (obj.data && obj.data.content && obj.data.content.dataType === 'moveObject') {
-                    const fields = (obj.data.content as any).fields;
-                    // Extract token types (handling variations from Dexes like Cetus/Turbos/FlowX)
-                    const coinA = fields.coin_a || fields.coin_type_a || obj.data.type?.match(/<([^,]+),/)?.[1] || "UnknownTokenA";
-                    const coinB = fields.coin_b || fields.coin_type_b || obj.data.type?.match(/,\s*([^>]+)>/)?.[1] || "UnknownTokenB";
-                    
-                    staticGraph.mergeNode(coinA);
-                    staticGraph.mergeNode(coinB);
-                    staticGraph.mergeEdge(coinA, coinB, { poolId: obj.data.objectId });
+        
+        if (poolBatch.length >= 50) {
+            try {
+                const res = await suiClient.multiGetObjects({
+                    ids: poolBatch,
+                    options: { showType: true, showContent: true }
+                });
+                
+                for (const obj of res) {
+                    if (obj.data && obj.data.content && obj.data.content.dataType === 'moveObject') {
+                        const fields = (obj.data.content as any).fields;
+                        const typeStr = obj.data.type || "";
+                        
+                        // Extract token types
+                        const coinA = fields.coin_a || fields.coin_type_a || typeStr.match(/<([^,]+),/)?.[1] || "UnknownTokenA";
+                        const coinB = fields.coin_b || fields.coin_type_b || typeStr.match(/,\s*([^>]+)>/)?.[1] || "UnknownTokenB";
+                        
+                        // Calculate rough liquidity USD equivalent
+                        // For generic scanning without an oracle, we assume tokenA or tokenB is SUI/USDC and check raw reserves
+                        const rawLiquidityX = Number(fields.liquidity || fields.reserve_x || 0);
+                        const rawLiquidityY = Number(fields.reserve_y || 0);
+                        const estimatedLiquidity = (rawLiquidityX + rawLiquidityY) / 1e9; // Normalized
+                        
+                        // Filter pools with liquidity under 10k (as requested by user)
+                        // If it's a deep pool, add to graph
+                        if (estimatedLiquidity > 10000) {
+                            staticGraph?.mergeNode(coinA.toLowerCase());
+                            staticGraph?.mergeNode(coinB.toLowerCase());
+                            staticGraph?.mergeEdge(coinA.toLowerCase(), coinB.toLowerCase(), { 
+                                poolId: obj.data.objectId,
+                                type: typeStr
+                            });
+                        }
+                    }
                 }
+            } catch(e) {
+                // Ignore RPC rate limit errors and continue
             }
-        } catch(e) {
-            console.error("[Graph Service] Failed to fetch initial real pool data:", e);
+            poolBatch = [];
+            
+            // Artificial delay to prevent RPC rate-limiting
+            await new Promise(resolve => setTimeout(resolve, 500));
         }
     }
-    
-    console.log(`[Graph Service] Initialized static graph with ${staticGraph.order} tokens and ${staticGraph.size} pools.`);
 }
 
 export async function findSubGraphPools(sourceAddress: string, destAddress: string): Promise<string[]> {
@@ -125,7 +142,8 @@ export async function fetchPoolsRealtime(poolIds: string[]) {
                         poolId: obj.data.objectId,
                         reserves: { tokenA: rawLiquidity, tokenB: fields.reserve_y || 0 },
                         exchangeRate: 1.0, // Should be calculated based on reserves ratio or sqrtPrice
-                        rawFields: fields
+                        rawFields: fields,
+                        type: obj.data.type
                     });
                 }
             }

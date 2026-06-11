@@ -25,13 +25,28 @@ export const calculateOptimalRouteController = async (req: Request, res: Respons
                 rate = Number(selectedPool.reserves.tokenB) / Number(selectedPool.reserves.tokenA);
             }
             
+            let dexName = "Unknown DEX";
+            const typeStr = String(selectedPool.type || "").toLowerCase();
+            if (typeStr.includes('cetus')) dexName = "Cetus";
+            else if (typeStr.includes('turbos')) dexName = "Turbos";
+            else if (typeStr.includes('kriya')) dexName = "Kriya";
+            else if (typeStr.includes('flowx')) dexName = "FlowX";
+
             bestPool = {
-                dex: "Sui Deep Pool",
+                dex: dexName,
                 priceUsd: rate.toString(),
                 liquidity: Number(selectedPool.reserves.tokenA) || 50000,
                 poolId: selectedPool.poolId
             };
         }
+    }
+    
+    if (!bestPool) {
+        return res.status(404).json({
+            error: "No path found in graph. Background scanner is indexing liquidity pools. Please try again.",
+            route: [],
+            dex_sequence: []
+        });
     }
     
     let routeNodes: any[] = [];
@@ -50,10 +65,6 @@ export const calculateOptimalRouteController = async (req: Request, res: Respons
       
       routeNodes = [{ dex: dexName, ratio: 100, fee: fee * 100, weight: weight }];
       outputAmount = parseFloat(amount) * exchangeRate * (1 - fee) * (1 - slippage);
-    } else {
-        routeNodes = [{ dex: "Fallback Swap", ratio: 100, fee: 0.5, weight: 1 }];
-        outputAmount = parseFloat(amount) * 0.95;
-    }
 
     return res.json({
         route: routeNodes,
