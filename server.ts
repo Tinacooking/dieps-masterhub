@@ -181,11 +181,25 @@ async function startServer() {
     if (poolIds.length > 0) {
         // Fetch real-time data from Sui RPC
         const realTimePools = await fetchPoolsRealtime(poolIds);
-        bestPool = {
-            dex: "Sui Deep Pool",
-            priceUsd: "1.00", // Defaulting for mock demo; production parses exact tick rate
-            liquidity: 50000,
-        };
+        
+        if (realTimePools.length > 0) {
+            // Sort to find the pool with highest liquidity
+            realTimePools.sort((a, b) => Number(b.reserves.tokenA) - Number(a.reserves.tokenA));
+            const selectedPool = realTimePools[0];
+            
+            // Calculate a rough exchange rate if liquidity exists, otherwise default 1.0
+            let rate = 1.0;
+            if (Number(selectedPool.reserves.tokenA) > 0 && Number(selectedPool.reserves.tokenB) > 0) {
+                rate = Number(selectedPool.reserves.tokenB) / Number(selectedPool.reserves.tokenA);
+            }
+            
+            bestPool = {
+                dex: "Sui Deep Pool",
+                priceUsd: rate.toString(),
+                liquidity: Number(selectedPool.reserves.tokenA) || 50000,
+                poolId: selectedPool.poolId
+            };
+        }
     } else {
         // Fallback
         bestPool = await findBestPoolForToken(poolSymbol);

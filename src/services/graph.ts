@@ -2,6 +2,11 @@ import fs from 'fs';
 import readline from 'readline';
 import Graph from 'graphology';
 import { bidirectional } from 'graphology-shortest-path/unweighted';
+import { SuiClient, getFullnodeUrl } from '@mysten/sui/client';
+
+const suiClient = new SuiClient({ 
+    url: process.env.SUI_RPC_ENDPOINT || getFullnodeUrl('mainnet') 
+});
 
 // Singleton instance of the graph
 let staticGraph: Graph | null = null;
@@ -22,18 +27,39 @@ export async function initializeGraph(filePath: string): Promise<void> {
         crlfDelay: Infinity
     });
 
-    let count = 0;
+    // Read the first 50 Pool IDs to build the initial real data subgraph
+    // (Processing 768k pool IDs via RPC would take hours and require a dedicated Indexer Database)
+    let poolBatch: string[] = [];
     for await (const line of rl) {
-        // Mock processing line: 0x...poolId
-        count++;
-        // We will simulate that the first few lines connect common tokens
-        if (count === 1) {
-            staticGraph.mergeNode("0x2::sui::SUI");
-            staticGraph.mergeNode("0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC");
-            staticGraph.mergeEdge("0x2::sui::SUI", "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC", { poolId: line.trim() });
+        if (line.trim()) {
+            poolBatch.push(line.trim());
         }
-        // Early break just to prevent massive memory usage for mock demonstration
-        if (count > 100) break; 
+        if (poolBatch.length >= 50) break; 
+    }
+    
+    // Fetch real Token Types for these pools
+    if (poolBatch.length > 0) {
+        try {
+            const res = await suiClient.multiGetObjects({
+                ids: poolBatch,
+                options: { showType: true, showContent: true }
+            });
+            
+            for (const obj of res) {
+                if (obj.data && obj.data.content && obj.data.content.dataType === 'moveObject') {
+                    const fields = (obj.data.content as any).fields;
+                    // Extract token types (handling variations from Dexes like Cetus/Turbos/FlowX)
+                    const coinA = fields.coin_a || fields.coin_type_a || obj.data.type?.match(/<([^,]+),/)?.[1] || "UnknownTokenA";
+                    const coinB = fields.coin_b || fields.coin_type_b || obj.data.type?.match(/,\s*([^>]+)>/)?.[1] || "UnknownTokenB";
+                    
+                    staticGraph.mergeNode(coinA);
+                    staticGraph.mergeNode(coinB);
+                    staticGraph.mergeEdge(coinA, coinB, { poolId: obj.data.objectId });
+                }
+            }
+        } catch(e) {
+            console.error("[Graph Service] Failed to fetch initial real pool data:", e);
+        }
     }
     
     console.log(`[Graph Service] Initialized static graph with ${staticGraph.order} tokens and ${staticGraph.size} pools.`);
@@ -73,18 +99,39 @@ export async function findSubGraphPools(sourceAddress: string, destAddress: stri
 }
 
 export async function fetchPoolsRealtime(poolIds: string[]) {
-    // In production, this uses SuiGrpcClient sui_multiGetObjects
-    // const client = new SuiGrpcClient({ url: process.env.SUI_GRPC_ENDPOINT });
-    // const res = await client.multiGetObjects({ ids: poolIds, options: { showContent: true } });
+    if (!poolIds || poolIds.length === 0) return [];
     
-    // Mocking real-time RPC fetch of 50ms latency
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(poolIds.map(id => ({
-                poolId: id,
-                reserves: { tokenA: 10000, tokenB: 10000 },
-                exchangeRate: 1.0 // Mock rate
-            })));
-        }, 50);
-    });
+    // Chunk requests up to 50 items (RPC limit)
+    const chunks = [];
+    for (let i = 0; i < poolIds.length; i += 50) {
+        chunks.push(poolIds.slice(i, i + 50));
+    }
+    
+    let allPools = [];
+    for (const chunk of chunks) {
+        try {
+            const res = await suiClient.multiGetObjects({
+                ids: chunk,
+                options: { showContent: true }
+            });
+            
+            for (const obj of res) {
+                if (obj.data && obj.data.content && obj.data.content.dataType === 'moveObject') {
+                    const fields = (obj.data.content as any).fields;
+                    // Standardizing Cetus / FlowX / Turbos basic fields for routing
+                    const rawLiquidity = fields.liquidity || fields.reserve_x || 0;
+                    
+                    allPools.push({
+                        poolId: obj.data.objectId,
+                        reserves: { tokenA: rawLiquidity, tokenB: fields.reserve_y || 0 },
+                        exchangeRate: 1.0, // Should be calculated based on reserves ratio or sqrtPrice
+                        rawFields: fields
+                    });
+                }
+            }
+        } catch (error) {
+            console.error(`[Graph Service] Error fetching real-time pool chunk:`, error);
+        }
+    }
+    return allPools;
 }
