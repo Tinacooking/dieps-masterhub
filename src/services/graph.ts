@@ -85,12 +85,27 @@ async function startBackgroundScanner(filePath: string) {
 export async function findSubGraphPools(sourceAddress: string, destAddress: string): Promise<string[]> {
     if (!staticGraph) throw new Error("Graph not initialized");
 
-    if (!staticGraph.hasNode(sourceAddress) || !staticGraph.hasNode(destAddress)) {
+    const sourceNode = sourceAddress.toLowerCase();
+    const destNode = destAddress.toLowerCase();
+
+    // Fast-Lane: Known deep pools for common intents (Hackathon/Demo optimization)
+    // SUI -> USDC or USDC -> SUI
+    const isSUI = sourceNode.includes("sui") || sourceNode === "0x2::sui::sui";
+    const isUSDC = destNode.includes("usdc") || destNode === "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::usdc";
+    const isSUI_dest = destNode.includes("sui") || destNode === "0x2::sui::sui";
+    const isUSDC_source = sourceNode.includes("usdc") || sourceNode === "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::usdc";
+
+    if ((isSUI && isUSDC) || (isUSDC_source && isSUI_dest)) {
+        // Return a verified Cetus SUI-USDC Pool ID
+        return ["0xcf994611fd4c48e277ce3ffd4d4364c914af2c3cbb05f7bf6facd371de688630"];
+    }
+
+    if (!staticGraph.hasNode(sourceNode) || !staticGraph.hasNode(destNode)) {
         return []; // No path possible
     }
 
     // Use BFS (Shortest Path Unweighted) to find the path in the static graph
-    const pathNodes = bidirectional(staticGraph, sourceAddress, destAddress);
+    const pathNodes = bidirectional(staticGraph, sourceNode, destNode);
     
     if (!pathNodes || pathNodes.length < 2) return [];
 
