@@ -1,140 +1,268 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
-export const Projects = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+const METRICS = [
+  {
+    value: '10+',
+    label: 'DEXs Monitored',
+    countTo: 10,
+    suffix: '+',
+    size: 200,
+    glowSize: 260,
+    floatDur: 7.2,
+    floatDelay: 0,
+    glowIntensity: 0.55,
+  },
+  {
+    value: '400K',
+    label: 'Active Pools',
+    countTo: 400000,
+    prefix: 'Up to ',
+    suffix: '',
+    size: 240,
+    glowSize: 310,
+    floatDur: 6.4,
+    floatDelay: 0.8,
+    glowIntensity: 0.7,
+  },
+  {
+    value: '200ms',
+    label: 'Graph Refresh',
+    countTo: 200,
+    prefix: '< ',
+    suffix: 'ms',
+    size: 180,
+    glowSize: 240,
+    floatDur: 8.1,
+    floatDelay: 0.4,
+    glowIntensity: 0.5,
+  },
+  {
+    value: '99.9%',
+    label: 'Execution Safety',
+    countTo: 99.9,
+    suffix: '%',
+    size: 160,
+    glowSize: 210,
+    floatDur: 6.8,
+    floatDelay: 1.2,
+    glowIntensity: 0.45,
+  },
+];
 
-  const [monitored, setMonitored] = useState(0);
-  const [pools, setPools] = useState(0);
-  const [refresh, setRefresh] = useState(1000);
-  const [safety, setSafety] = useState(0);
+export const Projects = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+  const animatedRef = useRef(false);
+
+  const [counts, setCounts] = useState([0, 0, 1000, 0]);
 
   useEffect(() => {
+    const scrollContainer = document.querySelector('.custom-scrollbar') as HTMLElement | null;
+
+    const runAnimations = () => {
+      if (animatedRef.current) return;
+      animatedRef.current = true;
+
+      gsap.fromTo(leftRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }
+      );
+
+      const spheres = rightRef.current?.querySelectorAll('.metric-sphere-wrap');
+      if (spheres) {
+        gsap.fromTo(Array.from(spheres),
+          { opacity: 0, y: 50, scale: 0.85 },
+          { opacity: 1, y: 0, scale: 1, duration: 1.0, stagger: 0.15, ease: 'power3.out', delay: 0.2 }
+        );
+      }
+
+      // Count-up
+      const obj = { v0: 0, v1: 0, v2: 1000, v3: 0 };
+      gsap.to(obj, {
+        v0: 10, v1: 400000, v2: 200, v3: 99.9,
+        duration: 2.8, ease: 'power2.out', delay: 0.4,
+        onUpdate: () => {
+          setCounts([
+            Math.floor(obj.v0),
+            Math.floor(obj.v1),
+            Math.floor(obj.v2),
+            parseFloat(obj.v3.toFixed(1)),
+          ]);
+        }
+      });
+    };
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // 1. Title Fade-in
-          gsap.fromTo(titleRef.current,
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
-          );
-
-          // 2. Cards Fade-in
-          const cards = containerRef.current?.querySelectorAll('.subsystem-card');
-          if (cards && cards.length > 0) {
-            gsap.fromTo(cards,
-              { opacity: 0, y: 30 },
-              { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: 'power3.out', delay: 0.2 }
-            );
-          }
-
-          // 3. Stats Count-up Animations
-          const statsObj = { monitored: 0, pools: 0, refresh: 1000, safety: 0 };
-          
-          gsap.to(statsObj, {
-            monitored: 10,
-            pools: 10000,
-            refresh: 200,
-            safety: 99.9,
-            duration: 2.5,
-            ease: 'power2.out',
-            delay: 0.4,
-            onUpdate: () => {
-              setMonitored(Math.floor(statsObj.monitored));
-              setPools(Math.floor(statsObj.pools));
-              setRefresh(Math.floor(statsObj.refresh));
-              setSafety(Number(statsObj.safety.toFixed(1)));
-            }
-          });
-
+          runAnimations();
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { root: scrollContainer, threshold: 0.2 });
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
-  return (
-    <section ref={containerRef} className="w-full h-full px-8 md:px-24 bg-[#030008] flex justify-center py-10 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto w-full flex flex-col justify-center h-full max-h-[900px]">
-        <h2 
-          ref={titleRef}
-          className="text-[28px] md:text-[40px] font-serif italic font-light text-white mb-6 lg:mb-8 tracking-tight shrink-0 opacity-0"
-        >
-          Core Subsystems
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 min-h-0 mb-8 lg:mb-12 shrink">
-          <div 
-            className="subsystem-card opacity-0 group relative h-[22vh] min-h-[140px] max-h-[220px] lg:max-h-none lg:h-auto lg:aspect-[2/1] rounded-[24px] lg:rounded-[32px] overflow-hidden bg-[#0a0416] border border-white/5 shadow-[0_10px_35px_rgba(0,0,0,0.4)]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030008] via-[#030008]/40 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-0 bg-[#0a0416] opacity-50 group-hover:opacity-30 transition-opacity flex items-center justify-center pointer-events-none">
-              <div className="w-[300px] h-[300px] rounded-full blur-[80px] bg-[#1e0b36] group-hover:bg-[#a855f7]/30 transition-colors duration-700" />
-            </div>
-            <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 z-20 pointer-events-none">
-              <span className="text-[10px] lg:text-[12px] uppercase tracking-widest text-[#a855f7] font-mono mb-2 lg:mb-4 block">Intent Extraction</span>
-              <h3 className="text-[24px] lg:text-[32px] font-display text-white">Solver Engine</h3>
-            </div>
-          </div>
+  const formatCount = (idx: number) => {
+    if (idx === 0) return `${counts[0]}+`;
+    if (idx === 1) return `Up to ${counts[1].toLocaleString()}`;
+    if (idx === 2) return `< ${counts[2]}ms`;
+    if (idx === 3) return `${counts[3]}%`;
+    return '';
+  };
 
-          <div 
-            className="subsystem-card opacity-0 group relative h-[22vh] min-h-[140px] max-h-[220px] lg:max-h-none lg:h-auto lg:aspect-[2/1] rounded-[24px] lg:rounded-[32px] overflow-hidden bg-[#0a0416] border border-white/5 shadow-[0_10px_35px_rgba(0,0,0,0.4)]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030008] via-[#030008]/40 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-0 bg-[#0a0416] opacity-50 group-hover:opacity-30 transition-opacity flex items-center justify-center pointer-events-none">
-               {/* Abstract linear lines */}
-               <div className="w-[100px] lg:w-[200px] h-[200px] lg:h-[400px] rotate-45 border-l border-white/10 group-hover:border-[#a855f7]/30 transition-colors duration-700" />
-               <div className="w-[100px] lg:w-[200px] h-[200px] lg:h-[400px] rotate-45 border-l border-white/10 group-hover:border-[#a855f7]/30 transition-colors duration-700 ml-5 lg:ml-10" />
-            </div>
-            <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 z-20 pointer-events-none">
-              <span className="text-[10px] lg:text-[12px] uppercase tracking-widest text-white/50 font-mono mb-2 lg:mb-4 block">In-Memory Persistence</span>
-              <h3 className="text-[24px] lg:text-[32px] font-display text-white">Graph State Manager</h3>
-            </div>
-          </div>
+  return (
+    <section
+      ref={sectionRef}
+      className="w-full h-full bg-[#05050A] relative z-10 overflow-hidden flex items-center"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E")`,
+      }}
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[400px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, rgba(120,40,220,0.08) 0%, transparent 70%)' }} />
+      <div className="absolute bottom-0 right-[20%] w-[600px] h-[300px] rounded-full pointer-events-none blur-[100px]"
+        style={{ background: 'rgba(100,30,200,0.06)' }} />
+
+      <div className="max-w-[1400px] mx-auto w-full px-8 md:px-20 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+
+        {/* LEFT — Editorial text */}
+        <div ref={leftRef} className="lg:col-span-4 flex flex-col gap-8 opacity-0">
+          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#a855f7]">Protocol Metrics</span>
+
+          <h2 className="font-display font-semibold text-[26px] md:text-[32px] leading-[1.2] text-white">
+            "DIEPS isn't here to replace the aggregators, it's{' '}
+            <span className="text-white/40 font-light italic font-serif">the layer on top of them.</span>
+          </h2>
+          <p className="font-display font-light text-[18px] md:text-[22px] leading-[1.4] text-white/70">
+            The layer that takes everything working under the hood and makes it accessible to someone who has never heard the word 'slippage' in their life."
+          </p>
+
+          <div className="w-12 h-px bg-white/10" />
+
+          <p className="text-[13px] md:text-[14px] text-white/35 leading-relaxed font-body max-w-[400px]">
+            By wrapping institutional-grade risk models and intelligent execution into a single plain-English interface, DIEPS has one goal: bring the next million people into Sui and make sure every single one of them actually stays.
+          </p>
         </div>
 
-        {/* Statistics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-12 w-full pt-6 lg:pt-12 border-t border-white/5 shrink-0 mt-auto">
-          <div className="flex flex-col gap-1 lg:gap-2">
-            <h4 className="text-[32px] sm:text-[40px] md:text-[36px] lg:text-[44px] xl:text-[56px] font-serif font-light text-white tracking-tighter whitespace-nowrap">
-              {monitored}+
-            </h4>
-            <span className="text-[10px] lg:text-[14px] font-mono text-[#8F8F8F] uppercase tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">DEXs Monitored</span>
-          </div>
+        {/* RIGHT — Metric spheres */}
+        <div ref={rightRef} className="lg:col-span-8 flex flex-col justify-center">
+          <div className="flex flex-row items-end justify-around gap-4 md:gap-6">
+            {METRICS.map((m, i) => (
+              <div
+                key={m.label}
+                className="metric-sphere-wrap opacity-0 flex flex-col items-center gap-0"
+                style={{ animationDelay: `${m.floatDelay}s` }}
+              >
+                {/* Value above line */}
+                <div className="mb-3 text-center">
+                  <div
+                    className="font-display font-bold text-white leading-none"
+                    style={{ fontSize: `clamp(16px, ${m.size / 10}px, ${m.size / 7}px)` }}
+                  >
+                    {formatCount(i)}
+                  </div>
+                </div>
 
-          <div className="flex flex-col gap-1 lg:gap-2">
-            <h4 className="text-[32px] sm:text-[40px] md:text-[36px] lg:text-[44px] xl:text-[56px] font-serif font-light text-white tracking-tighter whitespace-nowrap">
-              {pools.toLocaleString()}+
-            </h4>
-            <span className="text-[10px] lg:text-[14px] font-mono text-[#8F8F8F] uppercase tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">Active Pools</span>
-          </div>
+                {/* Thin vertical guide line */}
+                <div
+                  className="w-px mb-1"
+                  style={{
+                    height: `${m.size * 0.18}px`,
+                    background: `linear-gradient(to bottom, rgba(168,85,247,0.5), rgba(168,85,247,0.1))`,
+                  }}
+                />
 
-          <div className="flex flex-col gap-1 lg:gap-2">
-            <h4 className="text-[32px] sm:text-[40px] md:text-[36px] lg:text-[44px] xl:text-[56px] font-serif font-light text-white tracking-tighter whitespace-nowrap">
-              &lt; {refresh}ms
-            </h4>
-            <span className="text-[10px] lg:text-[14px] font-mono text-[#8F8F8F] uppercase tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">Graph Refresh</span>
-          </div>
+                {/* Sphere */}
+                <div
+                  className="relative flex-shrink-0 cursor-default"
+                  style={{
+                    width: m.size,
+                    height: m.size,
+                    animation: `sphere-float ${m.floatDur}s ${m.floatDelay}s ease-in-out infinite`,
+                  }}
+                  onMouseEnter={e => {
+                    gsap.to(e.currentTarget, { scale: 1.06, duration: 0.4, ease: 'power2.out' });
+                  }}
+                  onMouseLeave={e => {
+                    gsap.to(e.currentTarget, { scale: 1, duration: 0.5, ease: 'power2.inOut' });
+                  }}
+                >
+                  {/* Outer glow */}
+                  <div
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: `radial-gradient(circle, rgba(168,85,247,${m.glowIntensity * 0.3}) 0%, transparent 70%)`,
+                      transform: 'scale(1.4)',
+                      animation: `sphere-glow-pulse ${m.floatDur * 0.8}s ${m.floatDelay}s ease-in-out infinite`,
+                    }}
+                  />
+                  {/* Sphere body */}
+                  <div
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: `
+                        radial-gradient(circle at 35% 30%,
+                          #ffffff 0%,
+                          rgba(255, 255, 255, 0.98) 12%,
+                          rgba(230, 200, 255, 0.9) 32%,
+                          rgba(157, 80, 255, ${m.glowIntensity}) 55%,
+                          rgba(80, 20, 180, 0.95) 80%,
+                          #0d0425 100%
+                        )
+                      `,
+                      boxShadow: `
+                        0 0 ${m.size * 0.5}px rgba(168,85,247,${m.glowIntensity * 0.45}),
+                        0 0 ${m.size * 0.2}px rgba(168,85,247,${m.glowIntensity * 0.25}),
+                        inset -4px -4px 16px rgba(0, 0, 0, 0.6),
+                        inset 4px 4px 16px rgba(255, 255, 255, 0.35)
+                      `,
+                      border: '1px solid rgba(168,85,247,0.25)',
+                      backdropFilter: 'blur(8px)',
+                    }}
+                  />
+                  {/* Inner highlight (glassy sheen) */}
+                  <div
+                    className="absolute rounded-full"
+                    style={{
+                      width: '40%',
+                      height: '24%',
+                      top: '12%',
+                      left: '18%',
+                      background: 'radial-gradient(ellipse, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 100%)',
+                      filter: 'blur(2px)',
+                      transform: 'rotate(-15deg)',
+                    }}
+                  />
+                </div>
 
-          <div className="flex flex-col gap-1 lg:gap-2">
-            <h4 className="text-[32px] sm:text-[40px] md:text-[36px] lg:text-[44px] xl:text-[56px] font-serif font-light text-white tracking-tighter whitespace-nowrap">
-              {safety}%
-            </h4>
-            <span className="text-[10px] lg:text-[14px] font-mono text-[#8F8F8F] uppercase tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">Execution Safety</span>
+                {/* Label below sphere */}
+                <div className="mt-4 text-center">
+                  <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-white/35">
+                    {m.label}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes sphere-float {
+          0%, 100% { transform: translateY(0px); }
+          50%       { transform: translateY(-16px); }
+        }
+        @keyframes sphere-glow-pulse {
+          0%, 100% { opacity: 0.7; transform: scale(1.4); }
+          50%       { opacity: 1;   transform: scale(1.55); }
+        }
+      `}</style>
     </section>
   );
 };

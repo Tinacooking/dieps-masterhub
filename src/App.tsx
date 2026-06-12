@@ -8,6 +8,7 @@ import { Contact } from './components/landing/Contact';
 import { Footer } from './components/landing/Footer';
 import { SwapperSection } from './components/swapper/SwapperSection';
 import { LoadingScreen } from './components/landing/LoadingScreen';
+import { MathAlgorithms } from './components/landing/MathAlgorithms';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,6 +33,9 @@ export default function App() {
         </div>
         <div className="snap-start snap-always w-full h-[100svh] flex items-center bg-[#030008] overflow-y-auto shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
           <Services />
+        </div>
+        <div className="snap-start snap-always w-full h-[100svh] flex items-center bg-[#030008] overflow-y-auto shadow-[0_-10px_30px_rgba(0,0,0,0.6)]">
+          <MathAlgorithms />
         </div>
         <div className="snap-start snap-always w-full h-[100svh] flex items-center bg-[#030008] overflow-y-auto shadow-[0_-10px_30px_rgba(0,0,0,0.8)]">
           <Projects />

@@ -16,11 +16,15 @@ const ServiceCard = ({ icon: Icon, title, desc }: { icon: any, title: string, de
 export const Services = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const animatedRef = useRef(false);
 
   useEffect(() => {
+    const scrollContainer = document.querySelector('.custom-scrollbar') as HTMLElement | null;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !animatedRef.current) {
+          animatedRef.current = true;
           gsap.fromTo(titleRef.current,
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
@@ -36,26 +40,22 @@ export const Services = () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { root: scrollContainer, threshold: 0.2 });
 
     if (containerRef.current) {
       observer.observe(containerRef.current);
     }
 
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
+    return () => { observer.disconnect(); };
   }, []);
 
   const services = [
-    { icon: Globe, title: "Liquidity Graph", desc: "Real-time in-memory tracking across major DEXs including Cetus, DeepBook, and Turbos." },
-    { icon: Activity, title: "Routing Engine", desc: "Advanced pathfinding algorithms computing optimal multi-hop swap execution routes instantly." },
-    { icon: Cpu, title: "Intent Extraction", desc: "Seamless conversion of complex NLP user intents into optimized execution pathways." },
-    { icon: Shield, title: "Bayesian Guardian", desc: "Algorithmic risk evaluation preventing routing through manipulated or low-depth liquidity pools." },
-    { icon: Zap, title: "Event Processor", desc: "Live synchronization with on-chain swap events and state updates via gRPC streams." },
-    { icon: Database, title: "Omni-Normalization", desc: "Unified data models normalizing varying pool structures across fragmented decentralized exchanges." },
+    { icon: Cpu, title: "Natural Language Intent Parsing", desc: "Accepts plain-English input and extracts structured trade intent using a fine-tuned LLM with domain-specific slot extraction. No forms, dropdowns, or configuration required." },
+    { icon: Activity, title: "ML-Optimised Route Discovery", desc: "Uses Bellman-Ford graph search across liquidity pools combined with adaptive ML weighting to discover the most efficient swap routes. Returns estimated cost, slippage, and confidence scores." },
+    { icon: Shield, title: "Bayesian Risk Classification", desc: "Every transaction passes through a Bayesian risk engine before execution. Detects slippage risk, stale liquidity, concentration risk, and sandwich attack patterns. High-risk trades are automatically blocked." },
+    { icon: Zap, title: "Atomic PTB Execution", desc: "Compiles multi-hop swap routes into a single programmable transaction block. All operations either succeed together or revert entirely. One signature regardless of route complexity." },
+    { icon: Database, title: "On-Chain Slippage Guard", desc: "Smart contract assertions enforce minimum output thresholds and liquidity freshness requirements. If execution falls below user-defined limits, the entire transaction reverts." },
+    { icon: Globe, title: "Real-Time Pool Intelligence", desc: "Streams live pool events from blockchain nodes with sub-second latency. Market context is cached and continuously fed into machine learning models for ongoing optimization." },
   ];
 
   return (

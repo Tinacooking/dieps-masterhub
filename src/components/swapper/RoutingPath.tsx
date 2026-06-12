@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { ConnectModal } from '@mysten/dapp-kit';
+// ConnectModal is handled in SwapperHeader
 import { TOKEN_LOGOS } from '../../constants';
 import { gsap } from 'gsap';
 
@@ -73,7 +73,7 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
     };
   }, []);
   return (
-    <div className="lg:col-span-6 xl:col-span-6 flex flex-col h-full min-h-0">
+    <div className="lg:col-span-5 xl:col-span-5 flex flex-col h-full min-h-0">
       <div className="bg-[#0a0416]/90 border border-white/5 rounded-[20px] p-4 lg:p-5 flex-1 relative overflow-hidden flex flex-col min-h-0 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
         <div className="flex justify-between items-center mb-3 pb-2 border-b border-white/5 shrink-0">
           <h2 className="font-body font-medium text-[14px] text-white flex items-center gap-2">
@@ -89,9 +89,105 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
           <div className={`relative flex items-center justify-center shrink-0 w-full transition-all duration-700 h-full`}>
 
             {appState === 'idle' ? (
-              <div className="text-[#888] font-mono flex flex-col items-center gap-4 text-center max-w-[250px] uppercase tracking-widest text-[11px]">
-                <span className="material-symbols-outlined text-[48px] opacity-40">route</span>
-                <span>Awaiting user intent to calculate optimal route...</span>
+              <div className="w-full h-full flex flex-col items-center justify-center relative min-h-[300px]">
+                {/* Floating Dust Particles */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                  {[...Array(15)].map((_, i) => {
+                    const left = `${15 + (i * 7) % 70}%`;
+                    const top = `${20 + (i * 9) % 60}%`;
+                    const duration = `${5 + (i * 3) % 8}s`;
+                    const delay = `${-(i * 1.5) % 8}s`;
+                    const drift = `${-30 + (i * 13) % 60}px`;
+                    const size = `${2 + (i % 3)}px`;
+                    return (
+                      <div
+                        key={i}
+                        className="absolute floating-particle bg-blue-400/30 rounded-full blur-[0.5px]"
+                        style={{
+                          left,
+                          top,
+                          width: size,
+                          height: size,
+                          '--duration': duration,
+                          '--drift': drift,
+                          animationDelay: delay,
+                        } as React.CSSProperties}
+                      />
+                    );
+                  })}
+                </div>
+
+                {/* Concentric Rotating Orbits and Neural Net */}
+                <div className="w-[280px] h-[280px] relative flex items-center justify-center">
+                  <svg className="absolute w-full h-full" viewBox="0 0 300 300" fill="none">
+                    {/* Definitions for Gradients */}
+                    <defs>
+                      <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.4" />
+                        <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+                      </radialGradient>
+                      <linearGradient id="line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="#a855f7" stopOpacity="0.3" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Concentric Orbits */}
+                    <circle cx="150" cy="150" r="110" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+                    <circle cx="150" cy="150" r="75" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="4 8" />
+                    <circle cx="150" cy="150" r="45" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+
+                    {/* Rotating Orbit Dash Rings */}
+                    <g className="orbit-rotating-cw" style={{ transformOrigin: '150px 150px', '--speed': '25s' } as React.CSSProperties}>
+                      <circle cx="150" cy="150" r="75" stroke="rgba(14, 165, 233, 0.2)" strokeWidth="1.5" strokeDasharray="10 40 80 50" />
+                    </g>
+                    <g className="orbit-rotating-ccw" style={{ transformOrigin: '150px 150px', '--speed': '18s' } as React.CSSProperties}>
+                      <circle cx="150" cy="150" r="110" stroke="rgba(168, 85, 247, 0.15)" strokeWidth="1" strokeDasharray="20 60 40 30" />
+                    </g>
+
+                    {/* Neural Connection Lines */}
+                    <line x1="150" y1="150" x2="150" y2="40" stroke="url(#line-grad)" strokeWidth="1" />
+                    <line x1="150" y1="150" x2="260" y2="150" stroke="url(#line-grad)" strokeWidth="1" />
+                    <line x1="150" y1="150" x2="150" y2="260" stroke="url(#line-grad)" strokeWidth="1" />
+                    <line x1="150" y1="150" x2="40" y2="150" stroke="url(#line-grad)" strokeWidth="1" />
+
+                    {/* Flow Dashed Lines */}
+                    <line x1="150" y1="40" x2="150" y2="150" className="flow-dashed-line stroke-[#0ea5e9]/40" strokeWidth="1.5" />
+                    <line x1="150" y1="150" x2="260" y2="150" className="flow-dashed-line stroke-[#a855f7]/40" strokeWidth="1.5" />
+                    <line x1="150" y1="260" x2="150" y2="150" className="flow-dashed-line stroke-[#0ea5e9]/40" strokeWidth="1.5" />
+                    <line x1="150" y1="150" x2="40" y2="150" className="flow-dashed-line stroke-[#a855f7]/40" strokeWidth="1.5" />
+
+                    {/* Outer Nodes (Pools & Sources) */}
+                    {/* Cetus (Top) */}
+                    <circle cx="150" cy="40" r="6" fill="#030008" stroke="#0ea5e9" strokeWidth="1.5" />
+                    <circle cx="150" cy="40" r="10" stroke="#0ea5e9" strokeWidth="1" strokeOpacity="0.3" className="animate-ping" style={{ transformOrigin: '150px 40px' }} />
+                    
+                    {/* Turbos (Right) */}
+                    <circle cx="260" cy="150" r="6" fill="#030008" stroke="#a855f7" strokeWidth="1.5" />
+                    
+                    {/* Kriya (Bottom) */}
+                    <circle cx="150" cy="260" r="6" fill="#030008" stroke="#0ea5e9" strokeWidth="1.5" />
+                    
+                    {/* DeepBook (Left) */}
+                    <circle cx="40" cy="150" r="6" fill="#030008" stroke="#a855f7" strokeWidth="1.5" />
+                  </svg>
+
+                  {/* Pulsing Neural Core (Middle) */}
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#0ea5e9]/30 to-[#a855f7]/30 border border-[#0ea5e9]/40 flex items-center justify-center z-10 neural-node-pulsing relative">
+                    <div className="absolute inset-0 bg-[#0ea5e9]/10 rounded-full blur-[8px] animate-pulse"></div>
+                    <span className="material-symbols-outlined text-[20px] text-white z-10 animate-pulse">psychology</span>
+                  </div>
+
+                  {/* Network Labels */}
+                  <div className="absolute top-[12px] font-mono text-[8px] uppercase tracking-widest text-[#0ea5e9] bg-[#0ea5e9]/10 px-1.5 py-0.5 rounded border border-[#0ea5e9]/20 backdrop-blur-sm">Cetus</div>
+                  <div className="absolute right-[-10px] font-mono text-[8px] uppercase tracking-widest text-[#a855f7] bg-[#a855f7]/10 px-1.5 py-0.5 rounded border border-[#a855f7]/20 backdrop-blur-sm">Turbos</div>
+                  <div className="absolute bottom-[12px] font-mono text-[8px] uppercase tracking-widest text-[#0ea5e9] bg-[#0ea5e9]/10 px-1.5 py-0.5 rounded border border-[#0ea5e9]/20 backdrop-blur-sm">Kriya</div>
+                  <div className="absolute left-[-15px] font-mono text-[8px] uppercase tracking-widest text-[#a855f7] bg-[#a855f7]/10 px-1.5 py-0.5 rounded border border-[#a855f7]/20 backdrop-blur-sm">DeepBook</div>
+                </div>
+
+                <div className="mt-6 text-[#888] font-mono text-center max-w-[280px] uppercase tracking-widest text-[9px] leading-relaxed bg-black/40 border border-white/5 rounded-lg py-2.5 px-4 backdrop-blur-sm z-10 shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+                  <span className="text-[#0ea5e9] animate-pulse">●</span> Awaiting user intent to calculate optimal route...
+                </div>
               </div>
             ) : appState === 'processing' && processStep < 2 ? (
               <div className="text-white/50 font-mono text-[11px] flex flex-col items-center gap-6">
@@ -219,31 +315,31 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                   <span className="font-mono text-[9px] text-[#888] uppercase tracking-wider">Confirm PTB & Risks</span>
                 </label>
               )}
-              {!walletAddress ? (
-                <ConnectModal
-                  open={isWalletModalOpen}
-                  onOpenChange={setIsWalletModalOpen}
-                  trigger={
-                    <button className="px-6 py-2.5 rounded-[12px] font-mono text-[12px] uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center min-w-[180px] bg-[#111111] border border-white/10 text-white hover:border-[#a855f7] hover:bg-[#a855f7]/10 shadow-lg">
-                      Connect Wallet
-                    </button>
-                  }
-                />
-              ) : (
-                <button 
-                  onClick={handleExecute}
-                  className={`px-6 py-2.5 rounded-[12px] font-mono text-[12px] uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center min-w-[180px] ${appState === 'done' && executionState === 'idle' && !isInsufficientBalance && hasConfirmedSettings ? 'bg-[#a855f7] text-white hover:bg-[#b87cff] shadow-[0_0_20px_rgba(168,85,247,0.3)]' : 'bg-[#111111] border border-white/5 text-white/50 cursor-not-allowed'}`} 
-                  disabled={appState !== 'done' || executionState === 'executing' || isInsufficientBalance || !hasConfirmedSettings}
-                >
-                   {appState !== 'done' 
-                      ? 'Awaiting Route' 
+              <button 
+                onClick={handleExecute}
+                className={`px-6 py-2.5 rounded-[12px] font-mono text-[12px] uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center min-w-[180px] ${
+                  appState === 'done' && 
+                  executionState === 'idle' && 
+                  (!walletAddress || (!isInsufficientBalance && hasConfirmedSettings))
+                    ? 'bg-[#a855f7] text-white hover:bg-[#b87cff] shadow-[0_0_20px_rgba(168,85,247,0.3)]' 
+                    : 'bg-[#111111] border border-white/5 text-white/50 cursor-not-allowed'
+                }`} 
+                disabled={
+                  appState !== 'done' || 
+                  executionState === 'executing' || 
+                  (walletAddress && (isInsufficientBalance || !hasConfirmedSettings))
+                }
+              >
+                 {appState !== 'done' 
+                    ? 'Awaiting Route' 
+                    : !walletAddress 
+                      ? 'Connect Wallet'
                       : isInsufficientBalance
                         ? `Insufficient ${sourceToken}`
                         : executionState === 'executing' 
                           ? <div className="flex items-center justify-center gap-2"><span className="material-symbols-outlined text-[14px] animate-spin">sync</span><span>Executing...</span></div>
                           : 'Execute Swap'}
-                </button>
-              )}
+              </button>
             </div>
           )}
         </div>
