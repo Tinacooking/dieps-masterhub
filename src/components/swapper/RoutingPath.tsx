@@ -73,7 +73,7 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
     };
   }, []);
   return (
-    <div className="lg:col-span-5 xl:col-span-5 flex flex-col h-full min-h-0">
+    <div className={`lg:col-span-5 xl:col-span-5 flex flex-col h-full min-h-0 transition-all duration-700 ease-out ${appState === 'idle' ? 'opacity-40 scale-[0.99] pointer-events-none select-none' : 'opacity-100 scale-100'}`}>
       <div className="bg-[#0a0416]/90 border border-white/5 rounded-[20px] p-4 lg:p-5 flex-1 relative overflow-hidden flex flex-col min-h-0 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
         <div className="flex justify-between items-center mb-3 pb-2 border-b border-white/5 shrink-0">
           <h2 className="font-body font-medium text-[14px] text-white flex items-center gap-2">

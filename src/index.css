@@ -526,18 +526,41 @@ a[href*="unicorn.studio"],
 
 /* Command Tags */
 .command-tag {
-  background: rgba(10, 4, 22, 0.6);
-  border: 1px solid rgba(14, 165, 233, 0.15);
-  box-shadow: 0 0 10px rgba(14, 165, 233, 0.02);
-  transition: all 0.25s ease;
+  background: rgba(14, 8, 30, 0.8);
+  border: 1.5px solid rgba(14, 165, 233, 0.25);
+  box-shadow: 0 0 10px rgba(14, 165, 233, 0.05), inset 0 0 8px rgba(14, 165, 233, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #38bdf8;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(14, 165, 233, 0.15);
 }
 
 .command-tag:hover {
-  background: rgba(14, 165, 233, 0.05);
-  border-color: rgba(14, 165, 233, 0.45);
-  box-shadow: 0 0 15px rgba(14, 165, 233, 0.15);
-  color: #fff !important;
-  transform: translateY(-1px);
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(14, 165, 233, 0.65);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.3), inset 0 0 10px rgba(14, 165, 233, 0.1);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.command-tag:active {
+  transform: translateY(0px) scale(0.97);
+}
+
+/* Chat Active Glow Pulse */
+@keyframes chat-pulse {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(168, 85, 247, 0.15), inset 0 0 20px rgba(168, 85, 247, 0.05);
+    border-color: rgba(168, 85, 247, 0.2);
+  }
+  50% {
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(168, 85, 247, 0.35), inset 0 0 30px rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.45);
+  }
+}
+
+.chat-panel-active {
+  animation: chat-pulse 4s infinite ease-in-out;
 }
 
 /* Circular Energy Pulsing Send Button */

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useCurrentAccount, useDisconnectWallet } from '@mysten/dapp-kit';
+import { useCurrentAccount, useDAppKit } from '@mysten/dapp-kit-react';
 import { TokenSelectorModal } from '../TokenSelectorModal';
 import { SwapperHeader } from './SwapperHeader';
 import { IntentChat } from './IntentChat';
@@ -9,7 +9,8 @@ import { PTBFlow } from './PTBFlow';
 
 export const SwapperSection: React.FC = () => {
   const currentAccount = useCurrentAccount();
-  const { mutate: disconnect } = useDisconnectWallet();
+  const dAppKit = useDAppKit();
+  const disconnect = () => dAppKit.disconnectWallet();
   const walletAddress = currentAccount?.address || null;
 
   const [intentInput, setIntentInput] = useState("Swap 1000 SUI to USDC");
@@ -231,7 +232,7 @@ export const SwapperSection: React.FC = () => {
             setTokenModalMode={setTokenModalMode}
           />
 
-          <div className="lg:col-span-3 xl:col-span-3 flex flex-col gap-4 h-full min-h-0">
+          <div className={`lg:col-span-3 xl:col-span-3 flex flex-col gap-4 h-full min-h-0 transition-all duration-700 ease-out ${appState === 'idle' ? 'opacity-30 scale-[0.99] pointer-events-none select-none' : 'opacity-100 scale-100'}`}>
             {processStep >= 3 ? (
               <>
                 <GuardianRisk processStep={processStep} />

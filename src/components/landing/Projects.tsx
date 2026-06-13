@@ -135,17 +135,13 @@ export const Projects = () => {
         <div ref={leftRef} className="lg:col-span-4 flex flex-col gap-8 opacity-0">
           <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-[#a855f7]">Protocol Metrics</span>
 
-          <h2 className="font-display font-semibold text-[26px] md:text-[32px] leading-[1.2] text-white">
-            "DIEPS isn't here to replace the aggregators, it's{' '}
-            <span className="text-white/40 font-light italic font-serif">the layer on top of them.</span>
+          <h2 className="font-display font-bold text-[26px] md:text-[32px] leading-[1.2] text-white">
+            DIEPS isn't here to replace the aggregators, it's the layer on top of them.
           </h2>
-          <p className="font-display font-light text-[18px] md:text-[22px] leading-[1.4] text-white/70">
-            The layer that takes everything working under the hood and makes it accessible to someone who has never heard the word 'slippage' in their life."
-          </p>
 
-          <div className="w-12 h-px bg-white/10" />
+          <div className="w-12 h-px bg-[#a855f7]/40" />
 
-          <p className="text-[13px] md:text-[14px] text-white/35 leading-relaxed font-body max-w-[400px]">
+          <p className="text-[14px] md:text-[16px] text-white leading-relaxed font-body max-w-[420px]">
             By wrapping institutional-grade risk models and intelligent execution into a single plain-English interface, DIEPS has one goal: bring the next million people into Sui and make sure every single one of them actually stays.
           </p>
         </div>
@@ -243,7 +239,7 @@ export const Projects = () => {
 
                 {/* Label below sphere */}
                 <div className="mt-4 text-center">
-                  <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-white/35">
+                  <span className="font-mono text-[11px] md:text-[12px] font-bold uppercase tracking-[0.25em] text-purple-200 drop-shadow-[0_0_8px_rgba(168,85,247,0.3)]">
                     {m.label}
                   </span>
                 </div>
