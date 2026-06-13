@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useCurrentAccount, useDAppKit } from '@mysten/dapp-kit-react';
+import { Transaction } from '@mysten/sui/transactions';
 import { TokenSelectorModal } from '../TokenSelectorModal';
 import { SwapperHeader } from './SwapperHeader';
 import { IntentChat } from './IntentChat';
@@ -30,6 +31,11 @@ export const SwapperSection: React.FC = () => {
   const [hasConfirmedSettings, setHasConfirmedSettings] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [tokenModalMode, setTokenModalMode] = useState<'source' | 'dest' | null>(null);
+
+  // New state variables for intent integration
+  const [ptbBytes, setPtbBytes] = useState<string | null>(null);
+  const [guardianWarnings, setGuardianWarnings] = useState<string[]>([]);
+  const [humanReadablePTB, setHumanReadablePTB] = useState<string>('');
 
   useEffect(() => {
     if (walletAddress && sourceToken) {
@@ -85,59 +91,38 @@ export const SwapperSection: React.FC = () => {
     setHasConfirmedSettings(false);
 
     try {
-      // 1. Parse Intent API
-      const parseRes = await fetch("/api/parse-intent", {
+      // 1. Call unified Intent API
+      const intentRes = await fetch("/api/intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: intentInput })
+        body: JSON.stringify({ 
+          text: intentInput,
+          userAddress: walletAddress || '0x0000000000000000000000000000000000000000000000000000000000000000'
+        })
       });
-      const parsedData = await parseRes.json();
+      const intentData = await intentRes.json();
 
-      if (parsedData.error || !parsedData.intent) {
-        throw new Error(parsedData.error || "Failed to parse intent");
+      if (intentData.error) {
+        throw new Error(intentData.error);
       }
 
-      setAmount(parsedData.intent.trade_amount || "0");
-      setSourceToken(parsedData.intent.source_token_symbol || "SUI");
-      setDestToken(parsedData.intent.destination_token_symbol || "USDC");
+      setAmount(intentData.intent.trade_amount || "0");
+      setSourceToken(intentData.intent.source_token_symbol || "SUI");
+      setDestToken(intentData.intent.destination_token_symbol || "USDC");
 
       setProcessStep(1);
       fetchGasPrice();
 
-      // 2. Fetch Route API
-      const routeRes = await fetch("/api/calculate-optimal-route", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sourceAddress: parsedData.intent.source_token_address,
-          destAddress: parsedData.intent.destination_token_address,
-          sourceSymbol: parsedData.intent.source_token_symbol,
-          destSymbol: parsedData.intent.destination_token_symbol,
-          amount: parsedData.intent.trade_amount
-        })
-      });
-      const routeData = await routeRes.json();
-
-      // Store the nodes safely from Layer 2
-      setRouteNodes(routeData.route || []);
-      setEstOutput(routeData.expected_output ? Number(routeData.expected_output).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00');
+      // 2. Set Route and Expected Output
+      setRouteNodes(intentData.route || []);
+      setEstOutput(intentData.expected_output ? Number(intentData.expected_output).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00');
 
       setProcessStep(2);
 
-      // 3. Layer 3: Evaluate Guardian Risk
-      const guardianRes = await fetch("/api/evaluate-guardian-risk", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sourceSymbol: parsedData.intent.source_token_symbol,
-          destSymbol: parsedData.intent.destination_token_symbol,
-          route: routeData.route,
-          execution_impact: routeData.execution_impact,
-        })
-      });
-      const guardianData = await guardianRes.json();
-
-      // Store Risk Status in state if needed, for now we let it pass
+      // 3. Set Guardian Risk and PTB
+      setGuardianWarnings(intentData.guardianWarnings || []);
+      setPtbBytes(intentData.ptbBytes);
+      setHumanReadablePTB(intentData.humanReadablePreview || '');
 
       setProcessStep(3);
 
@@ -152,20 +137,49 @@ export const SwapperSection: React.FC = () => {
     }
   };
 
-  const handleExecute = () => {
+  const handleExecute = async () => {
     if (!walletAddress) {
       setIsWalletModalOpen(true);
       return;
     }
+    if (!ptbBytes) {
+      console.error("No PTB bytes available to sign");
+      return;
+    }
 
     setExecutionState('executing');
-    // Simulate transaction execution delay
-    setTimeout(() => {
+    
+    try {
+      // 1. Convert base64 to byte array
+      const txBytes = Uint8Array.from(atob(ptbBytes), c => c.charCodeAt(0));
+      const tx = Transaction.from(txBytes);
+
+      // 2. Request user signature
+      const { signature, bytes } = await dAppKit.signTransaction({
+        transaction: tx,
+      });
+
+      // 3. Execute via backend
+      const execRes = await fetch("/api/execute", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          signedTransactionBytes: bytes,
+          signature: signature,
+        })
+      });
+      const execData = await execRes.json();
+
+      if (execData.error) {
+        throw new Error(execData.error);
+      }
+
       setExecutionState('success');
-      // Generate a mock Sui testnet digest hash starting with 0x...
-      const mockHash = '0x' + Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
-      setTxHash(mockHash);
-    }, 2500);
+      setTxHash(execData.digest);
+    } catch (err) {
+      console.error("Execution failed", err);
+      setExecutionState('idle');
+    }
   };
 
   useEffect(() => {
@@ -235,13 +249,14 @@ export const SwapperSection: React.FC = () => {
           <div className={`lg:col-span-3 xl:col-span-3 flex flex-col gap-4 h-full min-h-0 transition-all duration-700 ease-out ${appState === 'idle' ? 'opacity-30 scale-[0.99] pointer-events-none select-none' : 'opacity-100 scale-100'}`}>
             {processStep >= 3 ? (
               <>
-                <GuardianRisk processStep={processStep} />
+                <GuardianRisk processStep={processStep} warnings={guardianWarnings} />
 
                 <PTBFlow
                   processStep={processStep}
                   routeNodes={routeNodes}
                   amount={amount}
                   sourceToken={sourceToken}
+                  humanReadablePTB={humanReadablePTB}
                 />
               </>
             ) : (

@@ -1,19 +1,21 @@
 {
-  "name": "react-example",
+  "name": "dieps-intent-engine",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "clean": "rm -rf dist server.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "manage-pools": "tsx scripts/manage_pools.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
     "@mysten/dapp-kit-react": "^2.0.3",
     "@mysten/sui": "^2.17.0",
+    "@pythnetwork/pyth-sui-js": "^3.0.0",
     "@tailwindcss/vite": "^4.1.14",
     "@tanstack/react-query": "^5.101.0",
     "@vitejs/plugin-react": "^5.0.4",
@@ -25,17 +27,16 @@
     "motion": "^12.23.24",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
-    "unicornstudio-react": "^2.1.9",
-    "vite": "^6.2.3"
+    "unicornstudio-react": "^2.1.9"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
     "autoprefixer": "^10.4.21",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.28.1",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^8.0.16"
   }
 }
