@@ -1,39 +1,49 @@
 /**
- * DIEPS Intent Engine — Token Constants
- * This file defines the strictly verified on-chain tokens for Sui Mainnet.
- * These addresses and decimals are fetched directly from the Sui RPC.
+ * DIEPS Intent Engine — Core Token Whitelist
+ *
+ * Purpose of this file:
+ *   - Provide verified on-chain addresses + correct decimals for the 5 most
+ *     important tokens: SUI, USDC, USDT, DEEP, WAL.
+ *   - All other tokens (900+ coins) are resolved from /src/cetus-tokens.json
+ *     at runtime by tokenResolver.ts.
+ *
+ * Rules for adding a token here:
+ *   1. It has a non-standard decimal count (≠ 9), OR
+ *   2. It needs a stable fuzzy alias that LLM intent parsing must recognise, OR
+ *   3. Its address in cetus-tokens.json is known to be wrong/outdated.
  */
-
-
 
 export interface WhitelistToken {
   symbol: string;
   name: string;
+  /** Full Sui coin type, e.g. 0x2::sui::SUI */
   address: string;
   decimals: number;
   isStable: boolean;
-
+  /** Lower-case strings the LLM or user might say instead of the symbol */
   aliases: string[];
 }
 
 export const TOKEN_WHITELIST: WhitelistToken[] = [
+  // ─── Native gas token ────────────────────────────────────────────────────
   {
     symbol: 'SUI',
     name: 'Sui',
-    address: '0x2::sui::SUI',
+    address: '0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI',
     decimals: 9,
     isStable: false,
-
-    aliases: ['sui', 'SUI'],
+    aliases: ['sui'],
   },
+
+  // ─── Stablecoins (decimals = 6) ──────────────────────────────────────────
   {
     symbol: 'USDC',
     name: 'USD Coin',
+    // Native Sui USDC (Circle bridge)
     address: '0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC',
     decimals: 6,
     isStable: true,
-
-    aliases: ['usdc', 'usd coin', 'dollar'],
+    aliases: ['usdc', 'usd coin', 'dollar', 'usd'],
   },
   {
     symbol: 'USDT',
@@ -41,75 +51,10 @@ export const TOKEN_WHITELIST: WhitelistToken[] = [
     address: '0xc060006111016b8a020ad5b33834984a437aaa7d3c74c18e09a95d48aceab08c::coin::COIN',
     decimals: 6,
     isStable: true,
-
     aliases: ['usdt', 'tether'],
   },
-  {
-    symbol: 'WETH',
-    name: 'Wrapped Ether',
-    address: '0xaf8cd5edc19c4512f4259f0bee101a40d41ebed738ade5874359610ef8eeced5::coin::COIN',
-    decimals: 8,
-    isStable: false,
 
-    aliases: ['eth', 'weth', 'ether', 'ethereum'],
-  },
-  {
-    symbol: 'WBTC',
-    name: 'Wrapped Bitcoin',
-    address: '0x027792d9fed7f9844eb4839566001bb6f6cb4804f66aa2da6fe1ee242d896881::coin::COIN',
-    decimals: 8,
-    isStable: false,
-
-    aliases: ['btc', 'wbtc', 'bitcoin'],
-  },
-  {
-    symbol: 'CETUS',
-    name: 'Cetus Protocol',
-    address: '0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS',
-    decimals: 9,
-    isStable: false,
-    aliases: ['cetus'],
-  },
-  {
-    symbol: 'TURBOS',
-    name: 'Turbos Finance',
-    address: '0x5d1f47ea69bb0de31c313d7acf89b890dbb8991ea8e03c6c355171f84bb1ba4a::turbos::TURBOS',
-    decimals: 9,
-    isStable: false,
-    aliases: ['turbos'],
-  },
-  {
-    symbol: 'SCA',
-    name: 'Scallop',
-    address: '0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA',
-    decimals: 9,
-    isStable: false,
-    aliases: ['sca', 'scallop'],
-  },
-  {
-    symbol: 'NAVX',
-    name: 'NAVI Protocol',
-    address: '0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX',
-    decimals: 9,
-    isStable: false,
-    aliases: ['navx', 'navi'],
-  },
-  {
-    symbol: 'BUCK',
-    name: 'Bucket Protocol',
-    address: '0xce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::buck::BUCK',
-    decimals: 9,
-    isStable: true,
-    aliases: ['buck', 'bucket'],
-  },
-  {
-    symbol: 'FUD',
-    name: 'FUD the Pug',
-    address: '0x76cb819b01abed502bee8a702b4c2d547532c12f25001c9dea795a5e631c26f1::fud::FUD',
-    decimals: 5,
-    isStable: false,
-    aliases: ['fud'],
-  },
+  // ─── DeepBook governance token (decimals = 6) ───────────────────────────
   {
     symbol: 'DEEP',
     name: 'DeepBook',
@@ -118,20 +63,34 @@ export const TOKEN_WHITELIST: WhitelistToken[] = [
     isStable: false,
     aliases: ['deep', 'deepbook'],
   },
+
+  // ─── Walrus storage token (decimals = 9, verified address) ───────────────
+  // cetus-tokens.json may contain an older WAL address — this entry takes
+  // priority because TOKEN_WHITELIST is checked first in tokenResolver.ts.
+  {
+    symbol: 'WAL',
+    name: 'WAL Token',
+    address: '0x356a26eb9e012a68958082340d4c4116e7f55615cf27affcff209cf0ae544f59::wal::WAL',
+    decimals: 9,
+    isStable: false,
+    aliases: ['wal', 'walrus'],
+  },
+
+  // ─── Non-standard decimal tokens (must be here for correct amount math) ──
   {
     symbol: 'BLUB',
     name: 'BLUB',
-    address: '0xfa7ac3951fdca12c1f7ef8b8a1dbb0c76e3c52b53e98931e00f29d3e3e2e3b5a::blub::BLUB',
+    address: '0xfa7ac3951fdca92c5200d468d31a365eb03b2be9936fde615e69f0c1274ad3a0::BLUB::BLUB',
     decimals: 2,
     isStable: false,
     aliases: ['blub'],
   },
   {
-    symbol: 'AUSD',
-    name: 'Argo USD',
-    address: '0x2053d08c1e2bd02791056171aab0fd12bd7cd10bf5c6dfb4e17abbc55b1b23da::ausd::AUSD',
-    decimals: 6,
-    isStable: true,
-    aliases: ['ausd', 'argo'],
+    symbol: 'CETUS',
+    name: 'Cetus Protocol',
+    address: '0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS',
+    decimals: 9,
+    isStable: false,
+    aliases: ['cetus'],
   },
 ];
