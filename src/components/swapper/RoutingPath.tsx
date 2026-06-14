@@ -23,6 +23,7 @@ interface RoutingPathProps {
   setIsWalletModalOpen: (open: boolean) => void;
   setTokenModalMode: (mode: 'source' | 'dest' | null) => void;
   isSafe?: boolean;
+  slippage?: string;
 }
 
 export const RoutingPath: React.FC<RoutingPathProps> = ({
@@ -44,7 +45,8 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
   isWalletModalOpen,
   setIsWalletModalOpen,
   setTokenModalMode,
-  isSafe = true
+  isSafe = true,
+  slippage = "0.5"
 }) => {
   const sourceRef = useRef<HTMLDivElement>(null);
   const destRef = useRef<HTMLDivElement>(null);
@@ -290,7 +292,7 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
             </div>
             <div className="flex flex-col gap-0.5">
               <div className="font-mono text-[9px] text-[#888] uppercase font-bold tracking-widest">Slippage</div>
-              <div className="font-mono text-[14px] text-white font-medium tracking-wider">0.5%</div>
+              <div className="font-mono text-[14px] text-white font-medium tracking-wider">{appState === 'done' ? (slippage.includes('%') ? slippage : `${slippage}%`) : '...'}</div>
             </div>
           </div>
 
