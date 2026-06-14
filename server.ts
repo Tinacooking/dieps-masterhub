@@ -1,4 +1,5 @@
 import express from "express";
+import { GoogleGenAI } from '@google/genai';
 import path from "path";
 import { createServer as createViteServer } from "vite";
 
