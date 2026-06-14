@@ -36,6 +36,7 @@ export const SwapperSection: React.FC = () => {
 
   const [guardianChecks, setGuardianChecks] = useState<any[]>([]);
   const [ptbSteps, setPtbSteps] = useState<any[]>([]);
+  const [transactionBytes, setTransactionBytes] = useState<string | null>(null);
   const [isSafe, setIsSafe] = useState<boolean>(true);
 
   useEffect(() => {
@@ -125,6 +126,7 @@ export const SwapperSection: React.FC = () => {
           setGuardianChecks(data.guardian.checks || []);
           setIsSafe(data.guardian.safe);
           setPtbSteps(data.ptb.ptbSteps || []);
+          if (data.ptb.transactionBytes) setTransactionBytes(data.ptb.transactionBytes);
 
           if (data.ptb.simulation?.gasUsed) {
             const baseGas = Number(data.ptb.simulation.gasUsed) / 1e9;
@@ -148,20 +150,53 @@ export const SwapperSection: React.FC = () => {
     }
   };
 
-  const handleExecute = () => {
+  const handleExecute = async () => {
     if (!walletAddress) {
       setIsWalletModalOpen(true);
       return;
     }
+    if (!transactionBytes) return;
 
     setExecutionState('executing');
-    // Simulate transaction execution delay
-    setTimeout(() => {
-      setExecutionState('success');
-      // Generate a mock Sui testnet digest hash starting with 0x...
-      const mockHash = '0x' + Array.from({ length: 64 }, () => Math.floor(Math.random() * 16).toString(16)).join('');
-      setTxHash(mockHash);
-    }, 2500);
+    try {
+      const { Transaction } = await import('@mysten/sui/transactions');
+      const tx = Transaction.from(transactionBytes);
+      
+      // 1. Ask wallet to sign the transaction
+      const signedTx = await dAppKit.signTransaction({
+        transaction: tx,
+      });
+
+      // 2. Submit signed transaction directly to Sui RPC
+      const executeRes = await fetch("https://fullnode.mainnet.sui.io:443", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "sui_executeTransactionBlock",
+          params: [
+            signedTx.bytes,
+            [signedTx.signature],
+            { showEffects: false },
+            "WaitForLocalExecution"
+          ]
+        })
+      });
+
+      const data = await executeRes.json();
+
+      if (data.result && data.result.digest) {
+        setExecutionState('success');
+        setTxHash(data.result.digest);
+      } else {
+        throw new Error(data.error?.message || "RPC execution failed to return digest");
+      }
+    } catch (err: any) {
+      console.error("Execution failed", err);
+      setSwapError(err.message || "Transaction execution failed");
+      setExecutionState('idle');
+    }
   };
 
   useEffect(() => {

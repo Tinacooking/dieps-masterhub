@@ -62,11 +62,11 @@ You MUST respond with ONLY valid JSON, no other text. The JSON must have this ex
 Rules:
 - action_type is always "SWAP" for trading intents
 - trade_amount is a number string (no commas)
-- Token symbols should be uppercase (SUI, USDC, USDT, ETH, BTC, CETUS, TURBOS, etc.)
+- Token symbols should be uppercase. The Sui ecosystem has many coins including meme coins (e.g. SUI, USDC, USDT, ETH, BTC, CETUS, TURBOS, BLUB, FUD, NAVX, SCA, etc). Accept ANY word as a valid token symbol.
 - priority_mode: "SAFE" (default/low slippage), "FAST" (quick execution), "MAX_OUTPUT" (best rate)
 - constraints: array of objects with {type, value} for slippage, deadline, etc.
 
-If the intent is unclear or not a trading intent, respond with:
+If the intent is completely unrelated to trading, respond with:
 {"error": "unclear_intent"}`;
 
   const res = await fetch(`${OPENROUTER_BASE_URL}/chat/completions`, {
@@ -106,8 +106,10 @@ If the intent is unclear or not a trading intent, respond with:
     if (!jsonMatch) throw new Error('No JSON found in LLM response');
 
     const parsed = JSON.parse(jsonMatch[0]);
+    logger.info('LLM raw parsed response', { parsed });
 
     if (parsed.error) {
+      logger.warn('LLM returned unclear_intent error', { error: parsed.error });
       return null;
     }
 

@@ -301,7 +301,7 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
               <span className="font-mono text-[10px] text-green-400 font-bold tracking-widest flex items-center gap-1">
                 <span className="material-symbols-outlined text-[14px]">check_circle</span> SUCCESS
               </span>
-              <a href={`https://suiexplorer.com/txblock/${txHash}?network=testnet`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] text-[#888] hover:text-[#a855f7] transition-colors flex items-center gap-1 mt-1 underline underline-offset-2 break-all">
+              <a href={`https://suivision.xyz/txblock/${txHash}`} target="_blank" rel="noopener noreferrer" className="font-mono text-[10px] text-[#888] hover:text-[#a855f7] transition-colors flex items-center gap-1 mt-1 underline underline-offset-2 break-all">
                 {txHash?.slice(0, 10)}...{txHash?.slice(-8)}
                 <span className="material-symbols-outlined text-[12px]">open_in_new</span>
               </a>
@@ -324,29 +324,25 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                 className={`px-6 py-2.5 rounded-[12px] font-mono text-[12px] uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center min-w-[180px] ${
                   appState === 'done' && 
                   executionState === 'idle' && 
-                  isSafe &&
                   (!walletAddress || (!isInsufficientBalance && hasConfirmedSettings))
-                    ? 'bg-[#a855f7] text-white hover:bg-[#b87cff] shadow-[0_0_20px_rgba(168,85,247,0.3)]' 
+                    ? (!isSafe ? 'bg-red-500 text-white hover:bg-red-400 shadow-[0_0_20px_rgba(239,68,68,0.3)]' : 'bg-[#a855f7] text-white hover:bg-[#b87cff] shadow-[0_0_20px_rgba(168,85,247,0.3)]') 
                     : 'bg-[#111111] border border-white/5 text-white/50 cursor-not-allowed'
                 }`} 
                 disabled={
                   appState !== 'done' || 
                   executionState === 'executing' || 
-                  !isSafe ||
                   (walletAddress && (isInsufficientBalance || !hasConfirmedSettings))
                 }
               >
                  {appState !== 'done' 
                     ? 'Awaiting Route' 
-                    : !isSafe 
-                      ? 'Risk Blocked'
-                      : !walletAddress 
-                        ? 'Connect Wallet'
-                        : isInsufficientBalance
-                          ? `Insufficient ${sourceToken}`
-                          : executionState === 'executing' 
-                            ? <div className="flex items-center justify-center gap-2"><span className="material-symbols-outlined text-[14px] animate-spin">sync</span><span>Executing...</span></div>
-                            : 'Execute Swap'}
+                    : !walletAddress 
+                      ? 'Connect Wallet'
+                      : isInsufficientBalance
+                        ? `Insufficient ${sourceToken}`
+                        : executionState === 'executing' 
+                          ? <div className="flex items-center justify-center gap-2"><span className="material-symbols-outlined text-[14px] animate-spin">sync</span><span>Executing...</span></div>
+                          : (!isSafe ? 'Execute With Risk' : 'Execute Swap')}
               </button>
             </div>
           )}

@@ -15,7 +15,7 @@ export const GuardianRisk: React.FC<GuardianRiskProps> = ({ processStep, guardia
         {!isSafe && <span className="text-red-400 ml-auto">EXECUTION BLOCKED</span>}
       </div>
 
-      <div className="space-y-2 relative z-10 w-full flex flex-col">
+      <div className="space-y-2 relative z-10 w-full flex flex-col max-h-[250px] overflow-y-auto pr-1" style={{ scrollbarWidth: 'thin', scrollbarColor: '#a855f7 #111111' }}>
         {guardianChecks.map((check, i) => (
           <div key={i} className={`flex flex-col gap-2 p-2.5 rounded-lg bg-[#0d0d0d] border ${check.status === 'DANGER' ? 'border-red-500/30' : check.status === 'WARNING' ? 'border-yellow-500/30' : 'border-white/5'} w-full`}>
             <div className="flex items-center justify-between">

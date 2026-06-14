@@ -8,6 +8,8 @@ import { resolveToken, getTokenDecimals } from '../coin/tokenResolver.js';
 import { getCoinsForSelection, selectCoinsForAmount } from '../coin/coinService.js';
 import { suiRpcCall, SUI_MAINNET_RPC } from '../../utils/suiClient.js';
 import { logger, createTimer } from '../../utils/logger.js';
+import { AggregatorClient, Env } from '@cetusprotocol/aggregator-sdk';
+import BN from 'bn.js';
 import type { ExecuteSwapResult, PtbStep, RouteResult } from '../../types/index.js';
 import { SuiJsonRpcClient } from '@mysten/sui/jsonRpc';
 
@@ -92,52 +94,43 @@ export async function buildSwapPTB(params: {
   };
 
   try {
-    // Import Sui SDK dynamically for PTB construction
     const { Transaction } = await import('@mysten/sui/transactions');
     const tx = new Transaction();
     tx.setSender(senderAddress);
 
-    if (isSuiSource) {
-      // SUI source: split from gas coin
-      const [coin] = tx.splitCoins(tx.gas, [tx.pure.u64(amountInMist)]);
+    // Initialize Cetus Aggregator Client
+    const clientSDK = new AggregatorClient('https://api-sui.cetus.zone/router_v3', senderAddress, Env.Mainnet);
 
-      // For now, if we have Cetus router data, we would call their contract
-      // Since we're building a generic PTB, we transfer the split coin
-      // The actual swap move calls would be added by the Cetus SDK on the client
-      tx.transferObjects([coin], tx.pure.address(senderAddress));
-    } else {
-      // Non-SUI source: need to select and merge coins
-      const coins = await getCoinsForSelection(senderAddress, sourceAddress);
-      const selection = selectCoinsForAmount(coins, amountInMist);
+    // Fetch exact route specifically for PTB Building, using the same providers as the UI route
+    const providers = params.routeData.dex_sequence.map(dex => dex.toUpperCase());
+    const routers = await clientSDK.findRouters({
+      from: sourceAddress,
+      target: destAddress,
+      amount: new BN(amountInMist),
+      byAmountIn: true,
+      splitCount: 20,
+      depth: 3,
+      providers: providers.length > 0 ? providers : undefined,
+    });
 
-      if (selection.totalSelected < amountInMist) {
-        throw new Error(`Insufficient ${sourceSymbol} balance. Have: ${selection.totalSelected}, Need: ${amountInMist}`);
-      }
-
-      if (selection.selectedCoins.length === 0) {
-        throw new Error(`No ${sourceSymbol} coins found`);
-      }
-
-      const primaryCoin = tx.object(selection.selectedCoins[0].coinObjectId);
-
-      // Merge additional coins if needed
-      if (selection.needsMerge && selection.selectedCoins.length > 1) {
-        const coinsToMerge = selection.selectedCoins
-          .slice(1)
-          .map(c => tx.object(c.coinObjectId));
-        tx.mergeCoins(primaryCoin, coinsToMerge);
-      }
-
-      // Split exact amount from merged coin
-      const [swapCoin] = tx.splitCoins(primaryCoin, [tx.pure.u64(amountInMist)]);
-      tx.transferObjects([swapCoin], tx.pure.address(senderAddress));
+    if (!routers || !routers.paths) {
+      throw new Error('No viable swap route found for PTB Builder.');
     }
+
+    // Determine target slippage
+    const maxSlippage = slippage / 100;
+
+    // Use Cetus SDK to build the real swap transaction block
+    await clientSDK.fastRouterSwap({
+      router: routers,
+      txb: tx,
+      slippage: maxSlippage,
+    });
 
     // Set gas budget for simulation
     tx.setGasBudget(50_000_000); // 0.05 SUI
 
-    const { SuiClient } = await import('@mysten/sui/client');
-    const client = new SuiClient({ url: SUI_MAINNET_RPC });
+    const client = new SuiJsonRpcClient({ url: SUI_MAINNET_RPC });
 
     // Build to bytes for simulation
     const builtBytes = await tx.build({ client });
@@ -174,10 +167,12 @@ export async function buildSwapPTB(params: {
     const txForWallet = new Transaction();
     txForWallet.setSender(senderAddress);
 
-    if (isSuiSource) {
-      const [coin] = txForWallet.splitCoins(txForWallet.gas, [txForWallet.pure.u64(amountInMist)]);
-      txForWallet.transferObjects([coin], txForWallet.pure.address(senderAddress));
-    }
+    // Build the real swap PTB again for the wallet payload
+    await clientSDK.fastRouterSwap({
+      router: routers,
+      txb: txForWallet,
+      slippage: maxSlippage,
+    });
 
     // Serialize for wallet — let wallet handle gas
     const serialized = await txForWallet.toJSON();

@@ -54,7 +54,8 @@ async function fetchCetusRoute(
   amount: string,
   sourceDecimals: number,
   destDecimals: number,
-  attempt: number = 1
+  attempt: number = 1,
+  prioritizePremium: boolean = true
 ): Promise<RouteResult | null> {
   // Build request URL with query params
   const params = new URLSearchParams({
@@ -65,6 +66,10 @@ async function fetchCetusRoute(
     depth: '3',
     split_count: '20',
   });
+
+  if (prioritizePremium) {
+    params.append('providers', 'CETUS,DEEPBOOK');
+  }
 
   const url = `${CETUS_AGGREGATOR_V3_URL}?${params.toString()}`;
   logger.debug('Calling Cetus V3 API', { url: url.slice(0, 150) + '...' });
@@ -81,13 +86,19 @@ async function fetchCetusRoute(
   const data = await res.json();
 
   if (!data || data.code !== 200 || !data.data) {
-    logger.warn('Cetus V3 returned no routes', { response: JSON.stringify(data).slice(0, 300) });
+    logger.warn(`Cetus V3 returned no routes (Premium: ${prioritizePremium})`, { response: JSON.stringify(data).slice(0, 300) });
+
+    if (prioritizePremium) {
+      logger.info('Premium route (CETUS, DEEPBOOK) not found or deviation error. Retrying across all DEXes...');
+      return await fetchCetusRoute(from, target, amount, sourceDecimals, destDecimals, attempt, false);
+    }
+
     if (data && data.msg === 'quote deviation error') {
       if (attempt === 1) {
         const scaledAmount = BigInt(amount) / 10n;
         if (scaledAmount > 0n) {
           logger.info('Cetus returned quote deviation error. Retrying with 1/10th amount to bypass aggregator limit.');
-          const fallbackRoute = await fetchCetusRoute(from, target, scaledAmount.toString(), sourceDecimals, destDecimals, 2);
+          const fallbackRoute = await fetchCetusRoute(from, target, scaledAmount.toString(), sourceDecimals, destDecimals, 2, prioritizePremium);
           if (fallbackRoute) {
             // Scale outputs back up for UI display
             fallbackRoute.expected_output *= 10;
@@ -124,10 +135,7 @@ async function fetchCetusRoute(
       target,
       amount,
     });
-    throw new Error(
-      `Pool liquidity is too low for this trade (price impact ${observedPriceImpactPct.toFixed(1)}% > ${RISK_THRESHOLDS.priceImpact.reject}% limit). ` +
-      `Try reducing the trade size or use a more liquid pair.`
-    );
+    // Removed throw Error to allow frontend to display the risk for user to decide.
   }
 
   if (observedPriceImpactPct >= RISK_THRESHOLDS.priceImpact.recommendSplit) {
