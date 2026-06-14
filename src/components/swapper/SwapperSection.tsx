@@ -6,6 +6,7 @@ import { IntentChat } from './IntentChat';
 import { RoutingPath } from './RoutingPath';
 import { GuardianRisk } from './GuardianRisk';
 import { PTBFlow } from './PTBFlow';
+import { TOKENS, getTokenInfo } from '../../constants';
 
 export const SwapperSection: React.FC = () => {
   const currentAccount = useCurrentAccount();
@@ -20,6 +21,7 @@ export const SwapperSection: React.FC = () => {
   const [executionState, setExecutionState] = useState<'idle' | 'executing' | 'success'>('idle');
   const [gasPrice, setGasPrice] = useState<string>("0.003");
   const [txHash, setTxHash] = useState<string | null>(null);
+  const [swapError, setSwapError] = useState<string | null>(null);
 
   const [sourceToken, setSourceToken] = useState("SUI");
   const [destToken, setDestToken] = useState("USDC");
@@ -77,10 +79,10 @@ export const SwapperSection: React.FC = () => {
     e.preventDefault();
     if (!intentInput.trim()) return;
 
-    setSubmittedIntent(intentInput);
     setAppState('processing');
     setProcessStep(0);
-    setExecutionState('idle');
+    setSubmittedIntent(intentInput);
+    setSwapError(null);
     setTxHash(null);
     setHasConfirmedSettings(false);
 
@@ -104,19 +106,28 @@ export const SwapperSection: React.FC = () => {
       setProcessStep(1);
       fetchGasPrice();
 
+      const sourceTokenInfo = getTokenInfo(parsedData.intent.source_token_symbol);
+      const destTokenInfo = getTokenInfo(parsedData.intent.destination_token_symbol);
+
       // 2. Fetch Route API
       const routeRes = await fetch("/api/calculate-optimal-route", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          sourceAddress: parsedData.intent.source_token_address,
-          destAddress: parsedData.intent.destination_token_address,
+          sourceAddress: sourceTokenInfo?.coinType || parsedData.intent.source_token_address,
+          destAddress: destTokenInfo?.coinType || parsedData.intent.destination_token_address,
           sourceSymbol: parsedData.intent.source_token_symbol,
           destSymbol: parsedData.intent.destination_token_symbol,
           amount: parsedData.intent.trade_amount
         })
       });
       const routeData = await routeRes.json();
+      
+      if (!routeRes.ok || routeData.error) {
+          const errMsg = routeData.error || "Unknown route calculation error.";
+          setSwapError(errMsg);
+          throw new Error(errMsg);
+      }
 
       // Store the nodes safely from Layer 2
       setRouteNodes(routeData.route || []);
@@ -199,17 +210,25 @@ export const SwapperSection: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 xl:grid-cols-12 gap-4 lg:gap-5 flex-1 min-h-0 w-full">
 
-          <IntentChat
-            intentInput={intentInput}
-            setIntentInput={setIntentInput}
-            appState={appState}
-            processStep={processStep}
-            submittedIntent={submittedIntent}
-            amount={amount}
-            sourceToken={sourceToken}
-            destToken={destToken}
-            handleSimulate={handleSimulate}
-          />
+          <div className="lg:col-span-4 xl:col-span-4 flex flex-col gap-4 h-full min-h-0">
+            <IntentChat
+              intentInput={intentInput}
+              setIntentInput={setIntentInput}
+              appState={appState}
+              processStep={processStep}
+              submittedIntent={submittedIntent}
+              amount={amount}
+              sourceToken={sourceToken}
+              destToken={destToken}
+              handleSimulate={handleSimulate}
+            />
+            {swapError && (
+              <div className="bg-red-500/10 border border-red-500/30 rounded-[16px] p-4 text-red-400 font-body text-[14px] flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-300">
+                <span className="material-symbols-outlined text-[20px]">error</span>
+                {swapError}
+              </div>
+            )}
+          </div>
 
           <RoutingPath
             appState={appState}

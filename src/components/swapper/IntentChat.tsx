@@ -24,7 +24,7 @@ export const IntentChat: React.FC<IntentChatProps> = ({
   handleSimulate
 }) => {
   return (
-    <div className="lg:col-span-4 xl:col-span-4 flex flex-col h-full min-h-0 relative group">
+    <div className="flex flex-col flex-1 h-full min-h-0 relative group">
       {/* Dynamic Ambient Outer Glow behind the chat panel */}
       <div className="absolute -inset-1 bg-gradient-to-br from-[#a855f7]/15 via-[#0ea5e9]/10 to-[#a855f7]/15 rounded-[22px] blur-md opacity-90 transition-opacity duration-500 pointer-events-none group-hover:opacity-100"></div>
       

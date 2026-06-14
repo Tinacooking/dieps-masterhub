@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 // ConnectModal is handled in SwapperHeader
-import { TOKEN_LOGOS } from '../../constants';
+import { TOKENS, getTokenInfo } from '../../constants';
 import { gsap } from 'gsap';
 
 interface RoutingPathProps {
@@ -216,8 +216,8 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                       className={`w-12 h-12 rounded-full flex items-center justify-center relative group cursor-pointer hover:border-[#a855f7] transition-all overflow-hidden bg-[#111111] border border-white/10 shadow-[0_0_30px_rgba(168,85,247,0.15)] ${executionState === 'success' ? 'border-[#a855f7] shadow-[0_0_30px_rgba(168,85,247,0.4)]' : ''}`}
                     >
                       <div className={`absolute inset-0 rounded-full border border-[#a855f7]/50 opacity-0 group-hover:opacity-100 transition-opacity ${executionState === 'executing' ? 'animate-ping opacity-50' : ''}`}></div>
-                      {TOKEN_LOGOS[sourceToken] ? (
-                        <img src={TOKEN_LOGOS[sourceToken]} alt={sourceToken} className="w-8 h-8 object-contain relative z-10" />
+                      {getTokenInfo(sourceToken)?.logoUrl ? (
+                        <img src={getTokenInfo(sourceToken)?.logoUrl} alt={sourceToken} className="w-8 h-8 object-contain relative z-10" />
                       ) : (
                         <span className="font-display font-medium text-[14px] text-white relative z-10 tracking-widest">{sourceToken.slice(0, 4)}</span>
                       )}
@@ -261,8 +261,8 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                       onClick={() => setTokenModalMode('dest')}
                       className={`w-12 h-12 rounded-full flex items-center justify-center relative group cursor-pointer hover:border-[#a855f7]/50 transition-all bg-[#111111] border-dashed border-white/20 overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] ${executionState === 'success' ? 'border-solid border-[#a855f7] bg-[#a855f7]/10 shadow-[0_0_40px_rgba(168,85,247,0.5)]' : ''}`}
                     >
-                      {TOKEN_LOGOS[destToken] ? (
-                        <img src={TOKEN_LOGOS[destToken]} alt={destToken} className="w-8 h-8 object-contain relative z-10" />
+                      {getTokenInfo(destToken)?.logoUrl ? (
+                        <img src={getTokenInfo(destToken)?.logoUrl} alt={destToken} className="w-8 h-8 object-contain relative z-10" />
                       ) : (
                         <span className="font-display font-medium text-[14px] text-white relative z-10 tracking-widest">{destToken.slice(0, 4)}</span>
                       )}

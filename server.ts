@@ -4,68 +4,65 @@ import { createServer as createViteServer } from "vite";
 
 const SUPPORTED_DEXES = ["cetus", "turbos", "kriya", "flowx"];
 
-// Helper to resolve token address dynamically via DexScreener
+import fs from "fs";
+
+// Helper to resolve token address dynamically using our full registry
 async function resolveTokenAddress(symbol: string): Promise<string | null> {
     const symbolUpper = symbol.toUpperCase();
-    if (symbolUpper === "SUI") return "0x2::sui::SUI"; // SUI is native, always known
+    if (symbolUpper === "SUI") return "0x2::sui::SUI"; // SUI is native
     
     try {
-        const query = symbol.toLowerCase();
-        const res = await fetch(`https://api.dexscreener.com/latest/dex/search?q=${query}`);
-        const data = await res.json();
-        
-        if (data && data.pairs && data.pairs.length > 0) {
-            const validPairs = data.pairs.filter((p: any) => p.chainId === "sui");
-            if (validPairs.length > 0) {
-               // match symbol exactly if possible
-               const exactMatch = validPairs.find((p: any) => p.baseToken.symbol.toUpperCase() === symbolUpper);
-               if (exactMatch) return exactMatch.baseToken.address;
-               return validPairs[0].baseToken.address;
-            }
-        }
-        return null; // Return null if not found
+        const tokensPath = path.join(process.cwd(), "src", "cetus-tokens.json");
+        const cetusTokens = JSON.parse(fs.readFileSync(tokensPath, "utf8"));
+        const match = cetusTokens.find((t: any) => t.symbol.toUpperCase() === symbolUpper);
+        if (match) return match.coinType;
     } catch (e) {
-        console.error("Failed to dynamically fetch token address", e);
-        return null;
+        console.error("Failed to read token registry:", e);
     }
+    
+    return null;
 }
 
-// Helper to find best pool using DexScreener
+// Helper to normalize Sui addresses (e.g., 0x2 to 0x000...02)
+function normalizeSuiType(typeStr: string): string {
+    if (!typeStr) return typeStr;
+    const parts = typeStr.split('::');
+    if (parts.length > 0 && parts[0].startsWith('0x')) {
+        parts[0] = '0x' + parts[0].substring(2).padStart(64, '0');
+    }
+    return parts.join('::').toLowerCase();
+}
+
+// Helper to find best pool using Cetus Official Price API
 async function findBestPoolForToken(symbolOrAddress: string) {
   try {
     if (!symbolOrAddress) return null;
-    const query = symbolOrAddress.toLowerCase();
-    const res = await fetch(`https://api.dexscreener.com/latest/dex/search?q=${query}`);
-    const data = await res.json();
     
-    if (data && data.pairs && data.pairs.length > 0) {
-        // Filter by supported networks and dexes
-        const validPairs = data.pairs.filter((p: any) => 
-            p.chainId === "sui" && SUPPORTED_DEXES.includes(p.dexId.toLowerCase())
-        );
+    // Normalize target address for comparison
+    const targetAddress = normalizeSuiType(symbolOrAddress);
 
-        if (validPairs.length > 0) {
-            // Sort by liquidity
-            validPairs.sort((a: any, b: any) => {
-                const liqA = a.liquidity?.usd || 0;
-                const liqB = b.liquidity?.usd || 0;
-                return liqB - liqA;
-            });
-            const bestPair = validPairs[0];
+    // Fetch official Cetus prices
+    const res = await fetch("https://api-sui.cetus.zone/v2/sui/price");
+    const json = await res.json();
+    
+    if (json && json.data && json.data.prices) {
+        // Find the token in the Cetus price list
+        // Cetus uses the CA in 'base_symbol'
+        const match = json.data.prices.find((p: any) => normalizeSuiType(p.base_symbol) === targetAddress);
+        
+        if (match) {
             return {
-                dex: bestPair.dexId,
-                address: bestPair.pairAddress,
-                baseToken: bestPair.baseToken,
-                quoteToken: bestPair.quoteToken,
-                priceUsd: bestPair.priceUsd,
-                liquidity: bestPair.liquidity?.usd || 0,
-                volume24h: bestPair.volume?.h24 || 0,
+                dex: "Cetus",
+                address: match.base_symbol,
+                priceUsd: match.price,
+                liquidity: 1000000, // Cetus prices usually imply good liquidity
+                volume24h: 0,
             };
         }
     }
     return null;
   } catch (error) {
-    console.error("DexScreener fetch error:", error);
+    console.error("Cetus API fetch error:", error);
     return null;
   }
 }
@@ -198,23 +195,31 @@ async function startServer() {
   app.post("/api/calculate-optimal-route", async (req, res) => {
     const { sourceAddress, destAddress, sourceSymbol, destSymbol, amount } = req.body;
     
-    let poolSymbol = destSymbol || destAddress;
-    const bestPool = await findBestPoolForToken(poolSymbol);
+    // Fetch pools for both source and destination tokens to determine proper exchange rate
+    const sourcePool = await findBestPoolForToken(sourceAddress || sourceSymbol);
+    const destPool = await findBestPoolForToken(destAddress || destSymbol);
     
     // Routing DEX pools Algorithm execution subgraph conceptualization
     // Building a small sub-graph from available DEXs
     let routeNodes = [];
     let outputAmount = parseFloat(amount);
     
-    if (bestPool) {
-      // W_{u,v} = -log( R_{u,v} * (1 - F_{u,v}) * (1 - S_{u,v}(x)) )
-      // Simplified real-time execution based on the best pair found in exact graph node.
+    if (sourcePool && destPool) {
+      // Calculate true exchange rate via USD reference
+      const sourceUsd = sourcePool.priceUsd ? parseFloat(sourcePool.priceUsd) : 0;
+      const destUsd = destPool.priceUsd ? parseFloat(destPool.priceUsd) : 0;
       
-      const dexName = bestPool.dex ? bestPool.dex.charAt(0).toUpperCase() + bestPool.dex.slice(1) : "Unknown";
-      const exchangeRate = bestPool.priceUsd ? parseFloat(bestPool.priceUsd) : 1;
+      if (sourceUsd === 0 || destUsd === 0) {
+          return res.status(400).json({ error: `Cannot calculate price for pool. Source USD: ${sourceUsd}, Dest USD: ${destUsd}` });
+      }
+      
+      const exchangeRate = sourceUsd / destUsd;
+      
+      const dexName = sourcePool.dex ? sourcePool.dex.charAt(0).toUpperCase() + sourcePool.dex.slice(1) : "Unknown";
+      
       // Fetching mock fee and slippage representation based on liquidity depth
       const fee = 0.003; // typical 0.3% fee
-      const liquidityDepth = bestPool.liquidity || 10000;
+      const liquidityDepth = sourcePool.liquidity || 10000;
       const tradeSizeLimit = parseFloat(amount);
       const slippage = Math.min((tradeSizeLimit / liquidityDepth) * 0.1, 0.05); // dynamic slippage calc
       
@@ -230,14 +235,7 @@ async function startServer() {
       
       outputAmount = parseFloat(amount) * exchangeRate * (1 - fee) * (1 - slippage);
     } else {
-        // Fallback for purely unknown tokens not found in the DEX subgraph
-        routeNodes = [{
-            dex: "Fallback Swap",
-            ratio: 100,
-            fee: 0.5,
-            weight: 1
-        }];
-        outputAmount = parseFloat(amount) * 0.95;
+        return res.status(400).json({ error: "No liquidity pool found for one or both of the tokens." });
     }
 
     // Step 4 integration - return structured execution recommendation
@@ -248,8 +246,8 @@ async function startServer() {
         minimum_output: outputAmount * 0.995,
         execution_impact: "0.05%",
         route_confidence: 96,
-        dynamicPoolUsed: bestPool ? true : false,
-        poolDetails: bestPool
+        dynamicPoolUsed: (sourcePool && destPool) ? true : false,
+        poolDetails: destPool
     });
   });
 

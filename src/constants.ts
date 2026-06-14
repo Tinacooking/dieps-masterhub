@@ -1,13 +1,40 @@
-export const TOKEN_LOGOS: Record<string, string> = {
-  SUI: "https://cryptologos.cc/logos/sui-sui-logo.png?v=031",
-  USDC: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png?v=031",
-  USDT: "https://cryptologos.cc/logos/tether-usdt-logo.png?v=031",
-  BTC: "https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=031",
-  ETH: "https://cryptologos.cc/logos/ethereum-eth-logo.png?v=031",
-  ATH: "https://assets.coingecko.com/coins/images/36294/large/ATH-icon-glow.png",
-  BUCK: "https://assets.coingecko.com/coins/images/33055/large/bucket_logo.jpeg",
-  FUD: "https://assets.coingecko.com/coins/images/33924/large/fud.png",
-  SCA: "https://assets.coingecko.com/coins/images/35079/large/Scallop_Logo_v2.png",
-  CETUS: "https://assets.coingecko.com/coins/images/30129/large/cetus.png",
-  TURBOS: "https://assets.coingecko.com/coins/images/30282/large/turbos.png",
-};
+export interface TokenInfo {
+  symbol: string;
+  name: string;
+  coinType: string;
+  logoUrl?: string;
+}
+
+import cetusTokens from './cetus-tokens.json';
+
+const POPULAR_SYMBOLS = [
+  'SUI', 'USDC', 'USDT', 'WBTC', 'WETH', 'BUCK', 'FUD', 'SCA', 
+  'CETUS', 'TURBOS', 'DEEP', 'NAVX', 'HASUI', 'AFSUI', 'BLUB', 
+  'NS', 'SEND', 'SUIA', 'KRIYA', 'LIQ'
+];
+
+export const TOKENS = POPULAR_SYMBOLS.map(symbol => {
+  const found = cetusTokens.find((t: any) => t.symbol.toUpperCase() === symbol);
+  if (found) {
+    return {
+      symbol: found.symbol,
+      name: found.name,
+      coinType: found.coinType,
+      logoUrl: found.logoUrl || undefined,
+    };
+  }
+  return null;
+}).filter(Boolean) as TokenInfo[];
+
+export function getTokenInfo(symbol: string): TokenInfo | undefined {
+  const found = cetusTokens.find((t: any) => t.symbol.toUpperCase() === symbol.toUpperCase());
+  if (found) {
+    return {
+      symbol: found.symbol,
+      name: found.name,
+      coinType: found.coinType,
+      logoUrl: found.logoUrl || undefined,
+    };
+  }
+  return undefined;
+}
