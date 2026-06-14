@@ -22,6 +22,7 @@ interface RoutingPathProps {
   isWalletModalOpen: boolean;
   setIsWalletModalOpen: (open: boolean) => void;
   setTokenModalMode: (mode: 'source' | 'dest' | null) => void;
+  isSafe?: boolean;
 }
 
 export const RoutingPath: React.FC<RoutingPathProps> = ({
@@ -42,7 +43,8 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
   handleExecute,
   isWalletModalOpen,
   setIsWalletModalOpen,
-  setTokenModalMode
+  setTokenModalMode,
+  isSafe = true
 }) => {
   const sourceRef = useRef<HTMLDivElement>(null);
   const destRef = useRef<HTMLDivElement>(null);
@@ -320,6 +322,7 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                 className={`px-6 py-2.5 rounded-[12px] font-mono text-[12px] uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center min-w-[180px] ${
                   appState === 'done' && 
                   executionState === 'idle' && 
+                  isSafe &&
                   (!walletAddress || (!isInsufficientBalance && hasConfirmedSettings))
                     ? 'bg-[#a855f7] text-white hover:bg-[#b87cff] shadow-[0_0_20px_rgba(168,85,247,0.3)]' 
                     : 'bg-[#111111] border border-white/5 text-white/50 cursor-not-allowed'
@@ -327,18 +330,21 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                 disabled={
                   appState !== 'done' || 
                   executionState === 'executing' || 
+                  !isSafe ||
                   (walletAddress && (isInsufficientBalance || !hasConfirmedSettings))
                 }
               >
                  {appState !== 'done' 
                     ? 'Awaiting Route' 
-                    : !walletAddress 
-                      ? 'Connect Wallet'
-                      : isInsufficientBalance
-                        ? `Insufficient ${sourceToken}`
-                        : executionState === 'executing' 
-                          ? <div className="flex items-center justify-center gap-2"><span className="material-symbols-outlined text-[14px] animate-spin">sync</span><span>Executing...</span></div>
-                          : 'Execute Swap'}
+                    : !isSafe 
+                      ? 'Risk Blocked'
+                      : !walletAddress 
+                        ? 'Connect Wallet'
+                        : isInsufficientBalance
+                          ? `Insufficient ${sourceToken}`
+                          : executionState === 'executing' 
+                            ? <div className="flex items-center justify-center gap-2"><span className="material-symbols-outlined text-[14px] animate-spin">sync</span><span>Executing...</span></div>
+                            : 'Execute Swap'}
               </button>
             </div>
           )}
