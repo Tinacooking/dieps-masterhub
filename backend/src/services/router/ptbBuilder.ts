@@ -135,19 +135,31 @@ export async function buildSwapPTB(params: {
     // Set gas budget for simulation
     tx.setGasBudget(50_000_000); // 0.05 SUI
 
+    const { SuiClient } = await import('@mysten/sui/client');
+    const client = new SuiClient({ url: SUI_MAINNET_RPC });
+
     // Build to bytes for simulation
-    const builtBytes = await tx.build({
-      client: createMinimalClient(),
-    });
+    const builtBytes = await tx.build({ client });
     transactionBytes = Buffer.from(builtBytes).toString('base64');
 
     // Simulate the transaction
     try {
       const simResult = await suiRpcCall('sui_dryRunTransactionBlock', [transactionBytes]);
       if (simResult) {
+        const gasCost = simResult.effects?.gasUsed;
+        let totalGas = '0';
+        if (gasCost) {
+          const computation = BigInt(gasCost.computationCost || '0');
+          const storage = BigInt(gasCost.storageCost || '0');
+          const rebate = BigInt(gasCost.storageRebate || '0');
+          const nonRefundable = BigInt(gasCost.nonRefundableStorageFee || '0');
+          const calculatedGas = computation + storage - rebate + nonRefundable;
+          totalGas = calculatedGas > 0n ? calculatedGas.toString() : computation.toString();
+        }
+
         simulation = {
           success: simResult.effects?.status?.status === 'success',
-          gasUsed: simResult.effects?.gasUsed?.computationCost || '0',
+          gasUsed: totalGas,
           balanceChanges: simResult.balanceChanges || [],
           error: simResult.effects?.status?.error,
         };
@@ -190,33 +202,4 @@ export async function buildSwapPTB(params: {
 
   timer.end({ success: simulation.success });
   return result;
-}
-
-/**
- * Create a minimal client-like object for tx.build()
- * This is a lightweight wrapper around our RPC to satisfy the SDK's build() requirements.
- */
-function createMinimalClient() {
-  return {
-    url: SUI_MAINNET_RPC,
-    transport: {
-      async request(method: string, params: any[]) {
-        return suiRpcCall(method, params);
-      },
-    },
-    // The SDK may call these methods during build
-    async getObject(opts: any) {
-      return suiRpcCall('sui_getObject', [opts.id || opts.objectId, {
-        showContent: true,
-        showOwner: true,
-        showType: true,
-      }]);
-    },
-    async getReferenceGasPrice() {
-      return suiRpcCall('suix_getReferenceGasPrice');
-    },
-    async getCoins(opts: any) {
-      return suiRpcCall('suix_getCoins', [opts.owner, opts.coinType]);
-    },
-  };
 }

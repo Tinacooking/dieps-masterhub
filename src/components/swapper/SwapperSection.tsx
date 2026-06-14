@@ -18,7 +18,6 @@ export const SwapperSection: React.FC = () => {
   const [processStep, setProcessStep] = useState(0);
   const [submittedIntent, setSubmittedIntent] = useState("");
   const [executionState, setExecutionState] = useState<'idle' | 'executing' | 'success'>('idle');
-  const [gasPrice, setGasPrice] = useState<string>("0.003");
   const [txHash, setTxHash] = useState<string | null>(null);
 
   const [sourceToken, setSourceToken] = useState("SUI");
@@ -27,6 +26,8 @@ export const SwapperSection: React.FC = () => {
   const [routeNodes, setRouteNodes] = useState<any[]>([]);
   const [estOutput, setEstOutput] = useState<string>("0.00");
   const [sourceTokenBalance, setSourceTokenBalance] = useState<string>("0");
+  const [gasPrice, setGasPrice] = useState<string>("...");
+  const [slippage, setSlippage] = useState<string>("...");
   const [hasConfirmedSettings, setHasConfirmedSettings] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [tokenModalMode, setTokenModalMode] = useState<'source' | 'dest' | null>(null);
@@ -123,6 +124,14 @@ export const SwapperSection: React.FC = () => {
           setIsSafe(data.guardian.safe);
           setPtbSteps(data.ptb.ptbSteps || []);
           
+          if (data.ptb.simulation?.gasUsed) {
+            const baseGas = Number(data.ptb.simulation.gasUsed) / 1e9;
+            setGasPrice(baseGas.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 6 }));
+          }
+          if (data.route.execution_impact) {
+            setSlippage(data.route.execution_impact);
+          }
+          
           setTimeout(() => {
             setProcessStep(4);
             setAppState('done');
@@ -207,6 +216,7 @@ export const SwapperSection: React.FC = () => {
             routeNodes={routeNodes}
             estOutput={estOutput}
             gasPrice={gasPrice}
+            slippage={slippage}
             hasConfirmedSettings={hasConfirmedSettings}
             setHasConfirmedSettings={setHasConfirmedSettings}
             walletAddress={walletAddress}

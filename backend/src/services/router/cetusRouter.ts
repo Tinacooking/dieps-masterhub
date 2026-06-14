@@ -33,11 +33,11 @@ export async function findOptimalRoute(
   try {
     const result = await fetchCetusRoute(fromAddress, toAddress, amountInSmallestUnit.toString(), sourceDecimals, destDecimals);
     if (result) {
-      timer.end({ method: 'cetus_v3', dexes: result.dex_sequence });
+      timer.end({ method: 'cetus_v2', dexes: result.dex_sequence });
       return result;
     }
   } catch (err: any) {
-    logger.error('Cetus Aggregator V3 failed', { error: err.message });
+    logger.error('Cetus Aggregator V2 failed', { error: err.message });
   }
 
   // If Cetus fails, we do not use off-chain APIs. We reject the route.
