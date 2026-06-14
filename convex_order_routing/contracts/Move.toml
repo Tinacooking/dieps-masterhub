@@ -1,0 +1,6 @@
+[package]
+name = "convex_router"
+edition = "2024"
+
+[dependencies]
+

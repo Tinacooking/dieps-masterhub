@@ -1,0 +1,14 @@
+{
+  "name": "convex-order-routing",
+  "version": "1.0.0",
+  "description": "Convex Order Splitting with Sui PTBs",
+  "main": "scripts/routing_engine.ts",
+  "dependencies": {
+    "@mysten/sui": "^1.21.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3",
+    "@types/node": "^20.14.9"
+  }
+}
