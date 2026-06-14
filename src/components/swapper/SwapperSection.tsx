@@ -93,95 +93,50 @@ export const SwapperSection: React.FC = () => {
     try {
       fetchGasPrice();
 
-      const sourceTokenInfo = getTokenInfo(parsedData.intent.source_token_symbol);
-      const destTokenInfo = getTokenInfo(parsedData.intent.destination_token_symbol);
-
       const processRes = await fetch("/api/process-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          sourceAddress: sourceTokenInfo?.coinType || parsedData.intent.source_token_address,
-          destAddress: destTokenInfo?.coinType || parsedData.intent.destination_token_address,
-          sourceSymbol: parsedData.intent.source_token_symbol,
-          destSymbol: parsedData.intent.destination_token_symbol,
-          amount: parsedData.intent.trade_amount
-        body: JSON.stringify({
             prompt: intentInput,
             senderAddress: walletAddress || "0x0000000000000000000000000000000000000000000000000000000000000000"
-          })
-        });
-        const routeData = await routeRes.json();
+        })
+      });
 
-        if(!routeRes.ok || routeData.error) {
-          const errMsg = routeData.error || "Unknown route calculation error.";
-      setSwapError(errMsg);
-      throw new Error(errMsg);
-    }
+      const data = await processRes.json();
 
-      // Store the nodes safely from Layer 2
-      setRouteNodes(routeData.route || []);
-    setEstOutput(routeData.expected_output ? Number(routeData.expected_output).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00');
+      if (data.error) {
+        throw new Error(data.error);
+      }
 
-    setProcessStep(2);
+      setProcessStep(1);
 
-    // 3. Layer 3: Evaluate Guardian Risk
-    const guardianRes = await fetch("/api/evaluate-guardian-risk", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        sourceSymbol: parsedData.intent.source_token_symbol,
-        destSymbol: parsedData.intent.destination_token_symbol,
-        route: routeData.route,
-        execution_impact: routeData.execution_impact,
-      })
-    });
-    const guardianData = await guardianRes.json();
-
-    // Store Risk Status in state if needed, for now we let it pass
-
-    setProcessStep(3);
-
-    setTimeout(() => {
-      setProcessStep(4);
-      setAppState('done');
-    }, 1500);
-
-    const data = await processRes.json();
-
-    if (data.error) {
-      throw new Error(data.error);
-    }
-
-    setProcessStep(1);
-
-    setAmount(data.intent.trade_amount || "0");
-    setSourceToken(data.intent.source_token_symbol || "SUI");
-    setDestToken(data.intent.destination_token_symbol || "USDC");
-
-    setTimeout(() => {
-      setProcessStep(2);
-      setRouteNodes(data.route.route || []);
-      setEstOutput(data.route.expected_output ? Number(data.route.expected_output).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00');
+      setAmount(data.intent.trade_amount || "0");
+      setSourceToken(data.intent.source_token_symbol || "SUI");
+      setDestToken(data.intent.destination_token_symbol || "USDC");
 
       setTimeout(() => {
-        setProcessStep(3);
-        setGuardianChecks(data.guardian.checks || []);
-        setIsSafe(data.guardian.safe);
-        setPtbSteps(data.ptb.ptbSteps || []);
+        setProcessStep(2);
+        setRouteNodes(data.route.route || []);
+        setEstOutput(data.route.expected_output ? Number(data.route.expected_output).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00');
 
         setTimeout(() => {
-          setProcessStep(4);
-          setAppState('done');
+          setProcessStep(3);
+          setGuardianChecks(data.guardian.checks || []);
+          setIsSafe(data.guardian.safe);
+          setPtbSteps(data.ptb.ptbSteps || []);
+
+          setTimeout(() => {
+            setProcessStep(4);
+            setAppState('done');
+          }, 1000);
         }, 1000);
       }, 1000);
-    }, 1000);
 
-
-
-  } catch (err) {
-    console.error("Failed to simulate", err);
-    setAppState('idle');
-  }
+    } catch (err: any) {
+      console.error("Failed to simulate", err);
+      setSwapError(err.message || "An error occurred");
+      setAppState('idle');
+    }
 };
 
 const handleExecute = () => {

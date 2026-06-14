@@ -9,6 +9,7 @@ import { getCoinsForSelection, selectCoinsForAmount } from '../coin/coinService.
 import { suiRpcCall, SUI_MAINNET_RPC } from '../../utils/suiClient.js';
 import { logger, createTimer } from '../../utils/logger.js';
 import type { ExecuteSwapResult, PtbStep, RouteResult } from '../../types/index.js';
+import { SuiJsonRpcClient } from '@mysten/sui/jsonRpc';
 
 /**
  * Build a serialized PTB for wallet signing.
@@ -136,8 +137,9 @@ export async function buildSwapPTB(params: {
     tx.setGasBudget(50_000_000); // 0.05 SUI
 
     // Build to bytes for simulation
+    const suiClient = new SuiJsonRpcClient({ url: SUI_MAINNET_RPC });
     const builtBytes = await tx.build({
-      client: createMinimalClient(),
+      client: suiClient,
     });
     transactionBytes = Buffer.from(builtBytes).toString('base64');
 
@@ -190,33 +192,4 @@ export async function buildSwapPTB(params: {
 
   timer.end({ success: simulation.success });
   return result;
-}
-
-/**
- * Create a minimal client-like object for tx.build()
- * This is a lightweight wrapper around our RPC to satisfy the SDK's build() requirements.
- */
-function createMinimalClient() {
-  return {
-    url: SUI_MAINNET_RPC,
-    transport: {
-      async request(method: string, params: any[]) {
-        return suiRpcCall(method, params);
-      },
-    },
-    // The SDK may call these methods during build
-    async getObject(opts: any) {
-      return suiRpcCall('sui_getObject', [opts.id || opts.objectId, {
-        showContent: true,
-        showOwner: true,
-        showType: true,
-      }]);
-    },
-    async getReferenceGasPrice() {
-      return suiRpcCall('suix_getReferenceGasPrice');
-    },
-    async getCoins(opts: any) {
-      return suiRpcCall('suix_getCoins', [opts.owner, opts.coinType]);
-    },
-  };
 }

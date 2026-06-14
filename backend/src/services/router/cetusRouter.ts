@@ -4,7 +4,7 @@
  * Falls back to DexScreener-based estimation when aggregator is unavailable.
  */
 
-import { CETUS_AGGREGATOR_V3_URL, CETUS_SUPPORTED_DEXES } from '../../config/index.js';
+import { CETUS_AGGREGATOR_V3_URL, CETUS_SUPPORTED_DEXES, RISK_THRESHOLDS } from '../../config/index.js';
 import { resolveTokenAddress, getTokenDecimals, resolveToken } from '../coin/tokenResolver.js';
 import { logger, createTimer } from '../../utils/logger.js';
 import type { RouteResult, RouteNode, PoolDetails } from '../../types/index.js';
@@ -38,6 +38,11 @@ export async function findOptimalRoute(
     }
   } catch (err: any) {
     logger.error('Cetus Aggregator V3 failed', { error: err.message });
+    // Propagate specific price impact errors instead of swallowing them
+    if (err.message.includes('Price impact')) {
+      timer.end({ method: 'failed' });
+      throw err;
+    }
   }
 
   // If Cetus fails, we do not use off-chain APIs. We reject the route.
@@ -53,7 +58,8 @@ async function fetchCetusRoute(
   target: string,
   amount: string,
   sourceDecimals: number,
-  destDecimals: number
+  destDecimals: number,
+  attempt: number = 1
 ): Promise<RouteResult | null> {
   // Build request URL with query params
   const params = new URLSearchParams({
@@ -82,12 +88,60 @@ async function fetchCetusRoute(
   if (!data || data.code !== 200 || !data.data) {
     logger.warn('Cetus V3 returned no routes', { response: JSON.stringify(data).slice(0, 300) });
     if (data && data.msg === 'quote deviation error') {
+      if (attempt === 1) {
+        const scaledAmount = BigInt(amount) / 10n;
+        if (scaledAmount > 0n) {
+          logger.info('Cetus returned quote deviation error. Retrying with 1/10th amount to bypass aggregator limit.');
+          const fallbackRoute = await fetchCetusRoute(from, target, scaledAmount.toString(), sourceDecimals, destDecimals, 2);
+          if (fallbackRoute) {
+            // Scale outputs back up for UI display
+            fallbackRoute.expected_output *= 10;
+            fallbackRoute.minimum_output *= 10;
+            if (fallbackRoute.routerData) {
+              fallbackRoute.routerData.amount_in = (BigInt(fallbackRoute.routerData.amount_in) * 10n).toString();
+              if (fallbackRoute.routerData.amount_out) {
+                fallbackRoute.routerData.amount_out = (BigInt(fallbackRoute.routerData.amount_out) * 10n).toString();
+              }
+            }
+            return fallbackRoute;
+          }
+        }
+      }
       throw new Error('Price impact is too high for this trade size. Please reduce the amount.');
     }
     return null;
   }
 
   const routeData = data.data;
+
+  // ─── Low-liquidity safety filter ─────────────────────────────────────────
+  // deviation_ratio is the actual observed slippage from Cetus Aggregator.
+  // A highly negative value (e.g. -0.10) means the pool is thin and unsafe.
+  const deviationRatio = parseFloat(routeData.deviation_ratio || '0');
+  const observedPriceImpactPct = Math.abs(deviationRatio) * 100; // e.g. 2.77
+
+  if (observedPriceImpactPct >= RISK_THRESHOLDS.priceImpact.reject) {
+    logger.warn('Skipping low-liquidity route: deviation too high', {
+      deviation: deviationRatio,
+      impactPct: observedPriceImpactPct.toFixed(2),
+      threshold: RISK_THRESHOLDS.priceImpact.reject,
+      from,
+      target,
+      amount,
+    });
+    throw new Error(
+      `Pool liquidity is too low for this trade (price impact ${observedPriceImpactPct.toFixed(1)}% > ${RISK_THRESHOLDS.priceImpact.reject}% limit). ` +
+      `Try reducing the trade size or use a more liquid pair.`
+    );
+  }
+
+  if (observedPriceImpactPct >= RISK_THRESHOLDS.priceImpact.recommendSplit) {
+    logger.warn('Route has high price impact — consider splitting', {
+      deviation: deviationRatio,
+      impactPct: observedPriceImpactPct.toFixed(2),
+    });
+  }
+  // ─────────────────────────────────────────────────────────────────────────
 
   // Parse the route into frontend-compatible format
   const routes: RouteNode[] = [];
@@ -102,7 +156,7 @@ async function fetchCetusRoute(
         for (const hop of path.path) {
           const dexName = hop.provider || 'Cetus';
           const formattedDex = dexName.charAt(0).toUpperCase() + dexName.slice(1);
-          const fee = parseFloat(hop.fee_rate || '0.003') * 100; // Convert to percentage
+          const fee = parseFloat(hop.fee_rate || '0.003') * 100;
 
           if (!dexSequence.includes(formattedDex)) {
             dexSequence.push(formattedDex);
@@ -135,21 +189,22 @@ async function fetchCetusRoute(
       ? parseFloat(routeData.amount_out)
       : 0;
 
-  // Calculate price impact
-  const priceImpact = routeData.price_impact
-    ? parseFloat(routeData.price_impact)
-    : totalFee / 100;
+  // Route confidence degrades as price impact increases
+  const routeConfidence = Math.max(
+    50,
+    Math.round(96 - observedPriceImpactPct * 4)
+  );
 
   return {
     route: routes,
     dex_sequence: dexSequence,
     expected_output: outputAmount / Math.pow(10, destDecimals),
     minimum_output: (outputAmount / Math.pow(10, destDecimals)) * 0.995,
-    execution_impact: `${(priceImpact * 100).toFixed(2)}%`,
-    route_confidence: 96,
+    execution_impact: `${observedPriceImpactPct.toFixed(2)}%`,
+    route_confidence: routeConfidence,
     dynamicPoolUsed: true,
     poolDetails: null,
-    routerData: routeData, // Save raw data for PTB building
+    routerData: routeData,
   };
 }
 

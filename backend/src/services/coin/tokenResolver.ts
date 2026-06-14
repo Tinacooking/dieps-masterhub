@@ -84,10 +84,25 @@ export async function resolveTokenDynamic(symbolOrAddress: string): Promise<stri
         const cetusTokens = JSON.parse(fs.readFileSync(tokensPath, "utf8"));
         const match = cetusTokens.find((t: any) => t.symbol.toUpperCase() === input.toUpperCase());
         if (match) {
+            let realDecimals = 9;
+            try {
+              const metadata = await getCoinMetadata(match.coinType);
+              if (metadata) realDecimals = metadata.decimals;
+            } catch (err) {
+              logger.warn(`Failed to fetch metadata for ${match.symbol}`);
+            }
+
             dynamicCache.set(input, {
                 address: match.coinType,
                 symbol: match.symbol,
-                decimals: 9, // fallback
+                decimals: realDecimals,
+                expiresAt: Date.now() + CACHE_TTL_MS,
+            });
+            // Also cache by the coin type to allow reverse lookup
+            dynamicCache.set(match.coinType, {
+                address: match.coinType,
+                symbol: match.symbol,
+                decimals: realDecimals,
                 expiresAt: Date.now() + CACHE_TTL_MS,
             });
             return match.coinType;
@@ -144,7 +159,12 @@ export async function resolveTokenAddress(symbol: string): Promise<string> {
  */
 export function getTokenDecimals(symbol: string): number {
   const token = resolveToken(symbol);
-  return token?.decimals ?? 9;
+  if (token) return token.decimals;
+
+  const cached = dynamicCache.get(symbol.trim().toUpperCase()) || dynamicCache.get(symbol.trim());
+  if (cached) return cached.decimals;
+
+  return 9;
 }
 
 /**
