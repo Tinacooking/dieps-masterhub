@@ -31,6 +31,10 @@ export const SwapperSection: React.FC = () => {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [tokenModalMode, setTokenModalMode] = useState<'source' | 'dest' | null>(null);
 
+  const [guardianChecks, setGuardianChecks] = useState<any[]>([]);
+  const [ptbSteps, setPtbSteps] = useState<any[]>([]);
+  const [isSafe, setIsSafe] = useState<boolean>(true);
+
   useEffect(() => {
     if (walletAddress && sourceToken) {
       fetch("/api/balance", {
@@ -85,66 +89,48 @@ export const SwapperSection: React.FC = () => {
     setHasConfirmedSettings(false);
 
     try {
-      // 1. Parse Intent API
-      const parseRes = await fetch("/api/parse-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: intentInput })
-      });
-      const parsedData = await parseRes.json();
-
-      if (parsedData.error || !parsedData.intent) {
-        throw new Error(parsedData.error || "Failed to parse intent");
-      }
-
-      setAmount(parsedData.intent.trade_amount || "0");
-      setSourceToken(parsedData.intent.source_token_symbol || "SUI");
-      setDestToken(parsedData.intent.destination_token_symbol || "USDC");
-
-      setProcessStep(1);
       fetchGasPrice();
 
-      // 2. Fetch Route API
-      const routeRes = await fetch("/api/calculate-optimal-route", {
+      const processRes = await fetch("/api/process-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sourceAddress: parsedData.intent.source_token_address,
-          destAddress: parsedData.intent.destination_token_address,
-          sourceSymbol: parsedData.intent.source_token_symbol,
-          destSymbol: parsedData.intent.destination_token_symbol,
-          amount: parsedData.intent.trade_amount
+        body: JSON.stringify({ 
+          prompt: intentInput,
+          senderAddress: walletAddress || "0x0000000000000000000000000000000000000000000000000000000000000000"
         })
       });
-      const routeData = await routeRes.json();
+      
+      const data = await processRes.json();
 
-      // Store the nodes safely from Layer 2
-      setRouteNodes(routeData.route || []);
-      setEstOutput(routeData.expected_output ? Number(routeData.expected_output).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00');
+      if (data.error) {
+        throw new Error(data.error);
+      }
 
-      setProcessStep(2);
-
-      // 3. Layer 3: Evaluate Guardian Risk
-      const guardianRes = await fetch("/api/evaluate-guardian-risk", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sourceSymbol: parsedData.intent.source_token_symbol,
-          destSymbol: parsedData.intent.destination_token_symbol,
-          route: routeData.route,
-          execution_impact: routeData.execution_impact,
-        })
-      });
-      const guardianData = await guardianRes.json();
-
-      // Store Risk Status in state if needed, for now we let it pass
-
-      setProcessStep(3);
+      setProcessStep(1);
+      
+      setAmount(data.intent.trade_amount || "0");
+      setSourceToken(data.intent.source_token_symbol || "SUI");
+      setDestToken(data.intent.destination_token_symbol || "USDC");
 
       setTimeout(() => {
-        setProcessStep(4);
-        setAppState('done');
-      }, 1500);
+        setProcessStep(2);
+        setRouteNodes(data.route.route || []);
+        setEstOutput(data.route.expected_output ? Number(data.route.expected_output).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00');
+        
+        setTimeout(() => {
+          setProcessStep(3);
+          setGuardianChecks(data.guardian.checks || []);
+          setIsSafe(data.guardian.safe);
+          setPtbSteps(data.ptb.ptbSteps || []);
+          
+          setTimeout(() => {
+            setProcessStep(4);
+            setAppState('done');
+          }, 1000);
+        }, 1000);
+      }, 1000);
+
+
 
     } catch (err) {
       console.error("Failed to simulate", err);
@@ -230,16 +216,17 @@ export const SwapperSection: React.FC = () => {
             isWalletModalOpen={isWalletModalOpen}
             setIsWalletModalOpen={setIsWalletModalOpen}
             setTokenModalMode={setTokenModalMode}
+            isSafe={isSafe}
           />
 
           <div className={`lg:col-span-3 xl:col-span-3 flex flex-col gap-4 h-full min-h-0 transition-all duration-700 ease-out ${appState === 'idle' ? 'opacity-30 scale-[0.99] pointer-events-none select-none' : 'opacity-100 scale-100'}`}>
             {processStep >= 3 ? (
               <>
-                <GuardianRisk processStep={processStep} />
+                <GuardianRisk processStep={processStep} guardianChecks={guardianChecks} isSafe={isSafe} />
 
                 <PTBFlow
                   processStep={processStep}
-                  routeNodes={routeNodes}
+                  ptbSteps={ptbSteps}
                   amount={amount}
                   sourceToken={sourceToken}
                 />
