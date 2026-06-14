@@ -240,8 +240,58 @@ export async function createApp() {
       return res.status(400).json({ error: "Missing prompt" });
     }
 
-    // Real-time rule-based intent resolution to parse SUI trade params
-    // In production, an AI agent or LLM will further resolve    // 2. Fallback to Regex if AI fails or no API Key
+    try {
+      // 1. Try to use Gemini AI first
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (apiKey) {
+        const genAI = new GoogleGenAI({ apiKey });
+        const response = await genAI.models.generateContent({
+          model: 'gemini-2.5-flash',
+          contents: `Extract the trading intent from this prompt: "${prompt}". 
+          Return a JSON object strictly in this format without markdown wrappers:
+          {
+            "trade_amount": "number string",
+            "source_token_symbol": "token symbol or full contract address (e.g. SUI, or 0x2::sui::SUI)",
+            "destination_token_symbol": "token symbol or full contract address (e.g. USDC, or 0x4ece...::turbos::TURBOS)"
+          }`,
+        });
+        
+        let text = response.text;
+        if (text) {
+          text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+          const aiIntent = JSON.parse(text);
+          
+          let source_token_address = await resolveTokenAddress(aiIntent.source_token_symbol);
+          if (!source_token_address) source_token_address = aiIntent.source_token_symbol;
+          let destination_token_address = await resolveTokenAddress(aiIntent.destination_token_symbol);
+          if (!destination_token_address) destination_token_address = aiIntent.destination_token_symbol;
+
+          let priority_mode = "SAFE";
+          if (prompt.toLowerCase().includes("safest")) priority_mode = "SAFE";
+          if (prompt.toLowerCase().includes("fast")) priority_mode = "FAST";
+          if (prompt.toLowerCase().includes("max output") || prompt.toLowerCase().includes("maximum")) priority_mode = "MAX_OUTPUT";
+
+          return res.json({
+            intent: {
+              action_type: "SWAP",
+              trade_amount: aiIntent.trade_amount,
+              source_token_symbol: aiIntent.source_token_symbol,
+              source_token_address,
+              destination_token_symbol: aiIntent.destination_token_symbol,
+              destination_token_address,
+              priority_mode: priority_mode,
+              user_constraints: [],
+            },
+            confidence_score: 0.99,
+            validation_status: "VALID"
+          });
+        }
+      }
+    } catch (e) {
+      console.warn("Gemini intent parsing failed, falling back to regex", e);
+    }
+
+    // 2. Fallback to Regex if AI fails or no API Key
     const regex = /(?:swap|exchange|convert|buy|sell)\s+([\d.,]+)\s+([a-zA-Z0-9_:-]+)\s+(?:to|for|into)\s+([a-zA-Z0-9_:-]+)/i;
     const match = prompt.match(regex);
 
@@ -255,20 +305,20 @@ export async function createApp() {
       let destination_token_address = await resolveTokenAddress(destination_token_symbol);
       if (!destination_token_address) destination_token_address = destination_token_symbol;
 
-      // Determine priority mode from constraint analysis
       let priority_mode = "SAFE";
       if (prompt.toLowerCase().includes("safest")) priority_mode = "SAFE";
       if (prompt.toLowerCase().includes("fast")) priority_mode = "FAST";
-        const response = await ai.models.generateContent({
-          model: 'gemini-2.5-flash',
-          contents: `Extract the trading intent from this prompt: "${prompt}". 
-          Return a JSON object strictly in this format without markdown wrappers:
-          {
-            "trade_amount": "number string",
-            "source_token_symbol": "token symbol or full contract address (e.g. SUI, or 0x2::sui::SUI)",
-            "destination_token_symbol": "token symbol or full contract address (e.g. USDC, or 0x4ece...::turbos::TURBOS)"
-          }`,
-        });  priority_mode: priority_mode,
+      if (prompt.toLowerCase().includes("max output") || prompt.toLowerCase().includes("maximum")) priority_mode = "MAX_OUTPUT";
+
+      return res.json({
+        intent: {
+          action_type: "SWAP",
+          trade_amount: amount,
+          source_token_symbol,
+          source_token_address,
+          destination_token_symbol,
+          destination_token_address,
+          priority_mode: priority_mode,
           user_constraints: [],
         },
         confidence_score: 0.97,
