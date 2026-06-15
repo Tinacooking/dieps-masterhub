@@ -134,4 +134,4 @@ While the Sui ecosystem boasts robust DeFi infrastructure, DIEPS introduces an e
 DIEPS does not replace aggregators; it acts as an intelligent overlay. By abstracting away the mechanical execution into natural language and reinforcing it with institutional-grade risk models, DIEPS aims to onboard the next one million retail users to the Sui Blockchain.
 
 ## 🔒 Security Notice
-*This is an experimental interface running on Testnet endpoints by default. Real PTB submission and Move execution features simulate their states unless connected to mainnet RPC nodes.*
+*This is an experimental interface Hackathon project running on Mainnet endpoints by default. Real PTB submission and Move execution features simulate their states unless connected to mainnet RPC nodes.*
