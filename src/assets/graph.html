@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUI Ecosystem Network</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #060d1f;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #e2eeff;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+  #header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(6,13,31,0.97), transparent);
+  }
+  #header h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #7aadff; }
+  #header p { font-size: 12px; color: #4a6da0; letter-spacing: 0.04em; }
+  #legend {
+    position: fixed; bottom: 24px; left: 28px; z-index: 10;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #4a6da0; }
+  .legend-dot { border-radius: 50%; flex-shrink: 0; }
+  #tooltip {
+    position: fixed;
+    background: rgba(8,18,48,0.97);
+    border: 1px solid rgba(100,160,255,0.3);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px; color: #c8dbff;
+    pointer-events: none; opacity: 0;
+    transition: opacity 0.15s; z-index: 20;
+    backdrop-filter: blur(8px);
+    max-width: 200px;
+  }
+  #tooltip .tok-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+  #tooltip .tok-type { color: #5588cc; font-size: 11px; }
+  svg { width: 100vw; height: 100vh; display: block; }
+  .node circle { cursor: pointer; }
+  .node:hover circle { filter: brightness(1.45) !important; }
+  .node text { pointer-events: none; user-select: none; }
+  .link { fill: none; stroke: rgba(80,130,220,0.28); stroke-width: 0.8px; }
+  .link.highlight { stroke: rgba(100,190,255,0.75); stroke-width: 1.6px; }
+  .node.dimmed circle { opacity: 0.12; }
+  .node.dimmed text { opacity: 0.06; }
+  .link.dimmed { opacity: 0.04; }
+  #controls {
+    position: fixed; bottom: 24px; right: 28px; z-index: 10;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .ctrl-btn {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(20,40,90,0.8);
+    border: 1px solid rgba(80,130,220,0.3);
+    color: #7aadff; font-size: 18px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+    backdrop-filter: blur(6px);
+  }
+  .ctrl-btn:hover { background: rgba(30,60,130,0.9); border-color: rgba(100,170,255,0.6); }
+  #stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div id="header">
+  <h1>SUI Ecosystem Network</h1>
+  <p>Click node to explore · Scroll to zoom · Drag to pan</p>
+</div>
+<div id="tooltip">
+  <div class="tok-name" id="tip-name"></div>
+  <div class="tok-type" id="tip-type"></div>
+</div>
+<div id="legend">
+  <div class="legend-item">
+    <div class="legend-dot" style="width:18px;height:18px;background:#1a6fff;border:2px solid #66b3ff;box-shadow:0 0 8px #1a6fff;"></div>
+    <span style="color:#7aadff;">Layer 1 (SUI)</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="width:14px;height:14px;background:#0d3080;border:1.5px solid #3366cc;"></div>
+    <span>Core DeFi</span>
+  </div>
+  <div class="legend-item">
+    <div class="legend-dot" style="width:11px;height:11px;background:#0a1f5c;border:1px solid #223a80;"></div>
+    <span>Ecosystem tokens</span>
+  </div>
+</div>
+<div id="controls">
+  <button class="ctrl-btn" id="btn-zoom-in">+</button>
+  <button class="ctrl-btn" id="btn-zoom-out">−</button>
+  <button class="ctrl-btn" id="btn-reset" style="font-size:13px;">↺</button>
+</div>
+<svg id="graph">
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M2 2L8 5L2 8" fill="none" stroke="rgba(80,140,230,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <filter id="glow-sui">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-mid">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <radialGradient id="sui-grad" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#4499ff"/>
+      <stop offset="100%" stop-color="#0033cc"/>
+    </radialGradient>
+    <radialGradient id="core-grad" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#1a4aaa"/>
+      <stop offset="100%" stop-color="#081e6e"/>
+    </radialGradient>
+  </defs>
+  <g id="zoom-group">
+    <g id="links-group"></g>
+    <g id="nodes-group"></g>
+  </g>
+</svg>
+<script>
+// Stars
+(function(){
+  const c=document.getElementById('stars');
+  c.width=window.innerWidth; c.height=window.innerHeight;
+  const ctx=c.getContext('2d');
+  for(let i=0;i<220;i++){
+    const x=Math.random()*c.width, y=Math.random()*c.height;
+    const r=Math.random()*1.2, a=Math.random()*0.5+0.1;
+    ctx.beginPath(); ctx.arc(x,y,r,0,2*Math.PI);
+    ctx.fillStyle=`rgba(160,200,255,${a})`; ctx.fill();
+  }
+})();
+
+// ── Data: only tokens NATIVE to SUI blockchain ─────────────────────────────
+// Removed: OCEAN (Ethereum), PYTH (Solana-native), WORM (cross-chain infra, not SUI-native),
+//          SUPRA (own L1), MANGO (Solana), MYSTEN (company, no token),
+//          AFTERMATH duplicate, DEEP2 duplicate, SUIA/PINO (unverified), GSPOT (unverified)
+// Added:   IKA, MMT (Momentum), haSUI (Haedal LST), NAVX, NS, BLUEMOVE, TYPUS, BUCKET
+
+const nodes = [
+  // tier 0 = SUI
+  { id:"SUI",      tier:0, label:"SUI",      type:"Layer 1 · Native token" },
+
+  // tier 1 = core DeFi / major protocols native to SUI
+  { id:"CETUS",    tier:1, label:"CETUS",    type:"DEX · Concentrated liquidity (CLMM)" },
+  { id:"DEEP",     tier:1, label:"DEEP",     type:"DeepBook · On-chain orderbook" },
+  { id:"WAL",      tier:1, label:"WAL",      type:"Walrus · Decentralized storage" },
+  { id:"NAVI",     tier:1, label:"NAVI",     type:"Navi Protocol · Lending & borrowing" },
+  { id:"SCA",      tier:1, label:"SCA",      type:"Scallop · Lending & stablecoin" },
+  { id:"SEND",     tier:1, label:"SEND",     type:"Suilend · Lending protocol" },
+  { id:"USDC",     tier:1, label:"USDC",     type:"USD Coin · Native on SUI (Circle)" },
+  { id:"USDT",     tier:1, label:"USDT",     type:"Tether · Bridged stablecoin on SUI" },
+  { id:"HAEDAL",   tier:1, label:"HAEDAL",   type:"Haedal · Liquid staking protocol" },
+  { id:"AFM",      tier:1, label:"AFM",      type:"Aftermath Finance · Multi-asset DEX" },
+
+  // tier 2 = secondary SUI-native protocols
+  { id:"NAVX",     tier:2, label:"NAVX",     type:"Navi · Governance & utility token" },
+  { id:"SCLP",     tier:2, label:"SCLP",     type:"Scallop · xSCA boosted token" },
+  { id:"BUCK",     tier:2, label:"BUCK",     type:"Bucket Protocol · Decentralized stablecoin" },
+  { id:"TURB",     tier:2, label:"TURB",     type:"Turbos Finance · DEX & yield" },
+  { id:"KRIYA",    tier:2, label:"KRIYA",    type:"Kriya DEX · Perp & swap" },
+  { id:"ALF",      tier:2, label:"ALF",      type:"AlphaFi · Automated DeFi vaults" },
+  { id:"BLUEFIN",  tier:2, label:"BLUEFIN",  type:"Bluefin · Perp DEX on SUI" },
+  { id:"7K",       tier:2, label:"7K",       type:"7K Aggregator · Best-rate swap router" },
+  { id:"TYPUS",    tier:2, label:"TYPUS",    type:"Typus Finance · Options & structured products" },
+  { id:"SUIP",     tier:2, label:"SUIP",     type:"SuiPad · IDO launchpad on SUI" },
+  { id:"NS",       tier:2, label:"NS",       type:"Sui Name Service · .sui domain names" },
+  { id:"haSUI",    tier:2, label:"haSUI",    type:"Haedal · Liquid staked SUI token" },
+  { id:"vSUI",     tier:2, label:"vSUI",     type:"Volo · Liquid staked SUI token" },
+  { id:"afSUI",    tier:2, label:"afSUI",    type:"Aftermath · Liquid staked SUI token" },
+  { id:"IKA",      tier:2, label:"IKA",      type:"Ika Protocol · MPC & cross-chain (SUI-native)" },
+  { id:"MMT",      tier:2, label:"MMT",      type:"Momentum Finance · DEX & liquidity hub" },
+  { id:"FLOW",     tier:2, label:"FLOW",     type:"FlowX · DEX aggregator on SUI" },
+  { id:"SSWP",     tier:2, label:"SSWP",     type:"Suiswap · Community-first DEX" },
+
+  // tier 3 = smaller / meme tokens verified on SUI
+  { id:"HIPPO",    tier:3, label:"HIPPO",    type:"sudeng · First SUI meme token" },
+  { id:"FUD",      tier:3, label:"FUD",      type:"Fud the Pug · SUI meme token" },
+  { id:"AXOL",     tier:3, label:"AXOL",     type:"Axol · Axolotl-themed SUI meme" },
+  { id:"AAA",      tier:3, label:"AAA",      type:"AAA Cat · SUI meme token" },
+  { id:"LOFI",     tier:3, label:"LOFI",     type:"LoFi · SUI meme token" },
+  { id:"BLUB",     tier:3, label:"BLUB",     type:"Blub · SUI meme token" },
+  { id:"SUIM",     tier:3, label:"SUIM",     type:"Suiman · SUI meme token" },
+  { id:"WHAL",     tier:3, label:"WHAL",     type:"Whale · SUI meme token" },
+  { id:"MOVE",     tier:3, label:"MOVE",     type:"Move Dollar · SUI-native stablecoin" },
+  { id:"BUCKET",   tier:3, label:"BUCKET",   type:"Bucket Protocol · Governance token" },
+  { id:"ALPHA",    tier:3, label:"ALPHA",    type:"AlphaFi · Vault receipt token" },
+  { id:"FDUSD",    tier:3, label:"FDUSD",    type:"First Digital USD · Stablecoin on SUI" },
+  { id:"SUIFRENS", tier:3, label:"SUIFRENS", type:"SuiFrens · NFT / community token" },
+  { id:"IPXS",     tier:3, label:"IPXS",     type:"Interest Protocol · SUI staking" },
+  { id:"BLUE",     tier:3, label:"BLUE",     type:"Bluemove · NFT marketplace token" },
+];
+
+const links = [
+  // SUI → tier 1
+  {source:"SUI", target:"CETUS"},
+  {source:"SUI", target:"DEEP"},
+  {source:"SUI", target:"WAL"},
+  {source:"SUI", target:"NAVI"},
+  {source:"SUI", target:"SCA"},
+  {source:"SUI", target:"SEND"},
+  {source:"SUI", target:"USDC"},
+  {source:"SUI", target:"USDT"},
+  {source:"SUI", target:"HAEDAL"},
+  {source:"SUI", target:"AFM"},
+  // SUI → tier 2
+  {source:"SUI", target:"KRIYA"},
+  {source:"SUI", target:"NS"},
+  {source:"SUI", target:"IKA"},
+  {source:"SUI", target:"MMT"},
+  // SUI → tier 3 (meme)
+  {source:"SUI", target:"HIPPO"},
+  {source:"SUI", target:"FUD"},
+  {source:"SUI", target:"AXOL"},
+  // core ↔ core
+  {source:"CETUS", target:"DEEP"},
+  {source:"CETUS", target:"NAVI"},
+  {source:"CETUS", target:"AFM"},
+  {source:"CETUS", target:"TURB"},
+  {source:"CETUS", target:"BLUEFIN"},
+  {source:"CETUS", target:"7K"},
+  {source:"CETUS", target:"FLOW"},
+  {source:"CETUS", target:"MMT"},
+  {source:"DEEP",  target:"WAL"},
+  {source:"DEEP",  target:"SCA"},
+  {source:"DEEP",  target:"KRIYA"},
+  {source:"DEEP",  target:"7K"},
+  {source:"NAVI",  target:"USDC"},
+  {source:"NAVI",  target:"NAVX"},
+  {source:"NAVI",  target:"haSUI"},
+  {source:"SCA",   target:"SCLP"},
+  {source:"SCA",   target:"SEND"},
+  {source:"SEND",  target:"ALF"},
+  {source:"USDC",  target:"USDT"},
+  {source:"USDC",  target:"BUCK"},
+  {source:"USDC",  target:"MOVE"},
+  {source:"USDC",  target:"FDUSD"},
+  {source:"HAEDAL",target:"haSUI"},
+  {source:"AFM",   target:"afSUI"},
+  {source:"AFM",   target:"ALPHA"},
+  // tier 2 links
+  {source:"NAVX",   target:"NAVI"},
+  {source:"SCLP",   target:"SCA"},
+  {source:"BUCK",   target:"BUCKET"},
+  {source:"TURB",   target:"TYPUS"},
+  {source:"KRIYA",  target:"BLUEFIN"},
+  {source:"7K",     target:"FLOW"},
+  {source:"7K",     target:"SSWP"},
+  {source:"NS",     target:"SUIP"},
+  {source:"SUIP",   target:"IKA"},
+  {source:"vSUI",   target:"HAEDAL"},
+  {source:"IPXS",   target:"SCA"},
+  {source:"BLUE",   target:"SUIFRENS"},
+  // tier 3
+  {source:"USDC", target:"AAA"},
+  {source:"USDC", target:"LOFI"},
+  {source:"USDC", target:"BLUB"},
+  {source:"USDC", target:"SUIM"},
+  {source:"USDC", target:"WHAL"},
+  {source:"CETUS", target:"SUIFRENS"},
+  {source:"CETUS", target:"IPXS"},
+  {source:"CETUS", target:"WHAL"},
+];
+
+// ── Sizing by tier ─────────────────────────────────────────────────────────
+const tierRadius   = [38, 17, 12.5, 9];
+const tierFontSize = [14, 8.5, 7.5, 7];
+const tierFill     = ["url(#sui-grad)", "url(#core-grad)", "#0a1f60", "#071548"];
+const tierStroke   = ["#66b3ff", "#3366cc", "#223a80", "#1a2f70"];
+const tierStrokeW  = [3, 1.5, 1, 0.8];
+
+const W = window.innerWidth, H = window.innerHeight;
+
+const svg       = d3.select("#graph");
+const zoomGroup = d3.select("#zoom-group");
+const linksGroup= d3.select("#links-group");
+const nodesGroup= d3.select("#nodes-group");
+const tooltip   = document.getElementById('tooltip');
+const tipName   = document.getElementById('tip-name');
+const tipType   = document.getElementById('tip-type');
+
+const sim = d3.forceSimulation(nodes)
+  .force("link", d3.forceLink(links).id(d=>d.id).distance(d=>{
+    const t = Math.max(d.source.tier??0, d.target.tier??0);
+    return [95,135,165,195][t];
+  }).strength(0.45))
+  .force("charge", d3.forceManyBody().strength(d=>[-700,-220,-130,-85][d.tier]))
+  .force("center", d3.forceCenter(W/2, H/2))
+  .force("collision", d3.forceCollide().radius(d=>tierRadius[d.tier]+15))
+  .force("radial", d3.forceRadial(d=>[0,130,225,320][d.tier], W/2, H/2)
+    .strength(d=>[1, 0.55, 0.45, 0.35][d.tier]));
+
+const link = linksGroup.selectAll("line").data(links).join("line")
+  .attr("class","link").attr("marker-end","url(#arrowhead)");
+
+const node = nodesGroup.selectAll("g").data(nodes).join("g")
+  .attr("class","node")
+  .call(d3.drag()
+    .on("start",(e,d)=>{ if(!e.active) sim.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+    .on("drag", (e,d)=>{ d.fx=e.x; d.fy=e.y; })
+    .on("end",  (e,d)=>{ if(!e.active) sim.alphaTarget(0); if(d.tier!==0){d.fx=null;d.fy=null;} })
+  )
+  .on("click", handleClick)
+  .on("mousemove",(e,d)=>{
+    tipName.textContent=d.label; tipType.textContent=d.type;
+    tooltip.style.opacity=1;
+    tooltip.style.left=(e.clientX+14)+"px"; tooltip.style.top=(e.clientY-10)+"px";
+  })
+  .on("mouseleave",()=>{ tooltip.style.opacity=0; });
+
+// SUI outer glow rings
+node.filter(d=>d.tier===0).append("circle").attr("r",d=>tierRadius[d.tier]+18)
+  .attr("fill","none").attr("stroke","rgba(70,150,255,0.12)").attr("stroke-width",16);
+node.filter(d=>d.tier===0).append("circle").attr("r",d=>tierRadius[d.tier]+9)
+  .attr("fill","none").attr("stroke","rgba(90,170,255,0.22)").attr("stroke-width",7);
+
+// Main circles
+node.append("circle")
+  .attr("r",d=>tierRadius[d.tier])
+  .attr("fill",d=>tierFill[d.tier])
+  .attr("stroke",d=>tierStroke[d.tier])
+  .attr("stroke-width",d=>tierStrokeW[d.tier])
+  .attr("filter",d=>d.tier===0?"url(#glow-sui)":d.tier===1?"url(#glow-mid)":"none");
+
+// Labels
+node.append("text")
+  .text(d=>d.label)
+  .attr("text-anchor","middle").attr("dominant-baseline","central")
+  .attr("font-size",d=>tierFontSize[d.tier])
+  .attr("font-weight",d=>d.tier<=1?"700":"600")
+  .attr("font-family","Inter, system-ui, sans-serif")
+  .attr("fill",d=>d.tier===0?"#ffffff":d.tier===1?"#c8dfff":"#8aabdd")
+  .attr("dy",d=>d.tier===0?"-0.12em":"0");
+
+// SUI sublabel
+node.filter(d=>d.tier===0).append("text").text("Layer 1")
+  .attr("text-anchor","middle").attr("dominant-baseline","central")
+  .attr("dy","1.4em").attr("font-size",7.5)
+  .attr("font-family","Inter, system-ui, sans-serif")
+  .attr("fill","#7aadff").attr("letter-spacing","0.06em");
+
+sim.on("tick",()=>{
+  link
+    .attr("x1",d=>d.source.x).attr("y1",d=>d.source.y)
+    .attr("x2",d=>{ const dx=d.target.x-d.source.x, dy=d.target.y-d.source.y, dist=Math.sqrt(dx*dx+dy*dy)||1; return d.target.x-dx/dist*(tierRadius[d.target.tier]+6); })
+    .attr("y2",d=>{ const dx=d.target.x-d.source.x, dy=d.target.y-d.source.y, dist=Math.sqrt(dx*dx+dy*dy)||1; return d.target.y-dy/dist*(tierRadius[d.target.tier]+6); });
+  node.attr("transform",d=>`translate(${d.x},${d.y})`);
+});
+
+// ── Click highlight ────────────────────────────────────────────────────────
+let selected=null;
+function handleClick(e,d){
+  e.stopPropagation();
+  if(selected===d.id){ resetHighlight(); selected=null; return; }
+  selected=d.id;
+  const conn=new Set([d.id]);
+  links.forEach(l=>{
+    const s=typeof l.source==='object'?l.source.id:l.source;
+    const t=typeof l.target==='object'?l.target.id:l.target;
+    if(s===d.id) conn.add(t); if(t===d.id) conn.add(s);
+  });
+  node.classed("dimmed",n=>!conn.has(n.id));
+  link.classed("dimmed",l=>{ const s=typeof l.source==='object'?l.source.id:l.source, t=typeof l.target==='object'?l.target.id:l.target; return s!==d.id&&t!==d.id; });
+  link.classed("highlight",l=>{ const s=typeof l.source==='object'?l.source.id:l.source, t=typeof l.target==='object'?l.target.id:l.target; return s===d.id||t===d.id; });
+}
+function resetHighlight(){ node.classed("dimmed",false); link.classed("dimmed",false).classed("highlight",false); }
+svg.on("click",()=>{ resetHighlight(); selected=null; });
+
+// ── Zoom ──────────────────────────────────────────────────────────────────
+const zoom=d3.zoom().scaleExtent([0.3,3]).on("zoom",e=>zoomGroup.attr("transform",e.transform));
+svg.call(zoom);
+document.getElementById('btn-zoom-in').addEventListener('click',()=>svg.transition().duration(300).call(zoom.scaleBy,1.35));
+document.getElementById('btn-zoom-out').addEventListener('click',()=>svg.transition().duration(300).call(zoom.scaleBy,0.75));
+document.getElementById('btn-reset').addEventListener('click',()=>svg.transition().duration(500).call(zoom.transform,d3.zoomIdentity));
+
+// Fix SUI to center
+setTimeout(()=>{
+  const sui=nodes.find(n=>n.id==="SUI");
+  if(sui){ sui.fx=W/2; sui.fy=H/2; sim.alpha(0.1).restart(); }
+},1000);
+</script>
+</body>
+</html>

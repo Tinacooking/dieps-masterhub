@@ -1,0 +1,4801 @@
+[
+  {
+    "symbol": "AAA",
+    "name": "AAA",
+    "coinType": "0xd976fda9a9786cda1a36dee360013d775a5e5f206f8e20f84fad3385e99eeb2d::aaa::AAA",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/7424e8f91cb1b03aca85a9d653b0010b46197f199274e436fd546c3247c7f3ad?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "AAASUI",
+    "name": "AAASUI",
+    "coinType": "0x3ca7ea7e115945923ddd0415373b67757d64ae37e93c8d4129a64f8fd3ed3045::aaasui::AAASUI"
+  },
+  {
+    "symbol": "AAVE",
+    "name": "AAVE",
+    "coinType": "0x59b8108d9b9e69394b915436401982a3aad4af6b9c4d134923abe21776617f43::aave::AAVE"
+  },
+  {
+    "symbol": "ADENI",
+    "name": "ADENI",
+    "coinType": "0xc98736be213323acf431f109908c8f66f132b7936d64de328dd1aafb5c337d4b::adeni::ADENI"
+  },
+  {
+    "symbol": "AED",
+    "name": "AED",
+    "coinType": "0xb972aaa43af8bb76d41ce194d9a2fe61167e77f21b12a8c9114094bd4bbcb7d2::aed::AED"
+  },
+  {
+    "symbol": "AEST",
+    "name": "AEST",
+    "coinType": "0xb88be18477c151fd9759ff7c2509c7848f46b1db0793741c886db037d30be5f2::aest::AEST"
+  },
+  {
+    "symbol": "AFSUI",
+    "name": "AFSUI",
+    "coinType": "0xf325ce1300e8dac124071d3152c5c5ee6174914f8bc2161e88329cf579246efc::afsui::AFSUI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/4e1cdbef7dc289222d7eaa87a5e98fdc58a8dcaf4a5bbf3c80c9ea6d403ab728?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "AGENT",
+    "name": "AGENT",
+    "coinType": "0x5613a7e1f4f8fc7b896781aaba9b52944763e14421458d14c829223541d77c1c::agent::AGENT"
+  },
+  {
+    "symbol": "AI",
+    "name": "AI",
+    "coinType": "0x378531cc5ab4f33c481699e3625a017f247ff4b5f1323bae76ed4726fd27b95a::ai::AI"
+  },
+  {
+    "symbol": "AI_COIN",
+    "name": "AI_COIN",
+    "coinType": "0xba7637b85ecd70b086e01ff669e04d4921872369272377c0751a374bc273d7b2::ai_coin::AI_COIN"
+  },
+  {
+    "symbol": "AI1000",
+    "name": "AI1000",
+    "coinType": "0x859e1d33e0e5873f382aaa2929d6da1556b84528e0523a40995c9827eb2cbe38::ai1000::AI1000",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/5982ac42590e095e92744baa10ae75a506182a69eda462a7bb310b5c7e7d1809?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "AIDA",
+    "name": "AIDA",
+    "coinType": "0x57e93adcecd97fc8b30fc6f124be185f292b648e324773d8fbe6650e8274790f::aida::AIDA",
+    "logoUrl": "https://assets.coingecko.com/coins/images/53392/thumb/0x57e93adcecd97fc8b30fc6f124be185f292b648e324773d8fbe6650e8274790f__aida__aida.webp?1736278381"
+  },
+  {
+    "symbol": "AIDA",
+    "name": "AIDA",
+    "coinType": "0xcee208b8ae33196244b389e61ffd1202e7a1ae06c8ec210d33402ff649038892::aida::AIDA",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/mJIv0MF3JI4IeLXf?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "AIELON",
+    "name": "AIELON",
+    "coinType": "0xd7801c26cabc1fb71fbfd9b44265d6cf97a6b1b07625d96bd2d2cffdd1b46841::aielon::AIELON"
+  },
+  {
+    "symbol": "AIELONV2",
+    "name": "AIELONV2",
+    "coinType": "0xb57c45123eb6daa868e164a504c5a1b7575d87ebabf6c5ef5e09bb86ffc13e8b::aielonv2::AIELONV2"
+  },
+  {
+    "symbol": "AIFRENS",
+    "name": "AIFRENS",
+    "coinType": "0x9fe1780ac27ec50c9c441fb31822f5c148f841f09ee455c6a0daf7c634a30a27::aifrens::AIFRENS"
+  },
+  {
+    "symbol": "AIMOVORO",
+    "name": "AIMOVORO",
+    "coinType": "0x43b07ab14c5f3b43ece644f68687cc455595576b627ad41949fe7c2ef9a5f16f::aimovoro::AIMOVORO"
+  },
+  {
+    "symbol": "AITI",
+    "name": "AITI",
+    "coinType": "0x8185ff39b4f830c2fe9956a04abc780a344263f10d0522501567a04a21f2986f::AiTi::AITI"
+  },
+  {
+    "symbol": "AIX",
+    "name": "AIX",
+    "coinType": "0x13388a74849c3d7d799e888cc9687802c2a4fff68f203f8affb06fc9e390ec57::aix::AIX"
+  },
+  {
+    "symbol": "AIXDG",
+    "name": "AIXDG",
+    "coinType": "0x9d470d0e20c00e35ad8af7c09c0aab7d3570381d3bd52073e9fa3f2b88c8e6d7::aixdg::AIXDG"
+  },
+  {
+    "symbol": "AIXSUI",
+    "name": "AIXSUI",
+    "coinType": "0x2925d5068b16b4ea1a572ae0882348846026e294e4d6f97d984dfd57e25dbdb1::aixsui::AIXSUI"
+  },
+  {
+    "symbol": "AKI",
+    "name": "AKI",
+    "coinType": "0x0d19c13abd1c58308c04bc54c884a49d06dc7e49242d5f123c3c136db264e9e6::aki::AKI"
+  },
+  {
+    "symbol": "ALGORITHM",
+    "name": "ALGORITHM",
+    "coinType": "0xdc6b867d90af0bd57797faea79f93464edb38102a1a2dab961d11582fe5ee277::algorithm::ALGORITHM"
+  },
+  {
+    "symbol": "ALICE",
+    "name": "ALICE",
+    "coinType": "0x0e975ca68a7cad7607271c173c784d34aaaeb1116e4887901a8bafef5732c6bf::alice::ALICE"
+  },
+  {
+    "symbol": "ALKIMI",
+    "name": "ALKIMI",
+    "coinType": "0x1a8f4bc33f8ef7fbc851f156857aa65d397a6a6fd27a7ac2ca717b51f2fd9489::alkimi::ALKIMI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/68374/thumb/Token_circle.png?1755523677"
+  },
+  {
+    "symbol": "ALLO",
+    "name": "ALLO",
+    "coinType": "0x83f6343a4948b7903947a1ba98484cceb2f15d47828834462dc4f3872f764fb6::allo::ALLO"
+  },
+  {
+    "symbol": "ALPHA",
+    "name": "ALPHA",
+    "coinType": "0xfe3afec26c59e874f3c1d60b8203cb3852d2bb2aa415df9548b8d688e6683f93::alpha::ALPHA",
+    "logoUrl": "https://assets.coingecko.com/coins/images/39087/thumb/Alpha_Logo_200_200.png?1720460811"
+  },
+  {
+    "symbol": "ALUSD",
+    "name": "ALUSD",
+    "coinType": "0xb68ec079f6a9df9e751a62032990d22bf765503f659af5a68e72e203a4b1273a::alusd::ALUSD"
+  },
+  {
+    "symbol": "AMC",
+    "name": "AMC",
+    "coinType": "0xbf70dd13bf589e07ac841f9b82e262c79d2557c647cee55f46c75a228651d364::amc::AMC"
+  },
+  {
+    "symbol": "ANIME",
+    "name": "ANIME",
+    "coinType": "0x41ddd6aa8cc262e71d231f2c89e35ae16a12846fcb61a7e32f948407a6784ec3::anime::ANIME"
+  },
+  {
+    "symbol": "ANIME",
+    "name": "ANIME",
+    "coinType": "0x384f170bc898ceee2a344616a6cddc8066e4ed05a6c65f734c0228b77a5abd16::anime::ANIME"
+  },
+  {
+    "symbol": "AOS",
+    "name": "AOS",
+    "coinType": "0x1fe58076ad0f899f895a8418bb2f3c41c0a5ebfc63b0aa4db077fc00f6339dc0::aos::AOS"
+  },
+  {
+    "symbol": "APEPE",
+    "name": "APEPE",
+    "coinType": "0x1aa1beca51ade902d4e444896750a59f9c683914a01eb8dd27468877deddfd78::apepe::APEPE"
+  },
+  {
+    "symbol": "APHD",
+    "name": "APHD",
+    "coinType": "0x87f6362f1a80f3016bf6251db9102ae8f61c3dc08b6f807d80b33a5f1cf12f85::aphd::APHD"
+  },
+  {
+    "symbol": "APU",
+    "name": "APU",
+    "coinType": "0xa9b444745120a2e53697b2e9b2621cd952dd76525c68cf0d408e32a5de13ab74::apu::APU"
+  },
+  {
+    "symbol": "AQUA",
+    "name": "AQUA",
+    "coinType": "0xab954d078dab0a6727ce58388931850be4bdb6f72703ea3cad3d6eb0c12a0283::aqua::AQUA"
+  },
+  {
+    "symbol": "ARBTKN",
+    "name": "ARBTKN",
+    "coinType": "0xf4e17e530f036d0316df3599576c3b9d743a6d6e681a926fb29b87b044e10613::arbtkn::ARBTKN"
+  },
+  {
+    "symbol": "ARTEMISII",
+    "name": "ARTEMISII",
+    "coinType": "0xe2542c3cdda1bc8faf752bdc585a8a5e85a77442320386fa175378a6ca5de119::artemisii::ARTEMISII"
+  },
+  {
+    "symbol": "ARTFI",
+    "name": "ARTFI",
+    "coinType": "0x706fa7723231e13e8d37dad56da55c027f3163094aa31c867ca254ba0e0dc79f::artfi::ARTFI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/38242/thumb/ARTFI_TOKEN_200_200.png?1716968882"
+  },
+  {
+    "symbol": "ASH",
+    "name": "ASH",
+    "coinType": "0x89b8f1c88e658171c409bfa428e344acd3028368eb19efbf7753434656b67be9::ash::ASH"
+  },
+  {
+    "symbol": "ASTEROID",
+    "name": "ASTEROID",
+    "coinType": "0xe26a18feb7770b5bde2d8711c42c83e9f00d7994f0d2cad388de6a2702ff73ae::asteroid::ASTEROID"
+  },
+  {
+    "symbol": "ASTHERUS",
+    "name": "ASTHERUS",
+    "coinType": "0x3439474a2a3aa6c89c9f107370d564ff3f1cbaee6489a5a970faae6fb588fe82::astherus::ASTHERUS"
+  },
+  {
+    "symbol": "ASTRA",
+    "name": "ASTRA",
+    "coinType": "0x4ae0ea71756b3873f1c1b0d143750f055f433d955e010ca05d650d7b10480666::astra::ASTRA"
+  },
+  {
+    "symbol": "ATM",
+    "name": "ATM",
+    "coinType": "0x78cdcf9b55db0bcba12e919067b4c21835ed852df1f3f6be9703f30769a0e8a9::atm::ATM"
+  },
+  {
+    "symbol": "ATTN",
+    "name": "ATTN",
+    "coinType": "0x0ef38abcdaaafedd1e2d88929068a3f65b59bf7ee07d7e8f573c71df02d27522::attn::ATTN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/56075/thumb/attn_png_CMC.png?1748344466"
+  },
+  {
+    "symbol": "AUSD",
+    "name": "AUSD",
+    "coinType": "0x2053d08c1e2bd02791056171aab0fd12bd7cd7efad2ab8f6b9c8902f14df2ff2::ausd::AUSD",
+    "logoUrl": "https://assets.coingecko.com/coins/images/39284/thumb/AUSD_1024px.png?1764684132"
+  },
+  {
+    "symbol": "AXAI",
+    "name": "AXAI",
+    "coinType": "0x4be9c340a6a9b567fe62b56ef893a22df421ba1451306688736443a3a6c041d8::axai::AXAI"
+  },
+  {
+    "symbol": "AXOL",
+    "name": "AXOL",
+    "coinType": "0xae00e078a46616bf6e1e6fb673d18dcd2aa31319a07c9bc92f6063363f597b4e::AXOL::AXOL",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/3a11f95981c48eb40138d61d524bf6f525962750ac8ead5b1c72b8c9de2257d9?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "AXOL",
+    "name": "AXOL",
+    "coinType": "0xf00eb7ab086967a33c04a853ad960e5c6b0955ef5a47d50b376d83856dc1215e::axol::AXOL",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/f483b33ffc0ae478ab5872423d410b06017d76b20cb6372f3a4b2abc16a7ae45?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "AZSQ",
+    "name": "AZSQ",
+    "coinType": "0x68b0993ea668a9e552e775f9ab8dc8e93da8ec8024d59dfea249b0703e9bdff2::azsq::AZSQ"
+  },
+  {
+    "symbol": "AZUR",
+    "name": "AZUR",
+    "coinType": "0xf72368851fb9d28049932d845887b5a4701fdd18d9d90989c55b910933cfc453::azur::AZUR",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/bab47ce4efd04bd207f2a81d7b305fdb238e149f377b5c5e452436d3d8f735f5?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BABEL",
+    "name": "BABEL",
+    "coinType": "0xd659de8b4a8d5d22be0bfc79d34dcb16c5133ea13c8ef3d1280f077831d1b44d::babel::BABEL"
+  },
+  {
+    "symbol": "BABYLOFI",
+    "name": "BABYLOFI",
+    "coinType": "0x1e8f1b2d8ccb15f78562ab6ed05fc477d58f9cd46a355d13fbcc2f9a7ce27023::babylofi::BABYLOFI"
+  },
+  {
+    "symbol": "BADINU",
+    "name": "BADINU",
+    "coinType": "0x5b154911639d47efc2f5e7d84ee65c7b001dc4cae19486de4d318ea9ae005582::BadInu::BADINU"
+  },
+  {
+    "symbol": "BAKA",
+    "name": "BAKA",
+    "coinType": "0x2a27d220ea03f0fd411f47035bb3989a4b2f0b323762398e0434af7d04a1fd55::baka::BAKA"
+  },
+  {
+    "symbol": "BALLSY",
+    "name": "BALLSY",
+    "coinType": "0x035d31053da220c12e196b053fe1cd20ee635001d8c81dce7a3f14e9c583713c::ballsy::BALLSY"
+  },
+  {
+    "symbol": "BANDW",
+    "name": "BANDW",
+    "coinType": "0x0887f0c00b13320e7692b18d6e71cfb4942df78608f4c29334833dd042754163::bandw::BANDW"
+  },
+  {
+    "symbol": "BANK",
+    "name": "BANK",
+    "coinType": "0x6794fc42f7fc267d95e83a59623c96f952420d4473b6fa70b012427217def2f8::bank::BANK"
+  },
+  {
+    "symbol": "BANKSY",
+    "name": "BANKSY",
+    "coinType": "0x42114954c65c9a0333bf0306947d40f262da6c945efaf3889dd8977302f64cd3::banksy::BANKSY"
+  },
+  {
+    "symbol": "BASEGUARD",
+    "name": "BASEGUARD",
+    "coinType": "0x5644781dc352edbb10b253240b66330a8a064c1ff7674d3186dcc87deede1154::baseguard::BASEGUARD"
+  },
+  {
+    "symbol": "BBALL",
+    "name": "BBALL",
+    "coinType": "0x1022a319706a70811ce31cbc20cea38feb955cdbf374c2fe44b598b5aca18c3e::bball::BBALL"
+  },
+  {
+    "symbol": "BBAXOL",
+    "name": "BBAXOL",
+    "coinType": "0x6a04d15df13185ea25526c7afe550581fe73435e3e4e00cbd7f857871d3e1897::bbaxol::BBAXOL"
+  },
+  {
+    "symbol": "BBONK",
+    "name": "BBONK",
+    "coinType": "0x6f81a28efac1bcd1e6038cdd04baf8263b50303338f707a7e7ae882c6b877ebe::BBONK::BBONK"
+  },
+  {
+    "symbol": "BCM",
+    "name": "BCM",
+    "coinType": "0xa607c850a0ce198d66de9e0ce929cc6146b87d4493b65c37330212b269bb42a2::bcm::BCM"
+  },
+  {
+    "symbol": "BEARS",
+    "name": "BEARS",
+    "coinType": "0xb0254143cfb31c310b7950276cbf7f929833504ef6537f42d733eddc49a9489d::bears::BEARS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/cec97c8192519ecedb3f339f3148b387a86c401b319860cf058901561cff6187?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BEASTIES",
+    "name": "BEASTIES",
+    "coinType": "0xae723a3b4509af4653e0e5b81863ba67afe35a30f00b810af3df896a76d8a29a::beasties::BEASTIES"
+  },
+  {
+    "symbol": "BECOME_WHALE",
+    "name": "BECOME_WHALE",
+    "coinType": "0x96417e7e556a0ca7b326e2ba20e1da617c5c1326d8abe32036ca531845307dc1::become_whale::BECOME_WHALE"
+  },
+  {
+    "symbol": "BEEG",
+    "name": "BEEG",
+    "coinType": "0x727458212ca0be056d9ccc0d42981bdf41109779fbd9c7fad56c4456e0c3d0c6::beeg::BEEG",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/hcGgrNSqM0g_CfwO?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BEPE",
+    "name": "BEPE",
+    "coinType": "0x015338375b4ca2ceeb4550d73bc153147911d9e9361c38872f6954f16dea0833::bepe::BEPE"
+  },
+  {
+    "symbol": "BEPE",
+    "name": "BEPE",
+    "coinType": "0xb71158630c9bad86c94d09ea9ba317dedca837c4a798f6ffb35e6f94d4bb3481::bepe::BEPE"
+  },
+  {
+    "symbol": "BESTG",
+    "name": "BESTG",
+    "coinType": "0xa1b3d00a8008ed0deaeb320f01f434fae3b0a7aa6006efa2ef7bbae638f4f7f7::bestg::BESTG"
+  },
+  {
+    "symbol": "BF0",
+    "name": "BF0",
+    "coinType": "0x162c6bf094a62498e6209ebb7128bdeaff88961ee322ab14f427ebf6d5a752b9::bf0::BF0"
+  },
+  {
+    "symbol": "BFLAP",
+    "name": "BFLAP",
+    "coinType": "0xeef1432e869f0b7533cb49517d5dea04cc05fbefec08b6191c207a761396d307::bflap::BFLAP"
+  },
+  {
+    "symbol": "BIAO",
+    "name": "BIAO",
+    "coinType": "0x8ddcb75038586a248ab94db6172077b19f84d7edbafc2e21fcd8677f0a5e9b18::biao::BIAO"
+  },
+  {
+    "symbol": "BILLY",
+    "name": "BILLY",
+    "coinType": "0xbc598ef950f73d43645e9ac3c961afb4037a172dd187ec3edc3ca3102051fa7c::billy::BILLY",
+    "logoUrl": "https://assets.coingecko.com/coins/images/68748/thumb/download_%283%29.png?1756451714"
+  },
+  {
+    "symbol": "BIT",
+    "name": "BIT",
+    "coinType": "0xa8b198382c959c4ff35e82d93a4ff9effc99eb28af1ec2a61d4ab32a1c5bde2d::bit::BIT"
+  },
+  {
+    "symbol": "BITS",
+    "name": "BITS",
+    "coinType": "0x117fd8fec6b8b97f7089475aeee6f8cb5728af2c0b03414598173543b7e5ff1f::bits::BITS"
+  },
+  {
+    "symbol": "BLAST",
+    "name": "BLAST",
+    "coinType": "0x0aafba36f17846f9f782adabdad89fdf5f92a64de941dd60bf537958cbfa0308::blast::BLAST"
+  },
+  {
+    "symbol": "BLAST",
+    "name": "BLAST",
+    "coinType": "0x72444d9cbe9fe8f616537662526db6bcb3737ed3b2fa3f9573eebb4f44afb5eb::blast::BLAST"
+  },
+  {
+    "symbol": "BLAST",
+    "name": "BLAST",
+    "coinType": "0x6e0414951a89a237761b0a4ae90aa34d289da956bbeac27d8e78e5c216fb1f65::blast::BLAST"
+  },
+  {
+    "symbol": "BLUB",
+    "name": "BLUB",
+    "coinType": "0xfa7ac3951fdca92c5200d468d31a365eb03b2be9936fde615e69f0c1274ad3a0::BLUB::BLUB",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/a226b2bd5ac8224293fa3f6d9a64a63e6bf76fe4e87d24e890ac93cf98e238a2?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BLUBIA",
+    "name": "BLUBIA",
+    "coinType": "0x3c524ee86d6a655dc199f50c5fc69af4d4eb75fae5901f5756b0436a31681c61::blubia::BLUBIA"
+  },
+  {
+    "symbol": "BLUE",
+    "name": "BLUE",
+    "coinType": "0x6cbf071cadfa1d0cc611d488f70fd89248d922de2b1e4dac39ce79d516f00c9f::blue::BLUE"
+  },
+  {
+    "symbol": "BLUE",
+    "name": "BLUE",
+    "coinType": "0xe1b45a0e641b9955a20aa0ad1c1f4ad86aad8afb07296d4085e349a50e90bdca::blue::BLUE",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/5ac34272bdc655a3cad77059ed745b1189463608f90642f47ca79e0c8cd279fd?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BLUWHALE_AI",
+    "name": "BLUWHALE_AI",
+    "coinType": "0xf8bfaf1cfefdc539a00e0bc37213c8f339cb411a6b0c4c023ed92f36c68d0fb6::bluwhale_ai::BLUWHALE_AI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/70201/thumb/bluwhale.png?1761018866"
+  },
+  {
+    "symbol": "BLZE",
+    "name": "BLZE",
+    "coinType": "0x2a1d1d7c492e41f92daea355bcec67e70dbc842152f551d05aaa5a32bdab1f86::blze::BLZE"
+  },
+  {
+    "symbol": "BOANOVA",
+    "name": "BOANOVA",
+    "coinType": "0x35784e1799efc03c53589b2bcac0cc59b09fbb73e570d8259cb329066851e9dd::boanova::BOANOVA"
+  },
+  {
+    "symbol": "BOBO",
+    "name": "BOBO",
+    "coinType": "0x93a204e19a0907dabbc36c1e84b19426cc5a02a71ce2d124eefff1122793d38e::bobo::BOBO"
+  },
+  {
+    "symbol": "BOI",
+    "name": "BOI",
+    "coinType": "0xd58e13372e42a21027e0a5b8b6bea6c1a0f256604744b3745c61025c5840bd6b::boi::BOI"
+  },
+  {
+    "symbol": "BOOM",
+    "name": "BOOM",
+    "coinType": "0x3766e534b5dc6cdb7defd998debf19f72565f4a7b8224e36b050f690b71a8819::boom::BOOM"
+  },
+  {
+    "symbol": "BOOST",
+    "name": "BOOST",
+    "coinType": "0x7bd673d1b980fc2f1c922f91395c325561a675fc2f349c8ffcff7d03bdbeadc8::boost::BOOST",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/953a2bc4c9c45ad8ad68fab17bf9e345eb5084bbece28bddc8a574e164877e55?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BOTTLE",
+    "name": "BOTTLE",
+    "coinType": "0xd04c34eccbff386f870b6543afc076422f9d76c5c7aa3592b29493255ae2a7f0::bottle::BOTTLE"
+  },
+  {
+    "symbol": "BOUNTY",
+    "name": "BOUNTY",
+    "coinType": "0xf0b3aaba1b4d94cebadb4167e28459cdbbf9b364dac4093732640a2802bbd414::bounty::BOUNTY"
+  },
+  {
+    "symbol": "BOYSS",
+    "name": "BOYSS",
+    "coinType": "0x761feb1492359aa2160a07500c00bbe99fa904ea130552fc5ad07b448733be46::boyss::BOYSS"
+  },
+  {
+    "symbol": "BPRM",
+    "name": "BPRM",
+    "coinType": "0xd225e3bdcb4b1e51219311d07513326e2715598a320c155213b8dc76bf9f7667::bprm::BPRM"
+  },
+  {
+    "symbol": "BRAT",
+    "name": "BRAT",
+    "coinType": "0xd883b9dc7708547a4b578e3a4ec20a34c5fd866bc61caacbcb4330474032202e::brat::BRAT",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/4c61e0b6b5f0ac0d51591be836fc68f78fa6584f4d485437759c0841a28e2ccb?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BRETT",
+    "name": "BRETT",
+    "coinType": "0x906f1c00819547cc0b5d90459cf3ee1a8552ce62645a8451781ff383be289e35::brett::BRETT"
+  },
+  {
+    "symbol": "BRICK",
+    "name": "BRICK",
+    "coinType": "0x370fdd5024146920b9173918a66eca4433ecae57f1241deafd27330109280b37::brick::BRICK"
+  },
+  {
+    "symbol": "BRT",
+    "name": "BRT",
+    "coinType": "0x5580c843b6290acb2dbc7d5bf8ab995d4d4b6ba107e2a283b4d481aab1564d68::brt::BRT",
+    "logoUrl": "https://bafybeibxug6ipdh4dsk5gnudzqofk7oszibs2yrasoatibgvg333smuzqq.ipfs.nftstorage.link"
+  },
+  {
+    "symbol": "BSCA",
+    "name": "BSCA",
+    "coinType": "0x0f6b42675cf25eb99202c47f86f76ec1fb33c2afb99c76353221e41d7b978277::bsca::BSCA"
+  },
+  {
+    "symbol": "BSGP",
+    "name": "BSGP",
+    "coinType": "0xb7f77ca3ce1c554a4198268d6e4e80c6f7753b9d3dec85cb650feec1b1177764::bsgp::BSGP"
+  },
+  {
+    "symbol": "BSUI",
+    "name": "BSUI",
+    "coinType": "0x463ed2e7345fdf10cbb59d6661e42f4f4231df27fbf6f497957f07c49b490ad4::bsui::BSUI"
+  },
+  {
+    "symbol": "BTC",
+    "name": "BTC",
+    "coinType": "0xd7eae07cdaaa409ba8120bce9f9cc32b606bb2b9df4c2507ff8733cfe190c0c7::btc::BTC"
+  },
+  {
+    "symbol": "BTC",
+    "name": "BTC",
+    "coinType": "0xaafb102dd0902f5055cadecd687fb5b71ca82ef0e0285d90afde828ec58ca96b::btc::BTC",
+    "logoUrl": "https://assets.coingecko.com/coins/images/67277/thumb/WBTCLOGO.png?1764570083"
+  },
+  {
+    "symbol": "BTCAT",
+    "name": "BTCAT",
+    "coinType": "0x47f389127ad7bfdd5b64dd532ba5e29495466c208b7ba2cc6a10a0a3a4610f3e::btcat::BTCAT"
+  },
+  {
+    "symbol": "BTCSUI",
+    "name": "BTCSUI",
+    "coinType": "0xc9e2a397ff57977d71af3be905786468289f2dca758247399e44a2bc9f12f565::btcsui::BTCSUI"
+  },
+  {
+    "symbol": "BUB",
+    "name": "BUB",
+    "coinType": "0xb5952bc0c287e7e1dfd57ee55b3c5b4ffe41c6d282c279d2cac6f49c0014dca5::bub::BUB"
+  },
+  {
+    "symbol": "BUB",
+    "name": "BUB",
+    "coinType": "0xf2794aabda8a49d40d56abce4c550fa36495f5b406376f920765eb46e2721288::bub::BUB"
+  },
+  {
+    "symbol": "BUBBLE",
+    "name": "BUBBLE",
+    "coinType": "0x37fc9613acb607410fa1a2c6cc2744420d4423963cce5491f839f696fd438ca7::bubble::BUBBLE"
+  },
+  {
+    "symbol": "BUBCOIN",
+    "name": "BUBCOIN",
+    "coinType": "0xb3434d951a134bb9be9b60ef65cd0662643c3c6dd56c8e539ec2a7745843bc84::bubcoin::BUBCOIN"
+  },
+  {
+    "symbol": "BUBLZ",
+    "name": "BUBLZ",
+    "coinType": "0xb87a7e533a09dd96d0fd25faae40d64b776773d2a47705f9df0616e72d052ab3::bublz::BUBLZ"
+  },
+  {
+    "symbol": "BUBO",
+    "name": "BUBO",
+    "coinType": "0x5f3c06ac9ff55392b205683870982a2b642a22307b065b96b874a4148dee973a::bubo::BUBO"
+  },
+  {
+    "symbol": "BUCK",
+    "name": "BUCK",
+    "coinType": "0xce7ff77a83ea0cb6fd39bd8748e2ec89a3f41e8efdc3f4eb123e0ca37b184db2::buck::BUCK",
+    "logoUrl": "https://assets.coingecko.com/coins/images/33846/thumb/buck-icon.png?1703121631"
+  },
+  {
+    "symbol": "BUGCAT",
+    "name": "BUGCAT",
+    "coinType": "0xd3e93eb3db7b8b7b3cc270020ca5202609fc0a71c1391ddbcbbe5805eca1bc3d::bugcat::BUGCAT"
+  },
+  {
+    "symbol": "BUKY",
+    "name": "BUKY",
+    "coinType": "0x4c4d7c6fb96a17720d2ec299e40e3bd0bf0104159c67a42bb729e6c0a05ead56::buky::BUKY"
+  },
+  {
+    "symbol": "BULLA",
+    "name": "BULLA",
+    "coinType": "0xeec46a9527885ade0b62b984315f2f45d4cd40d9a8c19a553e553e722ab33239::bulla::BULLA"
+  },
+  {
+    "symbol": "BULLSHARK",
+    "name": "BULLSHARK",
+    "coinType": "0xb3a1146f8dba4f5940480764f204047d8ce0794286c8e5bdc1c111ca2a2ea8ae::bullshark::BULLSHARK",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/fc97d698e7892360ca8cdcc5ac0e8971f8c76cb5f8803af52399c1c61ce0c920?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BUNNY",
+    "name": "BUNNY",
+    "coinType": "0x6a3a367549151679b7fca811ab7aa2a7918733f8215118b7d31487b2924ce303::bunny::BUNNY"
+  },
+  {
+    "symbol": "BURGER",
+    "name": "BURGER",
+    "coinType": "0xf8ae9d394ac71c65ece2e4d85b047747602272dd0605697682379ac245b2e360::burger::BURGER"
+  },
+  {
+    "symbol": "BURNIE",
+    "name": "BURNIE",
+    "coinType": "0xb54d2a49fcf92fedc646e12bc65743c4124af3f6de325f810e354b97971da2a8::burnie::BURNIE"
+  },
+  {
+    "symbol": "BUT",
+    "name": "BUT",
+    "coinType": "0xbc858cb910b9914bee64fff0f9b38855355a040c49155a17b265d9086d256545::but::BUT",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/1792de2510812ba71ac8e5c8c8a597eac705bdc9ca64214aec1077a5c26010c5?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "BVS",
+    "name": "BVS",
+    "coinType": "0x17a1b338d630b30ed19c7a893f973db25bb0f7c9d4c8bdf2fc3ccb414fbaa9a6::bvs::BVS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/PmMbaFHX5Rp4MJV4?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CAAC",
+    "name": "CAAC",
+    "coinType": "0x331729905428fc17428ba1eaac3852f114bbf7468d5144d81e468fbfb803ef69::caac::CAAC"
+  },
+  {
+    "symbol": "CABA",
+    "name": "CABA",
+    "coinType": "0x1ba7d61828d3b1d416be74f0b5ba45449e71887c19130383f8095b24b7234f77::caba::CABA"
+  },
+  {
+    "symbol": "CABAL",
+    "name": "CABAL",
+    "coinType": "0x7f20424534bfb7b9e2b44267e1e12cf89b081e491b3aa683b09e667e1a3c41eb::cabal::CABAL"
+  },
+  {
+    "symbol": "CAP",
+    "name": "CAP",
+    "coinType": "0x893aa3f358b70e7dbcf957c64a1f016633630af42fb6097f25c33ef9fa738dd2::cap::CAP",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/3c77c473356dbd9ac1fa4e7ae59c80a39cbeba0ee2243ffd7acaf08dbdc71802?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CAPI",
+    "name": "CAPI",
+    "coinType": "0xa79a5067d1805aff0805ce4fa09ba5f7bd1264572d7f5b7a711f6c02fe5e8324::capi::CAPI"
+  },
+  {
+    "symbol": "CAPTAINFUTURUS",
+    "name": "CAPTAINFUTURUS",
+    "coinType": "0xa543c3268b80c5c27ba705fdb99d01d737aafbf6205ffbef2994bd284b39d90b::CAPTAINFUTURUS::CAPTAINFUTURUS"
+  },
+  {
+    "symbol": "CAPY",
+    "name": "CAPY",
+    "coinType": "0xab0cf2644867272bc89a77d9cff0633e3d50e3f738b963d9c8e6899b529803a8::capy::CAPY"
+  },
+  {
+    "symbol": "CAPYBARA",
+    "name": "CAPYBARA",
+    "coinType": "0xeda2cda32526826938530f0deba666dab180302e0f3bdb095f129a7a4c02158a::capybara::CAPYBARA"
+  },
+  {
+    "symbol": "CARDIFY",
+    "name": "CARDIFY",
+    "coinType": "0xb4c65ab3baccd3f9cf741b3e700adb7af0deb96815e1a3a603eaf8a7db565c5f::cardify::CARDIFY"
+  },
+  {
+    "symbol": "CASH",
+    "name": "CASH",
+    "coinType": "0xf744db27541d6e162a5dffe59a8969f47e24a1fda6c22b1c123665cc3c098108::cash::CASH"
+  },
+  {
+    "symbol": "CAT",
+    "name": "CAT",
+    "coinType": "0x6825ea808b443527c0043673f62429202e14c4175d873585d15c4c76d62520cf::cat::CAT"
+  },
+  {
+    "symbol": "CAT",
+    "name": "CAT",
+    "coinType": "0xe5773459d1b097252d6d4340af5091189686b0de433407158fff3712195f62fa::cat::CAT"
+  },
+  {
+    "symbol": "CAUSA",
+    "name": "CAUSA",
+    "coinType": "0xc12fb8de513df4c6541d8dff0dbfd01b6079611703e01a4c0876e3c834c96be8::causa::CAUSA",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/36351c882f46f5949012083e2b7a7eeb13b367da2730f81ab54cd0031b317c10?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CBT",
+    "name": "CBT",
+    "coinType": "0x84c75ca6f12b2b55da9ed5b8912d53c91312cd90811b243626f2c0bc06f29864::cbt::CBT"
+  },
+  {
+    "symbol": "CBTC",
+    "name": "CBTC",
+    "coinType": "0x14bd61802d31291fb410bd75757e3347221bf8019707307e5926afeebf4667cf::cbtc::CBTC"
+  },
+  {
+    "symbol": "CCRAB",
+    "name": "CCRAB",
+    "coinType": "0x9bc77c4c2bfba0902444b92e82d4a4b21413d0552247cfdc68ab148ea8a4b644::ccrab::CCRAB"
+  },
+  {
+    "symbol": "CCTOO",
+    "name": "CCTOO",
+    "coinType": "0x0b559e66f39afcc202b7f529571eccad713402bc9fd4e3ecfa0956bbe24a3f51::cctoo::CCTOO"
+  },
+  {
+    "symbol": "CELER_USDC_COIN",
+    "name": "CELER_USDC_COIN",
+    "coinType": "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdc_coin::CELER_USDC_COIN"
+  },
+  {
+    "symbol": "CELER_USDT_COIN",
+    "name": "CELER_USDT_COIN",
+    "coinType": "0x94e7a8e71830d2b34b3edaa195dc24c45d142584f06fa257b73af753d766e690::celer_usdt_coin::CELER_USDT_COIN"
+  },
+  {
+    "symbol": "CERT",
+    "name": "CERT",
+    "coinType": "0x549e8b69270defbfafd4f94e17ec44cdbdd99820b33bda2278dea3b9a32d3f55::cert::CERT",
+    "logoUrl": "https://assets.coingecko.com/coins/images/33243/thumb/voloSUI_%283%29.png?1701171551"
+  },
+  {
+    "symbol": "CETUS",
+    "name": "CETUS",
+    "coinType": "0x06864a6f921804860930db6ddbe2e16acdf8504495ea7481637a1c8b9a8fe54b::cetus::CETUS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/0f8ea11888b60cd099bb0be84471c80fd58c32bbc13d060d265d2d2a92a394cd?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CHIBI",
+    "name": "CHIBI",
+    "coinType": "0x78e4ff62ee6dfe84ebee3a13c301199cca65407b9eeba53331ba6df24a3cbc71::chibi::CHIBI"
+  },
+  {
+    "symbol": "CHIBIELON",
+    "name": "CHIBIELON",
+    "coinType": "0x8bdc266a894c316aadadc26e12e743ed42bf8581afc5689c32f940f0f7a540b1::chibielon::CHIBIELON"
+  },
+  {
+    "symbol": "CHIBITRUMP",
+    "name": "CHIBITRUMP",
+    "coinType": "0x49cfba33b742cf7e2b0e6c7b9506d7e49e26a45f5b29eedc12eadde0f284d61d::chibitrump::CHIBITRUMP"
+  },
+  {
+    "symbol": "CHILLBULL",
+    "name": "CHILLBULL",
+    "coinType": "0x8130994ef5299d244dbf18cf1e134c3aea2ab517ee37c351a40cd9ed33bc59ca::chillbull::CHILLBULL",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/df7b05828cdb86a170aec6aff934e332b5466bb57873330efb6e976ce2e9713a?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CHILLDUDE",
+    "name": "CHILLDUDE",
+    "coinType": "0x1bf997939ad29c6b4d5fb34c9c4300a5bbe3b0564bfd002be70c8089dfefcba0::chilldude::CHILLDUDE"
+  },
+  {
+    "symbol": "CHIRP",
+    "name": "CHIRP",
+    "coinType": "0x1ef4c0b20340b8c6a59438204467ca71e1e7cbe918526f9c2c6c5444517cd5ca::chirp::CHIRP",
+    "logoUrl": "https://assets.coingecko.com/coins/images/52894/thumb/Chirp_Icon_Round1.png?1734608014"
+  },
+  {
+    "symbol": "CIA",
+    "name": "CIA",
+    "coinType": "0xae396c98e47720d3574ac9fbce375eed7fecdc5d73beebc2be2f6a337aeea78e::cia::CIA"
+  },
+  {
+    "symbol": "CIDT",
+    "name": "CIDT",
+    "coinType": "0xbd4ca42457d6de9bd610199b19a1095aa5b8bfcb4c5b950466190f295867e643::cidt::CIDT"
+  },
+  {
+    "symbol": "CITY",
+    "name": "CITY",
+    "coinType": "0x308fa16c7aead43e3a49a4ff2e76205ba2a12697234f4fe80a2da66515284060::city::CITY",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e4a441d2ad37a86364470f57e26618cc2fb250129e6399a3d93b34f7e9767caf?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CKS",
+    "name": "CKS",
+    "coinType": "0xf2b9c1eb180ccac55ce5e32d1ea1c6cbbca84b3a8c0df263d38a2311422cc93d::cks::CKS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e9426b63fcc0491f41d76e109f16d07b415ab517eeef68faaf8b2502b1715d1e?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CLAY",
+    "name": "CLAY",
+    "coinType": "0xa0ef8a8256b5742d1ac324c80756506b565fc102daad4c128797b04a4226cc8e::clay::CLAY"
+  },
+  {
+    "symbol": "COASTAL_CRYPTO_TOKEN",
+    "name": "COASTAL_CRYPTO_TOKEN",
+    "coinType": "0xd4a294929e6cfbf30726fc3c447bee48df3dbddb686bfeacc9250aefc51e7e6b::coastal_crypto_token::COASTAL_CRYPTO_TOKEN"
+  },
+  {
+    "symbol": "COCK",
+    "name": "COCK",
+    "coinType": "0x1caff0b0325b062c414d76955c776908842340ff5f6dc900543ed484a0be8e36::cock::COCK"
+  },
+  {
+    "symbol": "COCOS",
+    "name": "COCOS",
+    "coinType": "0x7c46a44a60cc8e5ce996860d3b36f38eb6274056cecc3c711fb7334dcad2fae9::cocos::COCOS"
+  },
+  {
+    "symbol": "CODE",
+    "name": "CODE",
+    "coinType": "0xe1481cf049baa0940b1036b6a628ef8bc84f1b23db6d1006dc1072eb20044b7e::code::CODE"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x0ee60b2540f5373903679500d0f88710cbb106d47c6dae028fb9c4795a835dda::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x546d4b52d088a910c1190fabfb208ad2ad6934ec963284e097073c050cbb0ea4::currency::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x7e3e74afcc1913aa9491c8cee89b02131a6e5519b090f16b54321835c1241cfb::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x909cba62ce96d54de25bec9502de5ca7b4f28901747bbf96b76c2e63ec5f1cba::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/30649/thumb/USDC.png?1772637589"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x4a605a4c6bba078d67541d7195daf0b062b47541028a9b8d27704ef346198a08::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/54447/thumb/enzo_btc.png?1739773963"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x46bf091e58615d2111d2aff3f2415d97e5132a9d6b48e9d6400661e3add7685f::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xcf72ec52c0f8ddead746252481fb44ff6e8485a39b803825bde6b00d77cdb0bb::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xc3f8927de33d3deb52c282a836082a413bc73c6ee0bd4d7ec7e3b6b4c28e9abf::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x9c6d76eb273e6b5ba2ec8d708b7fa336a5531f6be59f326b5be8d4d8b12348a4::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xc060006111016b8a020ad5b33834984a437aaa7d3c74c18e09a95d48aceab08c::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/23025/thumb/USDTet_wh_small.png?1696522320"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xdbe380b13a6d0f5cdedd58de8f04625263f113b3f9db32b3e1983f49e2841676::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/22947/thumb/MATICpo_wh_small.png?1696522243"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x1e8b532cca6569cab9f9b9ebc73f8c13885012ade714729aa3b450e0339ac766::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/22943/thumb/AVAX_wh_small.png?1696522240"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xb2f40a50fec54e308e69c71271b04a30fc470b1db683dff9e64c752bc1f6384d::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xb231fcda8bbddb31f2ef02e6161444aec64a514e2c89279584ac9806ce9cf037::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x027792d9fed7f9844eb4839566001bb6f6cb4804f66aa2da6fe1ee242d896881::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/23004/thumb/WBTC_wh_small.png?1696522299"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x3a5143bb1196e3bcdfab6203d1683ae29edd26294fc8bfeafe4aaa9d2704df37::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x7258e818b193a0cd3c9fb587c34d661cba97d6f498e446b38e81fc6a714bd6b0::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xbb2034c82b17af987fa6b9ac2c56474d6cf1480d51a02501f05a1fd2d306e956::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x5d4b302506645c37ff133b98c4b50a5ae14841659738d6d733d59d0d217a93bf::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/23019/thumb/USDCet_wh_small.png?1696522314"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x5f496ed5d9d045c5b788dc1bb85f54100f2ede11e46f6a232c29daada4c5bdb6::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/50978/thumb/a.jpg?1730208372"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xb7844e289a8410e50fb3ca48d69eb9cf29e27d223ef90353fe1bd8e27ff8f3f8::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/53676/thumb/solana.jpg?1737009234"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x6907963ca849faff0957b9a8269a7a07065e3def2eef49cc33b50ab946ea5a9f::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x8ea9eabc0278dd97a109946bf85f3015bde9db3a3ed1467c7566d9613dae7137::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x61017ce4bd0b75b266af53edd60bbe391ba1a9fbe9a7d8553657c94ef73ee2ab::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xfdb6b717d5c75f3840d2691565b0e2f22d9f922783325d9cbdd9d9738f3e8a26::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x204d98eaafd2307b3fe875969f141bdcf173fcce5dea7f90f7eb11834b7b4649::currency::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xb848cce11ef3a8f62eccea6eb5b35a12c4c2b1ee1af7755d02d7bd6218e8226f::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/22884/thumb/BNB_wh_small.png?1696522182"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x83dedd0b6eb7a24a33c68dd3bcaacb97c34dc5011b09eb833dda11ec3661da45::coin::COIN"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0xaf8cd5edc19c4512f4259f0bee101a40d41ebed738ade5874359610ef8eeced5::coin::COIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/22990/thumb/ETH_wh_small.png?1696522286"
+  },
+  {
+    "symbol": "COIN",
+    "name": "COIN",
+    "coinType": "0x6081300950a4f1e2081580e919c210436a1bed49080502834950d31ee55a2396::coin::COIN"
+  },
+  {
+    "symbol": "COOL",
+    "name": "COOL",
+    "coinType": "0xcebbc19b9dbccecf24fd897b863ab352482d226359ec176b52b0503b7d7610ae::cool::COOL"
+  },
+  {
+    "symbol": "CORN",
+    "name": "CORN",
+    "coinType": "0x0747b864193e2b8381183011835b037e0020d5c6dce098b30759d242a5045130::corn::CORN"
+  },
+  {
+    "symbol": "CRAB",
+    "name": "CRAB",
+    "coinType": "0xbff858a4f8431383728c0d8d890b6fd6655d24a94e62f09a14549721c3304ab3::crab::CRAB"
+  },
+  {
+    "symbol": "CRASH",
+    "name": "CRASH",
+    "coinType": "0xecf7e929e506dc8ca4dc723eccc272497419827c587787a988204009bded0918::crash::CRASH"
+  },
+  {
+    "symbol": "CRIMESZN",
+    "name": "CRIMESZN",
+    "coinType": "0xa3f5535739816c2beccf4663f828164e592c8432c408f0f7abf5ec693dc24e48::crimeszn::CRIMESZN"
+  },
+  {
+    "symbol": "CRIMESZN",
+    "name": "CRIMESZN",
+    "coinType": "0xe737bf979c4c2e6ae832a99727141902094079631599d6964f29dedabdf64b50::crimeszn::CRIMESZN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/cc2a2ad8f165ac823588bf94b9e028b225cba7b0d3147823519d3322d5d29374?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CRUG",
+    "name": "CRUG",
+    "coinType": "0x876a4f0b9abe9daf9f15346d2bafcf301101589cad6e321faca17a716b0ee10a::crug::CRUG"
+  },
+  {
+    "symbol": "CRUSH",
+    "name": "CRUSH",
+    "coinType": "0xa4a4397ff93e0cb3f942c885fbf56edf7bafac7b3d6ff68a30a525bdf0c85515::crush::CRUSH",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/GHGzyJnpDRZIyfhj?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CRYPT",
+    "name": "CRYPT",
+    "coinType": "0x1f93fe37f162377af6de8f9f660b928a8249fae9822251701d257b21695b01ad::crypt::CRYPT"
+  },
+  {
+    "symbol": "CULO",
+    "name": "CULO",
+    "coinType": "0xf33bdc280faf4bd0411cac82173b5744b7a40e4b9abc0ad6f51a495c060faf77::culo::CULO",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e0f51a60388dbf7f835f91be2db7358c78b4564a8e05a9efeb15619b3489d98b?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "CUP",
+    "name": "CUP",
+    "coinType": "0x7ad387d978f56099ca321ea89f64675f51de4753117424f31f225e80e1357d61::cup::CUP"
+  },
+  {
+    "symbol": "CZAI",
+    "name": "CZAI",
+    "coinType": "0x190247a548120f8556d0e20bfa1fc8bab2d5af0ef3b8f590579bca6eec889e23::czai::CZAI"
+  },
+  {
+    "symbol": "DAK",
+    "name": "DAK",
+    "coinType": "0x41636c138167952207c88f5a75e433c9e880bc7bd5e4e46047d82be266d36712::dak::DAK"
+  },
+  {
+    "symbol": "DAL",
+    "name": "DAL",
+    "coinType": "0xd7c42518bebb5b8ca4343b4154ed6c2cb43828699a1c1b5496fab3a765ac7f6e::dal::DAL"
+  },
+  {
+    "symbol": "DAL",
+    "name": "DAL",
+    "coinType": "0x1ee3ba64e0c7abeeff732e87fcca9c50cdf190f03485b0bbaebdcddc5251b40c::dal::DAL"
+  },
+  {
+    "symbol": "DAL",
+    "name": "DAL",
+    "coinType": "0xa2cfd50ccd40526fda53be0daa5f39dced114e42c0cc377f67df80ea87854e07::dal::DAL"
+  },
+  {
+    "symbol": "DAL",
+    "name": "DAL",
+    "coinType": "0xeab12cd4717f4c95ec91d842fc77a8adffaa328aac7d09dcddb5e232ad12ff4c::dal::DAL"
+  },
+  {
+    "symbol": "DAL",
+    "name": "DAL",
+    "coinType": "0xc07bff6deae51a6cd7454486c3abbad9abdafbcc1ae59b8d620729ffb56a7a7b::dal::DAL"
+  },
+  {
+    "symbol": "DAL",
+    "name": "DAL",
+    "coinType": "0x969f634144bb556b2f379628bd9c0aed692ee7d1181780e14471ea16593a99cb::dal::DAL"
+  },
+  {
+    "symbol": "DAM",
+    "name": "DAM",
+    "coinType": "0xaf3aae4940a248739ce4964857381fc3f3149a6d05375bfbb2118592907e3bbb::dam::DAM",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/8d11bd506468e654cbd20290504e90bd4c1cd8514541690d573ae7d8cc3ca4f2?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "DAOS",
+    "name": "DAOS",
+    "coinType": "0xd40cec91f6dca0673b25451fb0d654e62ad13bf6546a32a21ef0c59eba42e71c::daos::DAOS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/a080d6df216d8d9851a5094b5dcae8956b94c137b39edfb769e7c7d306e79e95?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "DAOX",
+    "name": "DAOX",
+    "coinType": "0xc7b842347b0fbebabdee379414e874abc7fc5294b1e08961baa32e501ebedb48::daox::DAOX"
+  },
+  {
+    "symbol": "DBB",
+    "name": "DBB",
+    "coinType": "0x99f0cf361838c2b97675b13f096e409b495016944d45ded77170e3693be8d363::dbb::DBB"
+  },
+  {
+    "symbol": "DBSUI",
+    "name": "DBSUI",
+    "coinType": "0x53b577f6dd618414ec3c4bd993bbc27b2af859d32b1381f1d25669a1db51a91d::dbsui::DBSUI"
+  },
+  {
+    "symbol": "DBTC",
+    "name": "DBTC",
+    "coinType": "0xd0893663a22f1b5c8b4ae0efa74091d59762033538e4e9faa73ca457791f5bf7::dbtc::DBTC"
+  },
+  {
+    "symbol": "DCEP",
+    "name": "DCEP",
+    "coinType": "0xb83476521e1d4210ab42e9a5e5f44141c642ffca5b1a975babbb30f72aaf12c4::dcep::DCEP"
+  },
+  {
+    "symbol": "DDEEP",
+    "name": "DDEEP",
+    "coinType": "0xe0bbe18eda5b97cbf5a53a6ed03503bf8fbcdb93b3b730a3d5bc0bf784d626c0::ddeep::DDEEP"
+  },
+  {
+    "symbol": "DEADWHALE",
+    "name": "DEADWHALE",
+    "coinType": "0x288a4f35a9ae2c7ec8e8cc392ccf7554406922ba5f27b6099109dccfe989f5a4::deadwhale::DEADWHALE"
+  },
+  {
+    "symbol": "DEAGENT_TOKEN",
+    "name": "DEAGENT_TOKEN",
+    "coinType": "0x99cc0e7834326ec6ac571421e9b8e042e9eb63062771c77ac592bd194180b5da::deagent_token::DEAGENT_TOKEN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/69053/thumb/DA-AIA.png?1757348456"
+  },
+  {
+    "symbol": "DEAGENT_TOKEN",
+    "name": "DEAGENT_TOKEN",
+    "coinType": "0x8b449b4dc0f8c5f996734eaf23d36a5f6724e02e312a7e4af34bd0bb74de7b17::deagent_token::DEAGENT_TOKEN"
+  },
+  {
+    "symbol": "DEEP",
+    "name": "DEEP",
+    "coinType": "0xd90012d8028839f57f6824d921a1e5823b77ee534837706c5d1429697ee3ae0b::deep::DEEP",
+    "logoUrl": "https://s2.coinmarketcap.com/static/img/coins/64x64/33367.png"
+  },
+  {
+    "symbol": "DEEP",
+    "name": "DEEP",
+    "coinType": "0x7372cf5a2fa6d346c946054352bd5909776a0e9c072b05ebea0a408cbfc22d0b::deep::DEEP",
+    "logoUrl": "https://s2.coinmarketcap.com/static/img/coins/64x64/33367.png"
+  },
+  {
+    "symbol": "DEEP",
+    "name": "DEEP",
+    "coinType": "0xdeeb7a4662eec9f2f3def03fb937a663dddaa2e215b8078a284d026b7946c270::deep::DEEP",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/dd366d0b06b0ead89b10f6ca5f9b1876a3f736855be9e3a8d520d2b6629bd388?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "DEEZNUTS",
+    "name": "DEEZNUTS",
+    "coinType": "0x0b7a29e6e73c07484deba5e51aa80abd4998aff15e98b95c3b08401ab3afc362::deeznuts::DEEZNUTS"
+  },
+  {
+    "symbol": "DEGEN",
+    "name": "DEGEN",
+    "coinType": "0x4dfbb4835b25d858decc97f46093a6a68bc162a368c33649542c38d77c34a8a7::degen::DEGEN"
+  },
+  {
+    "symbol": "DENR",
+    "name": "DENR",
+    "coinType": "0x9368fac6d67814622aa52456948b0a65492c2cd0323c0ba67138c462c65b3523::denr::DENR"
+  },
+  {
+    "symbol": "DESCI",
+    "name": "DESCI",
+    "coinType": "0x01d022d585ea528404d2ea250b01098ed62348c0a52bf934d797cec374261d7d::desci::DESCI"
+  },
+  {
+    "symbol": "DEXSCEEN",
+    "name": "DEXSCEEN",
+    "coinType": "0x0589ec997a45e8ad8e7cf1f4c10911d9c9c217aa872b79aeaca3a453df2c798b::dexsceen::DEXSCEEN"
+  },
+  {
+    "symbol": "DGG_TOKEN",
+    "name": "DGG_TOKEN",
+    "coinType": "0x625d518a3cc78899742d76cf785609cd707e15228d4284aa4fee5ca53caa9849::dgg_token::DGG_TOKEN"
+  },
+  {
+    "symbol": "DICKY",
+    "name": "DICKY",
+    "coinType": "0xf862476e7d8469f637c38e5db5fa207044ab436d22b186a81493fd2992d4cbc9::dicky::DICKY"
+  },
+  {
+    "symbol": "DIDDY",
+    "name": "DIDDY",
+    "coinType": "0x748d33add4c0ce8f533cfb6a1e13221901267a59ab0efdbc3865d627af991f92::diddy::DIDDY"
+  },
+  {
+    "symbol": "DIF",
+    "name": "DIF",
+    "coinType": "0xb973ff851d551cac023f6fd5ecaf95243830ec1494b8a162bc02da313d946f19::dif::DIF"
+  },
+  {
+    "symbol": "DILITHION",
+    "name": "DILITHION",
+    "coinType": "0x6dad80e630afa70a7bbb169752e661e5f5b383558259e134305f52c1a748a85b::dilithion::DILITHION"
+  },
+  {
+    "symbol": "DIRHAM",
+    "name": "DIRHAM",
+    "coinType": "0x76f2a30cb5db280c595525fafd6d128457c78dfd73ec358a078b43b063eceaee::dirham::DIRHAM"
+  },
+  {
+    "symbol": "DITTO",
+    "name": "DITTO",
+    "coinType": "0x0e1ec2131759841df0f893561daed21de45f3ed960f0b4e1d1d269841e15e032::ditto::DITTO"
+  },
+  {
+    "symbol": "DIVE_TOKEN",
+    "name": "DIVE_TOKEN",
+    "coinType": "0x9bd711b9067f57b07743de2d1f67fd2be75a2e03370ea256f07b5c0ed88016cc::dive_token::DIVE_TOKEN"
+  },
+  {
+    "symbol": "DJT",
+    "name": "DJT",
+    "coinType": "0xd76169233a95b23e3e5a9a9dc1c738a5b651484041693af8fc52de3a65c18125::djt::DJT"
+  },
+  {
+    "symbol": "DMC",
+    "name": "DMC",
+    "coinType": "0x4c981f3ff786cdb9e514da897ab8a953647dae2ace9679e8358eec1e3e8871ac::dmc::DMC",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/61bc6b3413fb0f00052eb16a33af403b47dafcb28a8ff160a395c139be4514ef?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "DOBBY",
+    "name": "DOBBY",
+    "coinType": "0x4e1224fb7cf663135d8d5ef11e159df362909f5d8f4ac3012e3dceff4ce453a4::dobby::DOBBY"
+  },
+  {
+    "symbol": "DOG",
+    "name": "DOG",
+    "coinType": "0xe816391f1bfb061e7865b70a89b38525fa432166458833d17eecea9b8e66ab2c::dog::DOG"
+  },
+  {
+    "symbol": "DOGBOOTS",
+    "name": "DOGBOOTS",
+    "coinType": "0x557817fdcd5d26142d0e1eae94150dc22ad4edc5f4e1c460245bfbaad170aea6::dogboots::DOGBOOTS"
+  },
+  {
+    "symbol": "DOGE",
+    "name": "DOGE",
+    "coinType": "0x795be7029c17eca03e66182070dcbc31d7cc2208736c60df025d08d41d12ea7e::doge::DOGE"
+  },
+  {
+    "symbol": "DOGE_VIP",
+    "name": "DOGE_VIP",
+    "coinType": "0xaec3f1ee3e6f56d66bb104a2cefdde81ce1afb1907c57e6e3e2f15a20d95d3a2::doge_vip::DOGE_VIP"
+  },
+  {
+    "symbol": "DOGEMOJI",
+    "name": "DOGEMOJI",
+    "coinType": "0x191b8eeb91002ac5dee1190a1ad0499c625206bf688fb2965d69b160bf0ddc1f::dogemoji::DOGEMOJI"
+  },
+  {
+    "symbol": "DOGEUS",
+    "name": "DOGEUS",
+    "coinType": "0x28702e1d3166e28ace6f66574b141c5ab7ea42ebdc09aaed24613c216491468d::dogeus::DOGEUS"
+  },
+  {
+    "symbol": "DOGIZ",
+    "name": "DOGIZ",
+    "coinType": "0xf652ef5c9be31b8a4f23c5d42d6297fbc7e5a1d1f692ba67545a8523827da221::dogiz::DOGIZ"
+  },
+  {
+    "symbol": "DOGM",
+    "name": "DOGM",
+    "coinType": "0xebbcc422027d5274b1829a5b15e428c3f8ed320750992bc91ecace2e78275586::dogm::DOGM"
+  },
+  {
+    "symbol": "DOGWIFCAR",
+    "name": "DOGWIFCAR",
+    "coinType": "0x98520adee1ad1096a17ea1250e6f13bc43f8bf7cc24283c059855beec6e8244a::dogwifcar::DOGWIFCAR"
+  },
+  {
+    "symbol": "DOLA",
+    "name": "DOLA",
+    "coinType": "0x418879f4f7037e40e31d0887ec0a080e6659472bc2a8408a38e153741ea9d1e0::dola::DOLA"
+  },
+  {
+    "symbol": "DOOM",
+    "name": "DOOM",
+    "coinType": "0x11b0c9b146219f08884bebf3d8c7c8f6ad96a8d2416e3c2e1e174030c544d8a7::doom::DOOM"
+  },
+  {
+    "symbol": "DOPE",
+    "name": "DOPE",
+    "coinType": "0x10989397585423f0c9269b3a81ca2caf8a79a7e91644f55682bdf8e22569372e::dope::DOPE"
+  },
+  {
+    "symbol": "DOT",
+    "name": "DOT",
+    "coinType": "0xf96ce0a4a6f3e0db37f681e9853b9997ec32da097f6a32d0e9924f0dd836e672::dot::DOT"
+  },
+  {
+    "symbol": "DPY",
+    "name": "DPY",
+    "coinType": "0x4834781c98efbdd182730f0cb8dc05caa201ff7b76a97fe151188926a4e12117::dpy::DPY"
+  },
+  {
+    "symbol": "DRAGON",
+    "name": "DRAGON",
+    "coinType": "0x8a8179e9e13d85bb06a9d8ab1f7c10dbd0f62838ab1ad348c804fd92e47d824b::dragon::DRAGON"
+  },
+  {
+    "symbol": "DRF",
+    "name": "DRF",
+    "coinType": "0x294de7579d55c110a00a7c4946e09a1b5cbeca2592fbb83fd7bfacba3cfeaf0e::drf::DRF",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/ab0a9a60efc3539dd023ec9f7e600aca015edaae00b8db7996a3134fd3101c0d?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "DRIFT",
+    "name": "DRIFT",
+    "coinType": "0x6a7d1caf0c65192ac4b7af985484b96c0c28d5ae488914572a4f850a96ea018b::drift::DRIFT"
+  },
+  {
+    "symbol": "DRPY",
+    "name": "DRPY",
+    "coinType": "0x897d3eb442e3d94b4a06c90e55112116564f2a64e26cc9f851944436dc855e65::drpy::DRPY"
+  },
+  {
+    "symbol": "DSTBL",
+    "name": "DSTBL",
+    "coinType": "0x9e0291618e489d1d5b23fd1190359c8c6814d04f2dec2af9818c021e97107e7e::dstbl::DSTBL"
+  },
+  {
+    "symbol": "DSUI",
+    "name": "DSUI",
+    "coinType": "0x920af437fb92b41328870b83c9695e52faa5256ce6e965c2be2e739333946533::dsui::DSUI"
+  },
+  {
+    "symbol": "DTB",
+    "name": "DTB",
+    "coinType": "0x1e0a4e9ebed8ebab6eae674ae0e5213feaa030940cb6308ac5a699ddb9ebb4ef::dtb::DTB"
+  },
+  {
+    "symbol": "DUMB",
+    "name": "DUMB",
+    "coinType": "0xa7712597ecc782dbbfe34c1f60c6e4b09490ccaf2f80d813cd8cbebe208dadb7::dumb::DUMB"
+  },
+  {
+    "symbol": "DWUIR",
+    "name": "DWUIR",
+    "coinType": "0x5ca6561ba7b8913cb6809169b19e5d3e6981dbdee8d370cd69f7177ab91b8286::dwuir::DWUIR",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e6e290ae92a80764d26233abbf720aa76183392ec3f0cb0d11871f3268b546be?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "E4C",
+    "name": "E4C",
+    "coinType": "0x84b27ddadc6139c7e8837fef6759eba4670ba3fc0679acd118b4e9252f834e29::e4c::E4C",
+    "logoUrl": "https://assets.coingecko.com/coins/images/52335/thumb/E4C-TOKEN-01-compressed.png?1733120411"
+  },
+  {
+    "symbol": "EACRED",
+    "name": "EACRED",
+    "coinType": "0x88eb44ba72b24f31bcd022e6a0f85e149f533ee5319cb4891f2eab0ef37baa34::eacred::EACRED"
+  },
+  {
+    "symbol": "EAGG",
+    "name": "EAGG",
+    "coinType": "0x86c3b00f95397dc0c43a6cf26a2e359b1f91f70c40f7b60d21b137c5ece91cc5::eagg::EAGG"
+  },
+  {
+    "symbol": "EAI",
+    "name": "EAI",
+    "coinType": "0x62b7db8fb5b59f3a4ff1d28e29da1b3a3101e64b87295f390bea582ee2de0e13::eai::EAI"
+  },
+  {
+    "symbol": "EBOLA",
+    "name": "EBOLA",
+    "coinType": "0xc7d56aeb0a6ca604ebb07acd37a642153f488b95492f44cdb4b425c8f85ac44a::ebola::EBOLA"
+  },
+  {
+    "symbol": "EEBB",
+    "name": "EEBB",
+    "coinType": "0x09aae5247b63e377a2e5689978f7b6a1d0c5ac4ec4800e703cea242e3c68e35f::eebb::EEBB"
+  },
+  {
+    "symbol": "EGS",
+    "name": "EGS",
+    "coinType": "0x246c6acff5ffd94c27dd3a56f8c0dc168ae8529fcc835f6074897fd98ce40a46::egs::EGS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/5v_pPyfxawx7cvjY?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "EGS",
+    "name": "EGS",
+    "coinType": "0x583a0b3bd7fb297172d1def09d029ac86793fbfc1350407fafe287c9ab9ad15e::egs::EGS"
+  },
+  {
+    "symbol": "EGUSDC",
+    "name": "EGUSDC",
+    "coinType": "0x68532559a19101b58757012207d82328e75fde7a696d20a59e8307c1a7f42ad7::egusdc::EGUSDC"
+  },
+  {
+    "symbol": "EJO",
+    "name": "EJO",
+    "coinType": "0x74b7f223f696552ca8b7fbe96720a67773c77da6a240982fdc878f9281704ed3::ejo::EJO"
+  },
+  {
+    "symbol": "ELMC",
+    "name": "ELMC",
+    "coinType": "0x2fbe940cf9fbc8bf0426e40094c6923815b99cea55139633ac0c04f51fda03f5::elmc::ELMC"
+  },
+  {
+    "symbol": "ELUN",
+    "name": "ELUN",
+    "coinType": "0x52a4988a5fcddaee180e3067bf154d1c482a81874e962083307b76699a0f0ffe::elun::ELUN"
+  },
+  {
+    "symbol": "EMAI",
+    "name": "EMAI",
+    "coinType": "0x1e4ffb09db656c47da81dee0e9768aa7716d0a3b13ce32397299a4508f64ec13::emai::EMAI"
+  },
+  {
+    "symbol": "ETH",
+    "name": "ETH",
+    "coinType": "0xd0e89b2af5e4910726fbcd8b8dd37bb79b29e5f83f7491bca830e94f7f226d29::eth::ETH",
+    "logoUrl": "https://assets.coingecko.com/coins/images/54567/thumb/sbeth.png?1740452820"
+  },
+  {
+    "symbol": "EURO",
+    "name": "EURO",
+    "coinType": "0xe2048ffb31148c76117447efb1bd438e5486ee6e7932899d7f715b833edbba8e::euro::EURO"
+  },
+  {
+    "symbol": "EVANAI",
+    "name": "EVANAI",
+    "coinType": "0xe604450f01134861a23b62809b60c9649f3309a2067e67c8141f1027af5ba18e::evanai::EVANAI"
+  },
+  {
+    "symbol": "EWAL",
+    "name": "EWAL",
+    "coinType": "0x8a398f65f8635be31c181632bf730aea25074505d70c77d9b287e7d4f063ef70::ewal::EWAL"
+  },
+  {
+    "symbol": "EXOTIC",
+    "name": "EXOTIC",
+    "coinType": "0x71f2876b46ced7ce105c97f5ddfe1342a422938a88d342843fd8b2decdc27271::exotic::EXOTIC"
+  },
+  {
+    "symbol": "EYE",
+    "name": "EYE",
+    "coinType": "0xbc6ea276863701a6251dca99acaa7b268398424d890185b34262894a6237f56b::eye::EYE"
+  },
+  {
+    "symbol": "FAITH",
+    "name": "FAITH",
+    "coinType": "0x965c6cb391f2e240cea5f43a10de3495004c78c057d4c233159205c40c7e03e3::faith::FAITH",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e6a2860ba195b4bea5abcecf5696abc78b7e4260398ba26e5c92b624fd4455f3?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "FARTBOY",
+    "name": "FARTBOY",
+    "coinType": "0xa061873a78b816cc479e0a9e9a3226ddfbc94cfafd8e5d0cb33d1116156167df::fartboy::FARTBOY"
+  },
+  {
+    "symbol": "FARTCOIN",
+    "name": "FARTCOIN",
+    "coinType": "0x4a2d3947831057dc859d272082900d7b06cf8b2b8ab4e456463f83e3a0e3d7d1::fartcoin::FARTCOIN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/675bbc45e5aa32e256ff55e6cfee6e0200074d06dccf8dee8e11f6377ce0dfc1?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "FAUCET",
+    "name": "FAUCET",
+    "coinType": "0xc0229b9addec9351b0883c8545392cb61676f16a93d711651ce662c6c553e4ea::faucet::FAUCET"
+  },
+  {
+    "symbol": "FDUSD",
+    "name": "FDUSD",
+    "coinType": "0xf16e6b723f242ec745dfd7634ad072c42d5c1d9ac9d62a39c381303eaa57693a::fdusd::FDUSD",
+    "logoUrl": "https://assets.coingecko.com/coins/images/31079/thumb/FDUSD_icon_black.png?1731097953"
+  },
+  {
+    "symbol": "FEAST",
+    "name": "FEAST",
+    "coinType": "0x08fd4e951b035d13f501a31a92aa66bb0ec3b0b60162a41d146306a6aa7be15b::feast::FEAST"
+  },
+  {
+    "symbol": "FET",
+    "name": "FET",
+    "coinType": "0xe363ba875400c77aedba3c5b936dabfc374f88b46ac41e5ff3c74643e9bd7151::fet::FET"
+  },
+  {
+    "symbol": "FIH",
+    "name": "FIH",
+    "coinType": "0x5871d3c93044a29053e2eadd87eeabc0a54328bf78490d1f059d9d733893ebba::fih::FIH"
+  },
+  {
+    "symbol": "FLAMINGO",
+    "name": "FLAMINGO",
+    "coinType": "0x17c334979cd0698ccf9450a3ec2ae0ce1e4c6b0935353fe5facbf69fa77a72af::flamingo::FLAMINGO"
+  },
+  {
+    "symbol": "FLOP",
+    "name": "FLOP",
+    "coinType": "0xfccc88767d8d047c858638dea13d684813861785888d55fb8ec767c270152044::flop::FLOP"
+  },
+  {
+    "symbol": "FLUENT",
+    "name": "FLUENT",
+    "coinType": "0xee233deb075224f6b4f949c48a7917edd05efae18b6ccdfb380cb9f6164766a8::fluent::FLUENT"
+  },
+  {
+    "symbol": "FLX",
+    "name": "FLX",
+    "coinType": "0xbe65ba4fde01eac0d81bdaf9ed1da4fbd204871feee3f12cdb068f672c6e10bf::flx::FLX"
+  },
+  {
+    "symbol": "FLX",
+    "name": "FLX",
+    "coinType": "0x6dae8ca14311574fdfe555524ea48558e3d1360d1607d1c7f98af867e3b7976c::flx::FLX",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/d62b990f40ff57ceba0ce545fdbe5bfd56aa381a8d4457693ff4c82c81c27c98?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "FOMO",
+    "name": "FOMO",
+    "coinType": "0xa340e3db1332c21f20f5c08bef0fa459e733575f9a7e2f5faca64f72cd5a54f2::fomo::FOMO"
+  },
+  {
+    "symbol": "FOMO",
+    "name": "FOMO",
+    "coinType": "0x61cebbfb34395d5704509b6c505e1f3a41004b4fff45894a1fd8e9b5ce51804a::fomo::FOMO"
+  },
+  {
+    "symbol": "FRATT",
+    "name": "FRATT",
+    "coinType": "0x31348f17429e6b37ed269cc667cc83947ff8c54593dcbd1a56cae06a895a38be::fratt::FRATT",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/cea7b51e7714e50e8d9fc7b11b851c9e87504a6f8c58f95fe9be98f9ec938110?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "FREEBIES",
+    "name": "FREEBIES",
+    "coinType": "0xc7b89bcc2bbebe7786527d91c83551e08bffa1178dd2440a90784d1bedd604b4::freebies::FREEBIES"
+  },
+  {
+    "symbol": "FREEDOM",
+    "name": "FREEDOM",
+    "coinType": "0xbbe6dc21b7f6570027b2105050ee0c6c770443e64e9061401f35f1b8e0d46628::freedom::FREEDOM"
+  },
+  {
+    "symbol": "FRMN",
+    "name": "FRMN",
+    "coinType": "0x0454d6dcd9b60f504df88480611edb89662bb471ecc7dd585749b438fd1f49b4::frmn::FRMN"
+  },
+  {
+    "symbol": "FRO",
+    "name": "FRO",
+    "coinType": "0xfc3e40799aa7e8b6a824152c42046157eae8bc4540228aee1f2a867ac12ae78a::fro::FRO"
+  },
+  {
+    "symbol": "FROG",
+    "name": "FROG",
+    "coinType": "0xe4cbb9bcb343ce93182725da11050640c7872453cdb7809e8b7e654581e32774::frog::FROG"
+  },
+  {
+    "symbol": "FSOL",
+    "name": "FSOL",
+    "coinType": "0x173d30c17576aadd8287625665174f1265d05f3642283a1925873d56624914c9::fsol::FSOL"
+  },
+  {
+    "symbol": "FUBAO",
+    "name": "FUBAO",
+    "coinType": "0x27568cfb7c28c8f5bf838c2b9ffa52a023b241df21baa6f0ef19d3a1d030dc69::fubao::FUBAO"
+  },
+  {
+    "symbol": "FUD",
+    "name": "FUD",
+    "coinType": "0x76cb819b01abed502bee8a702b4c2d547532c12f25001c9dea795a5e631c26f1::fud::FUD",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/9e05872c94596cff8f7859940f402b257f9bcbedf837f8dea09e648c0f5dc5c0?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "FUDD",
+    "name": "FUDD",
+    "coinType": "0x3ce4210b5bd23a521fe77b2d5f0be52d297f0f7e685f585a9b026e372446932a::fudd::FUDD"
+  },
+  {
+    "symbol": "FUEL",
+    "name": "FUEL",
+    "coinType": "0xc491a59b13dfd66182f91ab7d70eaa1a354a6c8f8d9f4c7c164d9971d32ed1c2::fuel::FUEL"
+  },
+  {
+    "symbol": "FURLY",
+    "name": "FURLY",
+    "coinType": "0x35f0a4967dae4518afea71d70726f1fe81dba7b7f4db293dfe8e287493c3543a::furly::FURLY"
+  },
+  {
+    "symbol": "FVOTE",
+    "name": "FVOTE",
+    "coinType": "0xcb5ff4e8ed46e89cb1bba1c05bcb3190ad50e4ddd055b4386abc50ddacc4aecb::fvote::FVOTE"
+  },
+  {
+    "symbol": "FWC26",
+    "name": "FWC26",
+    "coinType": "0x5d38e2abe2d923e364cf7653521fb9ba5addff6c73202b0ec8cdc70d1f130a15::fwc26::FWC26"
+  },
+  {
+    "symbol": "G",
+    "name": "G",
+    "coinType": "0x0f1257cfb95cb0344d5b3d8ee161ff476bd9db0fa861f1f0a83fd17fc205791b::g::G"
+  },
+  {
+    "symbol": "GAMA",
+    "name": "GAMA",
+    "coinType": "0x87735c51cc024df3571d85643a7128bb559831abbc8a33e0ae4e86b37fe7ee74::gama::GAMA"
+  },
+  {
+    "symbol": "GANGS",
+    "name": "GANGS",
+    "coinType": "0xca3875cf962872351f2eed60254bc50fbeb6ba396cca62292199d5f2c95ae9f3::gangs::GANGS"
+  },
+  {
+    "symbol": "GAS",
+    "name": "GAS",
+    "coinType": "0xfc64a20e3489d8df453f6130f7887835bce485777bf15de465c6ebe20fc4d663::gas::GAS"
+  },
+  {
+    "symbol": "GAY",
+    "name": "GAY",
+    "coinType": "0x7f48af625f97682584c1a64443f55d86d882ebd4202902711c226221f34d7108::gay::GAY"
+  },
+  {
+    "symbol": "GEGE",
+    "name": "GEGE",
+    "coinType": "0xe43addc419e530d342308445ba4ce6a02018039f0f2f5b751a7012a3bc9b8054::gege::GEGE"
+  },
+  {
+    "symbol": "GENERAL",
+    "name": "GENERAL",
+    "coinType": "0xc3770c07e4a054fc0fc645482c4f3fe0c907ca4f8e921f2d26f6113229abb841::general::GENERAL"
+  },
+  {
+    "symbol": "GENERAL",
+    "name": "GENERAL",
+    "coinType": "0x85f2accbb7fedf10b1b3f080263ad54af28d7f0cac402d1e577559c5e2dad326::general::GENERAL"
+  },
+  {
+    "symbol": "GEORGE",
+    "name": "GEORGE",
+    "coinType": "0xad000a06e22774ca8a2f0ba1f2ae2893d8d2eb2aed5cae797e7b2503e8f07953::george::GEORGE"
+  },
+  {
+    "symbol": "GFRNX",
+    "name": "GFRNX",
+    "coinType": "0xb1fa4a60a7b44c48f778c01b69cbcedfbe8f9c4422e22b1b2dbc79ba75f58b26::gfrnx::GFRNX"
+  },
+  {
+    "symbol": "GG",
+    "name": "GG",
+    "coinType": "0x1c05a32ab683c55f1940fadba17f4e7024d03ac2f03d61b1f75d69306550784b::gg::GG"
+  },
+  {
+    "symbol": "GGD",
+    "name": "GGD",
+    "coinType": "0x36fc41df442e02750864faaf542e4eaa65cc9dd56dacb9c262ae01274a3bd572::ggd::GGD"
+  },
+  {
+    "symbol": "GHWIF",
+    "name": "GHWIF",
+    "coinType": "0x6e237cb465d23ff57036ccc7a63e0ca4893a711a00dcc4fe71b3ae8f03a55811::ghwif::GHWIF"
+  },
+  {
+    "symbol": "GIGA",
+    "name": "GIGA",
+    "coinType": "0x9bc83e18008524c28096a63337a2f877ecee90ba1364302df29cc39a647cc847::giga::GIGA"
+  },
+  {
+    "symbol": "GIGATROLL",
+    "name": "GIGATROLL",
+    "coinType": "0xf8d7cc0532d85b7a03fe54831c4bb9ca0ad7a7d6495c7ed69cc40b198925f1da::gigatroll::GIGATROLL"
+  },
+  {
+    "symbol": "GLA",
+    "name": "GLA",
+    "coinType": "0x16f45b6dc803e19736a7cc44af7e5e12b9c82c459d6ab7e85145c412dbba757c::gla::GLA"
+  },
+  {
+    "symbol": "GLUB",
+    "name": "GLUB",
+    "coinType": "0x5c2c19746477fdc23ddbee53791753a65ca5e36f94bab8dbd8bebdddeb548bd2::glub::GLUB"
+  },
+  {
+    "symbol": "GME",
+    "name": "GME",
+    "coinType": "0x0935f1b8b8bbb64f1dfcb62a0e41891e956cdcc307a536c6a2b15a76011c0f46::gme::GME"
+  },
+  {
+    "symbol": "GOBLIN",
+    "name": "GOBLIN",
+    "coinType": "0x231004eee5327877c674164d457fa19c499b50d9fd085ab7e461cf9fc149c32a::goblin::GOBLIN"
+  },
+  {
+    "symbol": "GOBLINTROL",
+    "name": "GOBLINTROL",
+    "coinType": "0xcc753ba9c5011b6637eb9ae2a43579c4d8f9f8e43215c5233aa8662e34483e2c::goblintrol::GOBLINTROL"
+  },
+  {
+    "symbol": "GOD",
+    "name": "GOD",
+    "coinType": "0xb863e8bef9c6cf074aec559bf29f5432b2ec209ce5eb86e72c1ed3bf9500547f::god::GOD"
+  },
+  {
+    "symbol": "GOLDUCK",
+    "name": "GOLDUCK",
+    "coinType": "0x0d931769f55b33dffee53c6a524bdd80684d32688e218b54767424f33d69b608::golduck::GOLDUCK"
+  },
+  {
+    "symbol": "GOOSE",
+    "name": "GOOSE",
+    "coinType": "0x901399bdfba097a413631cbc1ec848612d23af3890daf29d6822b43d287bc96a::goose::GOOSE"
+  },
+  {
+    "symbol": "GOR",
+    "name": "GOR",
+    "coinType": "0x0c202b778f0a0cba81bdcf2c3efd7efa1d6404590299a452d9cc59258d154e14::gor::GOR"
+  },
+  {
+    "symbol": "GRASS",
+    "name": "GRASS",
+    "coinType": "0x6ad7368bf6bbe077cfd30adbc07037767596bc922934d2908027f2ab092c7530::grass::GRASS"
+  },
+  {
+    "symbol": "GROK",
+    "name": "GROK",
+    "coinType": "0xf1b7828ec0b57fb663b5684f6d9986e1c1af56930093cfd850e259e7987f2009::grok::GROK"
+  },
+  {
+    "symbol": "GUPPY",
+    "name": "GUPPY",
+    "coinType": "0x5eb32e85d924358f4d7db2b5c11b82a957ca390e91001fb1cd3ab18cd0c00ab5::guppy::GUPPY"
+  },
+  {
+    "symbol": "H2O",
+    "name": "H2O",
+    "coinType": "0x0b998e7490971775b2e4197a679f39a14d864a15aeaf5fcf9f76ba0feb8416af::H2O::H2O"
+  },
+  {
+    "symbol": "H81",
+    "name": "H81",
+    "coinType": "0xde491ea04e29ec2458038a948f664775692f903be0c0dba745e588ab0fbd33dc::h81::H81"
+  },
+  {
+    "symbol": "HAEDAL",
+    "name": "HAEDAL",
+    "coinType": "0x3a304c7feba2d819ea57c3542d68439ca2c386ba02159c740f7b406e592c62ea::haedal::HAEDAL",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/c3aa2088ffb8314bbd29c72d833457fe8177922ad4adddf5127ade7b6c567331?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "HAEDAL",
+    "name": "HAEDAL",
+    "coinType": "0xf86e769e7cc982caaabe6db9d49a57307e82f751fc544c3f70f0eaeeabe19fb2::haedal::HAEDAL"
+  },
+  {
+    "symbol": "HANDOG",
+    "name": "HANDOG",
+    "coinType": "0x32a94415655f03ce63c1a1120b7fa994d495ad3aa26e72cae930a361ca416968::handog::HANDOG"
+  },
+  {
+    "symbol": "HANTA",
+    "name": "HANTA",
+    "coinType": "0x957122a15a403d1b0daa16aaba83be58a02fd6aa636a1d129dab74bc0a8c2ba4::hanta::HANTA"
+  },
+  {
+    "symbol": "HANTA",
+    "name": "HANTA",
+    "coinType": "0x0cf85c3d1d519e2cdb8fe71c8895e7fd97df2994622bf33c5626299d8a38cc03::hanta::HANTA"
+  },
+  {
+    "symbol": "HANTA",
+    "name": "HANTA",
+    "coinType": "0xb7ad2842042c1c45a6524d7306da03f9b16454f2d3698fa9e31726b53b714209::hanta::HANTA"
+  },
+  {
+    "symbol": "HASUI",
+    "name": "HASUI",
+    "coinType": "0xbde4ba4c2e274a60ce15c1cfff9e5c42e41654ac8b6d906a57efa4bd3c29f47d::hasui::HASUI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/8b99114eac9bb57c1f82558f298e8c3dd97c447980eb732c4b90dbcdb91776d7?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "HAWAL",
+    "name": "HAWAL",
+    "coinType": "0x8b4d553839b219c3fd47608a0cc3d5fcc572cb25d41b7df3833208586a8d2470::hawal::HAWAL",
+    "logoUrl": "https://assets.coingecko.com/coins/images/68689/thumb/hawal.png?1756277722"
+  },
+  {
+    "symbol": "HBIBI",
+    "name": "HBIBI",
+    "coinType": "0x4e14c1a959d8b6540d71708a97bd8672245614074d07ad7b2233baf43cc43342::hbibi::HBIBI"
+  },
+  {
+    "symbol": "HEAL",
+    "name": "HEAL",
+    "coinType": "0x4e434c84688b49c70edcfb253395a707ae16fed9cad8ef62e03c76ae46369719::heal::HEAL"
+  },
+  {
+    "symbol": "HEHE",
+    "name": "HEHE",
+    "coinType": "0xed0589bff23876fa891c411aefbe22012682354b9480eec828a69610c9465683::hehe::HEHE"
+  },
+  {
+    "symbol": "HELMET",
+    "name": "HELMET",
+    "coinType": "0x1c1d9ff4d3ab6f819cab3601cc3089b149a9b18dd8c9fd24e5bfcf63f1d4236f::helmet::HELMET",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/534a53bed4271cde1aab61362fd1055f2bff509fba4c34a39231ebeba9e07aa6?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "HENRY",
+    "name": "HENRY",
+    "coinType": "0x1700cb94451a2204f3248622cced4e328c3d1afaadaa397a337dc128ca31459e::henry::HENRY"
+  },
+  {
+    "symbol": "HKD",
+    "name": "HKD",
+    "coinType": "0x865dbaf2908b94977ec45ca7491820e32ea79afda347cafc749228347f514520::hkd::HKD"
+  },
+  {
+    "symbol": "HKD",
+    "name": "HKD",
+    "coinType": "0x47068883d96cb6d5594243697f990965d2e2c4044b67b65c0b9a611658864655::hkd::HKD"
+  },
+  {
+    "symbol": "HKDS",
+    "name": "HKDS",
+    "coinType": "0x559cf7ac996019a2ce7fa17c29d46b275a2469bac1bceec9e355be451b5603ea::hkds::HKDS"
+  },
+  {
+    "symbol": "HKDS",
+    "name": "HKDS",
+    "coinType": "0x32e509e8dd023bc7f7310e8df5da2f5090ccc8ea8ebade6771cceea8ce1834d4::hkds::HKDS"
+  },
+  {
+    "symbol": "HONTER",
+    "name": "HONTER",
+    "coinType": "0x904a56b6e3a4156ae7cc9db964d43cb5b1e17eedd1f7c7cf41b0a50f1f2df37a::honter::HONTER"
+  },
+  {
+    "symbol": "HOOT",
+    "name": "HOOT",
+    "coinType": "0x9267642ad1fcefb698e865f9bb24a2f33938deb090365353a2d5a91ed691cc34::hoot::HOOT"
+  },
+  {
+    "symbol": "HOPCAT",
+    "name": "HOPCAT",
+    "coinType": "0x5c931e75a2aebbed6b314a80e722cd9ba8696c5a59c2db8143ed6845a69dd476::hopcat::HOPCAT"
+  },
+  {
+    "symbol": "HOPDOG",
+    "name": "HOPDOG",
+    "coinType": "0x5217def12dd5c456244d6cd643f4360736ba281c7b3cda1d7a7ed45a49119606::hopdog::HOPDOG"
+  },
+  {
+    "symbol": "HOPLIFE",
+    "name": "HOPLIFE",
+    "coinType": "0x827659dabd1c32ae3832b10097943f575db394a0a6b1df0d91f2bfb3dfe83290::hoplife::HOPLIFE"
+  },
+  {
+    "symbol": "HOPPY",
+    "name": "HOPPY",
+    "coinType": "0x43e9045850072b10168c565ca7c57060a420015343023a49e87e6e47d3a74231::hoppy::HOPPY"
+  },
+  {
+    "symbol": "HRS",
+    "name": "HRS",
+    "coinType": "0x50162fd2a7ebd9c3a56798a423ea6a0fd412b07594d2ba9fa7113be4128e438e::hrs::HRS"
+  },
+  {
+    "symbol": "HTX",
+    "name": "HTX",
+    "coinType": "0x0e6d3f921e2d3ad77c98bb93041ae379174477ee1586dcb2a09edf4cef8ae9b6::htx::HTX"
+  },
+  {
+    "symbol": "HTY",
+    "name": "HTY",
+    "coinType": "0xe4526bcc102f55c030b00ccfcd5778fd2c5295d6bdea905ffba832c2e094838b::hty::HTY"
+  },
+  {
+    "symbol": "HUNTBODEN",
+    "name": "HUNTBODEN",
+    "coinType": "0x92a05402ec37d524d60d08cfe4b411702daeb33af6656e9cf12972087ebcda28::huntboden::HUNTBODEN"
+  },
+  {
+    "symbol": "I",
+    "name": "I",
+    "coinType": "0xd65c1bb39645113d8104f1d5df2ac5afe195e49688d2fdefb4d277492f76d00d::i::I"
+  },
+  {
+    "symbol": "I_SUI",
+    "name": "I_SUI",
+    "coinType": "0x285b49635f4ed253967a2a4a5f0c5aea2cbd9dd0fc427b4086f3fad7ccef2c29::i_sui::I_SUI"
+  },
+  {
+    "symbol": "IAMSUI",
+    "name": "IAMSUI",
+    "coinType": "0xbb8fa709408f3f9cb80909928990d6e2edf5f246757943600ff1d41aaae627b5::iamsui::IAMSUI"
+  },
+  {
+    "symbol": "ICEY",
+    "name": "ICEY",
+    "coinType": "0x9bc79a45e9f8d88fd4d4b5652978d1b8e575650f94cb5f734e901064fde759a8::icey::ICEY"
+  },
+  {
+    "symbol": "ICORGI",
+    "name": "ICORGI",
+    "coinType": "0xc91acfb75009c5ff2fd57c54f3caaee12ad1fbe997681334adc0b574fc277a07::icorgi::ICORGI"
+  },
+  {
+    "symbol": "IDNG",
+    "name": "IDNG",
+    "coinType": "0xde1c9987ec0bb412593ba96977b08879a050ac5b0229bd1e776a596f4be5bfb2::idng::IDNG",
+    "logoUrl": "https://assets.coingecko.com/coins/images/102172004/thumb/20260211_185116.jpg?1770925288"
+  },
+  {
+    "symbol": "IKA",
+    "name": "IKA",
+    "coinType": "0x7262fb2f7a3a14c888c438a3cd9b912469a58cf60f367352c46584262e8299aa::ika::IKA",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/0666959b63c3339d4852184dda4e1f243276424d83af10b0e6997da7ead9c89d?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "IKI",
+    "name": "IKI",
+    "coinType": "0x9824ed4dbd0c9d108e4a31ec9870bfdd66051e4f3ec574c03c4b43e025b28ccf::iki::IKI"
+  },
+  {
+    "symbol": "INFNT",
+    "name": "INFNT",
+    "coinType": "0x5f01e19bc83e5471e00c46a6b0b9ebdde243cf91079c23fdab2f9dd031a43a48::infnt::INFNT"
+  },
+  {
+    "symbol": "INTJSCORP",
+    "name": "INTJSCORP",
+    "coinType": "0xf4924b2096a1b866b1287b5346a424fb898968530fecafe94a9792865fdea8c9::intjscorp::INTJSCORP"
+  },
+  {
+    "symbol": "IOO",
+    "name": "IOO",
+    "coinType": "0x0973c9e40e923867439ea6efe3a2acb58fe5652c752a0475914dca03f736c039::ioo::IOO"
+  },
+  {
+    "symbol": "IRONCLAW",
+    "name": "IRONCLAW",
+    "coinType": "0x24d68e98f24050d912b644b47ff1ee87e8b132821c4b83efc9be30aa9943a472::ironclaw::IRONCLAW"
+  },
+  {
+    "symbol": "ISG",
+    "name": "ISG",
+    "coinType": "0xa9396a2d0b927fad93666fee828d6cea49c1bf15779d3717b08fa00424669e3e::isg::ISG",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/ff5645130442d7d64334040e1ece4419ff561ad9a498fa702792038f9e7ad2cd?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "ITA",
+    "name": "ITA",
+    "coinType": "0x2775b665fa5837592088e648e98e0597d79caedcc3039d4dc3a47dc647044134::ita::ITA"
+  },
+  {
+    "symbol": "IUS",
+    "name": "IUS",
+    "coinType": "0xbf0a6cf09c6b0ddaea17e56ae0fe6505e2d91104e1c71128d7bb6db5aa9a0c2f::ius::IUS"
+  },
+  {
+    "symbol": "IUS",
+    "name": "IUS",
+    "coinType": "0xefb7537b2515583f2e0abb4e50ec69e806c447edaef8d0509e06eb2b2f685474::ius::IUS"
+  },
+  {
+    "symbol": "JACKSON",
+    "name": "JACKSON",
+    "coinType": "0x5ffe80c90a653e3ca056fd3926987bf3e8068ca21528bb4fdbc4d487cc152dad::jackson::JACKSON",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/4235925823f5f31f1dc4d9e6f81c4a03b1d78d8c11728b5085405544b3a18058?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "JACKSON_LIQUIDITY_COIN",
+    "name": "JACKSON_LIQUIDITY_COIN",
+    "coinType": "0x0b5f83106d703ebf781f634e68256d15a0668aaa30249796500258ea5cfc2edb::jackson_liquidity_coin::JACKSON_LIQUIDITY_COIN"
+  },
+  {
+    "symbol": "JAI",
+    "name": "JAI",
+    "coinType": "0x424b293afd846e994a6791f9c47bce03fa3b8a19d54bf670a6bb9de3bc3737c7::jai::JAI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/5f5a1f991cd5be83bdf2971b06dcdbb4240022b22d88c9ad47f3d9e156172a74?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "JDSG",
+    "name": "JDSG",
+    "coinType": "0x9e7418ee528d661e13ab50c65ccb12350e3f18c934e5205a929a2a8df3ec7031::jdsg::JDSG"
+  },
+  {
+    "symbol": "JEETS",
+    "name": "JEETS",
+    "coinType": "0xb1e57bc0b75f5669b92ac5b2dbbe9cfe03697c13fdc0a62fef0847d7593a4f33::jeets::JEETS"
+  },
+  {
+    "symbol": "JELLY",
+    "name": "JELLY",
+    "coinType": "0x12f4f6f3b8352e1d1ba1df4d6941e8720b8e37342f95ebb7780898621f7692ab::jelly::JELLY"
+  },
+  {
+    "symbol": "JENNY",
+    "name": "JENNY",
+    "coinType": "0xb2b63f6096935bff9034211e68c95f504b64252312d34c747a511c42b10f135e::jenny::JENNY"
+  },
+  {
+    "symbol": "JOBCOIN",
+    "name": "JOBCOIN",
+    "coinType": "0x154eb908ca0fd3743c39444f704036e0a9a0eed0a9ff5c1203c5da0f9318838a::jobcoin::JOBCOIN"
+  },
+  {
+    "symbol": "JOTCHUA",
+    "name": "JOTCHUA",
+    "coinType": "0xac2513e9fac19282539c67c48a23755ec90e6908d89fa71485ebe07ec117f12f::jotchua::JOTCHUA"
+  },
+  {
+    "symbol": "JUI_ON_SUI",
+    "name": "JUI_ON_SUI",
+    "coinType": "0x618e05f8e7405d63339ddade6d5e64887651b5dde73453e53f92c5be7b93ce3c::jui_on_sui::JUI_ON_SUI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/XizLplXMmJKCDdSS?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "JUNC",
+    "name": "JUNC",
+    "coinType": "0x3e31d1c9e02ca8113510a51b2e8e1a9fd737c244f8bac4f39fd3f3a73ee388ee::junc::JUNC"
+  },
+  {
+    "symbol": "JWLCETUS",
+    "name": "JWLCETUS",
+    "coinType": "0x0e25582daef54ee41052390c4db5e70a82ec1baed97942db0eb6094267624b5d::jwlcetus::JWLCETUS"
+  },
+  {
+    "symbol": "JWLSCA",
+    "name": "JWLSCA",
+    "coinType": "0x0e25582daef54ee41052390c4db5e70a82ec1baed97942db0eb6094267624b5d::jwlsca::JWLSCA"
+  },
+  {
+    "symbol": "JWLSUI",
+    "name": "JWLSUI",
+    "coinType": "0x2921ca2fe6ee99698b095f046bc9759ce7a764d2e91ab0ad182c143649c3df79::jwlsui::JWLSUI"
+  },
+  {
+    "symbol": "KAPI",
+    "name": "KAPI",
+    "coinType": "0xbb20b64076613f0ca642e25e93811e23a1629dab8d0a2e90609ba9051f88353b::KAPI::KAPI"
+  },
+  {
+    "symbol": "KATSU",
+    "name": "KATSU",
+    "coinType": "0x856297944d3abf775a707f2e6f029ad66128ad9dedf9e5f08b03844ee75e592e::KATSU::KATSU"
+  },
+  {
+    "symbol": "KC_DEGEN_VT",
+    "name": "KC_DEGEN_VT",
+    "coinType": "0x6d8c1becd365aaa5474a0642247b15189e1625f32104945749f1e8802b768d6d::kc_degen_vt::KC_DEGEN_VT"
+  },
+  {
+    "symbol": "KCRAB",
+    "name": "KCRAB",
+    "coinType": "0x08463c24690de2984440f242e39323bd19837f0f7178675fb008ee016da82d92::kcrab::KCRAB",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/825275d267b44eacb6e617f4f4b42d97ddf75b501a4f47daff5580a8a4011cdf?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "KDX",
+    "name": "KDX",
+    "coinType": "0x3b68324b392cee9cd28eba82df39860b6b220dc89bdd9b21f675d23d6b7416f1::kdx::KDX",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/59c99a31a74affd8b6acf22e23afba27a8c448d4023753a62dcf5cdf9a0e2ea9?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "KDX",
+    "name": "KDX",
+    "coinType": "0xab8a6ffe539b0d267e6d42dea949b346d7737a8dc2ec134c65ebc91765230afe::kdx::KDX"
+  },
+  {
+    "symbol": "KEKIUS",
+    "name": "KEKIUS",
+    "coinType": "0xe1835cef055908280353dfe4ac39dbf078c26c0402fc60cb0532fcafabeb0cee::kekius::KEKIUS"
+  },
+  {
+    "symbol": "KEKIUS",
+    "name": "KEKIUS",
+    "coinType": "0x7cf1dc5e098e61f123de6f5bd8f4f01fc60d424e85d809cb475fc908c252951f::kekius::KEKIUS"
+  },
+  {
+    "symbol": "KILA",
+    "name": "KILA",
+    "coinType": "0xe0fce1ed43ddac672a33adf823ae5402675dddf96edf1079ee81ee0cd2964066::kila::KILA"
+  },
+  {
+    "symbol": "KIMCHI",
+    "name": "KIMCHI",
+    "coinType": "0xb6baa75577e4bbffba70207651824606e51d38ae23aa94fb9fb700e0ecf50064::kimchi::KIMCHI"
+  },
+  {
+    "symbol": "KING",
+    "name": "KING",
+    "coinType": "0x5fad71cd86dfb03f3941571835b54fb2a94364ae54ac7f816224837ff424b662::king::KING"
+  },
+  {
+    "symbol": "KINGCOBRA",
+    "name": "KINGCOBRA",
+    "coinType": "0xd1fc206d1fdd71c6da714ec8be4fd10a0896b95be2f2af36a9d4e2dcb8492a29::kingcobra::KINGCOBRA"
+  },
+  {
+    "symbol": "KISA",
+    "name": "KISA",
+    "coinType": "0xd6af51fce834575452ded3ea31f534fc27f73340e6a4fb70002ce8000a784759::kisa::KISA"
+  },
+  {
+    "symbol": "KLS",
+    "name": "KLS",
+    "coinType": "0x7d60254d4507b6335bcd60c8fbccf012ccf5ac580ed2a52fa8d8c48d654673b6::kls::KLS"
+  },
+  {
+    "symbol": "KOBAN",
+    "name": "KOBAN",
+    "coinType": "0x8400e7044d360c28dd338111d2aa54ca5bdc960a8d6b60bf3b28e1ca503df3e2::koban::KOBAN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/55656/thumb/_KOBAN_200x200.png?1746865309"
+  },
+  {
+    "symbol": "KOI",
+    "name": "KOI",
+    "coinType": "0x01d430425a8a681ef26315e78a082fe744f8d0bbdbd1ab76b9fd78ada09bedca::Koi::KOI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/50594/thumb/photo_2024-09-30_17-12-22.jpg?1728444848"
+  },
+  {
+    "symbol": "KOLT",
+    "name": "KOLT",
+    "coinType": "0x55758414091036001e6be5bdad542a62d39586d499d1c7af15a7ae47418102fd::kolt::KOLT"
+  },
+  {
+    "symbol": "KOMAKI",
+    "name": "KOMAKI",
+    "coinType": "0x89f6fbaa0b2bef925a9b4fd4e7447960f1da6332face19dfd68e7602828559c8::komaki::KOMAKI"
+  },
+  {
+    "symbol": "KOTO",
+    "name": "KOTO",
+    "coinType": "0xa99166e802527eeb5439cbda12b0a02851bf2305d3c96a592b1440014fcb8975::koto::KOTO"
+  },
+  {
+    "symbol": "KOW",
+    "name": "KOW",
+    "coinType": "0xf65b5fcb5782b9ea6a2f4e293b49391bcb3b19c64c43cb66ad19c3f08c8b282c::kow::KOW"
+  },
+  {
+    "symbol": "KSUI",
+    "name": "KSUI",
+    "coinType": "0x41ff228bfd566f0c707173ee6413962a77e3929588d010250e4e76f0d1cc0ad4::ksui::KSUI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/59c99a31a74affd8b6acf22e23afba27a8c448d4023753a62dcf5cdf9a0e2ea9?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "KURO",
+    "name": "KURO",
+    "coinType": "0x90dae810753085e6431dc98827100b600d3e618d86196bcfa01295a7a6323021::kuro::KURO"
+  },
+  {
+    "symbol": "KURURU",
+    "name": "KURURU",
+    "coinType": "0x1034321be716bfb43de460ad22f1629d8be9c71d3da6af1bf8af8ec851530d37::kururu::KURURU"
+  },
+  {
+    "symbol": "KW",
+    "name": "KW",
+    "coinType": "0x589613ebc9f69a9461394073212a5c1c384ce601fd7a2be7d227e805e5914337::kw::KW"
+  },
+  {
+    "symbol": "KW",
+    "name": "KW",
+    "coinType": "0xdb5162ae510a06dd9ce09016612e64328a27914e9570048bbb8e61b2cb5d6b3e::kw::KW"
+  },
+  {
+    "symbol": "KYLN",
+    "name": "KYLN",
+    "coinType": "0xab4665e028e79673ee530b9745ec3e795397b15a25215569854c57102f456fb0::kyln::KYLN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/Tucht835elAYGzBd?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "KYMI",
+    "name": "KYMI",
+    "coinType": "0xd9b1ca9103f88b37d41b13fefd1e45f8538ef1464a8d7eb7c56eb433cee880ae::kymi::KYMI"
+  },
+  {
+    "symbol": "LAH",
+    "name": "LAH",
+    "coinType": "0x87f166fcdc3e8aec19a6a8a9a05e22e8bdeeed9cf556afec4c69e13a62da83e8::lah::LAH"
+  },
+  {
+    "symbol": "LAMA",
+    "name": "LAMA",
+    "coinType": "0x610ba073edf6f9eee02650ba02fd560fa0531580e07e24fe3449bf1116adb0b4::lama::LAMA"
+  },
+  {
+    "symbol": "LAMBORGHINITOKEN",
+    "name": "LAMBORGHINITOKEN",
+    "coinType": "0x2679bd7c50ba49478ae430a0cc309e8858f41bd7337996f7ce7bedf25f8976a9::lamborghinitoken::LAMBORGHINITOKEN"
+  },
+  {
+    "symbol": "LATTE",
+    "name": "LATTE",
+    "coinType": "0x9077ffaf4d0b5bad70bcf0fda3a6df7d0ca725f7ee586056b95c2875dfd7fa48::latte::LATTE"
+  },
+  {
+    "symbol": "LAWAS",
+    "name": "LAWAS",
+    "coinType": "0xb91254614f140ce93c7c0e16607364a39c6d2bcdb84534333c7960b960fe4019::lawas::LAWAS"
+  },
+  {
+    "symbol": "LBTC",
+    "name": "LBTC",
+    "coinType": "0x3e8e9423d80e1774a7ca128fccd8bf5f1f7753be658c5e645929037f7c819040::lbtc::LBTC",
+    "logoUrl": "https://assets.coingecko.com/coins/images/39969/thumb/LBTC_Logo.png?1724959872"
+  },
+  {
+    "symbol": "LEMON",
+    "name": "LEMON",
+    "coinType": "0xb6618debe65795bf0ecd5373eec3ab74d38e26742c1b0817c8b00896d2cb7150::lemon::LEMON"
+  },
+  {
+    "symbol": "LIGHT",
+    "name": "LIGHT",
+    "coinType": "0x95636241ad7d341b5bd8ac883158e9e23ebba2a89527297a35e03f9bd1568436::light::LIGHT"
+  },
+  {
+    "symbol": "LINDY",
+    "name": "LINDY",
+    "coinType": "0x9d0d53655cebccf7a6d334a59d13e21e5605044bfd07accf783c0cf9749289ef::lindy::LINDY"
+  },
+  {
+    "symbol": "LIONS",
+    "name": "LIONS",
+    "coinType": "0xfb9be285bd084ccde25702f63d0de5fca13977d9455fab78f27ae9bf926a4534::lions::LIONS"
+  },
+  {
+    "symbol": "LIQ",
+    "name": "LIQ",
+    "coinType": "0x9c86d1926a0a39e906f20674d6a35f337be8625ebcb6b799ee8ff011f328bee2::liq::LIQ",
+    "logoUrl": "https://assets.coingecko.com/coins/images/50529/thumb/1000058089.jpg?1728200918"
+  },
+  {
+    "symbol": "LIQUIDITY",
+    "name": "LIQUIDITY",
+    "coinType": "0x161b45f1808480f7f246e6e1d625770e32703f65e23277db95854ec0af2e341e::liquidity::LIQUIDITY"
+  },
+  {
+    "symbol": "LOFI",
+    "name": "LOFI",
+    "coinType": "0xf22da9a24ad027cccb5f2d496cbe91de953d363513db08a3a734d361c7c17503::LOFI::LOFI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/af69e4eebc3ebb04d6440799c415e2640107fe923411c3b39a55563745553460?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "LOFITA",
+    "name": "LOFITA",
+    "coinType": "0x808a8287e9c87c1f97fb133dbd206381804ebd7edfe1af4dbab5eb73668a3449::lofita::LOFITA"
+  },
+  {
+    "symbol": "LONG",
+    "name": "LONG",
+    "coinType": "0x19ff941c46b136e1b8c320083b5e25aab6de0e4626e581a3d19c8798b7f25687::long::LONG"
+  },
+  {
+    "symbol": "LOOPY_SUI",
+    "name": "LOOPY_SUI",
+    "coinType": "0x9b9c0e26a8ace7edb8fce14acd81507c507c677a400cfb9cc9a0ca4a8432a97a::loopy_sui::LOOPY_SUI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/50616/thumb/IMG_9783.png?1755054284"
+  },
+  {
+    "symbol": "LORDY",
+    "name": "LORDY",
+    "coinType": "0x0183b20a84294135de30eeb57c8d8eb8b03d5cc6b6425eb034b21ecdaf961acf::lordy::LORDY"
+  },
+  {
+    "symbol": "LOVEU",
+    "name": "LOVEU",
+    "coinType": "0xefb998ee6f40f8bcc94d5af5880cf9064910f5f4246f7e8d9064146fba785649::loveu::LOVEU"
+  },
+  {
+    "symbol": "LP_TOKEN",
+    "name": "LP_TOKEN",
+    "coinType": "0xb490d6fa9ead588a9d72da07a02914da42f6b5b1339b8118a90011a42b67a44f::lp_token::LP_TOKEN"
+  },
+  {
+    "symbol": "LP_TOKEN",
+    "name": "LP_TOKEN",
+    "coinType": "0x828b452d2aa239d48e4120c24f4a59f451b8cd8ac76706129f4ac3bd78ac8809::lp_token::LP_TOKEN"
+  },
+  {
+    "symbol": "LPCOIN",
+    "name": "LPCOIN",
+    "coinType": "0xf21d82f767cac2e8892db252aa539c137dcf8a6d1e6ebd2d0a11c16362171df7::lpcoin::LPCOIN"
+  },
+  {
+    "symbol": "LPCOIN",
+    "name": "LPCOIN",
+    "coinType": "0xd418945e16ef3db737df093d0827f5ce387b36f089523e13c16e50dec6bd2524::lpcoin::LPCOIN"
+  },
+  {
+    "symbol": "LUI",
+    "name": "LUI",
+    "coinType": "0x0dd3ed32c5843183e31cdc5c0c44fe02fc46d8f7a665d84581ef2ad2d8ef2cb5::lui::LUI"
+  },
+  {
+    "symbol": "LUMO",
+    "name": "LUMO",
+    "coinType": "0x8978d6f3060b6747c332ca48c16dc9d7edbd41ad117e6648805357b3fbef8ca9::lumo::LUMO",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/rwqyUQrBKgza3Sdl?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "LWA",
+    "name": "LWA",
+    "coinType": "0x3332b178c1513f32bca9cf711b0318c2bca4cb06f1a74211bac97a1eeb7f7259::LWA::LWA",
+    "logoUrl": "https://assets.coingecko.com/coins/images/12252/thumb/lwa.jpeg?1716452759"
+  },
+  {
+    "symbol": "M",
+    "name": "M",
+    "coinType": "0xdea9817f69f825ed05084612b5ce2c8911bd4eb9b7d863673ff166ff1b4fca69::m::M"
+  },
+  {
+    "symbol": "M007",
+    "name": "M007",
+    "coinType": "0xba8b5b45b9c0cfacabe2c9f8da03c8de054551a7e6a779b338698307a0fad1c6::m007::M007"
+  },
+  {
+    "symbol": "MAGI",
+    "name": "MAGI",
+    "coinType": "0x467e4f4642c56c51c382f362c4f00a6550903a04bdfe680daef6db048fde1b30::magi::MAGI"
+  },
+  {
+    "symbol": "MAGMA",
+    "name": "MAGMA",
+    "coinType": "0xd30afacbd72a74b05956c59f3b59ebeda4afaacde056ea256cb86d132e2ab138::magma::MAGMA"
+  },
+  {
+    "symbol": "MAGMA",
+    "name": "MAGMA",
+    "coinType": "0x9f854b3ad20f8161ec0886f15f4a1752bf75d22261556f14cc8d3a1c5d50e529::magma::MAGMA",
+    "logoUrl": "https://assets.coingecko.com/coins/images/71100/thumb/magma.png?1765796989"
+  },
+  {
+    "symbol": "MAMMO",
+    "name": "MAMMO",
+    "coinType": "0xf6eb07da8a02a4bcf02ba86b06b9c3d4d05a6cac445f39e16f9190ca504f9648::mammo::MAMMO"
+  },
+  {
+    "symbol": "MANIFEST",
+    "name": "MANIFEST",
+    "coinType": "0xa12101dfd3fd8d7fd4c2ccbabe9bedff6dd6731fe773c166ff96a382e1ecca14::manifest::MANIFEST"
+  },
+  {
+    "symbol": "MANIFEST",
+    "name": "MANIFEST",
+    "coinType": "0xc466c28d87b3d5cd34f3d5c088751532d71a38d93a8aae4551dd56272cfb4355::manifest::MANIFEST",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/a924529e5c5e79cade34d66a79fdafbe3c2c1c25ad9288d443b9133cb3c0b06a?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MANIFEST",
+    "name": "MANIFEST",
+    "coinType": "0xdba93bcdce2a9488e618104df29deb503c3ae23f079437f4e3b6ee5683b04ce8::manifest::MANIFEST"
+  },
+  {
+    "symbol": "MANNI",
+    "name": "MANNI",
+    "coinType": "0x6bc7e16b7990b38e747593ece27c9e919a25eacffe14a87693985e1d83f3390f::manni::MANNI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/b29d0a6b3c42ff4e608c4f4708bf53d5ea41cef3140132c750be6d8aba86b1aa?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MAROSCA",
+    "name": "MAROSCA",
+    "coinType": "0x45c2e91087d3c4039a5ef7172eed78e40432d5a2e74114b2e0b54854ebce0db3::marosca::MAROSCA"
+  },
+  {
+    "symbol": "MARS",
+    "name": "MARS",
+    "coinType": "0xdb5068ea057f5a88d6abb20294344d0ed65f0978fa6d5cbb4f37653e5ec90a8c::mars::MARS"
+  },
+  {
+    "symbol": "MAYA",
+    "name": "MAYA",
+    "coinType": "0x3bf0aeb7b9698b18ec7937290a5701088fcd5d43ad11a2564b074d022a6d71ec::maya::MAYA"
+  },
+  {
+    "symbol": "MBLUB",
+    "name": "MBLUB",
+    "coinType": "0x7c486f6723448de6c2a1515eb66fbc91d496063acfa0392b862aad11716ba960::mblub::MBLUB"
+  },
+  {
+    "symbol": "MBP",
+    "name": "MBP",
+    "coinType": "0x4d68a38f0c7abcea02106da3bab76f5e6b0b242c100746eb1ef9692cd1129d25::mbp::MBP",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/XTsDzPUfV7_cWE4I?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MCDOGE",
+    "name": "MCDOGE",
+    "coinType": "0xc8f2907fa05a55cfb91e98fabf32459f1c740697580e996ac9049f4c8f257ac0::mcdoge::MCDOGE"
+  },
+  {
+    "symbol": "MEADOW",
+    "name": "MEADOW",
+    "coinType": "0x9a7ca7b6de5b6e9a4dadec42fada7cd84068aebd7adbd1faeb713622c4628ca9::meadow::MEADOW"
+  },
+  {
+    "symbol": "MEFAI",
+    "name": "MEFAI",
+    "coinType": "0x6ea0d0a3e5d879c71bd366c401ca0fee9d1553ed57a5e5257cd792c7919178ee::mefai::MEFAI"
+  },
+  {
+    "symbol": "MEFC",
+    "name": "MEFC",
+    "coinType": "0xc44a14f76b8defe396f91b34dbeb8904928bce4084f52eb49cd3b2ca489c4ae6::mefc::MEFC"
+  },
+  {
+    "symbol": "MEGA",
+    "name": "MEGA",
+    "coinType": "0xf24b8a09455731e8e559c859679216bbeb72a9d1974a01b635c7c86eb2c776d1::mega::MEGA"
+  },
+  {
+    "symbol": "MELINOE",
+    "name": "MELINOE",
+    "coinType": "0x4028030a4148bdcd67f4539706f74571747e3673087cfcc0c1e8dba1067132af::melinoe::MELINOE"
+  },
+  {
+    "symbol": "MEMEFI",
+    "name": "MEMEFI",
+    "coinType": "0x506a6fc25f1c7d52ceb06ea44a3114c9380f8e2029b4356019822f248b49e411::memefi::MEMEFI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/51175/thumb/memefi.png?1730289107"
+  },
+  {
+    "symbol": "MEOW",
+    "name": "MEOW",
+    "coinType": "0x06b145d0322e389d6225f336ab57bba4c67e4e701bd6c6bc959d90675900a17e::meow::MEOW"
+  },
+  {
+    "symbol": "MEOWTH",
+    "name": "MEOWTH",
+    "coinType": "0x15fa2fa2f7fafee6af04fb732cf7f8352e830b73fa5274e333f724c4884ba030::meowth::MEOWTH"
+  },
+  {
+    "symbol": "MEWS",
+    "name": "MEWS",
+    "coinType": "0x7fa1b21949b8e4fa7174d6221a6b2d1260caf3bed660f450c7e4e975bfa96db0::mews::MEWS"
+  },
+  {
+    "symbol": "MEWS",
+    "name": "MEWS",
+    "coinType": "0x2dcf8629a70b235cda598170fc9b271f03f33d34dd6fa148adaff481e7a792d2::mews::MEWS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/03713205557bfdf9e8da7d3be79d9009b882e65c6a30342b9766749678dc352c?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MIKURA",
+    "name": "MIKURA",
+    "coinType": "0x1cf262d75580d41929c2e4be726910cd886cd8e1012898a0fc5400aee2dcd3d3::mikura::MIKURA"
+  },
+  {
+    "symbol": "MINER",
+    "name": "MINER",
+    "coinType": "0xb7c937ada677feac1c1b2f6a878454542b19086218d5b155212c9786ee4635b6::miner::MINER"
+  },
+  {
+    "symbol": "MIRAE",
+    "name": "MIRAE",
+    "coinType": "0x1d6d189fc215883643e1f09ad280d04b5b101e2340c1f201de9b0cbacd15f25d::mirae::MIRAE"
+  },
+  {
+    "symbol": "MIST",
+    "name": "MIST",
+    "coinType": "0xa741606c3f9b74f05a52998f0fd07fd6b404807df59f50ab170001a44509aafb::mist::MIST"
+  },
+  {
+    "symbol": "MIU",
+    "name": "MIU",
+    "coinType": "0x32a976482bf4154961bf20bfa3567a80122fdf8e8f8b28d752b609d8640f7846::miu::MIU",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/14ef08f16bfad9b938e3c4fb9ed0a72fc3b31985fa81b0c7cb4412db329827be?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MMT",
+    "name": "MMT",
+    "coinType": "0x35169bc93e1fddfcf3a82a9eae726d349689ed59e4b065369af8789fe59f8608::mmt::MMT",
+    "logoUrl": "https://assets.coingecko.com/coins/images/69899/thumb/4_icon_PFP_RGB.png?1762090516"
+  },
+  {
+    "symbol": "MNM",
+    "name": "MNM",
+    "coinType": "0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/981977f1e278667863382133e402d109b22ec22bab292b9838e0b341c3d80391?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MNRX",
+    "name": "MNRX",
+    "coinType": "0x6a09bcc404ad4086ff165a8a6763cec62ce0f058140c5a0302bae1c6eb5d7944::mnrx::MNRX"
+  },
+  {
+    "symbol": "MOCHI",
+    "name": "MOCHI",
+    "coinType": "0xa26788cb462ae9242d9483bdbe5a82188ba0eaeae3c5e9237d30cbcb83ce7a88::mochi::MOCHI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/9e906297a99acbaa32aba17633657dd37479d9ea6428597876c093211b373e27?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MOJO",
+    "name": "MOJO",
+    "coinType": "0x8711c73f130ba69b8937b10c8906b3d4926d6c3a3490b0400c4ab2295a248ac9::mojo::MOJO"
+  },
+  {
+    "symbol": "MOJTABA",
+    "name": "MOJTABA",
+    "coinType": "0xedf96dc3a4a3599828074702d62f405fddc44557c3efa2457138a804890180d5::mojtaba::MOJTABA"
+  },
+  {
+    "symbol": "MOK",
+    "name": "MOK",
+    "coinType": "0x4ed4fd28c5362f8b5f2eca157a311536f294ce81293daa8667e57cd526c1697f::mok::MOK"
+  },
+  {
+    "symbol": "MOLA",
+    "name": "MOLA",
+    "coinType": "0xae6416f6388783301d31bf2199c3ec8058b70e493ed6ffafd71744fc44240545::mola::MOLA"
+  },
+  {
+    "symbol": "MONEY",
+    "name": "MONEY",
+    "coinType": "0x13d3d9f7b0cc08b934c4d270600eae7446f4f700f08403431e45ec0e3350c83f::money::MONEY"
+  },
+  {
+    "symbol": "MOODENG",
+    "name": "MOODENG",
+    "coinType": "0xf93eca246a1003bfa4572549f350b9ff1d3d18a153bf6864bc0f8b627f5d55ab::moodeng::MOODENG"
+  },
+  {
+    "symbol": "MOON",
+    "name": "MOON",
+    "coinType": "0x7b888393d6a552819bb0a7f878183abaf04550bfb9546b20ea586d338210826f::moon::MOON"
+  },
+  {
+    "symbol": "MOONTICKET",
+    "name": "MOONTICKET",
+    "coinType": "0xc06027e69e64d071f93311a2ac02dbc7d0f23a2b57f0d53abd706074e7406804::moonticket::MOONTICKET"
+  },
+  {
+    "symbol": "MOVECOIN",
+    "name": "MOVECOIN",
+    "coinType": "0x648f9eab1434c056d509ad857fb657ac170528798d771f7eb1edc35639e3e75c::movecoin::MOVECOIN"
+  },
+  {
+    "symbol": "MPC",
+    "name": "MPC",
+    "coinType": "0xb6b5c98f401694f5aba4c585ccc5064ebc8b93af305cbdbe4b54ff60c8438ded::mpc::MPC"
+  },
+  {
+    "symbol": "MPOINTS",
+    "name": "MPOINTS",
+    "coinType": "0x7bae0b3b7b6c3da899fe3f4af95b7110633499c02b8c6945110d799d99deaa68::mpoints::MPOINTS"
+  },
+  {
+    "symbol": "MRP",
+    "name": "MRP",
+    "coinType": "0xe7763d89192d17cb07be21323459eac092ac7c984d05478de6b5bb07cb4f4af1::mrp::MRP"
+  },
+  {
+    "symbol": "MSEND_SERIES_1",
+    "name": "MSEND_SERIES_1",
+    "coinType": "0xda097d57ae887fbd002fb5847dd0ab47ae7e1b183fd36832a51182c52257e1bc::msend_series_1::MSEND_SERIES_1"
+  },
+  {
+    "symbol": "MSSAD",
+    "name": "MSSAD",
+    "coinType": "0xa32c2b63e54910f2632a76a437d600f42c0e23ac6058629a1845dee0752cf9b3::mssad::MSSAD"
+  },
+  {
+    "symbol": "MUSD",
+    "name": "MUSD",
+    "coinType": "0xe44df51c0b21a27ab915fa1fe2ca610cd3eaa6d9666fe5e62b988bf7f0bd8722::musd::MUSD",
+    "logoUrl": "https://assets.coingecko.com/coins/images/53815/thumb/musd_%281%29.png?1737454744"
+  },
+  {
+    "symbol": "MUSIC",
+    "name": "MUSIC",
+    "coinType": "0x839e59fae416e39f9b6e839a4f6cfeb6794f1e79b5c2f64e123c7cfdd344960a::music::MUSIC"
+  },
+  {
+    "symbol": "MWIN_SERIES_1",
+    "name": "MWIN_SERIES_1",
+    "coinType": "0x2f91d1afdb521c878f662592bf1b5c399b6c4b884a367639f4ba91e72783ac67::mwin_series_1::MWIN_SERIES_1"
+  },
+  {
+    "symbol": "MYCOIN",
+    "name": "MYCOIN",
+    "coinType": "0xdc083ed335b5fe342cca1d5887530336246ed7d80da6bcecbc7c1becb88074ee::mycoin::MYCOIN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/d3f31dc4010f0bf70881ae16f70942d6b90dba532038b44660bf4a9c00a7a3e8?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "MYRB",
+    "name": "MYRB",
+    "coinType": "0x41a23b9a865bb711170d7a768662ff752990c650f9ab9f4c4655e26cedfa8b15::myrb::MYRB"
+  },
+  {
+    "symbol": "MYST",
+    "name": "MYST",
+    "coinType": "0x74e4e074310bf5133dbe435654aa45dd2886afa5c5169f154433d5ba2d385990::myst::MYST"
+  },
+  {
+    "symbol": "MYSTIC",
+    "name": "MYSTIC",
+    "coinType": "0x30be75de6fd909098796500952e6518432338168907f5d2136bff7c2d8ab39a0::mystic::MYSTIC"
+  },
+  {
+    "symbol": "NAMI",
+    "name": "NAMI",
+    "coinType": "0xe7397f9f6a5a60010a729ed1a470130936f090cafcdc0cdca6c3260b17ac0c9b::nami::NAMI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/9d965adf29f302812a56ce4453fb07d4ba89de364a2555d8b1ffc08bb46467b3?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "NATL",
+    "name": "NATL",
+    "coinType": "0x44bec60c55e7c4233a240b804310511e6d0c18168636bf537639669035bbb1b2::natl::NATL"
+  },
+  {
+    "symbol": "NAVX",
+    "name": "NAVX",
+    "coinType": "0xa99b8952d4f7d947ea77fe0ecdcc9e5fc0bcab2841d6e2a5aa00c3044e5544b5::navx::NAVX",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/7a19d1753f39c7a56fb903cb54c936d3464f47534e4ec5eb75c2927ecb301682?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "NBDY",
+    "name": "NBDY",
+    "coinType": "0x62d49277f4fbb91b982e95d0704add3110760de353ec935082ac846bd748934b::nbdy::NBDY"
+  },
+  {
+    "symbol": "NEO",
+    "name": "NEO",
+    "coinType": "0x78fcae7dd063bc61dc23423eb71db051e5919b9968b2bff3391cb4486c5847c9::neo::NEO"
+  },
+  {
+    "symbol": "NEOM",
+    "name": "NEOM",
+    "coinType": "0x575d6dfb7994eadbc3a02195b04b15b495edfd1ada9162ec7de512ac6235e4d4::neom::NEOM"
+  },
+  {
+    "symbol": "NEON",
+    "name": "NEON",
+    "coinType": "0x6e3401540bfefc0c1cd6167f80d3ae9dbbe0acf255ec3c43be1ba694cf56d1f4::neon::NEON"
+  },
+  {
+    "symbol": "NEONET",
+    "name": "NEONET",
+    "coinType": "0xc1a35b6a9771e6eb69e3b36e921a3a373e6d33e6f863dab6949ed3c2d1228f73::neonet::NEONET"
+  },
+  {
+    "symbol": "NETFLIX",
+    "name": "NETFLIX",
+    "coinType": "0x2901d7b6815ca4b48b585c70dd8460c8421b6fb18e20e89aebeca829f7490168::netflix::NETFLIX"
+  },
+  {
+    "symbol": "NFCSTICK",
+    "name": "NFCSTICK",
+    "coinType": "0x4694f60a1908a183e17f7ef374f78a933d8c23e6994df498cbb60834d2329e28::nfcstick::NFCSTICK"
+  },
+  {
+    "symbol": "NFCW",
+    "name": "NFCW",
+    "coinType": "0x7ae2b8c36825f3df0d4511731a95c410b7efd5ea7ebb2d9e84914ac977905062::nfcw::NFCW"
+  },
+  {
+    "symbol": "NO",
+    "name": "NO",
+    "coinType": "0x68bbcf1f01f04c6118b7f40ffa8ecb3d39a13400ff18c07c5a27aad878e60baa::no::NO"
+  },
+  {
+    "symbol": "NOROVIRUS",
+    "name": "NOROVIRUS",
+    "coinType": "0x14c46344317b7b5b5344c1992d75aa9b5495421f46de4248673453761ffdbe0e::norovirus::NOROVIRUS"
+  },
+  {
+    "symbol": "NOT",
+    "name": "NOT",
+    "coinType": "0x38432758bb351cb43e1960ce19027f64717a0dcef9283bbe0f91c281d3db2e9d::not::NOT"
+  },
+  {
+    "symbol": "NOTGAY",
+    "name": "NOTGAY",
+    "coinType": "0xda89425aaae8ef3e3f444f165906766bd6ca601dd5d193781c69299c91a26246::notgay::NOTGAY"
+  },
+  {
+    "symbol": "NOV",
+    "name": "NOV",
+    "coinType": "0xc26e19c0a395cec253ea86e313f60c45674bfca624615d9bfb2061d75a4111c7::nov::NOV"
+  },
+  {
+    "symbol": "NOWN",
+    "name": "NOWN",
+    "coinType": "0x08a92ba877b181714780fd2a36ea0ae508c870ea9285d2e383ad64546f5f87ed::nown::NOWN"
+  },
+  {
+    "symbol": "NRL",
+    "name": "NRL",
+    "coinType": "0xedfa0fecda538f31a1c20462e022ae567ede5a371c56ae7999b0e1000d7ef125::nrl::NRL"
+  },
+  {
+    "symbol": "NS",
+    "name": "NS",
+    "coinType": "0x5145494a5f5100e645e4b0aa950fa6b68f614e8c59e17bc5ded3495123a79178::ns::NS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/17ee6d6595e0e36127cd6706e4f7da0ab5dc81b7fae5aec5e3e4a6a9653b02de?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "NTR",
+    "name": "NTR",
+    "coinType": "0x460762e0c870c9501f3bbe7b0d97391ec710d813569e508a43c3a548526a585e::ntr::NTR"
+  },
+  {
+    "symbol": "OCEAN",
+    "name": "OCEAN",
+    "coinType": "0xa8816d3a6e3136e86bc2873b1f94a15cadc8af2703c075f2d546c2ae367f4df9::ocean::OCEAN"
+  },
+  {
+    "symbol": "OCEANS",
+    "name": "OCEANS",
+    "coinType": "0xe90c71d308d8e6fed933d20f8b94d811e1dac649dac7815762520e90f84392f7::oceans::OCEANS"
+  },
+  {
+    "symbol": "OCTO",
+    "name": "OCTO",
+    "coinType": "0x4b6d48afff2948c3ccc67191cf0ef175637472b007c1a8601fa18e16e236909c::octo::OCTO",
+    "logoUrl": "https://assets.coingecko.com/coins/images/51859/thumb/IMG_1808.PNG?1732081133"
+  },
+  {
+    "symbol": "OLIVAI",
+    "name": "OLIVAI",
+    "coinType": "0xd31a10b275ddcfe846f8aea65d8449890b02d8aacb67c07d513b25b71d695f57::olivai::OLIVAI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/gO2fQabycqMO5eoa?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "OLLIE",
+    "name": "OLLIE",
+    "coinType": "0xe185b86cec4fbbae7b91344eaf0035fd3496988b7b25c85b778b316e2d073c7a::ollie::OLLIE"
+  },
+  {
+    "symbol": "OLO",
+    "name": "OLO",
+    "coinType": "0xfb412f44cf084389abd1e00faf29bdb56e083ef14c4c16b98e57712416e83fed::olo::OLO"
+  },
+  {
+    "symbol": "ONC",
+    "name": "ONC",
+    "coinType": "0x4bf18434e39f0aea99f3d04bd9c8540b8b9dafa6526aa9cf9d795fdf3ed143cc::onc::ONC"
+  },
+  {
+    "symbol": "OPENCLAW",
+    "name": "OPENCLAW",
+    "coinType": "0x1f24ae942b7f5dad7401e1dae87e555947af03c497166e43e1d64bba02cfc535::openclaw::OPENCLAW"
+  },
+  {
+    "symbol": "OPM",
+    "name": "OPM",
+    "coinType": "0x890266c1328017c1ae5c63ca0dffdc52bd82fea3757a0d55a232c92e496a25f4::opm::OPM"
+  },
+  {
+    "symbol": "ORB",
+    "name": "ORB",
+    "coinType": "0x5239e18fe33af63674b72efe651c7c0f8ca58b8758baf0bed06946bc316e85fc::orb::ORB"
+  },
+  {
+    "symbol": "ORCIE",
+    "name": "ORCIE",
+    "coinType": "0x0d7acc8e91ea02582f3111dd6809f4f65e2ca2c1a0d13c966af3a673603ced42::orcie::ORCIE"
+  },
+  {
+    "symbol": "ORYX",
+    "name": "ORYX",
+    "coinType": "0xc9cecc8bc68150c0fd010a93bc38593293ec8fd0854fc36c20a5bd9619714e3c::oryx::ORYX"
+  },
+  {
+    "symbol": "OSHI",
+    "name": "OSHI",
+    "coinType": "0xf16656c7d417654680c9e6a67f626c2c99a7a91011c88bc50d9ccaffdc53081b::oshi::OSHI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/32481/thumb/LOGO_Oshi_Token_200-200.png?1698287950"
+  },
+  {
+    "symbol": "OSIRI",
+    "name": "OSIRI",
+    "coinType": "0x42e826aa6c71325e2aaaf031976e023d75eefe584116f9349de5b0e56e648e49::osiri::OSIRI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/cef947f5a42c60c187c500f6babc2eb5408af48871634c9de9ed5564c7d8fa1d?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PAIN",
+    "name": "PAIN",
+    "coinType": "0xc5b7dac5ae8ab29ac9372139b31e52c6d0ca143d5db9e23b04109e8ffad54832::pain::PAIN"
+  },
+  {
+    "symbol": "PANS",
+    "name": "PANS",
+    "coinType": "0xc9523f683256502be15ec4979098d510f67b6d3f0df02eebf124515014433270::pans::PANS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/wL0RtVawj5KVQX8j?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PAWTATO_COIN_WATER",
+    "name": "PAWTATO_COIN_WATER",
+    "coinType": "0xdbc712df0c412a0fcd6d4aec441e9748d05a0db16ff1fbdb04aa233a9eda454d::pawtato_coin_water::PAWTATO_COIN_WATER"
+  },
+  {
+    "symbol": "PBTC",
+    "name": "PBTC",
+    "coinType": "0x2642fdab68d146f6b126ee52c4680f905b26091ab815e0c38b7be2becfa53db2::pbtc::PBTC"
+  },
+  {
+    "symbol": "PBTC",
+    "name": "PBTC",
+    "coinType": "0x641850ee2958ad83552e32f6ca281823757ddd04aaafb82ea5a5c89b772d49c9::pbtc::PBTC"
+  },
+  {
+    "symbol": "PCHU",
+    "name": "PCHU",
+    "coinType": "0x0a2a868f6a8618b599e49f6b49240088d85b93660003da5a066841e28f19d629::pchu::PCHU",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/df142db0f403ba90f4bdde86161cc5573ea14c0b5cefaa639f24285fc25b76fb?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PEARL_TOKEN",
+    "name": "PEARL_TOKEN",
+    "coinType": "0x90d64180ba26d2772273bfb2258c6a8826aad25aa853ef831d4031b1ae40badc::pearl_token::PEARL_TOKEN"
+  },
+  {
+    "symbol": "PEEKA",
+    "name": "PEEKA",
+    "coinType": "0x392ee961cc3b7c09d5ed019b20fe24b9d174e41b6cfb0f58f38bead4671d675e::peeka::PEEKA",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/XjMBb5YrxfF6h0G2?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PENDU",
+    "name": "PENDU",
+    "coinType": "0x7ed4017ee8e94e6c481933e2e4447921cf9b8ac33dedfc9705b275628dd48eb4::pendu::PENDU"
+  },
+  {
+    "symbol": "PEPE",
+    "name": "PEPE",
+    "coinType": "0xe9971467842ffe256d908a2143c8b141527d66fb7b87e7b7701df018a3be064a::pepe::PEPE"
+  },
+  {
+    "symbol": "PEPE",
+    "name": "PEPE",
+    "coinType": "0x288710173f12f677ac38b0c2b764a0fea8108cb5e32059c3dd8f650d65e2cb25::pepe::PEPE",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/7c9ab7382b42e2e1d7e49cf2328b81cd9a79abd74e88d0c0822e26ab6528e899?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PEPE_RAINBOW",
+    "name": "PEPE_RAINBOW",
+    "coinType": "0x6b768ddf6e0395e67c6c2cda4bd0404ef7f1cac54e9cafb4d8676ee6952f862c::pepe_rainbow::PEPE_RAINBOW"
+  },
+  {
+    "symbol": "PEPECOLA",
+    "name": "PEPECOLA",
+    "coinType": "0xea3561758768d817d6d75452a3af12e102be03e2bb82faeea67c937221705012::pepecola::PEPECOLA"
+  },
+  {
+    "symbol": "PEPESUI",
+    "name": "PEPESUI",
+    "coinType": "0x3c764f26be3c80b22f2cfec2f57906fdd3193c5e2cf1e3c5c90028859bc341d2::pepesui::PEPESUI"
+  },
+  {
+    "symbol": "PEPSUI",
+    "name": "PEPSUI",
+    "coinType": "0x9983e29d4f04ea08288ab4c3f395a9a73cca62a58f8187f57877805f5ae5dd17::PEPSUI::PEPSUI"
+  },
+  {
+    "symbol": "PHAGE",
+    "name": "PHAGE",
+    "coinType": "0x34410af23688fb20da8b3812db2fdec92f9d3bc8f4a5dd1c2000176f4e39e3b3::phage::PHAGE"
+  },
+  {
+    "symbol": "PIE",
+    "name": "PIE",
+    "coinType": "0x654b0265de4cb72bd4cf0fa4ab68920768f42362c2d5419df943e0f49b62644d::pie::PIE"
+  },
+  {
+    "symbol": "PIGU",
+    "name": "PIGU",
+    "coinType": "0xfc71274a94f5d9cd1ae6928ecfc9fa910d03eb28258fddeb9842ac3c7b4f3ae6::pigu::PIGU",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/0548105c22049d9307f57e1d78cb0452c0e171636d0f6347e4fd40c8f59105e3?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PLOP",
+    "name": "PLOP",
+    "coinType": "0x1c6cd615ed4c42a34977212a3407a28eec21acc572c8dbe7d0382bf0289a2590::plop::PLOP",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/5bcddf70b46906e5753a308b0cb5b5f898aa06bbe379ac803a7350655a0b11ef?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PLSH",
+    "name": "PLSH",
+    "coinType": "0xfb573d1c443d1835d40d8a43350c78d202ad5a54906553d1f6f58b00aa633690::plsh::PLSH"
+  },
+  {
+    "symbol": "PNUT",
+    "name": "PNUT",
+    "coinType": "0x930294bc1273f445091e127dbdd02b5992e936e35bae7245f57528a579a2ac4e::pnut::PNUT"
+  },
+  {
+    "symbol": "POET",
+    "name": "POET",
+    "coinType": "0xfa9193c753a0eb8ee32cdba1a8b3551ddbd930ea0e62c41861e10d2722604c30::poet::POET"
+  },
+  {
+    "symbol": "POINTS",
+    "name": "POINTS",
+    "coinType": "0xc892551155735e7b7aa7ab4b9dc45908e985f0723289cb63277ea1ccaabb8fea::points::POINTS"
+  },
+  {
+    "symbol": "POKE",
+    "name": "POKE",
+    "coinType": "0x99df571c611598304c5c2b43fc3f58bd97095566788d576eca53b1aad6a53c95::poke::POKE"
+  },
+  {
+    "symbol": "POLY",
+    "name": "POLY",
+    "coinType": "0x38eb97d570f75adc4f6a883bf4ae07d36d9accf959f76d24b03d849f4f0c9098::poly::POLY"
+  },
+  {
+    "symbol": "POOL",
+    "name": "POOL",
+    "coinType": "0xb2d4354f9aee4e547be1a095dd6b79cb88e8b04c3f4029205bb5dc7acd1e7034::pool::POOL"
+  },
+  {
+    "symbol": "POOL",
+    "name": "POOL",
+    "coinType": "0x07cb73455cfab0842b59769f5cdc8e0ff5c9d2b2928ad1d579477fbc60c88d82::pool::POOL"
+  },
+  {
+    "symbol": "POORS",
+    "name": "POORS",
+    "coinType": "0xa93629860a9cfa795ddbc27a22488e494d51a9161c9288d3aa85ae72feebb135::poors::POORS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/fe90f95070c9984c4eaac03d9be837ae4f3b73e70c43c0671be6bfc7b7bee88d?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "POSEI",
+    "name": "POSEI",
+    "coinType": "0x72b7570eb491170efa55f55fa78ad403673be82d5688c01ed1314b60c6f12ec3::posei::POSEI"
+  },
+  {
+    "symbol": "PRE_SAIL",
+    "name": "PRE_SAIL",
+    "coinType": "0x55385931b718c0d5a2f6126eb1c265277d548da811e820710a479821ed415914::pre_sail::PRE_SAIL"
+  },
+  {
+    "symbol": "PRIW",
+    "name": "PRIW",
+    "coinType": "0xe4a8144dbf1f6d06ace6b38ac99e0e15c123057c92cdeb8e4ff50be9b41e7474::PRIW::PRIW"
+  },
+  {
+    "symbol": "PSUI",
+    "name": "PSUI",
+    "coinType": "0x010a611e0f1c89cb5c5880276b1547504dc246cd1a5a660b73a398ae21398cf4::psui::PSUI"
+  },
+  {
+    "symbol": "PSY",
+    "name": "PSY",
+    "coinType": "0xe29e1d4645893b66d434e2906ea3327bc08e1d4d54b2f765a63e15a1b9cc3861::psy::PSY"
+  },
+  {
+    "symbol": "PSY",
+    "name": "PSY",
+    "coinType": "0x766f74632ed3b4bf54c61221e1fba29f555331f13111219eb47360e24aeb6b12::psy::PSY"
+  },
+  {
+    "symbol": "PSY",
+    "name": "PSY",
+    "coinType": "0x1b45b61cb5641194d930a7393fad3b2fe1865babc14d95e06f28f5ea74106001::psy::PSY"
+  },
+  {
+    "symbol": "PTS",
+    "name": "PTS",
+    "coinType": "0x1d18ef77a9e0af0371654ed3425c8fd61fe60241f092b71674da6c0f437c37eb::pts::PTS"
+  },
+  {
+    "symbol": "PUFFY",
+    "name": "PUFFY",
+    "coinType": "0x39733d537f75c9f9ffef41bc23576e0c7af1051193e5114f141e3ea34eefbac5::puffy::PUFFY"
+  },
+  {
+    "symbol": "PUGWIF",
+    "name": "PUGWIF",
+    "coinType": "0x2cd6f14a4b64c3a0fa9c644e8ed88d9c91d789a071886d67d24e6b435147063d::pugwif::PUGWIF",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/7ccae5ac1345bf5bf13e3ef6ded7fdd8a7902828600414a931c12bd49932aee5?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PUMPKIN",
+    "name": "PUMPKIN",
+    "coinType": "0x09f1c8f05cb47bbcb61133dd2ef00583720694f41d4f8a61c94467d8f5911a14::pumpkin::PUMPKIN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/b862a8f829cc7478893eb53e8e06fc5ce619abe2dcb1867c80372afe9d207b13?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PUMPTOBER",
+    "name": "PUMPTOBER",
+    "coinType": "0x97da53bf292cfb7dcfaf8e0f499921edd0e3bef3dae74af245e05a0431192fd8::pumptober::PUMPTOBER"
+  },
+  {
+    "symbol": "PUP",
+    "name": "PUP",
+    "coinType": "0x980ec1e7d5a3d11c95039cab901f02a044df2d82bc79d99b60455c02524fad83::pup::PUP",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/47e71adf1caf848ae0ecb2ebb5214b7cbabb0d570c1f950055c3b13024cb3379?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "PUPUI",
+    "name": "PUPUI",
+    "coinType": "0x741d09e29d48b26dc35ba4d0f6e2cca9b0744f5be54b26fd106fdc8c78134701::pupui::PUPUI"
+  },
+  {
+    "symbol": "PUPUI",
+    "name": "PUPUI",
+    "coinType": "0xb95cd98747c3cc31fc78c4dfd277896ed13b0666f15e84c8cc64f157a0dfb091::pupui::PUPUI"
+  },
+  {
+    "symbol": "PURR",
+    "name": "PURR",
+    "coinType": "0x372de487ac948e35f160e4809a2724118cebb8865105bf622ac45e6f00caf977::purr::PURR"
+  },
+  {
+    "symbol": "PUSDC",
+    "name": "PUSDC",
+    "coinType": "0x7335b2578482832c0274c1709a246c1c13dd64c6ff21f2584bcfdac51d200c19::pusdc::PUSDC"
+  },
+  {
+    "symbol": "PUSUI",
+    "name": "PUSUI",
+    "coinType": "0x1b1991838812ec46860dcf0cf414d2be0ac367d6b4c6cee5c9d20d6edcc644a2::pusui::PUSUI"
+  },
+  {
+    "symbol": "QD",
+    "name": "QD",
+    "coinType": "0x21138163470dfcac8642b2a210dd5e60a48e66e99ed96ad87352e7741fa27b25::qd::QD"
+  },
+  {
+    "symbol": "QNTM",
+    "name": "QNTM",
+    "coinType": "0xe975b0d8a476758c718a682fffaf27b86250eb2d35120739796d3884029c1a6e::qntm::QNTM"
+  },
+  {
+    "symbol": "QONK",
+    "name": "QONK",
+    "coinType": "0xa488b33ede7d486c3db2e89ee10b3d75e58c661f1bffffb55df771eef3070948::qonk::QONK"
+  },
+  {
+    "symbol": "QT",
+    "name": "QT",
+    "coinType": "0x6507ddcb2f9d240d08de06f0a510994ec3829db1afe083cfa22582c7dfb8823e::qt::QT"
+  },
+  {
+    "symbol": "QUECTO",
+    "name": "QUECTO",
+    "coinType": "0x338bb36c20c2e932284852f7bf6a127ee2daaeb75be663229038907240a38368::quecto::QUECTO"
+  },
+  {
+    "symbol": "QUNO",
+    "name": "QUNO",
+    "coinType": "0xfba8c0cec5c397eb3cc4b0465fe80a9142615438ac88a51693e1756593115352::quno::QUNO"
+  },
+  {
+    "symbol": "RACHOP",
+    "name": "RACHOP",
+    "coinType": "0xf05381d5c15833ddec7c4060e3b9bf3dded29cfa81d034ab0f693e68bcd9f9db::rachop::RACHOP"
+  },
+  {
+    "symbol": "RAGE",
+    "name": "RAGE",
+    "coinType": "0x70dbb98aef6789ee49b870e6577fd2e12b2c28a2df1f281317fe8f9a3fce5e74::rage::RAGE"
+  },
+  {
+    "symbol": "RAGEGUY",
+    "name": "RAGEGUY",
+    "coinType": "0x6fa92e9c9691ac14ea2afcb05e40a2b3220636abdf73a9d611a17ead3d0f0afb::rageguy::RAGEGUY"
+  },
+  {
+    "symbol": "RATO",
+    "name": "RATO",
+    "coinType": "0xbbbf34efa96546174f7effa893a71282b4f505b8e73cf794f6c08518b064eb07::rato::RATO"
+  },
+  {
+    "symbol": "RBLZ",
+    "name": "RBLZ",
+    "coinType": "0x54899684dfecabc4bfaee3a386e8ca6048bd0af240bbde34c82a970c6552b4b9::rblz::RBLZ"
+  },
+  {
+    "symbol": "RBN",
+    "name": "RBN",
+    "coinType": "0x81a8a75f8c233e04acd75a8d2780cbc1645f75b1357b160b628c26aec2c8cc68::rbn::RBN"
+  },
+  {
+    "symbol": "RCON",
+    "name": "RCON",
+    "coinType": "0x3d7fcf2089ccbb1d493df0433ec19544c5e75c162554d99faa9c36c35c1236ef::rcon::RCON"
+  },
+  {
+    "symbol": "REAP_TOKEN",
+    "name": "REAP_TOKEN",
+    "coinType": "0xde2d3e02ba60b806f81ee9220be2a34932a513fe8d7f553167649e95de21c066::reap_token::REAP_TOKEN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/9e05872c94596cff8f7859940f402b257f9bcbedf837f8dea09e648c0f5dc5c0?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "RESCUE",
+    "name": "RESCUE",
+    "coinType": "0x0d38955bc73d415d6c1b5cceca9dbe44929dfa97509f6e281fe063052a6fa4bb::rescue::RESCUE"
+  },
+  {
+    "symbol": "RESERVE",
+    "name": "RESERVE",
+    "coinType": "0x38933cb2af747d0ef88355ada9c81d967474a3a2b9c9764d6d4e8179ce6c18c4::reserve::RESERVE"
+  },
+  {
+    "symbol": "RESERVEV2",
+    "name": "RESERVEV2",
+    "coinType": "0x19dc3a0748faec018c0f639b344c9bcffa43550624be4324154eaf5ec59d78d7::reservev2::RESERVEV2"
+  },
+  {
+    "symbol": "RESERVEV3",
+    "name": "RESERVEV3",
+    "coinType": "0x865aeffb613f39532df061656b1cd2ea56147d628cbda7482a126d2f9b60702e::reservev3::RESERVEV3"
+  },
+  {
+    "symbol": "RESERVEV4",
+    "name": "RESERVEV4",
+    "coinType": "0xfcaa735dcbd097ff47eaf8a0ec67fd41a826724c10a5794f61d26fedb8029ccf::reservev4::RESERVEV4"
+  },
+  {
+    "symbol": "REX",
+    "name": "REX",
+    "coinType": "0xd5fcf6a2947411e145a01e31cf97d43d13d9cd37b7cac2bb3296f7539ebaaf4a::rex::REX"
+  },
+  {
+    "symbol": "RH",
+    "name": "RH",
+    "coinType": "0x57f40250ac3b7d8308742620311f72b1d38a830a696ea43eb5c6e2da4d2586c5::rh::RH"
+  },
+  {
+    "symbol": "RISE",
+    "name": "RISE",
+    "coinType": "0xd1ea21c65a1ccb4f1f3952f7f49a1bc9c5a4f89c16c2707439f200cfb38cb7be::rise::RISE"
+  },
+  {
+    "symbol": "ROAF",
+    "name": "ROAF",
+    "coinType": "0x890207004b9aefe4bab179b09a6c3cbe03166029308c6c45ee731c08fd558006::roaf::ROAF"
+  },
+  {
+    "symbol": "ROCK",
+    "name": "ROCK",
+    "coinType": "0xb4bc93ad1a07fe47943fc4d776fed31ce31923acb5bc9f92d2cab14d01fc06a4::ROCK::ROCK"
+  },
+  {
+    "symbol": "ROCKET",
+    "name": "ROCKET",
+    "coinType": "0x0212c13fa071fcdae9f1f51bc4d820fa9f2396934478758bb278015e7781c154::rocket::ROCKET"
+  },
+  {
+    "symbol": "RONDA",
+    "name": "RONDA",
+    "coinType": "0xdc9b462697876ff4c680e59b3756ac39a6899cfbc355a6880c60e01c8930b3cc::ronda::RONDA"
+  },
+  {
+    "symbol": "RUBY",
+    "name": "RUBY",
+    "coinType": "0x380fc13e2beff023974436df9be9cfc649f395788ea997c7f934815362804cea::ruby::RUBY"
+  },
+  {
+    "symbol": "RUCKUS",
+    "name": "RUCKUS",
+    "coinType": "0xa8de220ba13faa122bf949725bdcf05463975292845b4df00fdb4d56d697ffe5::ruckus::RUCKUS"
+  },
+  {
+    "symbol": "RWA",
+    "name": "RWA",
+    "coinType": "0xc2b2abf5f2ea3378b2e70d9161fe83d72873d0b9bfbb9e0fc01b702e89ee5a6e::rwa::RWA"
+  },
+  {
+    "symbol": "S",
+    "name": "S",
+    "coinType": "0xea65bb5a79ff34ca83e2995f9ff6edd0887b08da9b45bf2e31f930d3efb82866::s::S",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/bd5809f3aced493e2ac53372221980f6f1c27cddaf3b9c5e4c0d77ee9d3cb900?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "S3X",
+    "name": "S3X",
+    "coinType": "0xa903ae2a56956b518d8ef9f4d22720dab0cd147cbaa1128ac6f14298c144a9f5::s3x::S3X"
+  },
+  {
+    "symbol": "SAI",
+    "name": "SAI",
+    "coinType": "0x5b40e84bd4b428fb7ae15a4a36ed1527d1b7bfaeae21855a499714175d215c2e::sai::SAI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/52907/thumb/photo_2024-12-08_12-55-21.jpg?1734639278"
+  },
+  {
+    "symbol": "SAIL",
+    "name": "SAIL",
+    "coinType": "0x1d4a2bdbc1602a0adaa98194942c220202dcc56bb0a205838dfaa63db0d5497e::SAIL::SAIL",
+    "logoUrl": "https://assets.coingecko.com/coins/images/68741/thumb/fullsail.png?1756432255"
+  },
+  {
+    "symbol": "SASA",
+    "name": "SASA",
+    "coinType": "0xf21c350066a628b9c98d954e3e9a4ea952a9ab4411b283a0b45991014fddcefc::sasa::SASA"
+  },
+  {
+    "symbol": "SATS",
+    "name": "SATS",
+    "coinType": "0x42cabc3887c5db1607a6c600591107b29088a8f6530d0a63f7bebf5d0355dd88::sats::SATS"
+  },
+  {
+    "symbol": "SAVE",
+    "name": "SAVE",
+    "coinType": "0xd47b41a7c30b48770b4dbabff2afa209c62b38ec753250e57de867dbe1536e4e::save::SAVE"
+  },
+  {
+    "symbol": "SBC",
+    "name": "SBC",
+    "coinType": "0x91e40f0ec14d689ae6dd02ec1468c79ad9cb8cf9bf0eb346f1733c0bcce1bbae::sbc::SBC"
+  },
+  {
+    "symbol": "SBETS",
+    "name": "SBETS",
+    "coinType": "0x6a4d9c0eab7ac40371a7453d1aa6c89b130950e8af6868ba975fdd81371a7285::sbets::SBETS"
+  },
+  {
+    "symbol": "SBETS",
+    "name": "SBETS",
+    "coinType": "0x999d696dad9e4684068fa74ef9c5d3afc411d3ba62973bd5d54830f324f29502::sbets::SBETS"
+  },
+  {
+    "symbol": "SBONK",
+    "name": "SBONK",
+    "coinType": "0x030bccd304b2922d51823de94e5905a389c24b052dd870698c4874d52a22864d::sbonk::SBONK"
+  },
+  {
+    "symbol": "SBOX",
+    "name": "SBOX",
+    "coinType": "0xbff8dc60d3f714f678cd4490ff08cabbea95d308c6de47a150c79cc875e0c7c6::sbox::SBOX",
+    "logoUrl": "https://assets.coingecko.com/coins/images/30469/thumb/sbox.jpg?1696529355"
+  },
+  {
+    "symbol": "SBOXDAO",
+    "name": "SBOXDAO",
+    "coinType": "0x3f086d09fe884593bc54e72369ddaac6bdae10f68800a4cd39e9fb3d577570a8::sboxdao::SBOXDAO"
+  },
+  {
+    "symbol": "SBUCK",
+    "name": "SBUCK",
+    "coinType": "0x1798f84ee72176114ddbf5525a6d964c5f8ea1b3738d08d50d0d3de4cf584884::sbuck::SBUCK"
+  },
+  {
+    "symbol": "SCA",
+    "name": "SCA",
+    "coinType": "0x7016aae72cfc67f2fadf55769c0a7dd54291a583b63051a5ed71081cce836ac6::sca::SCA",
+    "logoUrl": "https://assets.coingecko.com/coins/images/34648/thumb/sca.png?1705592307"
+  },
+  {
+    "symbol": "SCALLOP_AF_SUI",
+    "name": "SCALLOP_AF_SUI",
+    "coinType": "0x00671b1fa2a124f5be8bdae8b91ee711462c5d9e31bda232e70fd9607b523c88::scallop_af_sui::SCALLOP_AF_SUI"
+  },
+  {
+    "symbol": "SCALLOP_BLUB",
+    "name": "SCALLOP_BLUB",
+    "coinType": "0xe72f65446eabfad2103037af2d49d24599106fb44bf4c046c1e7e9acf6844dd0::scallop_blub::SCALLOP_BLUB"
+  },
+  {
+    "symbol": "SCALLOP_CETUS",
+    "name": "SCALLOP_CETUS",
+    "coinType": "0xea346ce428f91ab007210443efcea5f5cdbbb3aae7e9affc0ca93f9203c31f0c::scallop_cetus::SCALLOP_CETUS"
+  },
+  {
+    "symbol": "SCALLOP_DEEP",
+    "name": "SCALLOP_DEEP",
+    "coinType": "0xeb7a05a3224837c5e5503575aed0be73c091d1ce5e43aa3c3e716e0ae614608f::scallop_deep::SCALLOP_DEEP"
+  },
+  {
+    "symbol": "SCALLOP_FDUSD",
+    "name": "SCALLOP_FDUSD",
+    "coinType": "0x6711551c1e7652a270d9fbf0eee25d99594c157cde3cb5fbb49035eb59b1b001::scallop_fdusd::SCALLOP_FDUSD"
+  },
+  {
+    "symbol": "SCALLOP_HA_SUI",
+    "name": "SCALLOP_HA_SUI",
+    "coinType": "0x9a2376943f7d22f88087c259c5889925f332ca4347e669dc37d54c2bf651af3c::scallop_ha_sui::SCALLOP_HA_SUI"
+  },
+  {
+    "symbol": "SCALLOP_HA_WAL",
+    "name": "SCALLOP_HA_WAL",
+    "coinType": "0x7cb7cdf180891bc67a13f369a2ab8f5a05d018dc6cb1f60d04bcfca842c6fb3f::scallop_ha_wal::SCALLOP_HA_WAL"
+  },
+  {
+    "symbol": "SCALLOP_HAEDAL",
+    "name": "SCALLOP_HAEDAL",
+    "coinType": "0x0425be5f46f5639ab7201dfde3b2ed837fc129c434f55677c9ba11b528a3214a::scallop_haedal::SCALLOP_HAEDAL"
+  },
+  {
+    "symbol": "SCALLOP_MUSD",
+    "name": "SCALLOP_MUSD",
+    "coinType": "0x0a228d1c59071eccf3716076a1f71216846ee256d9fb07ea11fb7c1eb56435a5::scallop_musd::SCALLOP_MUSD"
+  },
+  {
+    "symbol": "SCALLOP_NS",
+    "name": "SCALLOP_NS",
+    "coinType": "0x6511052d2f1404934e0d877709949bcda7c1d451d1218a4b2643ca2f3fa93991::scallop_ns::SCALLOP_NS"
+  },
+  {
+    "symbol": "SCALLOP_SB_ETH",
+    "name": "SCALLOP_SB_ETH",
+    "coinType": "0xb14f82d8506d139eacef109688d1b71e7236bcce9b2c0ad526abcd6aa5be7de0::scallop_sb_eth::SCALLOP_SB_ETH"
+  },
+  {
+    "symbol": "SCALLOP_SB_USDT",
+    "name": "SCALLOP_SB_USDT",
+    "coinType": "0xb1d7df34829d1513b73ba17cb7ad90c88d1e104bb65ab8f62f13e0cc103783d3::scallop_sb_usdt::SCALLOP_SB_USDT"
+  },
+  {
+    "symbol": "SCALLOP_SB_WBTC",
+    "name": "SCALLOP_SB_WBTC",
+    "coinType": "0x08c0fe357d3a138f4552bee393ce3a28a45bebcca43373d6a90bc44ab76f82e2::scallop_sb_wbtc::SCALLOP_SB_WBTC"
+  },
+  {
+    "symbol": "SCALLOP_SCA",
+    "name": "SCALLOP_SCA",
+    "coinType": "0x5ca17430c1d046fae9edeaa8fd76c7b4193a00d764a0ecfa9418d733ad27bc1e::scallop_sca::SCALLOP_SCA"
+  },
+  {
+    "symbol": "SCALLOP_SUI",
+    "name": "SCALLOP_SUI",
+    "coinType": "0xaafc4f740de0dd0dde642a31148fb94517087052f19afb0f7bed1dc41a50c77b::scallop_sui::SCALLOP_SUI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/53840/thumb/ssui.png?1737563403"
+  },
+  {
+    "symbol": "SCALLOP_USDC",
+    "name": "SCALLOP_USDC",
+    "coinType": "0x854950aa624b1df59fe64e630b2ba7c550642e9342267a33061d59fb31582da5::scallop_usdc::SCALLOP_USDC"
+  },
+  {
+    "symbol": "SCALLOP_USDY",
+    "name": "SCALLOP_USDY",
+    "coinType": "0xd285cbbf54c87fd93cd15227547467bb3e405da8bbf2ab99f83f323f88ac9a65::scallop_usdy::SCALLOP_USDY"
+  },
+  {
+    "symbol": "SCALLOP_W_WAL",
+    "name": "SCALLOP_W_WAL",
+    "coinType": "0x1af58255ce892974e6204b202a6d88fe7c0d00ee27ec9f7078ee827572a229bf::scallop_w_wal::SCALLOP_W_WAL"
+  },
+  {
+    "symbol": "SCALLOP_WAL",
+    "name": "SCALLOP_WAL",
+    "coinType": "0x622345b3f80ea5947567760eec7b9639d0582adcfd6ab9fccb85437aeda7c0d0::scallop_wal::SCALLOP_WAL"
+  },
+  {
+    "symbol": "SCALLOP_WORMHOLE_USDC",
+    "name": "SCALLOP_WORMHOLE_USDC",
+    "coinType": "0xad4d71551d31092230db1fd482008ea42867dbf27b286e9c70a79d2a6191d58d::scallop_wormhole_usdc::SCALLOP_WORMHOLE_USDC"
+  },
+  {
+    "symbol": "SCALLOP_XBTC",
+    "name": "SCALLOP_XBTC",
+    "coinType": "0xa2859d61462635912553746e1b28a54e90b6ad6270f1e7c7db73761a9d6ba1e1::scallop_xbtc::SCALLOP_XBTC"
+  },
+  {
+    "symbol": "SCALLOP_ZWBTC",
+    "name": "SCALLOP_ZWBTC",
+    "coinType": "0x14e151ba6c124f36ac5e87ff64e6ac50ae7fbf7d2fd2b9d78219b942d3b1dc02::scallop_zwbtc::SCALLOP_ZWBTC"
+  },
+  {
+    "symbol": "SCB",
+    "name": "SCB",
+    "coinType": "0x9a5502414b5d51d01c8b5641db7436d789fa15a245694b24aa37c25c2a6ce001::scb::SCB",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/ccec18b6396262d7b567db0f1112a8a4ea101d47257d953306628fa42280ef2b?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SCUBA",
+    "name": "SCUBA",
+    "coinType": "0x9e6d6124287360cc110044d1f1d7d04a0954eb317c76cf7927244bef0706b113::SCUBA::SCUBA",
+    "logoUrl": "https://assets.coingecko.com/coins/images/50279/thumb/2024-09-18_23.55.57.jpg?1726783471"
+  },
+  {
+    "symbol": "SCUBE",
+    "name": "SCUBE",
+    "coinType": "0x6be368e15119b717004a2874241cfa337887f697496656aff50fc73315a9d6f1::scube::SCUBE"
+  },
+  {
+    "symbol": "SDOG",
+    "name": "SDOG",
+    "coinType": "0xfc3d3939566693293dde13a5fdac144675af201312a73c662a6c841c01c5f583::sdog::SDOG"
+  },
+  {
+    "symbol": "SDOG",
+    "name": "SDOG",
+    "coinType": "0xd162e1e471f54c52938dfc984bf44aae6945128347baed1b05a736a9c72a3ff3::sdog::SDOG"
+  },
+  {
+    "symbol": "SEAL",
+    "name": "SEAL",
+    "coinType": "0x03b740d176593a32d3332ea0d8c6caff8846619ea7616fce8bc35a8e499be877::seal::SEAL"
+  },
+  {
+    "symbol": "SEC2",
+    "name": "SEC2",
+    "coinType": "0xf7323565fb71c360edc39a93b2524f88997a87f2d396c693dbf8185151fb8bce::sec2::SEC2"
+  },
+  {
+    "symbol": "SEED",
+    "name": "SEED",
+    "coinType": "0x1e005d033d858a39e1210aafdd139ce4fa21c79cdb8acadd16513a03c9d4cebd::seed::SEED",
+    "logoUrl": "https://assets.coingecko.com/coins/images/54939/thumb/logo_circle.png?1742634174"
+  },
+  {
+    "symbol": "SEND",
+    "name": "SEND",
+    "coinType": "0xb45fcfcc2cc07ce0702cc2d229621e046c906ef14d9b25e8e4d25f6e8763fef7::send::SEND",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/9954559c1cddf2519f191080088af00457fd1dd29f740ec79f1ad2ed2009a721?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SGF",
+    "name": "SGF",
+    "coinType": "0xff6d855f2876cd5b5bfaa7fcbbb9721f447290606699a6207b4a7757e3eea0ae::sgf::SGF"
+  },
+  {
+    "symbol": "SHIPPED",
+    "name": "SHIPPED",
+    "coinType": "0xf9cd82cd8250acd672122956eb7fcda33478b87436763ac3dccf60d259f852f1::shipped::SHIPPED"
+  },
+  {
+    "symbol": "SHOCK",
+    "name": "SHOCK",
+    "coinType": "0x2fbed1da424da88f0bd56fab2d1a29a67c06bc1dc72c86428b40a1e5ce312941::shock::SHOCK"
+  },
+  {
+    "symbol": "SHR",
+    "name": "SHR",
+    "coinType": "0x16ab6a14d76a90328a6b04f06b0a0ce952847017023624e0c37bf8aa314c39ba::shr::SHR",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/f2a50917dc20e48c26e15d9ee79e07234adaaca116ec579965e4cb8ac1857040?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SHRIMP",
+    "name": "SHRIMP",
+    "coinType": "0x2323b15af2521aa7b173f8baf0ebe57ea8e1416cbf2ae6b756e7437dc1677307::shrimp::SHRIMP"
+  },
+  {
+    "symbol": "SHTTOKEN",
+    "name": "SHTTOKEN",
+    "coinType": "0x61e6afef2cafd54a7f9824e5301a02224bd2cf9ab9c52ce4e780d2ae6f09e413::shttoken::SHTTOKEN"
+  },
+  {
+    "symbol": "SIMBA",
+    "name": "SIMBA",
+    "coinType": "0x5d6881b68371f1d801ad93fb40d1cb130dd1975717170190207651b701938b72::simba::SIMBA"
+  },
+  {
+    "symbol": "SIPHON",
+    "name": "SIPHON",
+    "coinType": "0xfabfac97c4edf5ea468063a5908b437e697b94ed8c896718f1750fb4df80b923::siphon::SIPHON"
+  },
+  {
+    "symbol": "SIREN",
+    "name": "SIREN",
+    "coinType": "0x3519b215d682e40bcc9e1a96164222afd421ddea01e188b52c690ae5121edd5d::siren::SIREN"
+  },
+  {
+    "symbol": "SIRI",
+    "name": "SIRI",
+    "coinType": "0x2728b5992840aa762be6a0db72faa966a3ffba5547979e648140ae2e9e20a760::siri::SIRI"
+  },
+  {
+    "symbol": "SIRI",
+    "name": "SIRI",
+    "coinType": "0x19d3961df28c97f84b6d14b779139b67f96520591a3d89bb7ec73e533d5e274d::siri::SIRI"
+  },
+  {
+    "symbol": "SITCOM",
+    "name": "SITCOM",
+    "coinType": "0x551c19b66a7a15fe792886b11409b3e5b16ca8a6ed0fecc1e9c4f736f14c7a20::sitcom::SITCOM"
+  },
+  {
+    "symbol": "SIZU",
+    "name": "SIZU",
+    "coinType": "0xa7b184cdd17cc2753b9aa2d3c1a4fcb1ae7e2fd8670ee42180369343bdac9c08::sizu::SIZU"
+  },
+  {
+    "symbol": "SKELSUI",
+    "name": "SKELSUI",
+    "coinType": "0x84604526d71bbe7738c3c02d3c8a48778955718289c03d814d8468b58ae9a898::skelsui::SKELSUI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/73806b98f6cd6813e4472f25ab7229bdcd0e2f25096bc770c635bd86f011b632?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SLION",
+    "name": "SLION",
+    "coinType": "0x56d0ea7fd120f8c18eff0fd92d81c4f86cbe976dbcb1c04a7e8f325a7604ba07::slion::SLION"
+  },
+  {
+    "symbol": "SLOVE",
+    "name": "SLOVE",
+    "coinType": "0x6dd439dee053557b3dd340287a4b81099b3e729cb48fbdae726dd2dff82736c3::slove::SLOVE",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/3850b93d7d0205765ae78d5da788a560a3d7de44ffb354fae3fa0c6a6a42a9cc?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SLP",
+    "name": "SLP",
+    "coinType": "0xc44d97a4bc4e5a33ca847b72b123172c88a6328196b71414f32c3070233604b2::slp::SLP"
+  },
+  {
+    "symbol": "SLUSHX",
+    "name": "SLUSHX",
+    "coinType": "0xb4c8d57dd2cbc28ee87227cf0efb40df61e1a948698256211dd404e2812357ba::slushx::SLUSHX"
+  },
+  {
+    "symbol": "SMASH",
+    "name": "SMASH",
+    "coinType": "0x07e791cef4ab73e22e6407eb644ebb0b715b3decbca6c29c58aa73a17bf4a488::smash::SMASH"
+  },
+  {
+    "symbol": "SML",
+    "name": "SML",
+    "coinType": "0xc5146d7367168b1b9829ac1cc2cac661c4cb05aff2073f2aea42af80e31b4c5b::sml::SML"
+  },
+  {
+    "symbol": "SMONEY",
+    "name": "SMONEY",
+    "coinType": "0x6fc73c66c054c20ad5dbdac73ede1ca7244e867f0d017862d1b879cf5aa109e4::smoney::SMONEY"
+  },
+  {
+    "symbol": "SMOVE",
+    "name": "SMOVE",
+    "coinType": "0xd9f9b0b4f35276eecd1eea6985bfabe2a2bbd5575f9adb9162ccbdb4ddebde7f::smove::SMOVE"
+  },
+  {
+    "symbol": "SMUD",
+    "name": "SMUD",
+    "coinType": "0x7d8709aa9247855e7f1b7958241444d0d74e0f2174ac50e4076822189d5f7305::smud::SMUD"
+  },
+  {
+    "symbol": "SNA",
+    "name": "SNA",
+    "coinType": "0x23687c546bbfd24a731bf5a19923adc3859f69afe6109be2e8644364652b1ca5::sna::SNA"
+  },
+  {
+    "symbol": "SONIC",
+    "name": "SONIC",
+    "coinType": "0x555f3aa7c9c60ca67f906557777fab78fd70a302da7d66a23fcb4f8808d15010::sonic::SONIC",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/0566bdd65d2ece222c44b6193ec46fb109c8ec176a7d0ac2217f01f3f9e9d693?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SOOIE",
+    "name": "SOOIE",
+    "coinType": "0xb714958d6f791b48e39107a01a5ee2da77ad2dbd693fcc716e95b047e6275b9d::sooie::SOOIE"
+  },
+  {
+    "symbol": "SOVEREIGN",
+    "name": "SOVEREIGN",
+    "coinType": "0x86b698554bd45649a7f2715284e60b977094192293503db70fb92987b205c3f8::sovereign::SOVEREIGN"
+  },
+  {
+    "symbol": "SPAM",
+    "name": "SPAM",
+    "coinType": "0x30a644c3485ee9b604f52165668895092191fcaf5489a846afa7fc11cdb9b24a::spam::SPAM",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/2ea87bbaaef3ccf0d34f9e13197d57a02f92e6fdce923c464fddef826f198470?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SPCX",
+    "name": "SPCX",
+    "coinType": "0x91b45b1f816ea09c73fbc4d84cc8ef6cc3dac6af71ed3bc351f44a1ebc790fce::spcx::SPCX"
+  },
+  {
+    "symbol": "SPK",
+    "name": "SPK",
+    "coinType": "0xb644bd625fc52c0e1f19679772be283dcf975e7751c76ee7b845ed3060b1d3bc::spk::SPK"
+  },
+  {
+    "symbol": "SPLASH",
+    "name": "SPLASH",
+    "coinType": "0x965149aec4e1e321ce887c4c2f199086ad78fd366f4ed37c86bf768638468a55::splash::SPLASH",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/4e7b77925f280d1179800a9ce3a99a1d09737c5882b5c4bd96e6e09f1b0fe3ba?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SPOTAI",
+    "name": "SPOTAI",
+    "coinType": "0xbadb1d28ba96482e363bbae9a7d140c6d977b87bd6a082ba552717190dbfbc27::spotai::SPOTAI"
+  },
+  {
+    "symbol": "SPRING_SUI",
+    "name": "SPRING_SUI",
+    "coinType": "0x83556891f4a0f233ce7b05cfe7f957d4020492a34f5405b2cb9377d060bef4bf::spring_sui::SPRING_SUI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/51233/thumb/Token_%281%29.png?1730446421"
+  },
+  {
+    "symbol": "SPT",
+    "name": "SPT",
+    "coinType": "0xb779486cfd6c19e9218cc7dc17c453014d2d9ba12d2ee4dbb0ec4e1e02ae1cca::spt::SPT"
+  },
+  {
+    "symbol": "SQID",
+    "name": "SQID",
+    "coinType": "0x4f83caf6626d0f931ac519028e62a8f9d9fc8fdf62da09489023940fd0bba882::sqid::SQID",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/b577930348171a5ae38dd69f3d8ea41bd809134cd20bd99312f9fb67abf016c5?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SQUAD",
+    "name": "SQUAD",
+    "coinType": "0x70e7560f1024fb5295d618331907323e2a8c0ef2c518398b718ae8eb0701441e::squad::SQUAD"
+  },
+  {
+    "symbol": "SQUIRT",
+    "name": "SQUIRT",
+    "coinType": "0xd550289ab12caaad74cd2213f242adf5507afe0fa876578c0dca753bf5409bac::squirt::SQUIRT"
+  },
+  {
+    "symbol": "SQUIRTLE",
+    "name": "SQUIRTLE",
+    "coinType": "0x8a51036977a1149620419c492a5af8c276fdb23cf3007882909a3e0d43593654::squirtle::SQUIRTLE"
+  },
+  {
+    "symbol": "SR",
+    "name": "SR",
+    "coinType": "0x88c2ec78b03bab7c818209c5fddf5062cb1f30c3646e74b1e4126ac8e2fca189::sr::SR"
+  },
+  {
+    "symbol": "STACKR",
+    "name": "STACKR",
+    "coinType": "0x80c343818337252e5cfb6f5d501bc864b414388edac9a62747c5606ef67ba153::stackr::STACKR"
+  },
+  {
+    "symbol": "STAKR",
+    "name": "STAKR",
+    "coinType": "0x7fe87711dec3accebeeb057da00cce86c66cb42e6c38d421f1a57e082f17bfbd::stakr::STAKR"
+  },
+  {
+    "symbol": "STARS",
+    "name": "STARS",
+    "coinType": "0x611b595b92ca94e5d49fb7486214571b817bb925efa2c3cf85612fa350de5ce5::stars::STARS"
+  },
+  {
+    "symbol": "STASH",
+    "name": "STASH",
+    "coinType": "0x2cff601fe16f622fd6203f8f64bef4e68d687f51f4d06f13c2bbba17cb84c87e::stash::STASH"
+  },
+  {
+    "symbol": "STBL",
+    "name": "STBL",
+    "coinType": "0x9e0ac77852731a8c89c9c40713f97ea73dbd15c24663bfa8d158e1b64fbb764c::stbl::STBL"
+  },
+  {
+    "symbol": "STC",
+    "name": "STC",
+    "coinType": "0xd84cc1bc5e57febd39a1ee5e34484503c833189158931453f75c2ecb34d9227f::stc::STC"
+  },
+  {
+    "symbol": "STIR",
+    "name": "STIR",
+    "coinType": "0x7170bd257350aaf0d970ebf0ba6e62d2cae93545862ea9208961cd77686cd8a5::stir::STIR"
+  },
+  {
+    "symbol": "STORM",
+    "name": "STORM",
+    "coinType": "0x2393cfee96285cf0e069d716422df30bdcb07fcdc853695552a87c79debb2997::storm::STORM"
+  },
+  {
+    "symbol": "STRATEGY",
+    "name": "STRATEGY",
+    "coinType": "0x84dceae5f9c275970a6560ae3da6e23d75a9d7ecf70fefad5277594c1b9c9517::strategy::STRATEGY",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/a138b32c5fb211b629114e91b6b7982a27dcb230a26e55b8fa3a050e665e2102?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "STRZ",
+    "name": "STRZ",
+    "coinType": "0x3167de86756eefaf1b728396463fa0a0ec9dd70f92e46a499dc245a3efd87d4f::strz::STRZ"
+  },
+  {
+    "symbol": "STSUI",
+    "name": "STSUI",
+    "coinType": "0xd1b72982e40348d069bb1ff701e634c117bb5f741f44dff91e472d3b01461e55::stsui::STSUI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/54211/thumb/b_r2Ps67_400x400.png?1738784534"
+  },
+  {
+    "symbol": "SU",
+    "name": "SU",
+    "coinType": "0x53a63d7202fc83b39acb437e0f99aae0a73a96506ccfb1d1073710cdcefc26a2::su::SU",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/1c3e4278079bf39e14739628d77a9af2d24f04af7a8d7289cc967f605fc76661?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUAI",
+    "name": "SUAI",
+    "coinType": "0xbc732bc5f1e9a9f4bdf4c0672ee538dbf56c161afe04ff1de2176efabdf41f92::suai::SUAI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/684aa9be0878f4fa29c5be85dbd47a6e36d96f2e0cfb54224d86a067c1702d27?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUDENG",
+    "name": "SUDENG",
+    "coinType": "0x8993129d72e733985f7f1a00396cbd055bad6f817fee36576ce483c8bbb8b87b::sudeng::SUDENG",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/360f0b08356022d96707efb8c59192a41bf0c037d5292e9a923dc86e13a4471f?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUI",
+    "name": "SUI",
+    "coinType": "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/26375/thumb/sui-ocean-square.png?1727791290"
+  },
+  {
+    "symbol": "SUI_PEPE",
+    "name": "SUI_PEPE",
+    "coinType": "0xebbf537bc3686be32fe22b498b42715641bbb209267be72236a352e0444cc5df::sui_pepe::SUI_PEPE"
+  },
+  {
+    "symbol": "SUI_USDE",
+    "name": "SUI_USDE",
+    "coinType": "0x41d587e5336f1c86cad50d38a7136db99333bb9bda91cea4ba69115defeb1402::sui_usde::SUI_USDE",
+    "logoUrl": "https://assets.coingecko.com/coins/images/102172002/thumb/suiusdecorrect.png?1770891184"
+  },
+  {
+    "symbol": "SUIA",
+    "name": "SUIA",
+    "coinType": "0x01c43c3dd2e501ea05ae6f0a9f92f27fe51580b8285af94c057a1401bf9808f7::suia::SUIA",
+    "logoUrl": "https://bafkreia2vfy4zap6plymncr37eeywxbno6zzfcchnrvrlys3rgbimx5w5a.ipfs.nftstorage.link/"
+  },
+  {
+    "symbol": "SUIA_TOKEN",
+    "name": "SUIA_TOKEN",
+    "coinType": "0x1d58e26e85fbf9ee8596872686da75544342487f95b1773be3c9a49ab1061b19::suia_token::SUIA_TOKEN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/30385/thumb/suia.jpg?1696529274"
+  },
+  {
+    "symbol": "SUIAD",
+    "name": "SUIAD",
+    "coinType": "0x6c3870a9be084fee294355accc6036d0d0826c4e138bf034aa3485606f528a9e::suiad::SUIAD"
+  },
+  {
+    "symbol": "SUIB",
+    "name": "SUIB",
+    "coinType": "0xed4504e791e1dad7bf93b41e089b4733c27f35fde505693e18186c2ba8e2e14b::suib::SUIB",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/5d17b0c09b3aa0678e2dc8288c932025657107ba3eff3e72451fe8de7c2e772a?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUIB",
+    "name": "SUIB",
+    "coinType": "0x3b02003e3269e3bc7b0b17762a6e22438b0461d1b956c3a5044bf81af6cdb069::suib::SUIB"
+  },
+  {
+    "symbol": "SUIBEE",
+    "name": "SUIBEE",
+    "coinType": "0x07df024e71ff5f360fcc5754c53970810c7ada8aca6ec784eba59dd018f69c11::suibee::SUIBEE"
+  },
+  {
+    "symbol": "SUIBUBU",
+    "name": "SUIBUBU",
+    "coinType": "0x4d5f8db69de7a327bc2eff62cabde223d8517aeb5563ccecb475056cc3363027::suibubu::SUIBUBU"
+  },
+  {
+    "symbol": "SUICUNE",
+    "name": "SUICUNE",
+    "coinType": "0x8c47c0bde84b7056520a44f46c56383e714cc9b6a55e919d8736a34ec7ccb533::suicune::SUICUNE",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/2e198fdb32345a86d2d296357457cff7cb1ae3835268f084426d9f514e17b426?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUICY",
+    "name": "SUICY",
+    "coinType": "0x8989c726bf1ea8736919e41938f3801e286bc71d9612bfe250703232a375eaab::suicy::SUICY",
+    "logoUrl": "https://assets.coingecko.com/coins/images/51525/thumb/1000000144.png?1754713153"
+  },
+  {
+    "symbol": "SUID",
+    "name": "SUID",
+    "coinType": "0x36ed4566e2286bca21d01ea1a8037ae4da72bd0b0188d6a63b160daeb10febcd::suid::SUID"
+  },
+  {
+    "symbol": "SUIDEPIN",
+    "name": "SUIDEPIN",
+    "coinType": "0x3599429d66965021f6ce08a997e81bb3c1f2c1b9a8fbb19953e26f5dc55e91ef::suidepin::SUIDEPIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/53330/thumb/SUI_Depin_%2811%29_%281%29.png?1736129958"
+  },
+  {
+    "symbol": "SUIDER",
+    "name": "SUIDER",
+    "coinType": "0x26563f2274a65082a04f46edb8d2860f2fe8898f1fcaab8ec7822966806112a7::suider::SUIDER"
+  },
+  {
+    "symbol": "SUIDOG",
+    "name": "SUIDOG",
+    "coinType": "0xa224eea12f683adac14ca236dc8d471061fcfc7de8635ddb72b98a02897e78e1::suidog::SUIDOG"
+  },
+  {
+    "symbol": "SUIEET",
+    "name": "SUIEET",
+    "coinType": "0xbc2742610ea4c318053038b0d60968d24e1bbf5eda50fb179f3cd5464f360a5d::suieet::SUIEET"
+  },
+  {
+    "symbol": "SUIFFY",
+    "name": "SUIFFY",
+    "coinType": "0x20d97b22c2f49c2848a9712cdf86ee734a344b89e03b755c663512cee91d1c91::suiffy::SUIFFY"
+  },
+  {
+    "symbol": "SUIFT",
+    "name": "SUIFT",
+    "coinType": "0x2b088965d99ced67268161135076749e27761ecdcd76b06bd50ba5fe16231095::SUIFT::SUIFT"
+  },
+  {
+    "symbol": "SUIGETSU",
+    "name": "SUIGETSU",
+    "coinType": "0xa58e16d87e080b40a27f2ffec7b2c1a722cb7c8b706aa2fdee35d55ea1a87106::suigetsu::SUIGETSU",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/47b1ef9efb19189ef5aab89d60bac5ad26a26c9d051bc555a559b54274aac0c8?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUIJAK",
+    "name": "SUIJAK",
+    "coinType": "0xd9773016f31a1216fb0a1e0b0937f09687663807e8cb8a19ba5a12f2f5dcab88::suijak::SUIJAK",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/b47a00e68158ffb2980c733018c465cf1964f800826300122e74a87096e6a3cf?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUIL",
+    "name": "SUIL",
+    "coinType": "0x11f15e1c9e1a49cd26d4c442b5911dc87585440969f9a18d9c171e2acd21ac1b::suil::SUIL"
+  },
+  {
+    "symbol": "SUILAMA",
+    "name": "SUILAMA",
+    "coinType": "0x5a4f64079daed04d923c93f3ac4ee04b637e5b3ea2db87d591981c1049508a27::suilama::SUILAMA"
+  },
+  {
+    "symbol": "SUILAUNCH",
+    "name": "SUILAUNCH",
+    "coinType": "0x3e685970b2ce13e61349177afb4ac2f9698f2a4dc45b5ae7d2fbbd95165e5dae::suilaunch::SUILAUNCH"
+  },
+  {
+    "symbol": "SUILIFE",
+    "name": "SUILIFE",
+    "coinType": "0x15aa619deac0bf7588407fc0e0c78f5a8badddec8c6230b0784ee7ec39dae3d8::suilife::SUILIFE"
+  },
+  {
+    "symbol": "SUILLAMA",
+    "name": "SUILLAMA",
+    "coinType": "0x149f56b782bdfd7f5586e6e7ab3b4b22c05af916e3c395f85614294697683564::suillama::SUILLAMA"
+  },
+  {
+    "symbol": "SUIMAN",
+    "name": "SUIMAN",
+    "coinType": "0xa8b69040684d576828475115b30cc4ce7c7743eab9c7d669535ee31caccef4f5::suiman::SUIMAN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e05861d42475088d81476758692bde46cf66d77b79a367017aade87ec67d3933?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUIMI",
+    "name": "SUIMI",
+    "coinType": "0xb386e96b51e49860f0efd76bcf46b35c602ba76d1daebcdb97868d8b7cb5a49e::Suimi::SUIMI"
+  },
+  {
+    "symbol": "SUIMO",
+    "name": "SUIMO",
+    "coinType": "0xd7c00d25b550d2c196cbac3c32b280bd89f00bcd699b0ba4201a211be623cb8f::suimo::SUIMO",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/3b6a5976e902400de455746fbed31fa22224b1ccfb4ab3a96ecd40548e6fc903?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUIMON",
+    "name": "SUIMON",
+    "coinType": "0xc0ba93a810adb498900c82bb6f7c16ca3046dfa7b6f364ec985595fdeb1ee9ad::suimon::SUIMON"
+  },
+  {
+    "symbol": "SUIMON",
+    "name": "SUIMON",
+    "coinType": "0xcb8fc6858b4d600611cb783a65459695711b8aaca0e949ef5aa1268d1e32f786::suimon::SUIMON",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/786b7138fd6c975a21abae6129745b21aaaedcc9bcd5d007d3873618ab7528b5?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUIMON",
+    "name": "SUIMON",
+    "coinType": "0x20b290ffc8c689918bad44c749ae8ffd0a08cfd771cc54b6e01bae53e26bc353::SUIMON::SUIMON"
+  },
+  {
+    "symbol": "SUINICINU",
+    "name": "SUINICINU",
+    "coinType": "0x6d1aa772e638a967a2f5921950ecfbfaf2c26865b8dc3b252a2322f785efb561::suinicinu::SUINICINU"
+  },
+  {
+    "symbol": "SUIP",
+    "name": "SUIP",
+    "coinType": "0xe4239cd951f6c53d9c41e25270d80d31f925ad1655e5ba5b543843d4a66975ee::SUIP::SUIP",
+    "logoUrl": "https://strapi.scand.app/uploads/Suip_Logo_9f03cfbd82.png"
+  },
+  {
+    "symbol": "SUIP",
+    "name": "SUIP",
+    "coinType": "0xda8cc8b6bbdd8de45d4d2ba26d04ef7e97c8dc87d1df9e242d7083a7c99d69f7::suip::SUIP",
+    "logoUrl": "https://strapi.scand.app/uploads/Suip_Logo_9f03cfbd82.png"
+  },
+  {
+    "symbol": "SUIPEPE",
+    "name": "SUIPEPE",
+    "coinType": "0xcc7e6d280a8058ed6efbdd9148c10e7b9b0363d22ee3e0f434c3d497cd69352f::suipepe::SUIPEPE"
+  },
+  {
+    "symbol": "SUIPER",
+    "name": "SUIPER",
+    "coinType": "0x468b99a00a0b4e5188cef9a7f431d57025774e7749314400881345229fb65d5c::suiper::SUIPER"
+  },
+  {
+    "symbol": "SUIRADAR",
+    "name": "SUIRADAR",
+    "coinType": "0x936cec852db2e634978167c02ccea9fe3742dcc97e3f06a4bcf30d8a59076c85::suiradar::SUIRADAR"
+  },
+  {
+    "symbol": "SUIRI",
+    "name": "SUIRI",
+    "coinType": "0x6eee25e989b7586b06ad3c4c6d863f9c411e173b131d40dd4102fa847a32421a::suiri::SUIRI"
+  },
+  {
+    "symbol": "SUIRTLE",
+    "name": "SUIRTLE",
+    "coinType": "0x3c9a932a92f40c66ae640f256244fe945f530a3aa9a23eb040a57c02ad6813aa::suirtle::SUIRTLE"
+  },
+  {
+    "symbol": "SUIRUM",
+    "name": "SUIRUM",
+    "coinType": "0x2f1156f0c998eb088744c657472ce1633e0d67650051555688d5ca5d0ea6f9ab::suirum::SUIRUM"
+  },
+  {
+    "symbol": "SUIRWA",
+    "name": "SUIRWA",
+    "coinType": "0xe0d408619bd086d41dbf4c85f297e83e1a20b7e1e4b63b548febd44cca61599f::suirwa::SUIRWA"
+  },
+  {
+    "symbol": "SUIRWAPIN",
+    "name": "SUIRWAPIN",
+    "coinType": "0xa784ee99f7ed95f19a1a8dba8f3953cd2f92be2d721f379fa1dc4e1f488f2364::suirwapin::SUIRWAPIN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/55721/thumb/blue_to_be_used.png?1747234872"
+  },
+  {
+    "symbol": "SUISAZ",
+    "name": "SUISAZ",
+    "coinType": "0x8283363ee065a0d4139cf26ea50d5d3c7591593621da27855b890aae69265cba::suisaz::SUISAZ"
+  },
+  {
+    "symbol": "SUISHI",
+    "name": "SUISHI",
+    "coinType": "0xebb4eb552f807a28a1601e804ccaf91796ddc46407ba1b07381333111ed29d46::suishi::SUISHI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e0cb8fc50b02b54e7b00e4752ad169430351eb26e8a05fee36a74f9be99b86c7?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUISIDE",
+    "name": "SUISIDE",
+    "coinType": "0x3f7ca3692584582f896d17cae85386bef2e44aff679948759a0055e83f037973::suiside::SUISIDE"
+  },
+  {
+    "symbol": "SUISLIME",
+    "name": "SUISLIME",
+    "coinType": "0xaea2e705cecdfa798680215a92c2766f8ad49bfee4a2d3420b10460a8fc30527::SUISLIME::SUISLIME"
+  },
+  {
+    "symbol": "SUISUI",
+    "name": "SUISUI",
+    "coinType": "0xba94b7e092861e1ebd6dae8870aa9b4d44a6ff44941d90e60e7b639357bfe9ea::suisui::SUISUI"
+  },
+  {
+    "symbol": "SUIT",
+    "name": "SUIT",
+    "coinType": "0x93f9011a7fc319328c5b887622702f80f8df81e3401dbda62b095c5d5339c48d::suit::SUIT"
+  },
+  {
+    "symbol": "SUIT",
+    "name": "SUIT",
+    "coinType": "0x5d201ac6ad31db60efd4c509f0080ff9f9140c7a04fb53fac9174f1411d163ba::suit::SUIT"
+  },
+  {
+    "symbol": "SUITARD",
+    "name": "SUITARD",
+    "coinType": "0x2cddfc6d4fc855917e990e71cd122b1ee8098aa890186ee15a84524ed17cd8c9::suitard::SUITARD"
+  },
+  {
+    "symbol": "SUITARDIO",
+    "name": "SUITARDIO",
+    "coinType": "0x862c5f46431d4be2fc3042f9ded715b019b95126006a99df80a0904ba1f0cbe6::suitardio::SUITARDIO"
+  },
+  {
+    "symbol": "SUITRUMP",
+    "name": "SUITRUMP",
+    "coinType": "0xdeb831e796f16f8257681c0d5d4108fa94333060300b2459133a96631bf470b8::suitrump::SUITRUMP",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/6fd6e668cef90bf7c3f2aca8a3ad74e9ec930551d9b7443ca672bf2af15e80f3?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUITTY",
+    "name": "SUITTY",
+    "coinType": "0xbfe8c0a6500daa185d567686bb3eb129d724c16ffa12fab910ce441a9ae66e11::suitty::SUITTY"
+  },
+  {
+    "symbol": "SUIUSDT",
+    "name": "SUIUSDT",
+    "coinType": "0x3e8ef5e52c47a96c4cd0d05472aff75c293d0e52d0ef1d63119cbdd8be4404d3::suiusdt::SUIUSDT"
+  },
+  {
+    "symbol": "SUIXEN",
+    "name": "SUIXEN",
+    "coinType": "0x36bea81d72e5eba16bf9f9bd6b0a5168f2a51f4b30fd2f1f1a4ba6569b1c6ffa::suixen::SUIXEN"
+  },
+  {
+    "symbol": "SUIYAN",
+    "name": "SUIYAN",
+    "coinType": "0xe0fbaffa16409259e431b3e1ff97bf6129641945b42e5e735c99aeda73a595ac::suiyan::SUIYAN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/abe6aed9963a452a2708eed50812e2a11384b99076682eec0d5b7aaf76a0323a?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "SUKI",
+    "name": "SUKI",
+    "coinType": "0x63c2b02327175e1ef10aab83542d0549a4c054024825caae07021c92c9692f26::suki::SUKI"
+  },
+  {
+    "symbol": "SUP",
+    "name": "SUP",
+    "coinType": "0xb48147a9468e435d5e13bf314445fd6ca80a1c21686e575a0a317bbc5de42ef4::sup::SUP"
+  },
+  {
+    "symbol": "SUPENG",
+    "name": "SUPENG",
+    "coinType": "0x2dae270e1452419bd9a23e90e56e836452c1759883840169ac96bc23fae3295b::supeng::SUPENG"
+  },
+  {
+    "symbol": "SUQ",
+    "name": "SUQ",
+    "coinType": "0xe53462d4804d7c4612cdb6ffbc6ae8e20d7f20bd976b8559127c8dbcde04fa51::suq::SUQ"
+  },
+  {
+    "symbol": "SWARM_NETWORK_TOKEN",
+    "name": "SWARM_NETWORK_TOKEN",
+    "coinType": "0x0a48f85a3905cfa49a652bdb074d9e9fabad27892d54afaa5c9e0adeb7ac3cdf::swarm_network_token::SWARM_NETWORK_TOKEN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/69599/thumb/truth.png?1759208403"
+  },
+  {
+    "symbol": "SWOOP",
+    "name": "SWOOP",
+    "coinType": "0xe74876860836a4e2f2aed6cf8620f2652d8efc0d3c6e0255047b7c63c0e194fa::swoop::SWOOP"
+  },
+  {
+    "symbol": "SWORD",
+    "name": "SWORD",
+    "coinType": "0x89a87e33c337f5093a78bb1e9451a62d9b29c791c8fa639ba032f398d1a513cc::sword::SWORD"
+  },
+  {
+    "symbol": "SYM",
+    "name": "SYM",
+    "coinType": "0xac230250187661c16310b32024638362613279a47847119066cad3c2a2e0a4dd::sym::SYM"
+  },
+  {
+    "symbol": "SZK",
+    "name": "SZK",
+    "coinType": "0x83da446e7ef18404cab3d6f258a0d384afc35b847bc29a706e8d0d0f2776de8a::szk::SZK"
+  },
+  {
+    "symbol": "TADPOLE",
+    "name": "TADPOLE",
+    "coinType": "0xd26aad505b0eb110fa85da5e8c111e1a40f5e5ae198eabb6217fc7de43fbc06e::tadpole::TADPOLE"
+  },
+  {
+    "symbol": "TAKE",
+    "name": "TAKE",
+    "coinType": "0x76a49ebaf991fa2d4cb6a352af14425d453fe2ba6802b5ed2361b227150b6689::take::TAKE",
+    "logoUrl": "https://assets.coingecko.com/coins/images/68577/thumb/overtake.png?1756118725"
+  },
+  {
+    "symbol": "TALAR",
+    "name": "TALAR",
+    "coinType": "0x60072610084d703d4a8ae3b72a428490756795580cce951550964346587c7393::talar::TALAR"
+  },
+  {
+    "symbol": "TALUS",
+    "name": "TALUS",
+    "coinType": "0x794d27480ec25be5776704447d3f27ae40dc49c07ea3650979233d9b8515b1dd::talus::TALUS"
+  },
+  {
+    "symbol": "TARDI",
+    "name": "TARDI",
+    "coinType": "0x4cf08813756dfa7519cb480a1a1a3472b5b4ec067592a8bee0f826808d218158::tardi::TARDI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/5c02db449feb44fb205a402a7751dbf08d4e819bd22ec1ed66be4457a3c5d4ec?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "TARDS",
+    "name": "TARDS",
+    "coinType": "0xf61abc6ce640a0eaac14489c4b4404c0dcfe5dba42b1f6ef8fbefc82bab98eac::tards::TARDS"
+  },
+  {
+    "symbol": "TATO",
+    "name": "TATO",
+    "coinType": "0x04deb377c33bfced1ab81cde96918e2538fe78735777150b0064ccf7df5e1c81::tato::TATO",
+    "logoUrl": "https://assets.coingecko.com/coins/images/70687/thumb/TATO-Token-transparent-200x200px.png?1769615505"
+  },
+  {
+    "symbol": "TD2",
+    "name": "TD2",
+    "coinType": "0xd7ca095524ec25cd3a276506d8045ef4992c82381145dec375a9ede9b34b5b02::td2::TD2",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/4fEjhMPM1w6MIC7P?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "TEMPLE",
+    "name": "TEMPLE",
+    "coinType": "0x63fb1b65f872d5eede2fa9c736c292d49f4616c01298bd0b46f9c03f2e07d5b4::temple::TEMPLE"
+  },
+  {
+    "symbol": "TERAFAB",
+    "name": "TERAFAB",
+    "coinType": "0xf49fe2308b4900ad585008603a0497df0509a6e0e57be9807660c0322108d118::terafab::TERAFAB"
+  },
+  {
+    "symbol": "TEST",
+    "name": "TEST",
+    "coinType": "0x4a22fc009e9e5e12531e553c2f1678c0563afc945db7461add79f267f4381d30::test::TEST"
+  },
+  {
+    "symbol": "TEST",
+    "name": "TEST",
+    "coinType": "0x567fdf8c921fb46ec782a4abe49ac87e2438f018ade51546867339f104bebe55::test::TEST"
+  },
+  {
+    "symbol": "TEST",
+    "name": "TEST",
+    "coinType": "0x711dce26fb6f103d1252fc9578776d6f9b52e10a6a3d03bfe34719648ec7bfb2::test::TEST"
+  },
+  {
+    "symbol": "TEST",
+    "name": "TEST",
+    "coinType": "0xd7308fcd31541608c803df70f7685728efedfef28711548b89cbb87b329f18b1::test::TEST"
+  },
+  {
+    "symbol": "TEST",
+    "name": "TEST",
+    "coinType": "0x55efdcd8a868d728abd5845c9adfdccf84ce4917ea7da92ffd75717920e41da1::test::TEST"
+  },
+  {
+    "symbol": "TESTING",
+    "name": "TESTING",
+    "coinType": "0x6a73c8cdeb2a211cbc5e96be6f5abf634beaf69e1b2b9ac97371566eadfb3eb6::testing::TESTING"
+  },
+  {
+    "symbol": "TESTY",
+    "name": "TESTY",
+    "coinType": "0x9c000c8c5d73776ba1da18229a9244aa9b8c151cbceb6e35b67bc260b76b4001::testy::TESTY"
+  },
+  {
+    "symbol": "TETHER_USDT_SUI",
+    "name": "TETHER_USDT_SUI",
+    "coinType": "0x679e10cefe401da6e8469812f4dcd74b73a348d4090ca2089c7f17ff47ea0fad::tether_usdt_sui::TETHER_USDT_SUI"
+  },
+  {
+    "symbol": "THA",
+    "name": "THA",
+    "coinType": "0x19a6f6099cd16caf92d6bfc21fc7d40536206106392522191d40c64ec6b33997::tha::THA"
+  },
+  {
+    "symbol": "THREE21",
+    "name": "THREE21",
+    "coinType": "0x34440e62ce5fcd9043f468a035c63d453eca5236ced9e5d5171c2d87e2603931::three21::THREE21"
+  },
+  {
+    "symbol": "TIMES",
+    "name": "TIMES",
+    "coinType": "0x46fbe54691b27d7abd2c9e5a01088913531f241b98f3c2351f8215e45cc17a4c::times::TIMES"
+  },
+  {
+    "symbol": "TIPSY",
+    "name": "TIPSY",
+    "coinType": "0x03b6ba58f018507ba4aaa8352615c336703e6f2708957527298ac78136233561::tipsy::TIPSY"
+  },
+  {
+    "symbol": "TITS",
+    "name": "TITS",
+    "coinType": "0x318b9c61521e3e61e746517dd894d179805676546abd8f0159d0d146c717b4e4::tits::TITS"
+  },
+  {
+    "symbol": "TKIN",
+    "name": "TKIN",
+    "coinType": "0x40a914ca288b0591d8501577dfc74a3a52595a2d369889594818aa2e43663ed9::tkin::TKIN"
+  },
+  {
+    "symbol": "TKR",
+    "name": "TKR",
+    "coinType": "0xeea844749a063de16c29cb3706115f96387babfe49eaa41447c1fff10d76228a::tkr::TKR"
+  },
+  {
+    "symbol": "TOILET",
+    "name": "TOILET",
+    "coinType": "0xc5b61b1e1f7f88511c9c0c6f475f823c66cc4e2d39a49beb6777059710be8404::toilet::TOILET",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/mfmdae-YKRkukKz7?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "TOKEN",
+    "name": "TOKEN",
+    "coinType": "0x839da07271a40dcac01c91ded1caed550395afbc4456378ac34cb511ac5f232d::token::TOKEN"
+  },
+  {
+    "symbol": "TOKEN",
+    "name": "TOKEN",
+    "coinType": "0x361dd589b98e8fcda9a7ee53b85efabef3569d00416640d2faa516e3801d7ffc::TOKEN::TOKEN"
+  },
+  {
+    "symbol": "TOLY",
+    "name": "TOLY",
+    "coinType": "0x7e73e3a30c16a57a19da9022e055a72cbf7010bd53b8c0ad50124fd68fab1fe3::toly::TOLY"
+  },
+  {
+    "symbol": "TONY",
+    "name": "TONY",
+    "coinType": "0xe7923f39f0d81b146a85830af6dfeb65ff32e81eb4f06f2fc33c2b313547f9e5::TONY::TONY"
+  },
+  {
+    "symbol": "TREATS",
+    "name": "TREATS",
+    "coinType": "0x0dadb7fa2771c2952f96161fc1f0c105d1f22d53926b9ff2498a8eea2f6eb204::treats::TREATS"
+  },
+  {
+    "symbol": "TRILLON",
+    "name": "TRILLON",
+    "coinType": "0x75fb26016aa9f8762dddf903d604f8407abd5d6600ffd04ffd675a3c4d87689a::trillon::TRILLON"
+  },
+  {
+    "symbol": "TROLL",
+    "name": "TROLL",
+    "coinType": "0x6cea474e28bf25ec4cd91d2b8e72e2cff567736dc26c4b09843afec922063977::troll::TROLL"
+  },
+  {
+    "symbol": "TRT",
+    "name": "TRT",
+    "coinType": "0x040e8c993bc853f316da534f9adf2d894fbcaa15eb5758afdd6989c217567077::trt::TRT"
+  },
+  {
+    "symbol": "TRUMP",
+    "name": "TRUMP",
+    "coinType": "0xaa922e09f0b4013e7eb8f4e2bbb27ac9766d704f170ce4912c1d78f21f315101::trump::TRUMP"
+  },
+  {
+    "symbol": "TRUMP",
+    "name": "TRUMP",
+    "coinType": "0x51fe8ebd6e31a2b3c832a089b91b64c37e1bafb66bba26fb4f468ae2d647c06c::trump::TRUMP"
+  },
+  {
+    "symbol": "TRUMP",
+    "name": "TRUMP",
+    "coinType": "0x95a2728bedb8798c4a06eb67865912f837a8c95907396de662a3d4dc6aab514a::trump::TRUMP"
+  },
+  {
+    "symbol": "TRUMPMAX",
+    "name": "TRUMPMAX",
+    "coinType": "0xea3c93a75ade94beb41ce53c30dd12d9c791b9b73ade01c139e3d2537f422115::trumpmax::TRUMPMAX"
+  },
+  {
+    "symbol": "TSF",
+    "name": "TSF",
+    "coinType": "0xac01c703babf645a89d06f8a0a5e326769809cae28b5bad25fc6b98c534bbf9d::tsf::TSF"
+  },
+  {
+    "symbol": "TSUNAMI",
+    "name": "TSUNAMI",
+    "coinType": "0x44c2408d343443aadc385cab5fca8f9d1587a9296d0dd5f634297c5a79fc5115::tsunami::TSUNAMI"
+  },
+  {
+    "symbol": "TTTT",
+    "name": "TTTT",
+    "coinType": "0x1d1fac53482db8d58a86e68033f14bbb8a874edf5f1d8b625d956b620c44b4f1::tttt::TTTT"
+  },
+  {
+    "symbol": "TURBOS",
+    "name": "TURBOS",
+    "coinType": "0x5d1f47ea69bb0de31c313d7acf89b890dbb8991ea8e03c6c355171f84bb1ba4a::turbos::TURBOS",
+    "logoUrl": "https://assets.coingecko.com/coins/images/30349/thumb/ggut-eKC_400x400.jpg?1696529249"
+  },
+  {
+    "symbol": "TURD",
+    "name": "TURD",
+    "coinType": "0x10ef03277df19661589c48452632fe858cd7098a42bd2a878a3e76804436db76::turd::TURD"
+  },
+  {
+    "symbol": "TUX",
+    "name": "TUX",
+    "coinType": "0x384bc7b6a9a34bec9d3f9b3a5d2b5b86d89b8c1b73f3391bdaf76042ce3953ee::tux::TUX"
+  },
+  {
+    "symbol": "TV",
+    "name": "TV",
+    "coinType": "0xbebc07052c435af6c8a5d85a187836792bcf42d2a2953594cea20e5f8d0b8c16::tv::TV"
+  },
+  {
+    "symbol": "TVP",
+    "name": "TVP",
+    "coinType": "0x83227db46934b257718c1459fba7ad6dc7ad897f99beb4889993d09a14a48ec2::tvp::TVP"
+  },
+  {
+    "symbol": "TVYN",
+    "name": "TVYN",
+    "coinType": "0x143bd9071ea4f375d4321f2eb424d083b74a34388710e2cc7fbc31a9c45f1793::tvyn::TVYN"
+  },
+  {
+    "symbol": "TWERK",
+    "name": "TWERK",
+    "coinType": "0xa472462dc03a728baf5d04d562f34277fc6b58778433edbc94c10bd716b7a48b::twerk::TWERK"
+  },
+  {
+    "symbol": "TWO",
+    "name": "TWO",
+    "coinType": "0x98e1c47c60fbcca7e425f862ddedb6aa91b406261d27e2d3b25620da9a1bf466::two::TWO"
+  },
+  {
+    "symbol": "TYPUS",
+    "name": "TYPUS",
+    "coinType": "0xf82dc05634970553615eef6112a1ac4fb7bf10272bf6cbe0f80ef44a6c489385::typus::TYPUS",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/29e6ea75abd0e9012b3c19a40452892bdee8acd490c918eb7357c787cf330f91?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "UNI",
+    "name": "UNI",
+    "coinType": "0xaf9e228fd0292e2a27b4859bc57a2f3a9faedb9341b6307c84fef163e44790cc::uni::UNI",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/3be0c4c3a2545dcc3a1d986c224f56e06b2469597e52b177d145992e13e941f3?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "UP",
+    "name": "UP",
+    "coinType": "0xb503292e82f05aa2b785a37c041e45f37dc94a48516ced703e7100fae3c3400b::up::UP"
+  },
+  {
+    "symbol": "UP",
+    "name": "UP",
+    "coinType": "0x87dfe1248a1dc4ce473bd9cb2937d66cdc6c30fee63f3fe0dbb55c7a09d35dec::up::UP",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/e8a70d465133c3939b5e7a992a65360b4b3466a1a35b5d22d4dde3a948f9e978?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "US",
+    "name": "US",
+    "coinType": "0xee962a61432231c2ede6946515beb02290cb516ad087bb06a731e922b2a5f57a::us::US",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/a3fa10606baddde4736f89456cd41bc4de29c3a4a8e01b4017f0f67e44a11204?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "USCR",
+    "name": "USCR",
+    "coinType": "0x431e99bb65a4889699ad85b4b35f9434327cf501b72ae8477cf5b9fb431442ae::uscr::USCR"
+  },
+  {
+    "symbol": "USD",
+    "name": "USD",
+    "coinType": "0x6b1b2c613cdb11ab66094254dbcb616bba32b066b40b433b6c67c9c8fdccc52e::usd::USD"
+  },
+  {
+    "symbol": "USD",
+    "name": "USD",
+    "coinType": "0x2a940950e61d472a9e06096f1bf229826ce2297d0622ceef8b00fb024198042e::usd::USD"
+  },
+  {
+    "symbol": "USDB",
+    "name": "USDB",
+    "coinType": "0x46d6efdc59351211d29e89cd360537f1b64c16034de3bdb6f83477536a3a13e4::usdb::USDB"
+  },
+  {
+    "symbol": "USDB",
+    "name": "USDB",
+    "coinType": "0xe14726c336e81b32328e92afc37345d159f5b550b09fa92bd43640cfdd0a0cfd::usdb::USDB",
+    "logoUrl": "https://assets.coingecko.com/coins/images/69088/thumb/usdb.png?1757471795"
+  },
+  {
+    "symbol": "USDC",
+    "name": "USDC",
+    "coinType": "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
+    "logoUrl": "https://assets.coingecko.com/coins/images/6319/thumb/USDC.png?1769615602"
+  },
+  {
+    "symbol": "USDD",
+    "name": "USDD",
+    "coinType": "0x38c3134afe93e63af021edc7113affab3e6e7056ba18a35174ed2e80796cd372::usdd::USDD"
+  },
+  {
+    "symbol": "USDD",
+    "name": "USDD",
+    "coinType": "0x422ec04509e44e760f426d09ba91ade8a7dec434c0b3569ad5ebf5dd6934924c::usdd::USDD"
+  },
+  {
+    "symbol": "USDD",
+    "name": "USDD",
+    "coinType": "0x27fb72a71c4e3f5abba0fad903c77f49f12d9623ee1b6cca8ffd818992818009::usdd::USDD"
+  },
+  {
+    "symbol": "USDL",
+    "name": "USDL",
+    "coinType": "0xfbd90079fc65bb76063e3aa2d440aa6bf7dad0bd0c15f782f324480c1e967edb::usdl::USDL"
+  },
+  {
+    "symbol": "USDSUI",
+    "name": "USDSUI",
+    "coinType": "0x44f838219cf67b058f3b37907b655f226153c18e33dfcd0da559a844fea9b1c1::usdsui::USDSUI",
+    "logoUrl": "https://assets.coingecko.com/coins/images/70675/thumb/usdsui.png?1772769756"
+  },
+  {
+    "symbol": "USDSUI",
+    "name": "USDSUI",
+    "coinType": "0xdd30e2c58015dca70f2c728dd8126b035caba606b5096e6cb3a7a7be5402ad19::usdsui::USDSUI"
+  },
+  {
+    "symbol": "USDT",
+    "name": "USDT",
+    "coinType": "0x959593793e2aad39d2a0aef479a16a4cf9532b688f629b39458417119cc9a800::usdt::USDT",
+    "logoUrl": "https://strapi.scand.app/uploads/usdt_8a23002ad6.png"
+  },
+  {
+    "symbol": "USDT",
+    "name": "USDT",
+    "coinType": "0x0ecdd9ee6daee1fbd025e68268514cf6aca6e587a4fd013b76dcaa6ff8ffe1c9::usdt::USDT",
+    "logoUrl": "https://strapi.scand.app/uploads/usdt_8a23002ad6.png"
+  },
+  {
+    "symbol": "USDT",
+    "name": "USDT",
+    "coinType": "0x753a4b8565043acac4ef5cf01c675340c4285a1a00f2baca9ad5e20bb62b6ca3::usdt::USDT",
+    "logoUrl": "https://strapi.scand.app/uploads/usdt_8a23002ad6.png"
+  },
+  {
+    "symbol": "USDT",
+    "name": "USDT",
+    "coinType": "0x375f70cf2ae4c00bf37117d0c85a2c71545e6ee05c4a5c7d282cd66a4504b068::usdt::USDT",
+    "logoUrl": "https://assets.coingecko.com/coins/images/56062/thumb/usdt.jpg?1748225088"
+  },
+  {
+    "symbol": "USDT",
+    "name": "USDT",
+    "coinType": "0xad2964392109f42f991bec3e4b772e25ef698412139ba0ddf04ea46e546add30::usdt::USDT",
+    "logoUrl": "https://strapi.scand.app/uploads/usdt_8a23002ad6.png"
+  },
+  {
+    "symbol": "USDTBNB",
+    "name": "USDTBNB",
+    "coinType": "0x967fa49437889dbbe4141e9d53a4cb13b171d7722e72b755ff0b84287a3fd497::usdtbnb::USDTBNB"
+  },
+  {
+    "symbol": "USDY",
+    "name": "USDY",
+    "coinType": "0x960b531667636f39e85867775f52f6b1f220a058c4de786905bdf761e06a56bb::usdy::USDY",
+    "logoUrl": "https://assets.coingecko.com/coins/images/31700/thumb/usdy_%281%29.png?1696530524"
+  },
+  {
+    "symbol": "USDZ",
+    "name": "USDZ",
+    "coinType": "0x7fd8aba1652c58b6397c799fd375e748e5053145cb7e126d303e0a1545fd1fec::usdz::USDZ",
+    "logoUrl": "https://assets.coingecko.com/coins/images/68186/thumb/usdz.png?1755008877"
+  },
+  {
+    "symbol": "USTC",
+    "name": "USTC",
+    "coinType": "0x26f8d06f218d5028cd61ba535a520371caae1de4682ad5682807f3982e043e14::ustc::USTC"
+  },
+  {
+    "symbol": "UTATO",
+    "name": "UTATO",
+    "coinType": "0x7b0075309f3faf6caa38a9fffd896673d93fcddad8d0513ce185e2d8eaf14e71::utato::UTATO"
+  },
+  {
+    "symbol": "UTK",
+    "name": "UTK",
+    "coinType": "0xf5d1ff847a1f3c624e440ab4b7bcd15d01388b48133db31a3dae6d734fe075fa::utk::UTK"
+  },
+  {
+    "symbol": "VAULT",
+    "name": "VAULT",
+    "coinType": "0x4b2fc73e784550a6721a459b5a36c2fb4f4dda95c5d5d43add540596d6e6eb0b::vault::VAULT"
+  },
+  {
+    "symbol": "VDOR",
+    "name": "VDOR",
+    "coinType": "0xb091d823ae8d7a79e49e7b35bb8912d9879dfe55dc285b5fffc6378db690992a::vdor::VDOR"
+  },
+  {
+    "symbol": "VDR",
+    "name": "VDR",
+    "coinType": "0xd73d70f977dcba8fefc040f394367d5e578ff41ec52be0eea3d97b4c3566d55e::vdr::VDR"
+  },
+  {
+    "symbol": "VICTORY_TOKEN",
+    "name": "VICTORY_TOKEN",
+    "coinType": "0xbfac5e1c6bf6ef29b12f7723857695fd2f4da9a11a7d88162c15e9124c243a4a::victory_token::VICTORY_TOKEN",
+    "logoUrl": "https://assets.coingecko.com/coins/images/102172914/thumb/victorylogo.png?1776528881"
+  },
+  {
+    "symbol": "VID",
+    "name": "VID",
+    "coinType": "0xd6396f098053080a800fdb01382363c85bf12ceb1ab250628716c4163214f6ef::vid::VID"
+  },
+  {
+    "symbol": "VISA",
+    "name": "VISA",
+    "coinType": "0x7ca2b886494e3240aadfe6b3b9123876d393033f24b22188883ab31028dec578::visa::VISA"
+  },
+  {
+    "symbol": "VROOM",
+    "name": "VROOM",
+    "coinType": "0x7533f98657c875af52bc27a3eb19d1c69192f20869060f82d142feaf229a78d7::vroom::VROOM"
+  },
+  {
+    "symbol": "WAIFU",
+    "name": "WAIFU",
+    "coinType": "0x322dd7f9e71ce0430fffc5b1886d42572b3e7cae7db6f358c2d6a717fea119f1::waifu::WAIFU"
+  },
+  {
+    "symbol": "WAL",
+    "name": "WAL",
+    "coinType": "0x356a26eb9e012a68958082340d4c4116e7f55615cf27affcff209cf0ae544f59::wal::WAL",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/ee23ea64dbf653448db0f4c6b028d13ff91d1704aec7a44cf752e8bf002e4480?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "WAL",
+    "name": "WAL",
+    "coinType": "0x438f80efc403dd43703412740a5c219cbe55d838f43b6becad527120d11a083f::wal::WAL"
+  },
+  {
+    "symbol": "WAL",
+    "name": "WAL",
+    "coinType": "0x79cff51a3edee8542fe1e058ca399114440d2ba92d0f572622983a7967e97b8b::wal::WAL"
+  },
+  {
+    "symbol": "WALE",
+    "name": "WALE",
+    "coinType": "0x958270188099f75ef9d8b9ace7f457dac8094c284e83b5ee990cd9e163018538::wale::WALE"
+  },
+  {
+    "symbol": "WARPED",
+    "name": "WARPED",
+    "coinType": "0x50c9c77f29de11a2abdbe60e0869a026dc47c94bfc4e7d461c80313b079d44d2::warped::WARPED",
+    "logoUrl": "https://assets.coingecko.com/coins/images/33307/thumb/WarpedGames_Logo_Main_Isotype_Color-TransparentBG.png?1763209428"
+  },
+  {
+    "symbol": "WAV",
+    "name": "WAV",
+    "coinType": "0x82616322719cb327186d5b83a6d7783ce5cef4c5dbd4c6d1b5f3d6e5d288e2be::wav::WAV",
+    "logoUrl": "https://assets.coingecko.com/coins/images/55041/thumb/WAVE_200x200.png?1743406100"
+  },
+  {
+    "symbol": "WAVE",
+    "name": "WAVE",
+    "coinType": "0x5766e2e2bfd4a35fa4c774a1f9e38c508a71af9730861b5e26c48ede9e084b94::wave::WAVE"
+  },
+  {
+    "symbol": "WBTC",
+    "name": "WBTC",
+    "coinType": "0x0041f9f9344cac094454cd574e333c4fdb132d7bcc9379bcd4aab485b2a63942::wbtc::WBTC",
+    "logoUrl": "https://assets.coingecko.com/coins/images/7598/thumb/WBTCLOGO.png?1764496367"
+  },
+  {
+    "symbol": "WBTCSUI",
+    "name": "WBTCSUI",
+    "coinType": "0x3b9e04bc47b180eacdb48f2eb7a02b611d2d15b6d2f4e5f6c11e52bbe216e5c3::wbtcsui::WBTCSUI"
+  },
+  {
+    "symbol": "WCCT",
+    "name": "WCCT",
+    "coinType": "0x2733e86d7d40db2149cd072465b9993e6c539f04814f5ae5cea1c1f13ca38eea::wcct::WCCT"
+  },
+  {
+    "symbol": "WDIL",
+    "name": "WDIL",
+    "coinType": "0x33d3b1105da8a57b0d6b160c92ae6687ae9cb178271637f7287d4aace5bc20df::wdil::WDIL"
+  },
+  {
+    "symbol": "WET",
+    "name": "WET",
+    "coinType": "0x150a3765f43bee5e67f8faa04ad8802aab8fe8656d270198b55f825d4816cffe::wet::WET"
+  },
+  {
+    "symbol": "WEWE",
+    "name": "WEWE",
+    "coinType": "0xb5b603827d1bfb2859200fd332d5e139ccac2598f0625de153a87cf78954e0c4::wewe::WEWE"
+  },
+  {
+    "symbol": "WEXE",
+    "name": "WEXE",
+    "coinType": "0x9b7e7a58baf41f9d0f5dcf8b113bb5c1fa9602191e80f6e4fa1681bdd70ad59b::wexe::WEXE"
+  },
+  {
+    "symbol": "WIF",
+    "name": "WIF",
+    "coinType": "0x39911aff524399317511c38abd22b74e6ef454cfdf0be2495ac8c492cabd8754::wif::WIF"
+  },
+  {
+    "symbol": "WIKE_EDUCATION_TOKEN",
+    "name": "WIKE_EDUCATION_TOKEN",
+    "coinType": "0x042f4b6a2af1d54f77207795bbab6247a1d1b4ef9529bb743304ea71406418a8::wike_education_token::WIKE_EDUCATION_TOKEN"
+  },
+  {
+    "symbol": "WIN",
+    "name": "WIN",
+    "coinType": "0xe6b9e1033c72084ad01db37c77778ca53b9c4ebb263f28ffbfed39f4d5fd5057::win::WIN",
+    "logoUrl": "https://cdn.dexscreener.com/cms/images/9d44bae63775e168d11a351f7be9872a14f699cb7eef8eb4dba76f703f600136?width=800&height=800&quality=95&format=auto"
+  },
+  {
+    "symbol": "WINDOGS",
+    "name": "WINDOGS",
+    "coinType": "0xc5ef4487db42594d46f8c565e0848e8bb09682c86680356d6af6073ff5f9e0e0::windogs::WINDOGS"
+  },
+  {
+    "symbol": "WIZARD",
+    "name": "WIZARD",
+    "coinType": "0x3323e038c17e8f10d3f050abe00071471373952b37abfe857fce6d2646b49692::wizard::WIZARD"
+  },
+  {
+    "symbol": "WOLF",
+    "name": "WOLF",
+    "coinType": "0x7396c4deb7e6cce3e38419563d22534f7c427786773b92d1c23751cdbae96560::wolf::WOLF"
+  },
+  {
+    "symbol": "WORLDCUP",
+    "name": "WORLDCUP",
+    "coinType": "0xfab862c4a7969f1769d1e464a1dc86912a287ab2d19d64f8d08f7420ddf65296::worldcup::WORLDCUP"
+  },
+  {
+    "symbol": "WORLDCUP",
+    "name": "WORLDCUP",
+    "coinType": "0xbc719544b732cdee5f0d1940d21b29d782f3b00c0d96ab7274b4354934becae6::worldcup::WORLDCUP"
+  },
+  {
+    "symbol": "WORLDCUP",
+    "name": "WORLDCUP",
+    "coinType": "0xc4465afc0612de8692011b721ffe6cd4cbcf5c80b799e396f529a5954f11f9c8::worldcup::WORLDCUP"
+  },
+  {
+    "symbol": "WORLDCUP",
+    "name": "WORLDCUP",
+    "coinType": "0xdccd94c248f40629c3273101e0627591ece37c517075341143b6e56a0f5d0555::worldcup::WORLDCUP"
+  },
+  {
+    "symbol": "WORLDCUP",
+    "name": "WORLDCUP",
+    "coinType": "0x2b2022cfd0cf65716675d08bf859c8463ead8cf4b6ada2d939dfcb77e5ee83de::worldcup::WORLDCUP"
+  },
+  {
+    "symbol": "WORM",
+    "name": "WORM",
+    "coinType": "0x7e78a3a2d8d6fe6f881595129e2ff4ff5ed847308212ec168723df76377598bd::worm::WORM"
+  },
+  {
+    "symbol": "WORTHLESS",
+    "name": "WORTHLESS",
+    "coinType": "0x8cc7137abe7df7bf756b273f1cbc5e02409a005df85007fcc6f439984488f796::worthless::WORTHLESS"
+  },
+  {
+    "symbol": "WSB",
+    "name": "WSB",
+    "coinType": "0x4db126eac4fa99207e98db61d968477021fdeae153de3b244bcfbdc468ef0722::wsb::WSB"
+  },
+  {
+    "symbol": "WSUI",
+    "name": "WSUI",
+    "coinType": "0xe3805543fa69c8ac48ab64529350f78f8c88769b69264102e9084ddaf3f69080::wsui::WSUI"
+  },
+  {
+    "symbol": "WSWS",
+    "name": "WSWS",
+    "coinType": "0xf499c6f90d00b54a3f658adbe6289a4d399a7ce2d6306a81a0527925392fc1db::wsws::WSWS"
+  },
+  {
+    "symbol": "WWAL",
+    "name": "WWAL",
+    "coinType": "0xb1b0650a8862e30e3f604fd6c5838bc25464b8d3d827fbd58af7cb9685b832bf::wwal::WWAL",
+    "logoUrl": "https://assets.coingecko.com/coins/images/69087/thumb/wwal.png?1757471254"
+  },
+  {
+    "symbol": "XAGM",
+    "name": "XAGM",
+    "coinType": "0x64bddec0f898ccaa022b8a6e0a5f75d80f53177b87a9795dd15aefe9ac12ee6c::xagm::XAGM",
+    "logoUrl": "https://assets.coingecko.com/coins/images/102172552/thumb/XAGM_icon.png?1773848751"
+  },
+  {
+    "symbol": "XAI",
+    "name": "XAI",
+    "coinType": "0xba25c11b32159ecc215bd67a85ef2ae00edf1d278ad04198ffa6aae2c09bc12e::xai::XAI"
+  },
+  {
+    "symbol": "XAUM",
+    "name": "XAUM",
+    "coinType": "0x9d297676e7a4b771ab023291377b2adfaa4938fb9080b8d12430e4b108b836a9::xaum::XAUM",
+    "logoUrl": "https://assets.coingecko.com/coins/images/51962/thumb/xaum_200px_logo_1x.png?1733560735"
+  },
+  {
+    "symbol": "XBT",
+    "name": "XBT",
+    "coinType": "0x1317264ea216aad61d9dc0b3aa13e1c08e3ace1202cd396b746890c0c6eb9ab3::xbt::XBT"
+  },
+  {
+    "symbol": "XBTC",
+    "name": "XBTC",
+    "coinType": "0x876a4b7bce8aeaef60464c11f4026903e9afacab79b9b142686158aa86560b50::xbtc::XBTC",
+    "logoUrl": "https://assets.coingecko.com/coins/images/66627/thumb/xbtc.png?1750067602"
+  },
+  {
+    "symbol": "XCN",
+    "name": "XCN",
+    "coinType": "0x850efc8980ccf84d8e56e3b96540a61e0fac158f4d6834af6bf5fc0415a979d8::xcn::XCN"
+  },
+  {
+    "symbol": "XDOL",
+    "name": "XDOL",
+    "coinType": "0x7e92c50e09d75de63b324d429f69d3bb8a080613e66f23e29815e041134289a2::xdol::XDOL"
+  },
+  {
+    "symbol": "XEC",
+    "name": "XEC",
+    "coinType": "0x92baf7a2dcb487f54a3f8f0f7ffee6dd07517f1b94b05e89355995a371b7df35::xec::XEC"
+  },
+  {
+    "symbol": "XLM",
+    "name": "XLM",
+    "coinType": "0x25631371edcb9af56184933723b86c3991339cd2203aadc011c372e909049f0b::xlm::XLM"
+  },
+  {
+    "symbol": "XO",
+    "name": "XO",
+    "coinType": "0x90f9eb95f62d31fbe2179313547e360db86d88d2399103a94286291b63f469ba::xo::XO",
+    "logoUrl": "https://assets.coingecko.com/coins/images/66854/thumb/jEA3F9KV_400x400.png?1750840798"
+  },
+  {
+    "symbol": "XOADIDAS",
+    "name": "XOADIDAS",
+    "coinType": "0x4e71c6e46905e1b0c50fbe430d2117923092eecab11ec7e2afd5487428ce1c12::xoadidas::XOADIDAS"
+  },
+  {
+    "symbol": "XP",
+    "name": "XP",
+    "coinType": "0xf0f3c92e410ea42ee45c964b7ccd5361fa4f7dca472fe0fbd18c74d5c872d048::xp::XP"
+  },
+  {
+    "symbol": "XP",
+    "name": "XP",
+    "coinType": "0xcde4108b3f76191bf9d67e34f9cc1d997bcdaa81a140ce82394581062a4d2ea8::xp::XP"
+  },
+  {
+    "symbol": "XSUICOIN",
+    "name": "XSUICOIN",
+    "coinType": "0x588e6646d8261c81d0829dd05007feeb32d25b123e7265077e833e2da17ad64a::xsuicoin::XSUICOIN"
+  },
+  {
+    "symbol": "XXR",
+    "name": "XXR",
+    "coinType": "0xd8f9594914360535a71a39a14b499ed9ce0ef6389ab20dede945ab83828a9b50::xxr::XXR"
+  },
+  {
+    "symbol": "XYZ",
+    "name": "XYZ",
+    "coinType": "0x66192739fc019434aded5fbd5c541f728e04bf6cac8ace8d2df7bf588a3fdeee::xyz::XYZ"
+  },
+  {
+    "symbol": "XYZ",
+    "name": "XYZ",
+    "coinType": "0xfde3951f95f71358f1db1d9701b79b3dbbb142c0f3b174a862abb6eabf3e740a::xyz::XYZ"
+  },
+  {
+    "symbol": "YBTC",
+    "name": "YBTC",
+    "coinType": "0xa03ab7eee2c8e97111977b77374eaf6324ba617e7027382228350db08469189e::ybtc::YBTC"
+  },
+  {
+    "symbol": "YDOES",
+    "name": "YDOES",
+    "coinType": "0x26bd5f0aeac3b0fb60cdb8c9a75b28e8d0eca12170aab85736f8c1ae0cecfc4d::ydoes::YDOES"
+  },
+  {
+    "symbol": "YODA",
+    "name": "YODA",
+    "coinType": "0x6ba4a060002a141966a0774eecbc604e1c7a4cbd8882442e2250c960ef9f89b2::yoda::YODA"
+  },
+  {
+    "symbol": "YOJO",
+    "name": "YOJO",
+    "coinType": "0x31a014fb3c8365ca991344c0f273c5e4a14ef5552f971fcad67de50328eec32d::yojo::YOJO"
+  },
+  {
+    "symbol": "YOMOMMA",
+    "name": "YOMOMMA",
+    "coinType": "0xcff25151a182227adcf59f46a11c5f1e21bcb0b2452b7ace2f79308a06a47638::yomomma::YOMOMMA"
+  },
+  {
+    "symbol": "YY",
+    "name": "YY",
+    "coinType": "0xffb128761d38b08dd0403af2a6721c9cb7481fd312ce723d5fc0a517d0d3023a::yy::YY"
+  },
+  {
+    "symbol": "ZARD",
+    "name": "ZARD",
+    "coinType": "0xedad9e72cc6ce23180c81fdf135f9a03ba189545ce83f69f1b0a1f551def3469::zard::ZARD"
+  },
+  {
+    "symbol": "ZENGAR",
+    "name": "ZENGAR",
+    "coinType": "0x8b6e2ca7bafe1f0144dea2ea167abc614de69e73c4acb11d1bf8d90fcb2aeebc::zengar::ZENGAR"
+  },
+  {
+    "symbol": "ZILLA",
+    "name": "ZILLA",
+    "coinType": "0x9ab853bdb5a2dd0a4314edb90eced4869eb90fbeaf4f95587ce5d9d8c6a7dec1::zilla::ZILLA"
+  },
+  {
+    "symbol": "ZLP",
+    "name": "ZLP",
+    "coinType": "0xf7fade57462e56e2eff1d7adef32e4fd285b21fd81f983f407bb7110ca766cda::zlp::ZLP",
+    "logoUrl": "https://assets.coingecko.com/coins/images/55381/thumb/zlp.png?1745702685"
+  },
+  {
+    "symbol": "ZSWAP",
+    "name": "ZSWAP",
+    "coinType": "0x8070e3615d59a18a04acde27afffcdafc6331695617c4018c527e3b23e53da94::zswap::ZSWAP"
+  }
+]

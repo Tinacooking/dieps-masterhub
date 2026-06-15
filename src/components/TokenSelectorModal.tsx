@@ -1,11 +1,14 @@
 import React, { useState, useMemo } from 'react';
-import { TOKEN_LOGOS } from '../constants';
+import { TOKENS } from '../constants';
 
 export function TokenSelectorModal({ isOpen, onClose, onSelect, selectedToken }: { isOpen: boolean, onClose: () => void, onSelect: (token: string) => void, selectedToken: string }) {
   const [search, setSearch] = useState('');
 
   const filteredTokens = useMemo(() => {
-    return Object.keys(TOKEN_LOGOS).filter(token => token.toLowerCase().includes(search.toLowerCase()));
+    return TOKENS.filter(token => 
+      token.symbol.toLowerCase().includes(search.toLowerCase()) || 
+      token.name.toLowerCase().includes(search.toLowerCase())
+    );
   }, [search]);
 
   if (!isOpen) return null;
@@ -22,7 +25,7 @@ export function TokenSelectorModal({ isOpen, onClose, onSelect, selectedToken }:
           <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#888] text-[20px]">search</span>
           <input 
             type="text" 
-            placeholder="Search token symbol..." 
+            placeholder="Search name or symbol..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full bg-[#0a0a0a] border border-white/5 focus:border-[#9D6BFF]/50 rounded-[16px] py-4 pl-12 pr-4 text-white font-body text-[15px] outline-none transition-colors placeholder:text-[#666]"
@@ -36,21 +39,24 @@ export function TokenSelectorModal({ isOpen, onClose, onSelect, selectedToken }:
           ) : (
              filteredTokens.map(token => (
               <button 
-                key={token}
-                onClick={() => { onSelect(token); onClose(); setSearch(''); }}
-                className={`w-full flex items-center justify-between p-4 rounded-[16px] border transition-all ${selectedToken === token ? 'bg-[#9D6BFF]/10 border-[#9D6BFF]/30' : 'bg-transparent border-transparent hover:bg-white/5'}`}
+                key={token.symbol}
+                onClick={() => { onSelect(token.symbol); onClose(); setSearch(''); }}
+                className={`w-full flex items-center justify-between p-4 rounded-[16px] border transition-all ${selectedToken === token.symbol ? 'bg-[#9D6BFF]/10 border-[#9D6BFF]/30' : 'bg-transparent border-transparent hover:bg-white/5'}`}
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full overflow-hidden bg-white/5 flex items-center justify-center">
-                    {TOKEN_LOGOS[token] ? (
-                      <img src={TOKEN_LOGOS[token]} alt={token} className="w-8 h-8 object-contain" />
+                    {token.logoUrl ? (
+                      <img src={token.logoUrl} alt={token.symbol} className="w-8 h-8 object-contain" />
                     ) : (
-                      <span className="font-display text-[10px] text-white">{token.slice(0, 3)}</span>
+                      <span className="font-display text-[10px] text-white">{token.symbol.slice(0, 3)}</span>
                     )}
                   </div>
-                  <span className="font-display font-medium text-white">{token}</span>
+                  <div className="flex flex-col items-start">
+                    <span className="font-display font-medium text-white">{token.symbol}</span>
+                    <span className="font-body text-[12px] text-[#888]">{token.name}</span>
+                  </div>
                 </div>
-                {selectedToken === token && <span className="material-symbols-outlined text-[#9D6BFF] text-[20px]">check</span>}
+                {selectedToken === token.symbol && <span className="material-symbols-outlined text-[#9D6BFF] text-[20px]">check</span>}
               </button>
             ))
           )}

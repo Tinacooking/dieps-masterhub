@@ -4,7 +4,7 @@
 ![Stack](https://img.shields.io/badge/Stack-React_%7C_Vite_%7C_Express-212121?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Beta_v2.0-8A2BE2?style=for-the-badge)
 
-**DIEPS (Decentralized Intent Execution Protocol System)** is a next-generation liquidity intelligence and execution layer. It allows users to express their trading desires in natural language (e.g., *"Swap 1000 SUI for USDC with the safest route"*), dynamically resolves the optimal algorithmic path across all Sui DEXs (Cetus, Turbos, etc.), passes the route through a Bayesian risk guardian, and seamlessly outputs a secure Programmable Transaction Block (PTB).
+**DIEPS (Decentralized Intent Execution Protocol System)** is a next-generation liquidity intelligence and execution layer. It allows users to express their trading desires in natural language (e.g., *"Swap 1000 SUI for USDC with the safest route"*), dynamically resolves the optimal route using the Cetus Aggregator SDK, passes the transaction through our 100% On-Chain Risk Guardian, and seamlessly outputs a secure Programmable Transaction Block (PTB).
 
 ---
 
@@ -23,50 +23,34 @@ The core architecture runs on a 4-step pipeline designed to securely transition 
 2.  **Graph State Manager (In-Memory Persistence):**
     *   Maintains an ultra-low latency (`< 200ms` refresh) directed acyclic graph (DAG) of actively monitored liquidity pools across various decentralized exchanges.
     *   *Output:* Current liquidity depth, fee ratios, and token balances.
-3.  **Defensive Routing Engine:**
-    *   Processes the structured intent against the live graph state to construct the mathematically optimal trade route. 
-    *   *Output:* Multi-hop array (e.g., `SUI -> CETUS -> USDC` with proportional splits).
-4.  **Bayesian Guardian & PTB Assembler:**
-    *   Evaluates the route for smart contract, liquidity, and toxic flow risks.
-    *   Upon clearing the risk threshold, the engine compiles a Sui Programmable Transaction Block (MoveCalls, Split/MergeCoins) ready for wallet signature.
+3.  **Smart Routing Engine:**
+    *   Processes the structured intent using the Cetus Aggregator SDK against live graph states to discover the most efficient multi-hop swap routes.
+    *   *Output:* Optimal trade route (e.g., `SUI -> CETUS -> USDC` with proportional splits) and expected output.
+4.  **100% On-Chain Risk Guardian & PTB Assembler:**
+    *   Evaluates the route by querying live Sui RPC nodes for dynamic price impact, stale liquidity, and token supply concentration.
+    *   Upon clearing the risk threshold (or receiving user override for flagged risks), the engine compiles a Sui Programmable Transaction Block (MoveCalls, Split/MergeCoins) ready for wallet signature.
 
 ---
 
-## 🧮 2. Mathematical Algorithms
+## 🧠 2. Core Technologies & Architecture
 
-### A. Routing Subgraph Concept (Routing DEX pools Algorithm)
-To find the maximum output route, we invert the traditional shortest-path algorithm. Edge weights $W_{i,j}$ are represented by the negative log of the expected pool exchange rate $R$, adjusting for the percentage fee $F$ and slippage factor $S(x)$ dependent on trade size $x$.
+### A. Gemini-Powered Intent Parsing
+DIEPS moves away from traditional drop-downs and manual configurations. We utilize **Google Gemini 2.5 Flash** (via OpenRouter) fine-tuned for domain-specific slot extraction. This NLP engine transforms conversational requests into structured, deterministic JSON payloads containing source tokens, destination tokens, trade amounts, and specific constraints in milliseconds.
 
-$$ W_{u,v} = -\log \left( R_{u,v} \times (1 - F_{u,v}) \times (1 - S_{u,v}(x)) \right) $$
+### B. Smart Route Optimization (Cetus SDK)
+Instead of relying on rigid, hardcoded paths, DIEPS integrates the **Cetus Aggregator SDK** to autonomously search across deep liquidity pools on the Sui network. It analyzes fragmented liquidity to construct the most capital-efficient multi-hop swap routes, automatically splitting trades across different pools (e.g., Turbos, Cetus, DeepBook) to minimize slippage and maximize output.
 
-The engine calculates paths minimizing the total $W$, which directly translates to maximizing the compound token output.
+### C. 100% On-Chain Risk Guardians
+Before any transaction reaches the mempool, it must pass through our deterministic Risk Guardian Engine. Rather than theoretical models, the Guardian pulls 100% live data directly from Sui RPC nodes to evaluate:
+1.  **Price Impact Guard:** Calculates actual estimated slippage against user thresholds.
+2.  **Liquidity Freshness (Stale Check):** Ensures the pools involved have recent, active trading volume and are not abandoned.
+3.  **Supply Concentration (Rug-Pull Check):** Analyzes token distribution. If an overwhelming percentage of a token's total supply is concentrated in a single wallet, the Guardian flags it as a high rug-pull risk.
 
-### B. Bayesian Guardian Risk Engine
-The Guardian analyzes the probability of catastrophic failure (Black Swan) or malicious pool manipulation (Toxic Liquidity). We utilize a dynamic Bayesian Posterior calculation using a Beta distribution prior. This approach continuously learns from real-time network states to proactively block harmful transactions before they reach the mempool.
-
-1.  **Prior Belief (The Beta Distribution):** 
-    We start with a strong "Safe" prior, mathematically represented as a Beta distribution: $Beta(\alpha=2, \beta=10)$. This means that without any immediate evidence, the engine inherently assumes a low base rate of failure (most paths on legitimate DEXs are safe).
-    *   $\alpha$ (Alpha): Represents pseudo-counts of 'risky' observations.
-    *   $\beta$ (Beta): Represents pseudo-counts of 'safe' observations.
-
-2.  **Evidence Matrix ($E$) & Live Signals:** 
-    During routing, the engine collects multi-dimensional real-time data features across the selected path:
-    *   **$\Delta S(x)$ - Slippage Variance:** Sudden spikes in expected slippage for normal-sized trades compared to historical moving averages.
-    *   **$C_{idx}$ - Concentration Index:** Measures if a disproportionate amount of pool liquidity is held by a localized number of wallets.
-    *   **$T_{age}$ - Contract Age:** Penalizes newly deployed, unverified smart contracts that lack historical stability.
-
-3.  **Posterior Probability Update:** 
-    Upon gathering the evidence matrix $E$, the Guardian mathematically updates its belief system. Using Bayes' Theorem, the specific likelihood of a path being risky given the new evidence is calculated:
-    
-    $$ P(\text{Risk} \mid E) = \frac{P(E \mid \text{Risk}) \times P(\text{Risk})}{P(E \mid \text{Risk}) \times P(\text{Risk}) + P(E \mid \text{Safe}) \times P(\text{Safe})} $$
-    
-    By mapping our real-time signals (e.g., an exorbitant slippage floating $> 5\%$) to the likelihood function $P(E \mid \text{Risk})$, we significantly shift the posterior probability to reflect live danger.
-
-4.  **Deterministic Execution Thresholds:**
-    Based on the newly updated posterior probability ($P$), the engine makes sub-second discrete routing decisions:
-    *   **$P < 0.40$:** Categorized as **SAFE** (Green Light). The routing sequence is immediately passed to the PTB assembler.
-    *   **$0.40 \le P < 0.85$:** Categorized as **MEDIUM RISK** (Yellow Light). The engine may trigger fallback paths or warn the user regarding shallow liquidity depth.
-    *   **$P \ge 0.85$:** Categorized as **HIGH RISK / TOXIC** (Red Light). Execution is mathematically flagged as actively hostile and is unconditionally blocked from blockchain submission.
+**Deterministic Execution Thresholds:**
+Based on the on-chain data, the Guardian makes discrete routing decisions:
+*   **SAFE (Green Light):** The routing sequence is immediately passed to the PTB assembler.
+*   **WARNING (Yellow Light):** Minor risks detected (e.g., slightly elevated slippage). Trade proceeds but with inline warnings.
+*   **DANGER (Red Light):** Critical risks detected (e.g., massive price impact or extreme concentration). Execution is explicitly blocked, requiring the user to manually acknowledge and override the safety block before signing.
 
 ---
 
@@ -120,10 +104,10 @@ npm run start
 
 ## 🚀 4. Algorithm Processing & System Novelty
 
-### The Intent Engine & Advanced Routing Algorithm
-What fundamentally separates DIEPS from standard DEX aggregators is our **Intent Engine**, powered by a highly optimized, proprietary implementation of the **Routing DEX pools Algorithm**. Traditional swappers force users to understand liquidity fragmentation, hop paths, and route optimization. DIEPS flips this paradigm: users simply state their ultimate goal (their *intent*), and the engine independently handles the brutal mathematical complexity under the hood.
+### The Intent Engine & Advanced Routing Integration
+What fundamentally separates DIEPS from standard DEX aggregators is our **Intent Engine**, powered by a highly optimized integration of Google Gemini NLP and the Cetus Aggregator. Traditional swappers force users to understand liquidity fragmentation, hop paths, and route optimization. DIEPS flips this paradigm: users simply state their ultimate goal (their *intent*), and the engine independently handles the complexity under the hood.
 
-Our team has fine-tuned this algorithm to achieve unprecedented processing speeds. This zero-latency optimization is the lifeblood of the Intent Engine, allowing it to instantly parse natural language, compute multi-hop arbitrage paths across the Sui network, and synthesize the safest execution matrix in milliseconds.
+Our team has fine-tuned this architecture to achieve unprecedented processing speeds. This optimization allows the Intent Engine to instantly parse natural language, compute multi-hop arbitrage paths across the Sui network, and synthesize the safest execution matrix in milliseconds.
 
 ### 🌐 Mass Adoption & Ecosystem Impact:
 Our technological breakthroughs translate directly into ecosystem growth for the Sui blockchain:
@@ -140,14 +124,14 @@ While the Sui ecosystem boasts robust DeFi infrastructure, DIEPS introduces an e
 
 ### 1. DIEPS Protocol vs. Hop Aggregator & Cetus Aggregator
 *   **Traditional Aggregators (Hop, Cetus):** Require the user to manually input specific tokens, select exact slippage limits, evaluate different routes, and construct the swap directly. The user bears the cognitive load of formulating the transaction.
-*   **DIEPS (Intent Engine):** The user simply types *"Swap 1000 SUI for the safest USDC route"*. DIEPS naturally parses this, uses its **Routing DEX pools Algorithm** to find the deepest path, runs the Bayesian Risk Guardian to ensure safety, and autonomously synthesizes the exact Programmable Transaction Block (PTB). **DIEPS moves aggregation to the background, elevating the user experience to pure intent.**
+*   **DIEPS (Intent Engine):** The user simply types *"Swap 1000 SUI for the safest USDC route"*. DIEPS naturally parses this, uses the **Cetus Smart Router** to find the deepest path, runs the **On-Chain Risk Guardian** to ensure safety, and autonomously synthesizes the exact Programmable Transaction Block (PTB). **DIEPS moves aggregation to the background, elevating the user experience to pure intent.**
 
 ### 2. DIEPS Protocol vs. Aftermath Finance (Smart Routing)
 *   **Aftermath Finance:** Offers excellent routing and multi-asset pools, focusing on complex pathfinding. However, the interface remains fundamentally deterministic and manual—tailored for experienced DeFi users who understand pool weights.
-*   **DIEPS (Intent Engine):** Not only matches the underlying multi-hop efficiency but adds a proactive **Bayesian Guardian Risk Engine**. If a route relies on a pool experiencing sudden high slippage or toxic concentration, DIEPS dynamically halts or reroutes the execution before submission. Furthermore, DIEPS allows new users to execute these complex, Aftermath-style multi-hop trades effortlessly through natural language, completely removing the steep learning curve.
+*   **DIEPS (Intent Engine):** Not only matches the underlying multi-hop efficiency but adds a proactive **100% On-Chain Risk Guardian Engine**. If a route relies on a pool experiencing sudden high slippage or toxic concentration, DIEPS dynamically halts execution before submission. Furthermore, DIEPS allows new users to execute these complex, Aftermath-style multi-hop trades effortlessly through natural language, completely removing the steep learning curve.
 
 ### Conclusion
 DIEPS does not replace aggregators; it acts as an intelligent overlay. By abstracting away the mechanical execution into natural language and reinforcing it with institutional-grade risk models, DIEPS aims to onboard the next one million retail users to the Sui Blockchain.
 
 ## 🔒 Security Notice
-*This is an experimental interface running on Testnet endpoints by default. Real PTB submission and Move execution features simulate their states unless connected to mainnet RPC nodes.*
+*This is a test interface, running on Mainnet endpoints by default. The PTB sending and Move execution features are real, not simulated state, and are connected to Mainnet RPC nodes.*

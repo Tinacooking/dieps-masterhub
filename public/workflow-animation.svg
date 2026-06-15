@@ -78,7 +78,7 @@
   <g transform="translate(550, 160)">
     <rect class="node-active" width="140" height="80" style="stroke: #FFC107;" />
     <text class="text" x="70" y="35">Risk Guardian</text>
-    <text class="text-sub" x="70" y="55">Bayesian Filter</text>
+    <text class="text-sub" x="70" y="55">Risk Guardian Filter</text>
   </g>
   
   <g transform="translate(750, 160)">
