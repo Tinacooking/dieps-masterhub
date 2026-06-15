@@ -5,7 +5,7 @@
 
 import { isWhitelistedToken, resolveToken } from '../coin/tokenResolver.js';
 import { logger } from '../../utils/logger.js';
-import { getCoinMetadata } from '../../utils/suiClient.js';
+import { getCoinMetadata, suiRpcCall } from '../../utils/suiClient.js';
 import { RISK_THRESHOLDS } from '../../config/index.js';
 import type { RiskCheck } from '../../types/index.js';
 
@@ -50,6 +50,10 @@ export async function checkTokenSafety(symbol: string): Promise<RiskCheck[]> {
   try {
     const onChainTokenCheck = await verifyTokenOnChain(symbol);
     checks.push(onChainTokenCheck);
+    
+    // For non-whitelisted tokens, we also perform a native Concentration Check (TreasuryCap Risk)
+    const concentrationCheck = await checkConcentrationRisk(token?.address || symbol);
+    checks.push(concentrationCheck);
   } catch (err: any) {
     checks.push({
       name: 'On-Chain Verification',
@@ -91,6 +95,75 @@ async function verifyTokenOnChain(symbolOrAddress: string): Promise<RiskCheck> {
       name: 'On-Chain Verification',
       status: 'WARNING',
       message: `Could not verify token on-chain.`,
+    };
+  }
+}
+
+/**
+ * Native On-Chain Concentration Check (TreasuryCap Ownership)
+ * Determines if the token creator has infinite minting power.
+ */
+async function checkConcentrationRisk(tokenAddress: string): Promise<RiskCheck> {
+  if (!tokenAddress.includes('::')) {
+    return { name: 'Holder Distribution', status: 'WARNING', message: 'Invalid token address for concentration check' };
+  }
+
+  try {
+    const packageId = tokenAddress.split('::')[0];
+    
+    // 1. Get the package creation transaction
+    const pkgObject = await suiRpcCall('sui_getObject', [packageId, { showPreviousTransaction: true }]);
+    const creationTxDigest = pkgObject?.data?.previousTransaction;
+
+    if (!creationTxDigest) {
+      return { name: 'Holder Distribution', status: 'WARNING', message: 'Could not trace token creation on-chain' };
+    }
+
+    // 2. Fetch the transaction that created the token
+    const txBlock = await suiRpcCall('sui_getTransactionBlock', [creationTxDigest, { showObjectChanges: true }]);
+    const objectChanges = txBlock?.objectChanges || [];
+
+    // 3. Find the TreasuryCap object
+    const treasuryCapType = `0x2::coin::TreasuryCap<${tokenAddress}>`;
+    const treasuryCapCreation = objectChanges.find((c: any) => c.type === 'created' && c.objectType === treasuryCapType);
+
+    if (!treasuryCapCreation) {
+      // If there is no TreasuryCap created (e.g. burned or locked initially), it's relatively safe from infinite minting
+      return {
+        name: 'Holder Distribution',
+        status: 'SAFE',
+        message: 'No active TreasuryCap found. Token supply is likely fixed.',
+        value: 100,
+      };
+    }
+
+    const treasuryCapId = treasuryCapCreation.objectId;
+
+    // 4. Verify current ownership of the TreasuryCap
+    const capObject = await suiRpcCall('sui_getObject', [treasuryCapId, { showOwner: true }]);
+    const owner = capObject?.data?.owner;
+
+    if (owner?.AddressOwner) {
+       return {
+         name: 'Holder Distribution',
+         status: 'DANGER',
+         message: `Concentration Risk: Creator (${owner.AddressOwner.slice(0, 6)}...) holds the TreasuryCap and can mint infinite tokens.`,
+         value: 0,
+       };
+    }
+
+    return {
+      name: 'Holder Distribution',
+      status: 'SAFE',
+      message: 'Token TreasuryCap is locked or burned. Safe from creator infinite minting.',
+      value: 90,
+    };
+  } catch (err: any) {
+    logger.warn('Concentration check failed', { error: err.message });
+    return {
+      name: 'Holder Distribution',
+      status: 'WARNING',
+      message: 'On-chain concentration check failed. Trade with caution.',
     };
   }
 }

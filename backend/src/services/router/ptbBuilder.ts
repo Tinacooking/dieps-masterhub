@@ -175,7 +175,8 @@ export async function buildSwapPTB(params: {
     });
 
     // Serialize for wallet — let wallet handle gas
-    const serialized = await txForWallet.toJSON();
+    // Note: client must be passed to resolve CoinWithBalance intents
+    const serialized = await txForWallet.toJSON({ client });
     transactionBytes = serialized;
 
   } catch (err: any) {

@@ -5,6 +5,7 @@
 
 import { RISK_THRESHOLDS } from '../../config/index.js';
 import { logger } from '../../utils/logger.js';
+import { suiRpcCall } from '../../utils/suiClient.js';
 import type { RiskCheck } from '../../types/index.js';
 
 /** Known DEX factory/deployer addresses on Sui Mainnet */
@@ -43,6 +44,9 @@ export async function checkPoolSafety(route: any[]): Promise<RiskCheck[]> {
 
   // Check 2: Liquidity health
   checks.push(checkLiquidityHealth(route));
+
+  // Check 3: Pool Age / Stale Pool Check (100% On-chain)
+  checks.push(await checkPoolAge(route));
 
   return checks;
 }
@@ -122,4 +126,78 @@ function checkLiquidityHealth(route: any[]): RiskCheck {
  */
 export function isKnownDexPool(creatorAddress: string): boolean {
   return KNOWN_DEX_CREATORS.has(creatorAddress.toLowerCase());
+}
+
+/**
+ * Check Pool Age & Recent Activity via On-Chain Timestamp
+ * Determines if a pool is "Stale" (abandoned) without any external indexer.
+ */
+async function checkPoolAge(route: any[]): Promise<RiskCheck> {
+  if (route.length === 0) {
+    return { name: 'Pool Age Activity', status: 'WARNING', message: 'No route data' };
+  }
+
+  try {
+    // Check the first pool in the route as a proxy for the trade's primary liquidity source
+    const primaryPoolId = route[0].poolAddress || route[0].poolId || route[0].id;
+    if (!primaryPoolId) {
+       return { name: 'Pool Age Activity', status: 'SAFE', message: 'Standard routing used' };
+    }
+
+    // 1. Get the pool object's previous transaction digest
+    const poolObject = await suiRpcCall('sui_getObject', [primaryPoolId, { showPreviousTransaction: true }]);
+    const previousTxDigest = poolObject?.data?.previousTransaction;
+
+    if (!previousTxDigest) {
+      return {
+        name: 'Pool Age Activity',
+        status: 'WARNING',
+        message: 'Could not determine recent pool activity on-chain',
+      };
+    }
+
+    // 2. Fetch the timestamp of that transaction
+    const txBlock = await suiRpcCall('sui_getTransactionBlock', [previousTxDigest, { showInput: false, showEffects: false, showEvents: false }]);
+    const timestampMs = parseInt(txBlock?.timestampMs || '0');
+
+    if (timestampMs === 0) {
+       return { name: 'Pool Age Activity', status: 'WARNING', message: 'Timestamp missing from on-chain block' };
+    }
+
+    // 3. Calculate staleness
+    const nowMs = Date.now();
+    const daysSinceLastTx = (nowMs - timestampMs) / (1000 * 60 * 60 * 24);
+
+    if (daysSinceLastTx > 7) {
+      return {
+        name: 'Pool Age Activity',
+        status: 'DANGER',
+        message: `Stale Pool: No on-chain activity in the last ${Math.floor(daysSinceLastTx)} days. Extreme rug-pull or liquidity lock risk.`,
+        value: daysSinceLastTx,
+      };
+    }
+
+    if (daysSinceLastTx > 3) {
+      return {
+        name: 'Pool Age Activity',
+        status: 'WARNING',
+        message: `Low Activity: Pool hasn't had transactions in ${Math.floor(daysSinceLastTx)} days.`,
+        value: daysSinceLastTx,
+      };
+    }
+
+    return {
+      name: 'Pool Age Activity',
+      status: 'SAFE',
+      message: `Pool is active. Last on-chain transaction was ${Math.floor(daysSinceLastTx * 24)} hours ago.`,
+      value: daysSinceLastTx,
+    };
+  } catch (err: any) {
+    logger.warn('Pool age check failed', { error: err.message });
+    return {
+      name: 'Pool Age Activity',
+      status: 'WARNING',
+      message: 'On-chain activity check failed. Proceed with caution.',
+    };
+  }
 }

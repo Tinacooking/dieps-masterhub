@@ -28,6 +28,15 @@ export async function findOptimalRoute(
   // Resolve addresses if needed
   const fromAddress = sourceAddress || await resolveTokenAddress(sourceSymbol);
   const toAddress = destAddress || await resolveTokenAddress(destSymbol);
+
+  // Upgrade Token Discovery: Check if addresses were resolved successfully.
+  if (!fromAddress.startsWith('0x')) {
+    throw new Error(`UNKNOWN_TOKEN:${sourceSymbol}`);
+  }
+  if (!toAddress.startsWith('0x')) {
+    throw new Error(`UNKNOWN_TOKEN:${destSymbol}`);
+  }
+
   const sourceDecimals = getTokenDecimals(sourceSymbol);
   const destDecimals = getTokenDecimals(destSymbol);
   const amountInSmallestUnit = BigInt(Math.floor(parseFloat(amount) * Math.pow(10, sourceDecimals)));

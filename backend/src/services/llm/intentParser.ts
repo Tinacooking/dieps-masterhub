@@ -63,6 +63,7 @@ Rules:
 - action_type is always "SWAP" for trading intents
 - trade_amount is a number string (no commas)
 - Token symbols should be uppercase. The Sui ecosystem has many coins including meme coins (e.g. SUI, USDC, USDT, ETH, BTC, CETUS, TURBOS, BLUB, FUD, NAVX, SCA, etc). Accept ANY word as a valid token symbol.
+- IMPORTANT: If the user provides a FULL CONTRACT ADDRESS (e.g. 0x...::pepe::PEPE), you MUST output the EXACT FULL ADDRESS as the symbol. DO NOT shorten it.
 - priority_mode: "SAFE" (default/low slippage), "FAST" (quick execution), "MAX_OUTPUT" (best rate)
 - constraints: array of objects with {type, value} for slippage, deadline, etc.
 
@@ -106,6 +107,7 @@ If the intent is completely unrelated to trading, respond with:
     if (!jsonMatch) throw new Error('No JSON found in LLM response');
 
     const parsed = JSON.parse(jsonMatch[0]);
+
     logger.info('LLM raw parsed response', { parsed });
 
     if (parsed.error) {

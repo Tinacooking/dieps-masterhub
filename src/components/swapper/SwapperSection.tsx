@@ -155,13 +155,41 @@ export const SwapperSection: React.FC = () => {
       setIsWalletModalOpen(true);
       return;
     }
-    if (!transactionBytes) return;
 
     setExecutionState('executing');
     try {
+      let finalTransactionBytes = transactionBytes;
+
+      // Ensure PTB has been built using the connected wallet's real balance
+      if (!finalTransactionBytes) {
+        const executeRes = await fetch("/api/execute-swap", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            senderAddress: walletAddress,
+            sourceSymbol: sourceToken,
+            destSymbol: destToken,
+            amount: amount,
+            slippage: slippage ? parseFloat(slippage) : 0.5
+          })
+        });
+
+        const executeData = await executeRes.json();
+
+        if (executeData.error || executeData.simulation?.error) {
+          throw new Error(executeData.error || executeData.simulation?.error || "Vui lòng kiểm tra lại số dư ví hoặc thử lại sau.");
+        }
+
+        finalTransactionBytes = executeData.transactionBytes;
+
+        if (!finalTransactionBytes) {
+          throw new Error("Không thể tạo giao dịch. Số dư ví của bạn không đủ.");
+        }
+      }
+
       const { Transaction } = await import('@mysten/sui/transactions');
-      const tx = Transaction.from(transactionBytes);
-      
+      const tx = Transaction.from(finalTransactionBytes);
+
       // 1. Ask wallet to sign the transaction
       const signedTx = await dAppKit.signTransaction({
         transaction: tx,

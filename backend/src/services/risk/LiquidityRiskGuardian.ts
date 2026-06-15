@@ -16,7 +16,8 @@
 import { RISK_THRESHOLDS } from '../../config/index.js';
 import { checkTokenSafety } from '../safety/TokenSafety.js';
 import { checkPoolSafety } from '../safety/PoolSafety.js';
-import { isStablePair } from '../coin/tokenResolver.js';
+import { isStablePair, resolveTokenAddress } from '../coin/tokenResolver.js';
+import { suiRpcCall } from '../../utils/suiClient.js';
 import { logger, createTimer } from '../../utils/logger.js';
 import type {
   RiskAssessment,
@@ -88,6 +89,10 @@ export class LiquidityRiskGuardian {
       checkTokenSafety(destSymbol),
     ]);
     allChecks.push(...sourceTokenChecks, ...destTokenChecks);
+
+    // ─── Check 7: Supply Concentration (On-chain native ratio) ─────
+    const concentrationCheck = await this.checkSupplyConcentration(destSymbol, route);
+    allChecks.push(concentrationCheck);
 
     // ─── Calculate Final Score ───────────────────────────────
     const assessment = this.calculateFinalAssessment(allChecks, priceImpactCheck, depthCheck);
@@ -248,19 +253,92 @@ export class LiquidityRiskGuardian {
       return {
         name: 'Liquidity Risk',
         status: 'WARNING',
-        message: `Trade size is ${(tradeRatio * 100).toFixed(1)}% of pool liquidity — large trade relative to pool depth.`,
-        value: tradeRatio * 100,
-        threshold: 10,
+        message: `Trade size is ${Math.round(tradeRatio * 100)}% of pool liquidity. Expect high slippage.`,
+        value: tradeRatio,
+        threshold: 0.1,
       };
     }
 
     return {
       name: 'Liquidity Risk',
       status: 'SAFE',
-      message: `Pool liquidity ($${poolLiquidity.toLocaleString()}) is sufficient for this trade.`,
+      message: `Pool liquidity is sufficient for trade size.`,
       value: poolLiquidity,
-      threshold: minLiquidity,
     };
+  }
+
+  /**
+   * Check 7: Supply Concentration Risk (Solution A)
+   * Evaluates the token's total supply vs the amount currently in the liquidity pool.
+   * A highly concentrated supply (e.g. < 1% in pool) indicates massive creator holding (Rug pull risk).
+   */
+  private async checkSupplyConcentration(tokenSymbol: string, route: any[]): Promise<RiskCheck> {
+    if (tokenSymbol.toUpperCase() === 'SUI') {
+      return { name: 'Supply Concentration', status: 'SAFE', message: 'SUI native token is inherently distributed.' };
+    }
+    
+    if (!route || route.length === 0) {
+      return { name: 'Supply Concentration', status: 'WARNING', message: 'No route data to check pool reserves.' };
+    }
+
+    try {
+      // 1. Get the exact token address
+      const tokenAddress = await resolveTokenAddress(tokenSymbol);
+      if (!tokenAddress.includes('::')) return { name: 'Supply Concentration', status: 'WARNING', message: 'Could not resolve token address' };
+
+      // 2. Fetch the true total supply from chain
+      const supplyData = await suiRpcCall('suix_getTotalSupply', [tokenAddress]);
+      const totalSupply = parseInt(supplyData?.value || '0');
+
+      if (totalSupply === 0) {
+        return { name: 'Supply Concentration', status: 'WARNING', message: 'Could not fetch token total supply' };
+      }
+
+      // 3. Approximate token amount in the pool using raw on-chain depth metric
+      const maxOnChainDepth = route.reduce((max, node) => Math.max(max, node.onChainLiquidityDepth || 0), 0);
+      
+      if (maxOnChainDepth === 0) {
+        return { name: 'Supply Concentration', status: 'WARNING', message: 'No on-chain depth metric available to compare' };
+      }
+
+      // 4. Calculate ratio (Liquidity in pool / Total Supply)
+      // Note: CLMM liquidity depth is a proxy, but serves as an accurate relative metric
+      const ratio = maxOnChainDepth / totalSupply;
+      const ratioPercent = ratio * 100;
+
+      if (ratioPercent < 0.05) { // Less than 0.05% of supply is in the pool
+        return {
+           name: 'Supply Concentration',
+           status: 'DANGER',
+           message: `Concentration Risk: Only ${ratioPercent.toFixed(4)}% of Total Supply is in the liquidity pool. 99.9%+ is held in wallets. Extreme rug-pull risk.`,
+           value: ratioPercent,
+        };
+      }
+
+      if (ratioPercent < 1.0) { // Less than 1% of supply is in the pool
+        return {
+           name: 'Supply Concentration',
+           status: 'WARNING',
+           message: `High Concentration: Only ${ratioPercent.toFixed(2)}% of supply is in the pool. Trade carefully.`,
+           value: ratioPercent,
+        };
+      }
+
+      return {
+         name: 'Supply Concentration',
+         status: 'SAFE',
+         message: `Healthy pool ratio: ${ratioPercent.toFixed(2)}% of supply is circulating in liquidity.`,
+         value: ratioPercent,
+      };
+
+    } catch (err: any) {
+      logger.warn('Supply concentration check failed', { error: err.message });
+      return {
+        name: 'Supply Concentration',
+        status: 'WARNING',
+        message: 'Could not verify token supply concentration on-chain',
+      };
+    }
   }
 
   /**

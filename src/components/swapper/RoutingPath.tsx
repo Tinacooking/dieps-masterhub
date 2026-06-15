@@ -81,10 +81,10 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
       <div className="bg-[#0a0416]/90 border border-white/5 rounded-[20px] p-4 lg:p-5 flex-1 relative overflow-hidden flex flex-col min-h-0 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
         <div className="flex justify-between items-center mb-3 pb-2 border-b border-white/5 shrink-0">
           <h2 className="font-body font-medium text-[14px] text-white flex items-center gap-2">
-            <span className="material-symbols-outlined text-[18px]">alt_route</span> Routing Path
+            <span className="material-symbols-outlined text-[18px]">alt_route</span> Smart Swapping Engine
           </h2>
           <div className="font-mono text-[9px] uppercase tracking-widest px-2 py-1 border border-white/10 rounded text-[#ddd]">
-              Optimal Route Found
+            Optimal Route Found
           </div>
         </div>
 
@@ -165,13 +165,13 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                     {/* Cetus (Top) */}
                     <circle cx="150" cy="40" r="6" fill="#030008" stroke="#0ea5e9" strokeWidth="1.5" />
                     <circle cx="150" cy="40" r="10" stroke="#0ea5e9" strokeWidth="1" strokeOpacity="0.3" className="animate-ping" style={{ transformOrigin: '150px 40px' }} />
-                    
+
                     {/* Turbos (Right) */}
                     <circle cx="260" cy="150" r="6" fill="#030008" stroke="#a855f7" strokeWidth="1.5" />
-                    
+
                     {/* Kriya (Bottom) */}
                     <circle cx="150" cy="260" r="6" fill="#030008" stroke="#0ea5e9" strokeWidth="1.5" />
-                    
+
                     {/* DeepBook (Left) */}
                     <circle cx="40" cy="150" r="6" fill="#030008" stroke="#a855f7" strokeWidth="1.5" />
                   </svg>
@@ -212,10 +212,10 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
 
                 {/* Nodes */}
                 <div className="flex justify-between items-center w-full relative z-10 transition-opacity duration-1000 opacity-100 xl:px-4 scale-[0.7] sm:scale-[0.8] lg:scale-[0.75] xl:scale-[0.85] shrink-0 origin-center">
-                  
+
                   {/* Origin Node */}
                   <div ref={sourceRef} className="flex flex-col items-center gap-2 z-20">
-                    <div 
+                    <div
                       onClick={() => setTokenModalMode('source')}
                       className={`w-12 h-12 rounded-full flex items-center justify-center relative group cursor-pointer hover:border-[#a855f7] transition-all overflow-hidden bg-[#111111] border border-white/10 shadow-[0_0_30px_rgba(168,85,247,0.15)] ${executionState === 'success' ? 'border-[#a855f7] shadow-[0_0_30px_rgba(168,85,247,0.4)]' : ''}`}
                     >
@@ -228,40 +228,40 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                     </div>
                     <div className="text-center">
                       <div className="font-mono text-[9px] uppercase text-[#888] font-medium tracking-widest mb-1">Input</div>
-                      <div className="font-body text-[13px] font-semibold text-white">{!isNaN(parseFloat(amount)) ? parseFloat(amount).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 6}) : '0.00'}</div>
+                      <div className="font-body text-[13px] font-semibold text-white">{!isNaN(parseFloat(amount)) ? parseFloat(amount).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 6 }) : '0.00'}</div>
                     </div>
                   </div>
 
                   {/* Intermediary Nodes (Pools) */}
                   <div className="flex flex-col gap-2 flex-1 mx-2 max-w-[200px] z-20 shrink-0">
                     {routeNodes.length > 0 ? routeNodes.map((node, index) => (
-                       <div key={index} className={`flex items-center gap-2 bg-[#0a0416] p-2 rounded-[24px] border border-white/5 opacity-90 hover:opacity-100 hover:border-white/10 transition-all cursor-pointer ${executionState === 'executing' ? 'animate-pulse border-[#a855f7]/30 shadow-[0_0_15px_rgba(168,85,247,0.1)]' : ''}`}>
-                         <div className="w-7 h-7 rounded-full bg-[#141414] border border-white/5 flex items-center justify-center shrink-0">
-                           <span className="material-symbols-outlined text-[14px] text-[#888]">water_drop</span>
-                         </div>
-                         <div className="flex-1 min-w-0 flex flex-col justify-center text-left">
-                           <div className="font-body text-[11px] text-white font-medium whitespace-normal break-words">{node.dex} Pool</div>
-                           <div className="font-mono text-[8.5px] text-[#888] whitespace-normal break-words uppercase tracking-widest mt-0.5">{node.dex === 'Turbos' ? 'Med' : 'High'} • {node.fee}% Fee</div>
-                         </div>
-                         <div className="font-body text-[11px] text-white font-medium pr-2 shrink-0">{node.ratio}%</div>
-                       </div>
+                      <div key={index} className={`flex items-center gap-2 bg-[#0a0416] p-2 rounded-[24px] border border-white/5 opacity-90 hover:opacity-100 hover:border-white/10 transition-all cursor-pointer ${executionState === 'executing' ? 'animate-pulse border-[#a855f7]/30 shadow-[0_0_15px_rgba(168,85,247,0.1)]' : ''}`}>
+                        <div className="w-7 h-7 rounded-full bg-[#141414] border border-white/5 flex items-center justify-center shrink-0">
+                          <span className="material-symbols-outlined text-[14px] text-[#888]">water_drop</span>
+                        </div>
+                        <div className="flex-1 min-w-0 flex flex-col justify-center text-left">
+                          <div className="font-body text-[11px] text-white font-medium whitespace-normal break-words">{node.dex} Pool</div>
+                          <div className="font-mono text-[8.5px] text-[#888] whitespace-normal break-words uppercase tracking-widest mt-0.5">{node.dex === 'Turbos' ? 'Med' : 'High'} • {node.fee}% Fee</div>
+                        </div>
+                        <div className="font-body text-[11px] text-white font-medium pr-2 shrink-0">{node.ratio}%</div>
+                      </div>
                     )) : (
                       <div className={`flex items-center gap-2 bg-[#0a0416] p-2 rounded-[24px] border border-white/5 opacity-90 hover:opacity-100 hover:border-white/10 transition-all cursor-pointer ${executionState === 'executing' ? 'animate-pulse border-[#a855f7]/30 shadow-[0_0_15px_rgba(168,85,247,0.1)]' : ''}`}>
-                         <div className="w-7 h-7 rounded-full bg-[#141414] border border-white/5 flex items-center justify-center shrink-0">
-                           <span className="material-symbols-outlined text-[14px] text-[#888]">water_drop</span>
-                         </div>
-                         <div className="flex-1 min-w-0 flex flex-col justify-center text-left">
-                           <div className="font-body text-[11px] text-white font-medium whitespace-normal break-words">Cetus Pool</div>
-                           <div className="font-mono text-[8.5px] text-[#888] whitespace-normal break-words uppercase tracking-widest mt-0.5">High • 0.3% Fee</div>
-                         </div>
-                         <div className="font-body text-[11px] text-white font-medium pr-2 shrink-0">100%</div>
-                       </div>
+                        <div className="w-7 h-7 rounded-full bg-[#141414] border border-white/5 flex items-center justify-center shrink-0">
+                          <span className="material-symbols-outlined text-[14px] text-[#888]">water_drop</span>
+                        </div>
+                        <div className="flex-1 min-w-0 flex flex-col justify-center text-left">
+                          <div className="font-body text-[11px] text-white font-medium whitespace-normal break-words">Cetus Pool</div>
+                          <div className="font-mono text-[8.5px] text-[#888] whitespace-normal break-words uppercase tracking-widest mt-0.5">High • 0.3% Fee</div>
+                        </div>
+                        <div className="font-body text-[11px] text-white font-medium pr-2 shrink-0">100%</div>
+                      </div>
                     )}
                   </div>
 
                   {/* Destination Node */}
                   <div ref={destRef} className="flex flex-col items-center gap-2 z-20">
-                    <div 
+                    <div
                       onClick={() => setTokenModalMode('dest')}
                       className={`w-12 h-12 rounded-full flex items-center justify-center relative group cursor-pointer hover:border-[#a855f7]/50 transition-all bg-[#111111] border-dashed border-white/20 overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] ${executionState === 'success' ? 'border-solid border-[#a855f7] bg-[#a855f7]/10 shadow-[0_0_40px_rgba(168,85,247,0.5)]' : ''}`}
                     >
@@ -310,8 +310,8 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
             <div className="flex flex-col items-end gap-2 w-auto mt-0">
               {appState === 'done' && walletAddress && !isInsufficientBalance && (
                 <label className="flex items-center gap-1.5 cursor-pointer select-none animate-in fade-in slide-in-from-right-4 duration-500 mb-1">
-                  <input 
-                    type="checkbox" 
+                  <input
+                    type="checkbox"
                     checked={hasConfirmedSettings}
                     onChange={(e) => setHasConfirmedSettings(e.target.checked)}
                     className="w-3 h-3 rounded border-white/20 bg-black/50 text-[#a855f7] focus:ring-[#a855f7]/50 transition-colors"
@@ -319,30 +319,29 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
                   <span className="font-mono text-[9px] text-[#888] uppercase tracking-wider">Confirm PTB & Risks</span>
                 </label>
               )}
-              <button 
+              <button
                 onClick={handleExecute}
-                className={`px-6 py-2.5 rounded-[12px] font-mono text-[12px] uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center min-w-[180px] ${
-                  appState === 'done' && 
-                  executionState === 'idle' && 
-                  (!walletAddress || (!isInsufficientBalance && hasConfirmedSettings))
-                    ? (!isSafe ? 'bg-red-500 text-white hover:bg-red-400 shadow-[0_0_20px_rgba(239,68,68,0.3)]' : 'bg-[#a855f7] text-white hover:bg-[#b87cff] shadow-[0_0_20px_rgba(168,85,247,0.3)]') 
+                className={`px-6 py-2.5 rounded-[12px] font-mono text-[12px] uppercase tracking-widest font-bold transition-all duration-300 flex items-center justify-center min-w-[180px] ${appState === 'done' &&
+                    executionState === 'idle' &&
+                    (!walletAddress || (!isInsufficientBalance && hasConfirmedSettings))
+                    ? (!isSafe ? 'bg-red-500 text-white hover:bg-red-400 shadow-[0_0_20px_rgba(239,68,68,0.3)]' : 'bg-[#a855f7] text-white hover:bg-[#b87cff] shadow-[0_0_20px_rgba(168,85,247,0.3)]')
                     : 'bg-[#111111] border border-white/5 text-white/50 cursor-not-allowed'
-                }`} 
+                  }`}
                 disabled={
-                  appState !== 'done' || 
-                  executionState === 'executing' || 
+                  appState !== 'done' ||
+                  executionState === 'executing' ||
                   (walletAddress && (isInsufficientBalance || !hasConfirmedSettings))
                 }
               >
-                 {appState !== 'done' 
-                    ? 'Awaiting Route' 
-                    : !walletAddress 
-                      ? 'Connect Wallet'
-                      : isInsufficientBalance
-                        ? `Insufficient ${sourceToken}`
-                        : executionState === 'executing' 
-                          ? <div className="flex items-center justify-center gap-2"><span className="material-symbols-outlined text-[14px] animate-spin">sync</span><span>Executing...</span></div>
-                          : (!isSafe ? 'Execute With Risk' : 'Execute Swap')}
+                {appState !== 'done'
+                  ? 'Awaiting Route'
+                  : !walletAddress
+                    ? 'Connect Wallet'
+                    : isInsufficientBalance
+                      ? `Insufficient ${sourceToken}`
+                      : executionState === 'executing'
+                        ? <div className="flex items-center justify-center gap-2"><span className="material-symbols-outlined text-[14px] animate-spin">sync</span><span>Executing...</span></div>
+                        : (!isSafe ? 'Execute With Risk' : 'Execute Swap')}
               </button>
             </div>
           )}

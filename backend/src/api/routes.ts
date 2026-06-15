@@ -140,11 +140,14 @@ apiRouter.post('/execute-swap', validateBody(ExecuteSwapSchema), async (req, res
     // First, get the optimal route if not provided
     let routeResult = routerData;
     if (!routeResult || !routeResult.route) {
+      // If addresses are missing, resolve them
+      const resolvedSourceAddress = sourceAddress || await resolveToken(sourceSymbol)?.address || '';
+      const resolvedDestAddress = destAddress || await resolveToken(destSymbol)?.address || '';
       routeResult = await findOptimalRoute(
         sourceSymbol,
         destSymbol,
-        sourceAddress,
-        destAddress,
+        resolvedSourceAddress,
+        resolvedDestAddress,
         amount
       );
     }
@@ -204,17 +207,38 @@ apiRouter.post('/process-intent', validateBody(ProcessIntentSchema), async (req,
       poolDetails: routeResult.poolDetails,
     });
 
-    // 4. Build PTB
-    const ptbResult = await buildSwapPTB({
-      senderAddress,
-      sourceSymbol: intent.source_token_symbol,
-      destSymbol: intent.destination_token_symbol,
-      sourceAddress: intent.source_token_address,
-      destAddress: intent.destination_token_address,
-      amount: intent.trade_amount,
-      slippage: slippage || 0.5,
-      routeData: routeResult,
-    });
+    // 4. Try to Build PTB for Simulation/Display (Ignore errors if wallet is dummy or balance is insufficient)
+    let ptbResult: any = null;
+    try {
+      ptbResult = await buildSwapPTB({
+        senderAddress,
+        sourceSymbol: intent.source_token_symbol,
+        destSymbol: intent.destination_token_symbol,
+        sourceAddress: intent.source_token_address,
+        destAddress: intent.destination_token_address,
+        amount: intent.trade_amount,
+        slippage: slippage || 0.5,
+        routeData: routeResult,
+      });
+    } catch (ptbErr: any) {
+      logger.warn('Skipped full PTB build during intent parsing (likely insufficient balance or dummy wallet). Will build at execution phase.', { error: ptbErr.message });
+      // Generate mock ptbResult to ensure UI can still render steps
+      ptbResult = {
+        transactionBytes: null,
+        ptbSteps: [
+          { index: 1, command: 'Verify Balance', description: 'Checking wallet balance at execution' },
+          { index: 2, command: 'Build PTB', description: 'Generating transaction dynamically' }
+        ],
+        simulation: { success: false, gasUsed: '0', balanceChanges: [], error: ptbErr.message },
+        routeSummary: {
+          inputAmount: intent.trade_amount,
+          inputToken: intent.source_token_symbol,
+          expectedOutput: routeResult.expected_output?.toString() || '0',
+          outputToken: intent.destination_token_symbol,
+          priceImpact: routeResult.execution_impact || '0%',
+        }
+      };
+    }
 
     // 5. Unified Response
     return res.json({
@@ -231,6 +255,14 @@ apiRouter.post('/process-intent', validateBody(ProcessIntentSchema), async (req,
 
   } catch (err: any) {
     logger.error('Process Intent failed', { error: err.message });
+
+    if (err.message && err.message.startsWith('UNKNOWN_TOKEN:')) {
+      const missingSymbol = err.message.split(':')[1] || 'Token';
+      return res.status(400).json({
+        error: `The system could not find the token. '${missingSymbol}'. Please provide the correct Contract address (for example: Swap 10 SUI to 0x...::${missingSymbol.toLowerCase()}::${missingSymbol.toUpperCase()})`,
+      });
+    }
+
     return res.status(500).json({
       error: err.message || 'Failed to process intent pipeline',
     });

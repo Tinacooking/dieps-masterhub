@@ -39,8 +39,8 @@ export const SwapperHeader: React.FC<SwapperHeaderProps> = ({
     <div className="flex justify-between items-end mb-2 border-b border-white/5 pb-4 relative shrink-0">
       <div className="absolute right-0 bottom-0 w-[400px] h-[100px] bg-[#a855f7]/10 blur-[80px] rounded-full pointer-events-none"></div>
       <div>
-         <h2 className="text-[28px] md:text-[32px] font-serif italic font-light text-white mb-1 leading-none tracking-tight">Protocol Interface</h2>
-         <p className="text-[#8F8F8F] font-mono text-[10px] uppercase tracking-widest">v2.0 Neural Engine</p>
+        <h2 className="text-[28px] md:text-[32px] font-serif italic font-light text-white mb-1 leading-none tracking-tight">Protocol Interface</h2>
+        <p className="text-[#8F8F8F] font-mono text-[10px] uppercase tracking-widest">v2.0 Neural Engine</p>
       </div>
       <div className="flex gap-4">
         {!walletAddress ? (
@@ -77,9 +77,9 @@ export const SwapperHeader: React.FC<SwapperHeaderProps> = ({
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#10b981]/5 border border-[#10b981]/20 backdrop-blur-sm">
               <span className="sync-dot"></span>
-              <span className="font-mono text-[9px] text-[#10b981] font-bold tracking-widest">SUI TESTNET • ACTIVE</span>
+              <span className="font-mono text-[9px] text-[#10b981] font-bold tracking-widest">SUI MAINNET • ACTIVE</span>
             </div>
-            <button 
+            <button
               onClick={disconnect}
               className="px-5 py-2.5 rounded-xl border font-mono text-[12px] font-bold bg-[#a855f7]/10 border-[#a855f7]/30 text-white hover:bg-[#a855f7]/20 transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(168,85,247,0.05)] hover:shadow-[0_0_20px_rgba(168,85,247,0.15)]"
               title="Click to disconnect"
