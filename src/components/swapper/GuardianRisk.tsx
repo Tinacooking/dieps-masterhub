@@ -23,7 +23,7 @@ export const GuardianRisk: React.FC<GuardianRiskProps> = ({ processStep, guardia
       <div className="font-mono text-[10px] text-white uppercase tracking-widest flex items-center gap-2 relative z-10 font-bold mb-1">
         <span className="material-symbols-outlined text-[14px]">security</span> GUARDIAN PROTECTION
         {processStep === 3 && <span className="material-symbols-outlined text-[14px] animate-spin ml-auto opacity-50">sync</span>}
-        {!isSafe && <span className="text-red-400 ml-auto">EXECUTION BLOCKED</span>}
+        {!isSafe && <span className="text-red-400 ml-auto flex flex-col items-end"><span className="font-bold">EXECUTION BLOCKED</span><span className="text-[8px] opacity-70">OVERRIDE REQUIRED</span></span>}
       </div>
 
       <div className="space-y-2 relative z-10 w-full flex flex-col max-h-[250px] overflow-y-auto pr-1" style={{ scrollbarWidth: 'thin', scrollbarColor: '#a855f7 #111111' }}>

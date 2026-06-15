@@ -225,8 +225,8 @@ export class LiquidityRiskGuardian {
       if (maxOnChainDepth > 0) {
         return {
           name: 'Liquidity Risk',
-          status: 'SAFE',
-          message: `On-chain pool depth verified. Raw liquidity metric: ${maxOnChainDepth.toLocaleString()}`,
+          status: 'WARNING',
+          message: `Cannot evaluate USD value of pool liquidity. System will rely on Price Impact Guardian.`,
         };
       }
 

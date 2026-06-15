@@ -316,6 +316,45 @@ node.filter(d=>d.tier===0).append("circle").attr("r",d=>tierRadius[d.tier]+18)
 node.filter(d=>d.tier===0).append("circle").attr("r",d=>tierRadius[d.tier]+9)
   .attr("fill","none").attr("stroke","rgba(90,170,255,0.22)").attr("stroke-width",7);
 
+// Logos from cetus-tokens
+const tokenLogos = {
+  "SUI": "https://assets.coingecko.com/coins/images/26375/thumb/sui-ocean-square.png?1727791290",
+  "CETUS": "https://cdn.dexscreener.com/cms/images/0f8ea11888b60cd099bb0be84471c80fd58c32bbc13d060d265d2d2a92a394cd?width=800&height=800&quality=95&format=auto",
+  "DEEP": "https://s2.coinmarketcap.com/static/img/coins/64x64/33367.png",
+  "WAL": "https://cdn.dexscreener.com/cms/images/ee23ea64dbf653448db0f4c6b028d13ff91d1704aec7a44cf752e8bf002e4480?width=800&height=800&quality=95&format=auto",
+  "SCA": "https://assets.coingecko.com/coins/images/34648/thumb/sca.png?1705592307",
+  "SEND": "https://cdn.dexscreener.com/cms/images/9954559c1cddf2519f191080088af00457fd1dd29f740ec79f1ad2ed2009a721?width=800&height=800&quality=95&format=auto",
+  "USDC": "https://assets.coingecko.com/coins/images/6319/thumb/USDC.png?1769615602",
+  "USDT": "https://strapi.scand.app/uploads/usdt_8a23002ad6.png",
+  "HAEDAL": "https://cdn.dexscreener.com/cms/images/c3aa2088ffb8314bbd29c72d833457fe8177922ad4adddf5127ade7b6c567331?width=800&height=800&quality=95&format=auto",
+  "NAVX": "https://cdn.dexscreener.com/cms/images/7a19d1753f39c7a56fb903cb54c936d3464f47534e4ec5eb75c2927ecb301682?width=800&height=800&quality=95&format=auto",
+  "BUCK": "https://assets.coingecko.com/coins/images/33846/thumb/buck-icon.png?1703121631",
+  "TYPUS": "https://cdn.dexscreener.com/cms/images/29e6ea75abd0e9012b3c19a40452892bdee8acd490c918eb7357c787cf330f91?width=800&height=800&quality=95&format=auto",
+  "SUIP": "https://strapi.scand.app/uploads/Suip_Logo_9f03cfbd82.png",
+  "NS": "https://cdn.dexscreener.com/cms/images/17ee6d6595e0e36127cd6706e4f7da0ab5dc81b7fae5aec5e3e4a6a9653b02de?width=800&height=800&quality=95&format=auto",
+  "haSUI": "https://cdn.dexscreener.com/cms/images/8b99114eac9bb57c1f82558f298e8c3dd97c447980eb732c4b90dbcdb91776d7?width=800&height=800&quality=95&format=auto",
+  "afSUI": "https://cdn.dexscreener.com/cms/images/4e1cdbef7dc289222d7eaa87a5e98fdc58a8dcaf4a5bbf3c80c9ea6d403ab728?width=800&height=800&quality=95&format=auto",
+  "IKA": "https://cdn.dexscreener.com/cms/images/0666959b63c3339d4852184dda4e1f243276424d83af10b0e6997da7ead9c89d?width=800&height=800&quality=95&format=auto",
+  "MMT": "https://assets.coingecko.com/coins/images/69899/thumb/4_icon_PFP_RGB.png?1762090516",
+  "FUD": "https://cdn.dexscreener.com/cms/images/9e05872c94596cff8f7859940f402b257f9bcbedf837f8dea09e648c0f5dc5c0?width=800&height=800&quality=95&format=auto",
+  "AXOL": "https://cdn.dexscreener.com/cms/images/3a11f95981c48eb40138d61d524bf6f525962750ac8ead5b1c72b8c9de2257d9?width=800&height=800&quality=95&format=auto",
+  "AAA": "https://cdn.dexscreener.com/cms/images/7424e8f91cb1b03aca85a9d653b0010b46197f199274e436fd546c3247c7f3ad?width=800&height=800&quality=95&format=auto",
+  "LOFI": "https://cdn.dexscreener.com/cms/images/af69e4eebc3ebb04d6440799c415e2640107fe923411c3b39a55563745553460?width=800&height=800&quality=95&format=auto",
+  "BLUB": "https://cdn.dexscreener.com/cms/images/a226b2bd5ac8224293fa3f6d9a64a63e6bf76fe4e87d24e890ac93cf98e238a2?width=800&height=800&quality=95&format=auto",
+  "ALPHA": "https://assets.coingecko.com/coins/images/39087/thumb/Alpha_Logo_200_200.png?1720460811",
+  "FDUSD": "https://assets.coingecko.com/coins/images/31079/thumb/FDUSD_icon_black.png?1731097953",
+  "NAVI": "https://cdn.dexscreener.com/cms/images/7a19d1753f39c7a56fb903cb54c936d3464f47534e4ec5eb75c2927ecb301682?width=800&height=800&quality=95&format=auto"
+};
+
+// Define clip paths for logos
+svg.append("defs").selectAll("clipPath")
+  .data(nodes)
+  .enter()
+  .append("clipPath")
+  .attr("id", d => "clip-" + d.id)
+  .append("circle")
+  .attr("r", d => tierRadius[d.tier] * 0.9);
+
 // Main circles
 node.append("circle")
   .attr("r",d=>tierRadius[d.tier])
@@ -323,6 +362,17 @@ node.append("circle")
   .attr("stroke",d=>tierStroke[d.tier])
   .attr("stroke-width",d=>tierStrokeW[d.tier])
   .attr("filter",d=>d.tier===0?"url(#glow-sui)":d.tier===1?"url(#glow-mid)":"none");
+
+// Images
+node.append("image")
+  .attr("href", d => tokenLogos[d.id] || null)
+  .attr("width", d => tierRadius[d.tier] * 1.8)
+  .attr("height", d => tierRadius[d.tier] * 1.8)
+  .attr("x", d => -tierRadius[d.tier] * 0.9)
+  .attr("y", d => -tierRadius[d.tier] * 0.9)
+  .attr("clip-path", d => "url(#clip-" + d.id + ")")
+  .style("opacity", d => d.tier === 0 ? 0.3 : 0.6) // Keep SUI translucent to show gradient
+  .style("pointer-events", "none");
 
 // Labels
 node.append("text")

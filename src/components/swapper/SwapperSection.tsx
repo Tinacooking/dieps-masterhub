@@ -286,6 +286,7 @@ export const SwapperSection: React.FC = () => {
             destToken={destToken}
             amount={amount}
             routeNodes={routeNodes}
+            guardianChecks={guardianChecks}
             estOutput={estOutput}
             gasPrice={gasPrice}
             slippage={slippage}

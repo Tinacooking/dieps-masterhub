@@ -51,13 +51,13 @@ export const MathAlgorithms = () => {
       <div className="absolute w-[450px] h-[450px] rounded-full blur-[150px] bg-purple-600/10 -top-20 -right-20 pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto w-full flex-1 flex flex-col justify-center items-center min-h-0">
-        
+
         {/* Title: Apple Keynote Style */}
         <h2
           ref={titleRef}
-          className="text-[32px] md:text-[48px] font-sans font-bold text-white mb-6 text-center tracking-tight opacity-0 shrink-0 uppercase"
+          className="text-[32px] md:text-[48px] font-serif italic font-light text-white mb-6 text-center tracking-tight opacity-0 shrink-0 uppercase"
         >
-          DIEPS WORKFLOW
+          DIEPS Graph
         </h2>
 
         {/* Preserved Technical Mathematical content - hidden from composition but retained in project code */}
@@ -121,9 +121,9 @@ export const MathAlgorithms = () => {
           className="w-full max-w-[1100px] h-[520px] md:h-[620px] opacity-0 relative z-10 flex flex-col justify-center"
         >
           <div className="w-full h-full rounded-[24px] lg:rounded-[32px] bg-[#12082b]/30 border-2 border-[#a855f7]/30 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_40px_rgba(168,85,247,0.2),inset_0_0_30px_rgba(168,85,247,0.1)]">
-            <iframe 
-              src="/graph.html" 
-              className="w-full h-full border-none rounded-[22px] lg:rounded-[30px]" 
+            <iframe
+              src="/graph.html"
+              className="w-full h-full border-none rounded-[22px] lg:rounded-[30px]"
               title="DIEPS Liquidity Network Workflow"
             />
           </div>

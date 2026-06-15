@@ -24,6 +24,7 @@ interface RoutingPathProps {
   setTokenModalMode: (mode: 'source' | 'dest' | null) => void;
   isSafe?: boolean;
   slippage?: string;
+  guardianChecks?: any[];
 }
 
 export const RoutingPath: React.FC<RoutingPathProps> = ({
@@ -46,7 +47,8 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
   setIsWalletModalOpen,
   setTokenModalMode,
   isSafe = true,
-  slippage = "0.5"
+  slippage = "0.5",
+  guardianChecks = []
 }) => {
   const sourceRef = useRef<HTMLDivElement>(null);
   const destRef = useRef<HTMLDivElement>(null);
@@ -283,6 +285,22 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
           </div>
         </div>
 
+        {/* Guardian Warnings under Routing Pools */}
+        {appState === 'done' && guardianChecks && guardianChecks.filter((c: any) => c.status === 'DANGER').length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {guardianChecks.filter((c: any) => c.status === 'DANGER').map((check: any, idx: number) => (
+              <div key={idx} className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full border ${check.status === 'DANGER' ? 'bg-red-500/10 border-red-500/30' : 'bg-yellow-500/10 border-yellow-500/30'}`}>
+                <span className={`material-symbols-outlined text-[12px] ${check.status === 'DANGER' ? 'text-red-400' : 'text-yellow-400'}`}>
+                  {check.status === 'DANGER' ? 'warning' : 'info'}
+                </span>
+                <span className={`font-mono text-[9px] uppercase tracking-wider font-bold ${check.status === 'DANGER' ? 'text-red-300' : 'text-yellow-300'}`}>
+                  {check.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+
         {/* Execution Bar */}
         <div className="mt-auto border-t border-white/5 pt-4 flex justify-between items-end gap-4 shrink-0">
           <div className={`flex flex-wrap gap-x-6 gap-y-2 ${appState !== 'done' ? 'opacity-30' : 'opacity-100'}`}>
@@ -292,7 +310,24 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
             </div>
             <div className="flex flex-col gap-0.5">
               <div className="font-mono text-[9px] text-[#888] uppercase font-bold tracking-widest">Slippage</div>
-              <div className="font-mono text-[14px] text-white font-medium tracking-wider">{appState === 'done' ? (slippage.includes('%') ? slippage : `${slippage}%`) : '...'}</div>
+              {(() => {
+                const slippageValue = parseFloat(slippage || '0');
+                let slippageClass = "font-mono text-[14px] font-medium tracking-wider ";
+                let slippageStyle = {};
+                if (appState === 'done' && !isNaN(slippageValue) && slippageValue > 5) {
+                  const ratio = Math.min(1, (slippageValue - 5) / 90);
+                  const hue = Math.floor(40 * (1 - ratio));
+                  slippageStyle = { color: `hsl(${hue}, 100%, 60%)`, textShadow: `0 0 8px hsl(${hue}, 100%, 60%, 0.5)` };
+                  slippageClass += "animate-pulse";
+                } else {
+                  slippageClass += "text-white";
+                }
+                return (
+                  <div className={slippageClass} style={slippageStyle}>
+                    {appState === 'done' ? (slippage.includes('%') ? slippage : `${slippage}%`) : '...'}
+                  </div>
+                );
+              })()}
             </div>
           </div>
 
@@ -309,14 +344,16 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
           ) : (
             <div className="flex flex-col items-end gap-2 w-auto mt-0">
               {appState === 'done' && walletAddress && !isInsufficientBalance && (
-                <label className="flex items-center gap-1.5 cursor-pointer select-none animate-in fade-in slide-in-from-right-4 duration-500 mb-1">
+                <label className={`flex items-center gap-1.5 cursor-pointer select-none animate-in fade-in slide-in-from-right-4 duration-500 mb-1 ${!isSafe ? 'p-1.5 bg-red-500/10 border border-red-500/30 rounded flex-wrap max-w-[200px]' : ''}`}>
                   <input
                     type="checkbox"
                     checked={hasConfirmedSettings}
                     onChange={(e) => setHasConfirmedSettings(e.target.checked)}
-                    className="w-3 h-3 rounded border-white/20 bg-black/50 text-[#a855f7] focus:ring-[#a855f7]/50 transition-colors"
+                    className="w-3 h-3 rounded border-white/20 bg-black/50 text-[#a855f7] focus:ring-[#a855f7]/50 transition-colors shrink-0"
                   />
-                  <span className="font-mono text-[9px] text-[#888] uppercase tracking-wider">Confirm PTB & Risks</span>
+                  <span className={`font-mono text-[9px] uppercase tracking-wider ${!isSafe ? 'text-red-300 font-bold' : 'text-[#888]'}`}>
+                    {!isSafe ? 'I understand the CRITICAL risks and wish to proceed anyway' : 'Confirm PTB & Risks'}
+                  </span>
                 </label>
               )}
               <button

@@ -90,8 +90,8 @@ function checkLiquidityHealth(route: any[]): RiskCheck {
     if (minOnChainDepth > 0) {
       return {
         name: 'Liquidity Health',
-        status: 'SAFE',
-        message: `On-chain pool depth verified. Minimum raw liquidity metric: ${minOnChainDepth.toLocaleString()}`,
+        status: 'WARNING',
+        message: `Raw on-chain pool depth is unverified against USD. Relying on Price Impact for liquidity safety.`,
       };
     }
 
@@ -138,59 +138,58 @@ async function checkPoolAge(route: any[]): Promise<RiskCheck> {
   }
 
   try {
-    // Check the first pool in the route as a proxy for the trade's primary liquidity source
-    const primaryPoolId = route[0].poolAddress || route[0].poolId || route[0].id;
-    if (!primaryPoolId) {
-       return { name: 'Pool Age Activity', status: 'SAFE', message: 'Standard routing used' };
+    let maxDaysSinceLastTx = -1;
+    let processedPools = 0;
+
+    // Check ALL pools in the route to ensure no stale pool is hidden
+    for (const node of route) {
+      const poolId = node.poolAddress || node.poolId || node.id;
+      if (!poolId) continue;
+
+      const poolObject = await suiRpcCall('sui_getObject', [poolId, { showPreviousTransaction: true }]);
+      const previousTxDigest = poolObject?.data?.previousTransaction;
+      if (!previousTxDigest) continue;
+
+      const txBlock = await suiRpcCall('sui_getTransactionBlock', [previousTxDigest, { showInput: false, showEffects: false, showEvents: false }]);
+      const timestampMs = parseInt(txBlock?.timestampMs || '0');
+      if (timestampMs === 0) continue;
+
+      const nowMs = Date.now();
+      const daysSinceLastTx = (nowMs - timestampMs) / (1000 * 60 * 60 * 24);
+      
+      if (daysSinceLastTx > maxDaysSinceLastTx) {
+        maxDaysSinceLastTx = daysSinceLastTx;
+      }
+      processedPools++;
     }
 
-    // 1. Get the pool object's previous transaction digest
-    const poolObject = await suiRpcCall('sui_getObject', [primaryPoolId, { showPreviousTransaction: true }]);
-    const previousTxDigest = poolObject?.data?.previousTransaction;
-
-    if (!previousTxDigest) {
-      return {
-        name: 'Pool Age Activity',
-        status: 'WARNING',
-        message: 'Could not determine recent pool activity on-chain',
-      };
+    if (processedPools === 0) {
+       return { name: 'Pool Age Activity', status: 'WARNING', message: 'Could not determine recent pool activity on-chain for any pool' };
     }
 
-    // 2. Fetch the timestamp of that transaction
-    const txBlock = await suiRpcCall('sui_getTransactionBlock', [previousTxDigest, { showInput: false, showEffects: false, showEvents: false }]);
-    const timestampMs = parseInt(txBlock?.timestampMs || '0');
-
-    if (timestampMs === 0) {
-       return { name: 'Pool Age Activity', status: 'WARNING', message: 'Timestamp missing from on-chain block' };
-    }
-
-    // 3. Calculate staleness
-    const nowMs = Date.now();
-    const daysSinceLastTx = (nowMs - timestampMs) / (1000 * 60 * 60 * 24);
-
-    if (daysSinceLastTx > 7) {
+    if (maxDaysSinceLastTx > 7) {
       return {
         name: 'Pool Age Activity',
         status: 'DANGER',
-        message: `Stale Pool: No on-chain activity in the last ${Math.floor(daysSinceLastTx)} days. Extreme rug-pull or liquidity lock risk.`,
-        value: daysSinceLastTx,
+        message: `Stale Pool: A pool in the route had no on-chain activity in the last ${Math.floor(maxDaysSinceLastTx)} days. Extreme rug-pull or liquidity lock risk.`,
+        value: maxDaysSinceLastTx,
       };
     }
 
-    if (daysSinceLastTx > 3) {
+    if (maxDaysSinceLastTx > 3) {
       return {
         name: 'Pool Age Activity',
         status: 'WARNING',
-        message: `Low Activity: Pool hasn't had transactions in ${Math.floor(daysSinceLastTx)} days.`,
-        value: daysSinceLastTx,
+        message: `Low Activity: A pool in the route hasn't had transactions in ${Math.floor(maxDaysSinceLastTx)} days.`,
+        value: maxDaysSinceLastTx,
       };
     }
 
     return {
       name: 'Pool Age Activity',
       status: 'SAFE',
-      message: `Pool is active. Last on-chain transaction was ${Math.floor(daysSinceLastTx * 24)} hours ago.`,
-      value: daysSinceLastTx,
+      message: `All pools are active. The stalest pool had a transaction ${Math.floor(maxDaysSinceLastTx * 24)} hours ago.`,
+      value: maxDaysSinceLastTx,
     };
   } catch (err: any) {
     logger.warn('Pool age check failed', { error: err.message });

@@ -52,8 +52,8 @@ export const IntentChat: React.FC<IntentChatProps> = ({
                 <div className="font-mono text-[9px] text-[#c084fc] font-bold tracking-widest uppercase pr-1 flex items-center gap-1.5">
                   User Intent <span className="w-1.5 h-1.5 rounded-full bg-[#a855f7] shadow-[0_0_8px_#a855f7]"></span>
                 </div>
-                <div className="bg-white border-[1.5px] border-white rounded-2xl rounded-tr-none p-4 max-w-[90%] relative overflow-hidden shadow-[0_10px_25px_rgba(168,85,247,0.25)] transition-all duration-300">
-                  <p className="font-body text-[#1b083c] text-[13px] xl:text-[14px] leading-relaxed relative z-10 font-semibold">{submittedIntent}</p>
+                <div className="bg-gradient-to-br from-[#1c0f3a]/95 to-[#3b0764]/90 border-[1.5px] border-[#c084fc]/60 backdrop-blur-md rounded-2xl rounded-tr-none p-4 max-w-[90%] relative overflow-hidden shadow-[0_0_30px_rgba(192,132,252,0.3)] transition-all duration-300 ring-1 ring-inset ring-[#c084fc]/20">
+                  <p className="font-body text-white text-[13px] xl:text-[14px] leading-relaxed relative z-10 font-semibold tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{submittedIntent}</p>
                 </div>
               </div>
 
@@ -61,7 +61,7 @@ export const IntentChat: React.FC<IntentChatProps> = ({
               <div className="flex flex-col items-start gap-3 mt-4 w-full">
                 <div className="font-mono text-[9px] text-[#00ff66] flex items-center gap-2 font-bold tracking-widest uppercase bg-[#00ff66]/15 px-3 py-1.5 rounded-full border border-[#00ff66]/30 shadow-[0_0_12px_rgba(0,255,102,0.15)]">
                   <span className={`w-1.5 h-1.5 rounded-full bg-[#00ff66] ${appState === 'processing' ? 'animate-ping' : ''}`}></span>
-                  Calculated Route Optimization
+                  Calculated Swap Optimization
                 </div>
                 <div className="bg-[#1c0f3a]/90 border-[1.5px] border-[#00ff66]/30 backdrop-blur-md rounded-2xl rounded-tl-none p-4 lg:p-5 w-full relative overflow-hidden shadow-[0_8px_25px_rgba(0,0,0,0.4),inset_0_0_15px_rgba(0,255,102,0.05)]">
                   <div className={`absolute top-0 left-0 w-1 h-full ${processStep >= 2 ? 'bg-[#00ff66]/80' : 'bg-[#0ea5e9]/80 animate-pulse'}`}></div>
@@ -76,7 +76,7 @@ export const IntentChat: React.FC<IntentChatProps> = ({
                       <div className="w-1.5 h-1.5 rounded-full bg-[#00ff66]"></div>
                     )}
                     <span className="text-[#888]">
-                      {appState === 'processing' && processStep < 2 ? 'DECODING INTENT...' : 'ROUTE FORMULATED'}
+                      {appState === 'processing' && processStep < 2 ? 'PROCESSING INTENT...' : 'FINANCIAL GOAL OPTIMIZATION'}
                     </span>
                   </div>
 
@@ -88,9 +88,9 @@ export const IntentChat: React.FC<IntentChatProps> = ({
                       <div className="text-[#e5e5e5] font-bold">{amount}</div>
 
                       <div className="text-[#666] font-bold">From</div>
-                      <div className="text-[#f1f5f9] font-bold">{sourceToken}</div>
+                      <div className="text-[#f1f5f9] font-bold">{sourceToken.includes('::') ? sourceToken.split('::').pop() : sourceToken}</div>
                       <div className="text-[#666] font-bold">To</div>
-                      <div className="text-[#f1f5f9] font-bold">{destToken}</div>
+                      <div className="text-[#f1f5f9] font-bold">{destToken.includes('::') ? destToken.split('::').pop() : destToken}</div>
                     </div>
                   )}
                 </div>
@@ -132,11 +132,11 @@ export const IntentChat: React.FC<IntentChatProps> = ({
               <button
                 type="button"
                 disabled={appState === 'processing'}
-                onClick={() => setIntentInput("Convert 100 NAVX to TURBOS")}
+                onClick={() => setIntentInput("Convert 100 SUI to WALRUS")}
                 className="whitespace-nowrap px-3.5 py-2 rounded-[12px] command-tag text-[10px] sm:text-[11px] font-mono tracking-wide transition-all duration-200 disabled:opacity-50 cursor-pointer flex items-center gap-1.5"
               >
                 <span className="material-symbols-outlined text-[11px] text-[#38bdf8]/70">bolt</span>
-                Convert 100 NAVX
+                Convert 100 SUI to WALRUS
               </button>
             </div>
           </div>

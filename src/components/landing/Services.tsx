@@ -29,7 +29,7 @@ export const Services = () => {
             { opacity: 0, y: 30 },
             { opacity: 1, y: 0, duration: 1, ease: 'power3.out' }
           );
-          
+
           const cards = containerRef.current?.querySelectorAll('.service-card');
           if (cards && cards.length > 0) {
             gsap.fromTo(cards,
@@ -52,7 +52,7 @@ export const Services = () => {
   const services = [
     { icon: Cpu, title: "Natural Language Intent Parsing", desc: "Accepts plain-English input and extracts structured trade intent using a fine-tuned LLM with domain-specific slot extraction. No forms, dropdowns, or configuration required." },
     { icon: Activity, title: "ML-Optimised Route Discovery", desc: "Uses Bellman-Ford graph search across liquidity pools combined with adaptive ML weighting to discover the most efficient swap routes. Returns estimated cost, slippage, and confidence scores." },
-    { icon: Shield, title: "Bayesian Risk Classification", desc: "Every transaction passes through a Bayesian risk engine before execution. Detects slippage risk, stale liquidity, concentration risk, and sandwich attack patterns. High-risk trades are automatically blocked." },
+    { icon: Shield, title: "Guardian Risk Classification", desc: "Every transaction passes through a Guardian risk engine before execution. Detects slippage risk, stale liquidity, concentration risk, and sandwich attack patterns. High-risk trades are automatically blocked." },
     { icon: Zap, title: "Atomic PTB Execution", desc: "Compiles multi-hop swap routes into a single programmable transaction block. All operations either succeed together or revert entirely. One signature regardless of route complexity." },
     { icon: Database, title: "On-Chain Slippage Guard", desc: "Smart contract assertions enforce minimum output thresholds and liquidity freshness requirements. If execution falls below user-defined limits, the entire transaction reverts." },
     { icon: Globe, title: "Real-Time Pool Intelligence", desc: "Streams live pool events from blockchain nodes with sub-second latency. Market context is cached and continuously fed into machine learning models for ongoing optimization." },
@@ -61,7 +61,7 @@ export const Services = () => {
   return (
     <section ref={containerRef} className="w-full h-full px-8 md:px-24 bg-[#030008] flex flex-col justify-center">
       <div className="max-w-[1440px] mx-auto w-full">
-        <h2 
+        <h2
           ref={titleRef}
           className="text-[32px] md:text-[48px] font-serif italic font-light text-white mb-12 text-center tracking-tight opacity-0"
         >
