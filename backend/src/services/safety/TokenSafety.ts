@@ -15,6 +15,15 @@ import type { RiskCheck } from '../../types/index.js';
 export async function checkTokenSafety(symbol: string): Promise<RiskCheck[]> {
   const checks: RiskCheck[] = [];
 
+  // Identify if token is Sui Native by checking its on-chain struct format, avoiding hardcoded symbols.
+  const token = resolveToken(symbol);
+  const isSuiNative = token?.address?.endsWith('::sui::SUI');
+
+  // Native token is intrinsically safe and requires no community checks.
+  if (isSuiNative) {
+    return checks;
+  }
+
   // Check 1: Whitelist status
   const whitelisted = isWhitelistedToken(symbol);
   checks.push({
@@ -60,7 +69,7 @@ async function verifyTokenOnChain(symbolOrAddress: string): Promise<RiskCheck> {
     // If it's a valid address format, check metadata
     if (symbolOrAddress.includes('::')) {
       const metadata = await getCoinMetadata(symbolOrAddress);
-      
+
       if (metadata) {
         return {
           name: 'On-Chain Verification',
