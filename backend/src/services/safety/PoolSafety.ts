@@ -80,6 +80,17 @@ function checkLiquidityHealth(route: any[]): RiskCheck {
   const minLiquidityThreshold = RISK_THRESHOLDS.minLiquidity.volatilePair;
 
   if (minLiquidityInRoute === 0) {
+    // Fallback to on-chain depth if USD data is missing
+    const minOnChainDepth = Math.min(...route.map(n => n.onChainLiquidityDepth || 0));
+    
+    if (minOnChainDepth > 0) {
+      return {
+        name: 'Liquidity Health',
+        status: 'SAFE',
+        message: `On-chain pool depth verified. Minimum raw liquidity metric: ${minOnChainDepth.toLocaleString()}`,
+      };
+    }
+
     return {
       name: 'Liquidity Health',
       status: 'WARNING',

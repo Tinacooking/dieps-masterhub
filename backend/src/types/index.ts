@@ -77,6 +77,7 @@ export interface RouteNode {
   weight: number;       // graph weight for Bellman-Ford
   poolAddress?: string;
   liquidityUsd?: number;
+  onChainLiquidityDepth?: number;
 }
 
 /** Full route result returned to frontend */

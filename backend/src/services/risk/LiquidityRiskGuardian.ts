@@ -215,6 +215,16 @@ export class LiquidityRiskGuardian {
       || 0;
 
     if (poolLiquidity === 0) {
+      const maxOnChainDepth = route.reduce((max, node) => Math.max(max, node.onChainLiquidityDepth || 0), 0);
+      
+      if (maxOnChainDepth > 0) {
+        return {
+          name: 'Liquidity Risk',
+          status: 'SAFE',
+          message: `On-chain pool depth verified. Raw liquidity metric: ${maxOnChainDepth.toLocaleString()}`,
+        };
+      }
+
       return {
         name: 'Liquidity Risk',
         status: 'WARNING',
