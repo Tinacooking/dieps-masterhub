@@ -1,0 +1,89 @@
+<svg width="100%" height="100%" viewBox="0 0 860 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9D6BFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <style>
+    .rect-bg { fill: transparent; }
+    .node { fill: #0A0A0A; stroke: rgba(255,255,255,0.1); stroke-width: 1; rx: 16; }
+    .node-active { fill: #0A0A0A; stroke: #9D6BFF; stroke-width: 1; rx: 16; }
+    .node-safe { fill: #0A0A0A; stroke: #00FF66; stroke-width: 1; rx: 16; }
+    .text { fill: #FFFFFF; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; font-size: 13px; text-anchor: middle; font-weight: 500; }
+    .text-sub { fill: #8F8F8F; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; font-size: 10px; text-transform: uppercase; text-anchor: middle; letter-spacing: 1px; }
+    .line { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 2; stroke-dasharray: 4 4; }
+    .flow-path { fill: none; stroke: #9D6BFF; stroke-width: 2; stroke-dasharray: 12 12; animation: dash 2s linear infinite; opacity: 0.7; }
+    .flow-path-fast { fill: none; stroke: #00FF66; stroke-width: 2; stroke-dasharray: 12 12; animation: dash 1s linear infinite; opacity: 0.7; }
+    @keyframes dash { to { stroke-dashoffset: -48; } }
+    @keyframes pulseBorder { 0% { stroke: rgba(255,255,255,0.1); } 50% { stroke: #9D6BFF; } 100% { stroke: rgba(255,255,255,0.1); } }
+    @keyframes pulseSafe { 0% { stroke: rgba(255,255,255,0.1); } 50% { stroke: #00FF66; } 100% { stroke: rgba(255,255,255,0.1); } }
+    .pulse-anim { animation: pulseBorder 2s infinite; }
+    .pulse-safe-anim { animation: pulseSafe 2.5s infinite; }
+  </style>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" class="rect-bg" />
+  <circle cx="430" cy="200" r="350" fill="url(#glow)" />
+  
+  <!-- Connectors Paths -->
+  <path class="line" d="M 140 200 L 210 200" />
+  <path class="line" d="M 350 200 C 370 200, 370 100, 390 100" />
+  <path class="line" d="M 350 200 C 370 200, 370 300, 390 300" />
+  <path class="line" d="M 510 100 C 530 100, 530 200, 550 200" />
+  <path class="line" d="M 510 300 C 530 300, 530 200, 550 200" />
+  <path class="line" d="M 690 200 L 750 200" />
+  
+  <!-- Animated Connectors -->
+  <path class="flow-path" d="M 140 200 L 210 200" />
+  <path class="flow-path-fast" d="M 350 200 C 370 200, 370 100, 390 100" />
+  <path class="flow-path-fast" d="M 350 200 C 370 200, 370 300, 390 300" />
+  <path class="flow-path-fast" d="M 510 100 C 530 100, 530 200, 550 200" />
+  <path class="flow-path-fast" d="M 510 300 C 530 300, 530 200, 550 200" />
+  <path class="flow-path" d="M 690 200 L 750 200" />
+  
+  <!-- Traveling Particles -->
+  <circle r="4" fill="#FFF"><animateMotion dur="2s" repeatCount="indefinite" path="M 140 200 L 210 200" /></circle>
+  <circle r="4" fill="#00FF66"><animateMotion dur="1.5s" repeatCount="indefinite" path="M 350 200 C 370 200, 370 100, 390 100" /></circle>
+  <circle r="4" fill="#00FF66"><animateMotion dur="1.8s" repeatCount="indefinite" path="M 350 200 C 370 200, 370 300, 390 300" /></circle>
+  <circle r="4" fill="#00FF66"><animateMotion dur="1.5s" repeatCount="indefinite" path="M 510 100 C 530 100, 530 200, 550 200" /></circle>
+  <circle r="4" fill="#00FF66"><animateMotion dur="1.8s" repeatCount="indefinite" path="M 510 300 C 530 300, 530 200, 550 200" /></circle>
+  <circle r="4" fill="#9D6BFF"><animateMotion dur="2s" repeatCount="indefinite" path="M 690 200 L 750 200" /></circle>
+
+  <!-- Nodes -->
+  <g transform="translate(40, 160)">
+    <rect class="node" width="100" height="80" />
+    <text class="text" x="50" y="35">User Intent</text>
+    <text class="text-sub" x="50" y="55">NLP</text>
+  </g>
+  
+  <g transform="translate(210, 160)">
+    <rect class="node-active pulse-anim" width="140" height="80" />
+    <text class="text" x="70" y="35">Solver Engine</text>
+    <text class="text-sub" x="70" y="55">Pattern Extract</text>
+  </g>
+  
+  <g transform="translate(390, 60)">
+    <rect class="node-active" width="120" height="80" />
+    <text class="text" x="60" y="35">Graph State</text>
+    <text class="text-sub" x="60" y="55">RPC Polling</text>
+  </g>
+  
+  <g transform="translate(390, 260)">
+    <rect class="node-safe pulse-safe-anim" width="120" height="80" />
+    <text class="text" x="60" y="35">Routing Engine</text>
+    <text class="text-sub" x="60" y="55">Routing Algo</text>
+  </g>
+  
+  <g transform="translate(550, 160)">
+    <rect class="node-active" width="140" height="80" style="stroke: #FFC107;" />
+    <text class="text" x="70" y="35">Risk Guardian</text>
+    <text class="text-sub" x="70" y="55">Risk Guardian Filter</text>
+  </g>
+  
+  <g transform="translate(750, 160)">
+    <rect class="node-safe" width="80" height="80" />
+    <text class="text" x="40" y="35">PTB</text>
+    <text class="text-sub" x="40" y="55">Execute</text>
+  </g>
+</svg>
