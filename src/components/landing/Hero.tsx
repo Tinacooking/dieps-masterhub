@@ -13,26 +13,26 @@ export const Hero = ({ onLaunch }: { onLaunch: () => void }) => {
   useEffect(() => {
     // 1. Content Stagger Entrance Timeline
     const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1 } });
-    
-    tl.fromTo(titleRef.current, 
+
+    tl.fromTo(titleRef.current,
       { opacity: 0, y: 40 },
       { opacity: 1, y: 0, delay: 0.2 }
     )
-    .fromTo(descRef.current, 
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0 },
-      '-=0.75'
-    )
-    .fromTo(buttonsRef.current, 
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0 },
-      '-=0.75'
-    )
-    .fromTo(heroObjRef.current,
-      { opacity: 0, scale: 0.92, y: 20 },
-      { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: 'power3.out' },
-      '-=0.8'
-    );
+      .fromTo(descRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0 },
+        '-=0.75'
+      )
+      .fromTo(buttonsRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0 },
+        '-=0.75'
+      )
+      .fromTo(heroObjRef.current,
+        { opacity: 0, scale: 0.92, y: 20 },
+        { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: 'power3.out' },
+        '-=0.8'
+      );
 
     return () => {
       tl.kill();
@@ -78,7 +78,7 @@ export const Hero = ({ onLaunch }: { onLaunch: () => void }) => {
               for the Sui Ecosystem
             </span>
           </h1>
-          
+
           <div ref={descRef} className="opacity-0">
             <p className="text-[15px] md:text-[17px] text-zinc-100 font-sans font-normal leading-relaxed max-w-[600px]">
               With a single plain-English input, DIEPS delivers the ultimate execution: “Optimized, Protected, and Executed.”<br />
@@ -89,10 +89,10 @@ export const Hero = ({ onLaunch }: { onLaunch: () => void }) => {
               THAT'S DIEPS — DEFINING INTENTS. EXECUTING PERFECT SWAPS.
             </div>
           </div>
-          
+
           <div ref={buttonsRef} className="flex items-center gap-6 opacity-0">
-            <button 
-              onClick={onLaunch} 
+            <button
+              onClick={onLaunch}
               className="group relative px-9 py-4 bg-gradient-to-r from-[#a855f7] to-[#7c3aed] text-white rounded-xl font-semibold tracking-[0.03em] flex items-center gap-3.5 overflow-hidden hover:scale-[1.03] transition-all duration-300 shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:shadow-[0_0_35px_rgba(168,85,247,0.6)] cursor-pointer border border-purple-400/20"
             >
               <span className="relative z-10 text-[13px] font-sans">Launch Interface</span>

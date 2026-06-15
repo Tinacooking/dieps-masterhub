@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { ConnectModal } from '@mysten/dapp-kit-react/ui';
+import { useNavigate } from 'react-router-dom';
 
 interface SwapperHeaderProps {
   walletAddress: string | null;
@@ -15,6 +16,7 @@ export const SwapperHeader: React.FC<SwapperHeaderProps> = ({
   disconnect
 }) => {
   const modalRef = useRef<any>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const modal = modalRef.current;
@@ -38,9 +40,15 @@ export const SwapperHeader: React.FC<SwapperHeaderProps> = ({
   return (
     <div className="flex justify-between items-end mb-2 border-b border-white/5 pb-4 relative shrink-0">
       <div className="absolute right-0 bottom-0 w-[400px] h-[100px] bg-[#a855f7]/10 blur-[80px] rounded-full pointer-events-none"></div>
-      <div>
-        <h2 className="text-[28px] md:text-[32px] font-serif italic font-light text-white mb-1 leading-none tracking-tight">Protocol Interface</h2>
-        <p className="text-[#8F8F8F] font-mono text-[10px] uppercase tracking-widest">v2.0 Neural Engine</p>
+      <div 
+        className="cursor-pointer group flex flex-col"
+        onClick={() => navigate('/')}
+      >
+        <div className="flex items-center gap-3">
+          <span className="material-symbols-outlined text-[24px] text-white/50 group-hover:text-white transition-colors group-hover:-translate-x-1 duration-300">arrow_back</span>
+          <h2 className="text-[28px] md:text-[32px] font-serif italic font-light text-white mb-1 leading-none tracking-tight group-hover:text-[#a855f7] transition-colors duration-300">Protocol Interface</h2>
+        </div>
+        <p className="text-[#8F8F8F] font-mono text-[10px] uppercase tracking-widest pl-9">v2.0 Neural Engine</p>
       </div>
       <div className="flex gap-4">
         {!walletAddress ? (

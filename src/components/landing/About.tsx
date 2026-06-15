@@ -73,7 +73,7 @@ export const About = () => {
 
       {/* Main Content Container - Centered */}
       <div className="max-w-[1000px] w-full flex flex-col items-center text-center z-10 relative gap-8 md:gap-10">
-        
+
         {/* 1. DIEPS Logo (Top Center) */}
         <div ref={logoRef} className="flex flex-col items-center opacity-0">
           <img src={diepsLogo} alt="DIEPS Logo" className="h-7 sm:h-9 md:h-10 w-auto object-contain mb-3 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
@@ -108,7 +108,7 @@ export const About = () => {
             At DIEPS, we use real-time liquidity intelligence and on-chain intent execution to make DeFi on Sui simple, safe, and accessible for everyone from first-time users to seasoned traders.
           </p>
           <p className="text-white/85 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
-            By applying Bellman-Ford route optimization with ML-adaptive weighting and a guardian security layer, we turn a plain-English goal into a protected, optimized transaction in under 200ms.
+            By combining advanced Natural Language Processing with smart routing and our custom 100% on-chain Risk Guardians, we turn a plain-English goal into a protected, optimized transaction in milliseconds.
           </p>
         </div>
 

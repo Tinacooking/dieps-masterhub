@@ -51,11 +51,11 @@ export const Services = () => {
 
   const services = [
     { icon: Cpu, title: "Natural Language Intent Parsing", desc: "Accepts plain-English input and extracts structured trade intent using a fine-tuned LLM with domain-specific slot extraction. No forms, dropdowns, or configuration required." },
-    { icon: Activity, title: "ML-Optimised Route Discovery", desc: "Uses Bellman-Ford graph search across liquidity pools combined with adaptive ML weighting to discover the most efficient swap routes. Returns estimated cost, slippage, and confidence scores." },
-    { icon: Shield, title: "Guardian Risk Classification", desc: "Every transaction passes through a Guardian risk engine before execution. Detects slippage risk, stale liquidity, concentration risk, and sandwich attack patterns. High-risk trades are automatically blocked." },
+    { icon: Activity, title: "Smart Route Optimization", desc: "Leverages the Cetus Aggregator SDK to search across deep liquidity pools and discover the most efficient multi-hop swap routes. Returns precise estimated output and optimal split paths." },
+    { icon: Shield, title: "100% On-Chain Risk Guardians", desc: "Every transaction passes through our Guardian risk engine which queries live Sui RPC nodes. Detects dynamic price impact, stale liquidity, and token supply concentration. High-risk trades are explicitly blocked requiring user override." },
     { icon: Zap, title: "Atomic PTB Execution", desc: "Compiles multi-hop swap routes into a single programmable transaction block. All operations either succeed together or revert entirely. One signature regardless of route complexity." },
     { icon: Database, title: "On-Chain Slippage Guard", desc: "Smart contract assertions enforce minimum output thresholds and liquidity freshness requirements. If execution falls below user-defined limits, the entire transaction reverts." },
-    { icon: Globe, title: "Real-Time Pool Intelligence", desc: "Streams live pool events from blockchain nodes with sub-second latency. Market context is cached and continuously fed into machine learning models for ongoing optimization." },
+    { icon: Globe, title: "Real-Time Pool Intelligence", desc: "Streams live pool events from blockchain nodes with sub-second latency. Market context is cached and continuously evaluated to guarantee real-time trade accuracy." },
   ];
 
   return (
