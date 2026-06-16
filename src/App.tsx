@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
+import { gsap } from 'gsap';
 import { Hero } from './components/landing/Hero';
 import { About } from './components/landing/About';
 import { Services } from './components/landing/Services';
@@ -22,17 +23,17 @@ function LandingPage() {
       e.preventDefault();
       if (isScrolling.current) return;
 
-      if (e.deltaY > 50) {
+      if (e.deltaY > 80) {
         if (activeSection < totalSections - 1) {
           isScrolling.current = true;
           setActiveSection(prev => prev + 1);
-          setTimeout(() => isScrolling.current = false, 1000);
+          setTimeout(() => isScrolling.current = false, 1500);
         }
-      } else if (e.deltaY < -50) {
+      } else if (e.deltaY < -80) {
         if (activeSection > 0) {
           isScrolling.current = true;
           setActiveSection(prev => prev - 1);
-          setTimeout(() => isScrolling.current = false, 1000);
+          setTimeout(() => isScrolling.current = false, 1500);
         }
       }
     };
@@ -90,6 +91,22 @@ function LandingPage() {
     };
   }, [activeSection]);
 
+  // Parallax Scale Effect for Sections
+  useEffect(() => {
+    const sections = document.querySelectorAll('.section-inner');
+    sections.forEach((section, index) => {
+      if (index === activeSection) {
+        gsap.fromTo(section, 
+          { scale: 1.15, opacity: 0.8 }, 
+          { scale: 1.0, opacity: 1, duration: 1.5, ease: 'power3.out' }
+        );
+      } else {
+        // Reset scale/opacity for inactive sections slightly
+        gsap.to(section, { scale: 0.95, opacity: 0.5, duration: 1.0, ease: 'power2.out' });
+      }
+    });
+  }, [activeSection]);
+
   const handleLaunch = () => {
     navigate('/app');
   };
@@ -101,34 +118,48 @@ function LandingPage() {
         style={{ transform: `translateY(-${activeSection * 100}svh)` }}
       >
         <div className="w-full h-[100svh] overflow-hidden flex-shrink-0 relative">
-          <Hero onLaunch={handleLaunch} />
+          <div className="section-inner w-full h-full origin-center">
+            <Hero onLaunch={handleLaunch} />
+          </div>
         </div>
 
         <div className="w-full h-[100svh] flex items-center bg-[#030008] overflow-hidden flex-shrink-0 relative">
-          <About />
+          <div className="section-inner w-full h-full origin-center">
+            <About />
+          </div>
         </div>
         
         <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.5)] overflow-hidden flex-shrink-0 relative">
-          <Services />
+          <div className="section-inner w-full h-full origin-center">
+            <Services />
+          </div>
         </div>
         
         <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.6)] overflow-hidden flex-shrink-0 relative">
-          <MathAlgorithms />
+          <div className="section-inner w-full h-full origin-center">
+            <MathAlgorithms />
+          </div>
         </div>
         
         <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.8)] overflow-hidden flex-shrink-0 relative">
-          <Projects />
+          <div className="section-inner w-full h-full origin-center">
+            <Projects />
+          </div>
         </div>
         
         <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.8)] overflow-hidden flex-shrink-0 relative">
-          <Testimonials />
+          <div className="section-inner w-full h-full origin-center">
+            <Testimonials />
+          </div>
         </div>
         
         <div className="w-full h-[100svh] flex flex-col justify-between bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.5)] overflow-hidden flex-shrink-0 relative">
-          <div className="flex-grow flex items-center h-full">
-            <Contact />
+          <div className="section-inner w-full h-full origin-center flex flex-col justify-between">
+            <div className="flex-grow flex items-center h-full">
+              <Contact />
+            </div>
+            <Footer />
           </div>
-          <Footer />
         </div>
       </div>
     </div>
