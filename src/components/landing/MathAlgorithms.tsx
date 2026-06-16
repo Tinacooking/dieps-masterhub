@@ -57,7 +57,7 @@ export const MathAlgorithms = () => {
           ref={titleRef}
           className="text-[32px] md:text-[48px] font-serif italic font-light text-white mb-6 text-center tracking-tight opacity-0 shrink-0 uppercase"
         >
-          DIEPS Graph
+          DIEPS — Graph State & Routing Engine
         </h2>
 
         {/* Preserved Technical Mathematical content - hidden from composition but retained in project code */}
@@ -115,12 +115,22 @@ export const MathAlgorithms = () => {
           </div>
         </div>
 
-        {/* Centered Visual: Scaled Up Interactive D3 Graph in Iframe */}
+        {/* Side-by-Side Visuals: Workflow SVG and D3 Graph */}
         <div
           ref={graphRef}
-          className="w-full max-w-[1100px] h-[520px] md:h-[620px] opacity-0 relative z-10 flex flex-col justify-center"
+          className="w-full max-w-[1400px] h-[520px] md:h-[620px] opacity-0 relative z-10 flex flex-col lg:flex-row gap-6 md:gap-8 justify-center"
         >
-          <div className="w-full h-full rounded-[24px] lg:rounded-[32px] bg-[#12082b]/30 border-2 border-[#a855f7]/30 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_40px_rgba(168,85,247,0.2),inset_0_0_30px_rgba(168,85,247,0.1)]">
+          {/* Workflow Animation */}
+          <div className="w-full lg:w-1/2 h-full rounded-[24px] lg:rounded-[32px] bg-[#12082b]/30 border-2 border-[#a855f7]/30 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_40px_rgba(168,85,247,0.2),inset_0_0_30px_rgba(168,85,247,0.1)] flex items-center justify-center p-4">
+            <img
+              src="/workflow-animation.svg"
+              alt="DIEPS Workflow"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          {/* Interactive Graph Iframe */}
+          <div className="w-full lg:w-1/2 h-full rounded-[24px] lg:rounded-[32px] bg-[#12082b]/30 border-2 border-[#a855f7]/30 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_40px_rgba(168,85,247,0.2),inset_0_0_30px_rgba(168,85,247,0.1)]">
             <iframe
               src="/graph.html"
               className="w-full h-full border-none rounded-[22px] lg:rounded-[30px]"
