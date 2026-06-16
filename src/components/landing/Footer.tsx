@@ -35,9 +35,21 @@ export const Footer = () => {
     >
       <div className="opacity-0 text-[12px] uppercase tracking-[0.3em] text-white/40 font-mono">DIEPS Protocol © 2026</div>
       <div className="opacity-0 flex gap-8">
-        <a href="#" className="text-[14px] text-white/40 hover:text-white transition-colors">Twitter</a>
-        <a href="#" className="text-[14px] text-white/40 hover:text-white transition-colors">Research</a>
-        <a href="#" className="text-[14px] text-white/40 hover:text-white transition-colors">GitHub</a>
+        <a href="https://twitter.com/diepsprotocol"
+          className="text-[14px] text-white/40 hover:text-white transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Twitter</a>
+        <a href="#"
+          className="text-[14px] text-white/40 hover:text-white transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Research</a>
+        <a href="https://github.com/Tinacooking/dieps-masterhub"
+          className="text-[14px] text-white/40 hover:text-white transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >GitHub</a>
       </div>
     </footer>
   );

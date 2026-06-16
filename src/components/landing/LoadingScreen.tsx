@@ -3,11 +3,12 @@ import { gsap } from 'gsap';
 
 interface LoadingScreenProps {
   onComplete: () => void;
+  mode?: 'landing' | 'app';
 }
 
-export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
+export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete, mode = 'landing' }) => {
   const [pct, setPct] = useState(0);
-  const [statusText, setStatusText] = useState("INITIALIZING INTENT ENGINE...");
+  const [statusText, setStatusText] = useState(mode === 'landing' ? "INITIALIZING INTENT ENGINE..." : "CONNECTING TO SUI MAINNET...");
   const containerRef = useRef<HTMLDivElement>(null);
   const barRef = useRef<HTMLDivElement>(null);
   const statusRef = useRef<HTMLDivElement>(null);
@@ -41,8 +42,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
     tl.to(obj, {
       val: 100,
-      duration: 3.2,
-      ease: 'power2.inOut',
+      duration: mode === 'landing' ? 3.2 : 1.8,
+      ease: mode === 'landing' ? 'power2.inOut' : 'power1.inOut',
       onUpdate: () => {
         const rounded = Math.floor(obj.val);
         setPct(rounded);
@@ -51,16 +52,18 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           gsap.set(barRef.current, { scaleX: obj.val / 100 });
         }
 
-        if (rounded <= 25) {
-          setStatusText("INITIALIZING INTENT ENGINE...");
-        } else if (rounded <= 50) {
-          setStatusText("MAPPING SUI DECENTRALIZED POOLS...");
-        } else if (rounded <= 75) {
-          setStatusText("CALCULATING GUARDIAN RISK...");
-        } else if (rounded <= 95) {
-          setStatusText("COMPILING NEURAL PATHWAYS...");
+        if (mode === 'landing') {
+          if (rounded <= 25) setStatusText("INITIALIZING INTENT ENGINE...");
+          else if (rounded <= 50) setStatusText("MAPPING SUI DECENTRALIZED POOLS...");
+          else if (rounded <= 75) setStatusText("CALCULATING GUARDIAN RISK...");
+          else if (rounded <= 95) setStatusText("COMPILING NEURAL PATHWAYS...");
+          else setStatusText("CONNECTION SECURE");
         } else {
-          setStatusText("CONNECTION SECURE");
+          // App mode texts
+          if (rounded <= 30) setStatusText("CONNECTING TO SUI MAINNET...");
+          else if (rounded <= 60) setStatusText("SYNCING WALLET STATE...");
+          else if (rounded <= 90) setStatusText("INITIALIZING INTENT PARSER...");
+          else setStatusText("INTERFACE READY");
         }
       }
     });
@@ -87,7 +90,9 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           ref={infoRef}
           className="flex flex-col items-center"
         >
-          <span className="font-sans text-[10px] text-white/30 tracking-[0.4em] uppercase mb-4">SYSTEM BOOTING</span>
+          <span className="font-sans text-[10px] text-white/30 tracking-[0.4em] uppercase mb-4">
+            {mode === 'landing' ? "SYSTEM BOOTING" : "DAPP INITIALIZATION"}
+          </span>
           <h1 className="font-serif italic font-light text-[80px] sm:text-[110px] md:text-[130px] text-white tracking-tight leading-none">
             {pct.toString().padStart(2, '0')}%
           </h1>
