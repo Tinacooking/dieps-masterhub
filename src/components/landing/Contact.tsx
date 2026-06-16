@@ -60,7 +60,8 @@ export const Contact = () => {
       <div className="absolute top-[20%] right-[15%] w-[400px] h-[400px] rounded-full bg-purple-900/15 blur-[130px] pointer-events-none z-0" />
       <div className="absolute bottom-[10%] left-[5%] w-[300px] h-[300px] rounded-full bg-[#1b083c]/20 blur-[100px] pointer-events-none z-0" />
 
-      <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full relative z-10">
+      <div className="adaptive-scale w-full h-full flex items-center justify-center relative z-10">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full relative z-10">
 
         <div ref={contentRef} className="opacity-0">
           <span className="font-sans text-[11px] uppercase tracking-[0.25em] text-[#a855f7] font-semibold mb-4 block">Contact</span>
@@ -108,6 +109,7 @@ export const Contact = () => {
             </span>
           </button>
         </form>
+      </div>
       </div>
     </section>
   );

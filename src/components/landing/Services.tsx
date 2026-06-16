@@ -60,7 +60,7 @@ export const Services = () => {
 
   return (
     <section ref={containerRef} className="w-full h-full px-8 md:px-24 bg-[#030008] flex flex-col justify-center">
-      <div className="max-w-[1440px] mx-auto w-full">
+      <div className="adaptive-scale max-w-[1440px] mx-auto w-full">
         <h2
           ref={titleRef}
           className="text-[32px] md:text-[48px] font-serif italic font-light text-white mb-12 text-center tracking-tight opacity-0"

@@ -595,3 +595,10 @@ a[href*="unicorn.studio"],
   box-shadow: 0 0 10px #10B981;
   animation: sync-pulse 1.5s infinite ease-in-out;
 }
+
+@media (min-width: 1024px) {
+  .adaptive-scale {
+    transform-origin: center center;
+    transform: scale(min(1, calc(100vh / 900px)));
+  }
+}

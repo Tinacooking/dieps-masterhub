@@ -50,7 +50,8 @@ export const MathAlgorithms = () => {
       <div className="absolute w-[450px] h-[450px] rounded-full blur-[150px] bg-[#a855f7]/10 -bottom-20 -left-20 pointer-events-none" />
       <div className="absolute w-[450px] h-[450px] rounded-full blur-[150px] bg-purple-600/10 -top-20 -right-20 pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto w-full flex-1 flex flex-col justify-center items-center min-h-0">
+      <div className="adaptive-scale w-full h-full flex flex-col justify-center items-center relative z-10">
+        <div className="max-w-[1440px] mx-auto w-full flex-1 flex flex-col justify-center items-center min-h-0">
 
         {/* Title: Apple Keynote Style */}
         <h2
@@ -139,6 +140,7 @@ export const MathAlgorithms = () => {
           </div>
         </div>
 
+        </div>
       </div>
     </section>
   );

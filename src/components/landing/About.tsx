@@ -72,7 +72,8 @@ export const About = () => {
       <div className="absolute bottom-[20%] right-[25%] w-[500px] h-[500px] rounded-full bg-[#1b083c]/15 blur-[150px] pointer-events-none z-0" />
 
       {/* Main Content Container - Centered */}
-      <div className="max-w-[1000px] w-full flex flex-col items-center text-center z-10 relative gap-8 md:gap-10">
+      <div className="adaptive-scale w-full h-full flex flex-col items-center justify-center relative z-10">
+        <div className="max-w-[1000px] w-full flex flex-col items-center text-center gap-8 md:gap-10">
 
         {/* 1. DIEPS Logo (Top Center) */}
         <div ref={logoRef} className="flex flex-col items-center opacity-0">
@@ -112,6 +113,7 @@ export const About = () => {
           </p>
         </div>
 
+        </div>
       </div>
     </section>
   );

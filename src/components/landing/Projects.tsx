@@ -129,7 +129,8 @@ export const Projects = () => {
       <div className="absolute bottom-0 right-[20%] w-[600px] h-[300px] rounded-full pointer-events-none blur-[100px]"
         style={{ background: 'rgba(100,30,200,0.06)' }} />
 
-      <div className="max-w-[1400px] mx-auto w-full px-8 md:px-20 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
+      <div className="adaptive-scale w-full h-full flex items-center justify-center relative z-10">
+        <div className="max-w-[1400px] mx-auto w-full px-8 md:px-20 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
 
         {/* LEFT — Editorial text */}
         <div ref={leftRef} className="lg:col-span-4 flex flex-col gap-8 opacity-0">
@@ -247,6 +248,7 @@ export const Projects = () => {
             ))}
           </div>
         </div>
+      </div>
       </div>
 
       <style>{`

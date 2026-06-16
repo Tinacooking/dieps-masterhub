@@ -74,6 +74,7 @@ export const Testimonials = () => {
       <div className="absolute bottom-0 right-[10%] w-[400px] h-[300px] bg-[#1e0b36]/20 blur-[140px] rounded-full pointer-events-none" />
 
       {/* Main Card */}
+      <div className="adaptive-scale w-full h-full flex items-center justify-center relative z-10">
       <div
         ref={cardRef}
         className="relative w-full max-w-[1100px] rounded-[28px] overflow-hidden opacity-0"
@@ -160,6 +161,7 @@ export const Testimonials = () => {
 
 
         </div>
+      </div>
       </div>
 
       <style>{`

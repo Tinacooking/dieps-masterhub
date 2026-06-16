@@ -15,10 +15,21 @@ import { MathAlgorithms } from './components/landing/MathAlgorithms';
 function LandingPage() {
   const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(true);
   const isScrolling = useRef(false);
   const totalSections = 7; // Hero, About, Services, Math, Projects, Testimonials, Contact+Footer
 
   useEffect(() => {
+    const checkResponsive = () => {
+      setIsDesktop(window.innerWidth >= 1024 && window.innerHeight >= 650);
+    };
+    checkResponsive();
+    window.addEventListener('resize', checkResponsive);
+    return () => window.removeEventListener('resize', checkResponsive);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       if (isScrolling.current) return;
@@ -48,14 +59,15 @@ function LandingPage() {
         container.removeEventListener('wheel', handleWheel);
       }
     };
-  }, [activeSection]);
+  }, [activeSection, isDesktop]);
 
   const touchStart = useRef(0);
   useEffect(() => {
+    if (!isDesktop) return;
     const handleTouchStart = (e: TouchEvent) => {
       touchStart.current = e.touches[0].clientY;
     };
-    
+
     const handleTouchMove = (e: TouchEvent) => {
       e.preventDefault();
       if (isScrolling.current) return;
@@ -89,15 +101,16 @@ function LandingPage() {
         container.removeEventListener('touchmove', handleTouchMove);
       }
     };
-  }, [activeSection]);
+  }, [activeSection, isDesktop]);
 
-  // Parallax Scale Effect for Sections
+  // Parallax Scale Effect for Sections (Desktop only)
   useEffect(() => {
+    if (!isDesktop) return;
     const sections = document.querySelectorAll('.section-inner');
     sections.forEach((section, index) => {
       if (index === activeSection) {
-        gsap.fromTo(section, 
-          { scale: 1.15, opacity: 0.8 }, 
+        gsap.fromTo(section,
+          { scale: 1.15, opacity: 0.8 },
           { scale: 1.0, opacity: 1, duration: 1.5, ease: 'power3.out' }
         );
       } else {
@@ -112,50 +125,50 @@ function LandingPage() {
   };
 
   return (
-    <div id="landing-container" className="bg-[#030008] h-[100svh] w-full text-white font-body selection:bg-[#a855f7]/30 overflow-hidden">
-      <div 
-        className="w-full h-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.645,0.045,0.355,1.000)]"
-        style={{ transform: `translateY(-${activeSection * 100}svh)` }}
+    <div id="landing-container" className={`bg-[#030008] w-full text-white font-body selection:bg-[#a855f7]/30 ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative flex flex-col'}`}>
+      <div
+        className={`w-full ${isDesktop ? 'h-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.645,0.045,0.355,1.000)]' : 'flex flex-col'}`}
+        style={isDesktop ? { transform: `translateY(-${activeSection * 100}svh)` } : undefined}
       >
-        <div className="w-full h-[100svh] overflow-hidden flex-shrink-0 relative">
+        <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden'} flex-shrink-0 relative`}>
           <div className="section-inner w-full h-full origin-center">
             <Hero onLaunch={handleLaunch} />
           </div>
         </div>
 
-        <div className="w-full h-[100svh] flex items-center bg-[#030008] overflow-hidden flex-shrink-0 relative">
+        <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden py-10'} flex items-center bg-[#030008] flex-shrink-0 relative`}>
           <div className="section-inner w-full h-full origin-center">
             <About />
           </div>
         </div>
-        
-        <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.5)] overflow-hidden flex-shrink-0 relative">
+
+        <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden py-10'} flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex-shrink-0 relative`}>
           <div className="section-inner w-full h-full origin-center">
             <Services />
           </div>
         </div>
-        
-        <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.6)] overflow-hidden flex-shrink-0 relative">
+
+        <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden py-10'} flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.6)] flex-shrink-0 relative`}>
           <div className="section-inner w-full h-full origin-center">
             <MathAlgorithms />
           </div>
         </div>
-        
-        <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.8)] overflow-hidden flex-shrink-0 relative">
+
+        <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden py-10'} flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.8)] flex-shrink-0 relative`}>
           <div className="section-inner w-full h-full origin-center">
             <Projects />
           </div>
         </div>
-        
-        <div className="w-full h-[100svh] flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.8)] overflow-hidden flex-shrink-0 relative">
+
+        <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden py-10'} flex items-center bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.8)] flex-shrink-0 relative`}>
           <div className="section-inner w-full h-full origin-center">
             <Testimonials />
           </div>
         </div>
-        
-        <div className="w-full h-[100svh] flex flex-col justify-between bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.5)] overflow-hidden flex-shrink-0 relative">
+
+        <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden'} flex flex-col justify-between bg-[#030008] shadow-[0_-10px_30px_rgba(0,0,0,0.5)] flex-shrink-0 relative`}>
           <div className="section-inner w-full h-full origin-center flex flex-col justify-between">
-            <div className="flex-grow flex items-center h-full">
+            <div className="flex-grow flex items-center h-full py-10">
               <Contact />
             </div>
             <Footer />

@@ -61,16 +61,18 @@ export const Hero = ({ onLaunch }: { onLaunch: () => void }) => {
       {/* Subtle top border glow */}
       <div className="absolute top-0 left-0 right-0 h-[100px] bg-gradient-to-b from-purple-500/10 to-transparent pointer-events-none" />
 
-      <div className="absolute top-8 left-8 md:top-12 md:left-12 z-20 flex items-center">
-        <img src={diepsLogo} alt="DIEPS Logo" className="h-5 sm:h-6 md:h-7 w-auto object-contain" />
-      </div>
-      <div className="absolute top-8 right-8 md:top-12 md:right-12 z-20">
-        <span className="text-[12px] md:text-[14px] text-white/30 font-mono tracking-widest">2026</span>
-      </div>
+      {/* --- ADAPTIVE CONTENT WRAPPER --- */}
+      <div className="adaptive-scale w-full h-full flex flex-col md:flex-row z-10 relative">
+        <div className="absolute top-8 left-8 md:top-12 md:left-12 z-20 flex items-center">
+          <img src={diepsLogo} alt="DIEPS Logo" className="h-5 sm:h-6 md:h-7 w-auto object-contain" />
+        </div>
+        <div className="absolute top-8 right-8 md:top-12 md:right-12 z-20">
+          <span className="text-[12px] md:text-[14px] text-white/30 font-mono tracking-widest">2026</span>
+        </div>
 
-      {/* 55% Content */}
-      <div className="w-full md:w-[55%] h-full flex flex-col justify-center px-8 md:px-24 z-10 relative">
-        <div className="max-w-[700px]">
+        {/* 55% Content */}
+        <div className="w-full md:w-[55%] h-full flex flex-col justify-center px-8 md:px-24 z-10 relative">
+          <div className="max-w-[700px]">
           <h1 ref={titleRef} className="text-[44px] md:text-[56px] lg:text-[68px] leading-[1.1] font-serif font-light text-white mb-6 tracking-tight opacity-0">
             <span className="italic">An Intent-Based</span> <br />
             <span className="italic">Liquidity Engine</span> <br />
@@ -119,6 +121,7 @@ export const Hero = ({ onLaunch }: { onLaunch: () => void }) => {
           style={{ animation: 'hero-float 6s ease-in-out infinite' }}
           draggable={false}
         />
+      </div>
       </div>
 
       <style>{`
