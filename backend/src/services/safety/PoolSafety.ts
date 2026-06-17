@@ -185,10 +185,23 @@ async function checkPoolAge(route: any[]): Promise<RiskCheck> {
       };
     }
 
+    let timeString = '';
+    const hoursSinceTx = maxDaysSinceLastTx * 24;
+    if (hoursSinceTx < 1) {
+      const minutesSinceTx = hoursSinceTx * 60;
+      if (minutesSinceTx < 1) {
+        timeString = 'just now';
+      } else {
+        timeString = `${Math.floor(minutesSinceTx)} minutes ago`;
+      }
+    } else {
+      timeString = `${Math.floor(hoursSinceTx)} hours ago`;
+    }
+
     return {
       name: 'Pool Age Activity',
       status: 'SAFE',
-      message: `All pools are active. The stalest pool had a transaction ${Math.floor(maxDaysSinceLastTx * 24)} hours ago.`,
+      message: `All pools are active. The stalest pool had a transaction ${timeString}.`,
       value: maxDaysSinceLastTx,
     };
   } catch (err: any) {

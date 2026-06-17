@@ -8,7 +8,7 @@ import { CETUS_AGGREGATOR_V3_URL, CETUS_SUPPORTED_DEXES, RISK_THRESHOLDS, SUI_MA
 import { resolveTokenAddress, getTokenDecimals, resolveToken } from '../coin/tokenResolver.js';
 import { logger, createTimer } from '../../utils/logger.js';
 import type { RouteResult, RouteNode, PoolDetails } from '../../types/index.js';
-import { SuiJsonRpcClient } from '@mysten/sui/jsonRpc';
+import { suiRpcCall } from '../../utils/suiClient.js';
 import { AggregatorClient, Env } from '@cetusprotocol/aggregator-sdk';
 import BN from 'bn.js';
 
@@ -126,13 +126,12 @@ export async function findOptimalRoute(
   try {
     const poolIds = routes.map(r => r.poolAddress).filter(id => id !== undefined) as string[];
     if (poolIds.length > 0) {
-      const suiClient = new SuiJsonRpcClient({ url: SUI_MAINNET_RPC });
-      const poolObjects = await suiClient.multiGetObjects({
-        ids: poolIds,
-        options: { showContent: true }
-      });
+      const poolObjects = await suiRpcCall('sui_multiGetObjects', [
+        poolIds,
+        { showContent: true }
+      ]);
 
-      poolObjects.forEach((obj, index) => {
+      poolObjects.forEach((obj: any, index: number) => {
         if (obj.data?.content?.dataType === 'moveObject') {
           const fields = (obj.data.content as any).fields;
           if (fields) {
