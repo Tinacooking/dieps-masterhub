@@ -16,7 +16,8 @@
 import { RISK_THRESHOLDS } from '../../config/index.js';
 import { checkTokenSafety } from '../safety/TokenSafety.js';
 import { checkPoolSafety } from '../safety/PoolSafety.js';
-import { isStablePair, resolveTokenAddress } from '../coin/tokenResolver.js';
+import { isStablePair, resolveTokenAddress, getTokenDecimals } from '../coin/tokenResolver.js';
+import { getUsdPriceOnChain } from '../router/cetusRouter.js';
 import { suiRpcCall } from '../../utils/suiClient.js';
 import { logger, createTimer } from '../../utils/logger.js';
 import type {
@@ -237,13 +238,33 @@ export class LiquidityRiskGuardian {
       };
     }
 
-    if (poolLiquidity < minLiquidity) {
+    if (poolLiquidity < 50_000) {
       return {
         name: 'Liquidity Risk',
         status: 'DANGER',
-        message: `Pool liquidity ($${poolLiquidity.toLocaleString()}) is below minimum ($${minLiquidity.toLocaleString()}) for ${isStable ? 'stable' : 'volatile'} pairs.`,
+        message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is critically low (< $50k). High risk of slippage or manipulation.`,
         value: poolLiquidity,
-        threshold: minLiquidity,
+        threshold: 50_000,
+      };
+    }
+
+    if (poolLiquidity < 100_000) {
+      return {
+        name: 'Liquidity Risk',
+        status: 'WARNING',
+        message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is low (< $100k). Proceed with caution.`,
+        value: poolLiquidity,
+        threshold: 100_000,
+      };
+    }
+
+    if (poolLiquidity < 200_000) {
+      return {
+        name: 'Liquidity Risk',
+        status: 'NEUTRAL',
+        message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is acceptable, but larger trades may face slippage.`,
+        value: poolLiquidity,
+        threshold: 200_000,
       };
     }
 
@@ -262,7 +283,7 @@ export class LiquidityRiskGuardian {
     return {
       name: 'Liquidity Risk',
       status: 'SAFE',
-      message: `Pool liquidity is sufficient for trade size.`,
+      message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is excellent and safe for trading.`,
       value: poolLiquidity,
     };
   }
@@ -294,41 +315,61 @@ export class LiquidityRiskGuardian {
         return { name: 'Supply Concentration', status: 'WARNING', message: 'Could not fetch token total supply' };
       }
 
-      // 3. Approximate token amount in the pool using raw on-chain depth metric
-      const maxOnChainDepth = route.reduce((max, node) => Math.max(max, node.onChainLiquidityDepth || 0), 0);
+      // 3. Approximate token amount in the pool using mathematically derived TVL and token price
+      const poolLiquidityUsd = route.reduce((max, node) => Math.max(max, node.liquidityUsd || 0), 0);
       
-      if (maxOnChainDepth === 0) {
-        return { name: 'Supply Concentration', status: 'WARNING', message: 'No on-chain depth metric available to compare' };
+      if (poolLiquidityUsd === 0) {
+        return { name: 'Supply Concentration', status: 'WARNING', message: 'No TVL metric available to evaluate supply' };
+      }
+
+      let tokenDepthInPool = 0;
+      try {
+        const tokenPriceUsd = await getUsdPriceOnChain(tokenAddress);
+        if (tokenPriceUsd > 0) {
+          tokenDepthInPool = (poolLiquidityUsd / 2) / tokenPriceUsd;
+        }
+      } catch (err) {
+        return { name: 'Supply Concentration', status: 'WARNING', message: 'Failed to fetch on-chain token price for supply analysis' };
+      }
+
+      if (tokenDepthInPool === 0) {
+        return { name: 'Supply Concentration', status: 'WARNING', message: 'Could not calculate token depth in pool' };
+      }
+
+      // Convert total supply to standard units
+      const decimals = getTokenDecimals(tokenSymbol);
+      const standardTotalSupply = totalSupply / Math.pow(10, decimals);
+      
+      if (standardTotalSupply === 0) {
+        return { name: 'Supply Concentration', status: 'WARNING', message: 'Total supply is 0 or invalid' };
       }
 
       // 4. Calculate ratio (Liquidity in pool / Total Supply)
-      // Note: CLMM liquidity depth is a proxy, but serves as an accurate relative metric
-      const ratio = maxOnChainDepth / totalSupply;
-      const ratioPercent = ratio * 100;
+      const supplyInPoolPct = (tokenDepthInPool / standardTotalSupply) * 100;
 
-      if (ratioPercent < 0.05) { // Less than 0.05% of supply is in the pool
+      if (supplyInPoolPct < 0.05) { // Less than 0.05% of supply is in the pool
         return {
            name: 'Supply Concentration',
            status: 'DANGER',
-           message: `Concentration Risk: Only ${ratioPercent.toFixed(4)}% of Total Supply is in the liquidity pool. 99.9%+ is held in wallets. Extreme rug-pull risk.`,
-           value: ratioPercent,
+           message: `Concentration Risk: Only ${supplyInPoolPct.toFixed(4)}% of Total Supply is in the liquidity pool. 99.9%+ is held in wallets. Extreme rug-pull risk.`,
+           value: supplyInPoolPct,
         };
       }
 
-      if (ratioPercent < 1.0) { // Less than 1% of supply is in the pool
+      if (supplyInPoolPct < 1.0) { // Less than 1% of supply is in the pool
         return {
            name: 'Supply Concentration',
            status: 'WARNING',
-           message: `High Concentration: Only ${ratioPercent.toFixed(2)}% of supply is in the pool. Trade carefully.`,
-           value: ratioPercent,
+           message: `High Concentration: Only ${supplyInPoolPct.toFixed(2)}% of supply is in the pool. Trade carefully.`,
+           value: supplyInPoolPct,
         };
       }
 
       return {
-         name: 'Supply Concentration',
-         status: 'SAFE',
-         message: `Healthy pool ratio: ${ratioPercent.toFixed(2)}% of supply is circulating in liquidity.`,
-         value: ratioPercent,
+        name: 'Supply Concentration',
+        status: 'SAFE',
+        message: `Healthy distribution: ${supplyInPoolPct.toFixed(2)}% of supply is active in the liquidity pool.`,
+        value: supplyInPoolPct,
       };
 
     } catch (err: any) {

@@ -102,22 +102,41 @@ function checkLiquidityHealth(route: any[]): RiskCheck {
     };
   }
 
-  if (minLiquidityInRoute < minLiquidityThreshold) {
+  if (minLiquidityInRoute < 50_000) {
     return {
       name: 'Liquidity Health',
       status: 'DANGER',
-      message: `Pool liquidity bottleneck is $${minLiquidityInRoute.toLocaleString()} (minimum: $${minLiquidityThreshold.toLocaleString()})`,
+      message: `Pool liquidity bottleneck is $${Math.round(minLiquidityInRoute).toLocaleString()} (< $50k). High risk.`,
       value: minLiquidityInRoute,
-      threshold: minLiquidityThreshold,
+      threshold: 50_000,
+    };
+  }
+
+  if (minLiquidityInRoute < 100_000) {
+    return {
+      name: 'Liquidity Health',
+      status: 'WARNING',
+      message: `Pool liquidity bottleneck is $${Math.round(minLiquidityInRoute).toLocaleString()} (< $100k). Proceed with caution.`,
+      value: minLiquidityInRoute,
+      threshold: 100_000,
+    };
+  }
+
+  if (minLiquidityInRoute < 200_000) {
+    return {
+      name: 'Liquidity Health',
+      status: 'NEUTRAL',
+      message: `Pool liquidity bottleneck is $${Math.round(minLiquidityInRoute).toLocaleString()} (acceptable depth).`,
+      value: minLiquidityInRoute,
+      threshold: 200_000,
     };
   }
 
   return {
     name: 'Liquidity Health',
     status: 'SAFE',
-    message: `All pools have healthy liquidity (min: $${minLiquidityInRoute.toLocaleString()})`,
+    message: `All pools have excellent liquidity (min: $${Math.round(minLiquidityInRoute).toLocaleString()}).`,
     value: minLiquidityInRoute,
-    threshold: minLiquidityThreshold,
   };
 }
 

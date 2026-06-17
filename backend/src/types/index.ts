@@ -114,7 +114,7 @@ export type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 /** Individual risk check result */
 export interface RiskCheck {
   name: string;
-  status: 'SAFE' | 'WARNING' | 'DANGER';
+  status: 'SAFE' | 'NEUTRAL' | 'WARNING' | 'DANGER';
   message: string;
   value?: number;
   threshold?: number;
