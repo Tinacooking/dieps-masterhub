@@ -34,17 +34,17 @@ function LandingPage() {
       e.preventDefault();
       if (isScrolling.current) return;
 
-      if (e.deltaY > 80) {
+      if (e.deltaY > 60) {
         if (activeSection < totalSections - 1) {
           isScrolling.current = true;
           setActiveSection(prev => prev + 1);
-          setTimeout(() => isScrolling.current = false, 1500);
+          setTimeout(() => isScrolling.current = false, 1200);
         }
-      } else if (e.deltaY < -80) {
+      } else if (e.deltaY < -60) {
         if (activeSection > 0) {
           isScrolling.current = true;
           setActiveSection(prev => prev - 1);
-          setTimeout(() => isScrolling.current = false, 1500);
+          setTimeout(() => isScrolling.current = false, 1200);
         }
       }
     };
