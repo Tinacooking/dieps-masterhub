@@ -40,11 +40,35 @@ DIEPS moves away from traditional drop-downs and manual configurations. We utili
 ### B. Smart Route Optimization (Cetus SDK)
 Instead of relying on rigid, hardcoded paths, DIEPS integrates the **Cetus Aggregator SDK** to autonomously search across deep liquidity pools on the Sui network. It analyzes fragmented liquidity to construct the most capital-efficient multi-hop swap routes, automatically splitting trades across different pools (e.g., Turbos, Cetus, DeepBook) to minimize slippage and maximize output.
 
-### C. 100% On-Chain Risk Guardians
-Before any transaction reaches the mempool, it must pass through our deterministic Risk Guardian Engine. Rather than theoretical models, the Guardian pulls 100% live data directly from Sui RPC nodes to evaluate:
-1.  **Price Impact Guard:** Calculates actual estimated slippage against user thresholds.
-2.  **Liquidity Freshness (Stale Check):** Ensures the pools involved have recent, active trading volume and are not abandoned.
-3.  **Supply Concentration (Rug-Pull Check):** Analyzes token distribution. If an overwhelming percentage of a token's total supply is concentrated in a single wallet, the Guardian flags it as a high rug-pull risk.
+### C. Next-Gen Infrastructure: GraphQL & 100% On-Chain Risk Guardians
+DIEPS has completely phased out deprecated JSON-RPC calls in favor of the lightning-fast **Sui GraphQL RPC API** (`@mysten/sui/graphql`). This future-proofs the backend, allowing us to compose queries that fetch pool structures and coin metadata in single round-trips without any hardcoded fallback data.
+
+Before any transaction reaches the mempool, it must pass through our deterministic Risk Guardian Engine. Rather than theoretical models, the Guardian pulls 100% live data directly from Sui nodes to evaluate:
+
+#### 1. Liquidity Health & Risk (Mathematically Decoupled)
+We strictly separate the absolute size of a pool from the relative impact of your specific trade:
+- **Liquidity Health (Absolute TVL):** Tracks the raw size of the bottleneck pool in the route.
+- **Liquidity Risk (Trade Impact Ratio):** Calculates your exact risk of slippage by measuring your trade volume against the available token depth:
+  ```math
+  \text{Trade}_{\text{USD}} = \frac{\text{Trade Amount}}{10^{\text{Decimals}}} \times \text{Token Price}_{\text{USD}}
+  ```
+  ```math
+  \text{Impact Ratio} = \frac{\text{Trade}_{\text{USD}}}{(\text{Pool TVL} / 2)}
+  ```
+  *(If your Trade Impact Ratio exceeds 20% of the token depth, the Guardian explicitly blocks execution to prevent extreme slippage.)*
+
+#### 2. Supply Concentration (Rug-Pull Check)
+Analyzes token distribution to detect potential rug-pulls by comparing the token amount locked in the liquidity pool versus the total circulating supply on-chain:
+  ```math
+  \text{Token Depth in Pool} = \frac{(\text{Pool TVL} / 2)}{\text{Token Price}_{\text{USD}}}
+  ```
+  ```math
+  \text{Concentration Ratio} = \frac{\text{Token Depth in Pool}}{\text{Total Supply}} \times 100\%
+  ```
+  *(If < 0.05% of the total supply is in the pool, indicating 99.95%+ is held in developer wallets, the Guardian flags it as an Extreme Rug-Pull Risk.)*
+
+#### 3. Liquidity Freshness (Stale Pool Check)
+Ensures the pools involved have recent, active trading volume. The Guardian tracks the exact timestamp of the **last on-chain transaction** for every pool in the route. If a pool has been abandoned for more than 7 days, it is flagged as a high liquidity lock/stale risk.
 
 **Deterministic Execution Thresholds:**
 Based on the on-chain data, the Guardian makes discrete routing decisions:
