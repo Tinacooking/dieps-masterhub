@@ -80,7 +80,9 @@ function checkDexVerification(route: any[]): RiskCheck {
  */
 function checkLiquidityHealth(route: any[]): RiskCheck {
   // Use the minimum liquidity across all hops in the route
-  const minLiquidityInRoute = Math.min(...route.map(n => n.liquidityUsd || 0));
+  const minLiquidityInRoute = route.length > 0 
+    ? route.reduce((min, node) => Math.min(min, node.liquidityUsd || Infinity), Infinity) 
+    : 0;
   const minLiquidityThreshold = RISK_THRESHOLDS.minLiquidity.volatilePair;
 
   if (minLiquidityInRoute === 0) {
@@ -190,7 +192,7 @@ async function checkPoolAge(route: any[]): Promise<RiskCheck> {
       return {
         name: 'Pool Age Activity',
         status: 'DANGER',
-        message: `Stale Pool: A pool in the route had no on-chain activity in the last ${Math.floor(maxDaysSinceLastTx)} days. Extreme rug-pull or liquidity lock risk.`,
+        message: `Stale Pool: No activity in ${Math.floor(maxDaysSinceLastTx)} days.`,
         value: maxDaysSinceLastTx,
       };
     }
@@ -199,7 +201,7 @@ async function checkPoolAge(route: any[]): Promise<RiskCheck> {
       return {
         name: 'Pool Age Activity',
         status: 'WARNING',
-        message: `Low Activity: A pool in the route hasn't had transactions in ${Math.floor(maxDaysSinceLastTx)} days.`,
+        message: `Low Activity: No txs in ${Math.floor(maxDaysSinceLastTx)} days.`,
         value: maxDaysSinceLastTx,
       };
     }

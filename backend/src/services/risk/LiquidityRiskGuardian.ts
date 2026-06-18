@@ -65,7 +65,7 @@ export class LiquidityRiskGuardian {
     allChecks.push(priceImpactCheck);
 
     // ─── Check 2: Low Liquidity Pool Risk ────────────────────
-    const liquidityCheck = this.checkLiquidityRisk(
+    const liquidityCheck = await this.checkLiquidityRisk(
       route,
       parseFloat(amount),
       sourceSymbol,
@@ -203,34 +203,26 @@ export class LiquidityRiskGuardian {
    * Check 2: Low Liquidity Pool Risk
    * Checks if pool liquidity is sufficient for the trade size.
    */
-  private checkLiquidityRisk(
+  private async checkLiquidityRisk(
     route: any[],
     amount: number,
     sourceSymbol: string,
     destSymbol: string,
     poolDetails?: PoolDetails | null
-  ): RiskCheck {
+  ): Promise<RiskCheck> {
     const isStable = isStablePair(sourceSymbol, destSymbol);
     const minLiquidity = isStable
       ? RISK_THRESHOLDS.minLiquidity.stablePair
       : RISK_THRESHOLDS.minLiquidity.volatilePair;
 
     // Get liquidity from route nodes or pool details
-    const poolLiquidity = poolDetails?.liquidity
-      || route.reduce((max, node) => Math.max(max, node.liquidityUsd || 0), 0)
-      || 0;
+    const poolLiquidityUsd = route.length > 0 
+      ? route.reduce((min, node) => Math.min(min, node.liquidityUsd || Infinity), Infinity)
+      : 0;
+
+    const poolLiquidity = poolDetails?.liquidity || (poolLiquidityUsd === Infinity ? 0 : poolLiquidityUsd);
 
     if (poolLiquidity === 0) {
-      const maxOnChainDepth = route.reduce((max, node) => Math.max(max, node.onChainLiquidityDepth || 0), 0);
-      
-      if (maxOnChainDepth > 0) {
-        return {
-          name: 'Liquidity Risk',
-          status: 'WARNING',
-          message: `Cannot evaluate USD value of pool liquidity. System will rely on Price Impact Guardian.`,
-        };
-      }
-
       return {
         name: 'Liquidity Risk',
         status: 'WARNING',
@@ -238,53 +230,43 @@ export class LiquidityRiskGuardian {
       };
     }
 
-    if (poolLiquidity < 50_000) {
+    // Convert trade amount to USD
+    const sourceAddress = await resolveTokenAddress(sourceSymbol);
+    const tokenPrice = await getUsdPriceOnChain(sourceAddress);
+    const tokenDecimals = getTokenDecimals(sourceSymbol);
+    const tradeUsdValue = (amount / Math.pow(10, tokenDecimals)) * tokenPrice;
+
+    // Token depth is roughly half of the TVL
+    const tokenDepthUsd = poolLiquidity / 2;
+
+    // Calculate Trade Impact Ratio
+    const impactRatio = tradeUsdValue / tokenDepthUsd;
+
+    if (impactRatio > 0.20) {
       return {
         name: 'Liquidity Risk',
         status: 'DANGER',
-        message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is critically low (< $50k). High risk of slippage or manipulation.`,
-        value: poolLiquidity,
-        threshold: 50_000,
+        message: `Trade size ($${Math.round(tradeUsdValue).toLocaleString()}) exceeds 20% of available token liquidity ($${Math.round(tokenDepthUsd).toLocaleString()}). Extreme risk of slippage.`,
+        value: impactRatio,
+        threshold: 0.20,
       };
     }
 
-    if (poolLiquidity < 100_000) {
+    if (impactRatio > 0.05) {
       return {
         name: 'Liquidity Risk',
         status: 'WARNING',
-        message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is low (< $100k). Proceed with caution.`,
-        value: poolLiquidity,
-        threshold: 100_000,
-      };
-    }
-
-    if (poolLiquidity < 200_000) {
-      return {
-        name: 'Liquidity Risk',
-        status: 'NEUTRAL',
-        message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is acceptable, but larger trades may face slippage.`,
-        value: poolLiquidity,
-        threshold: 200_000,
-      };
-    }
-
-    // Check trade size vs liquidity ratio
-    const tradeRatio = amount / poolLiquidity;
-    if (tradeRatio > 0.1) {
-      return {
-        name: 'Liquidity Risk',
-        status: 'WARNING',
-        message: `Trade size is ${Math.round(tradeRatio * 100)}% of pool liquidity. Expect high slippage.`,
-        value: tradeRatio,
-        threshold: 0.1,
+        message: `Trade size is ${Math.round(impactRatio * 100)}% of token liquidity. High slippage expected.`,
+        value: impactRatio,
+        threshold: 0.05,
       };
     }
 
     return {
       name: 'Liquidity Risk',
       status: 'SAFE',
-      message: `Pool liquidity ($${Math.round(poolLiquidity).toLocaleString()}) is excellent and safe for trading.`,
-      value: poolLiquidity,
+      message: `Trade size is safe relative to pool liquidity (${(impactRatio * 100).toFixed(2)}% impact).`,
+      value: impactRatio,
     };
   }
 
@@ -316,9 +298,9 @@ export class LiquidityRiskGuardian {
       }
 
       // 3. Approximate token amount in the pool using mathematically derived TVL and token price
-      const poolLiquidityUsd = route.reduce((max, node) => Math.max(max, node.liquidityUsd || 0), 0);
+      const poolLiquidityUsd = route.reduce((min, node) => Math.min(min, node.liquidityUsd || Infinity), Infinity);
       
-      if (poolLiquidityUsd === 0) {
+      if (poolLiquidityUsd === 0 || poolLiquidityUsd === Infinity) {
         return { name: 'Supply Concentration', status: 'WARNING', message: 'No TVL metric available to evaluate supply' };
       }
 

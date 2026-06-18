@@ -58,7 +58,7 @@ export async function findOptimalRoute(
     if (!routers || !routers.paths || routers.paths.length === 0) {
       throw new Error('No viable swap route found with sufficient liquidity on-chain.');
     }
-    
+
     timer.end({ method: 'cetus_sdk_v3' });
   } catch (err: any) {
     logger.error('Cetus Aggregator V3 SDK failed', { error: err.message });
@@ -75,8 +75,10 @@ export async function findOptimalRoute(
   let effectiveTvlUsd = 0;
   try {
     const sourcePrice = await getUsdPriceOnChain(fromAddress);
-    tradeUsdValue = parseFloat(amount) * sourcePrice;
-    
+    const sourceMeta = await getCoinMetadata(fromAddress);
+    const sourceDecimals = sourceMeta?.decimals ?? 9;
+    tradeUsdValue = (parseFloat(amount) / Math.pow(10, sourceDecimals)) * sourcePrice;
+
     if (observedPriceImpactPct <= 0.0001) {
       effectiveTvlUsd = 10_000_000; // Minimal impact = very deep pool
     } else {
@@ -128,7 +130,7 @@ export async function findOptimalRoute(
       if (path.from && path.target && path.amountIn && path.amountOut) {
         const fromPriceUsd = await getUsdPriceOnChain(path.from);
         const targetPriceUsd = await getUsdPriceOnChain(path.target);
-        
+
         const fromDecimals = (await getCoinMetadata(path.from))?.decimals ?? 9;
         const targetDecimals = (await getCoinMetadata(path.target))?.decimals ?? 9;
 
@@ -139,9 +141,9 @@ export async function findOptimalRoute(
           const hopTradeUsd = amtIn * fromPriceUsd;
           const expectedOut = hopTradeUsd / targetPriceUsd;
           const actualOut = amtOut;
-          
+
           const priceImpact = Math.max(0, 1 - (actualOut / expectedOut));
-          
+
           if (priceImpact <= 0.0001) {
             hopTvlUsd = 10_000_000;
           } else {
@@ -188,7 +190,7 @@ export async function findOptimalRoute(
           const poolId = obj.data.objectId;
           const type = obj.data.content.type;
           const fields = (obj.data.content as any).fields;
-          
+
           const routeNode = routes.find(r => r.poolAddress === poolId);
           if (!routeNode || !fields) return;
 
@@ -209,11 +211,11 @@ export async function findOptimalRoute(
 
           // Mathematical Active TVL Calculation for CLMMs
           if (fields.liquidity && type) {
-            const match = type.match(/<([^,]+),\s*([^>]+)>/);
+            const match = type.match(/<([^,]+),\s*([^,>]+)(?:,\s*[^>]+)*>/);
             if (match) {
               const coinX = match[1];
               const coinY = match[2];
-              
+
               const L = Number(fields.liquidity);
               if (L > 0) {
                 const [metaX, metaY, priceX, priceY] = await Promise.all([
@@ -223,12 +225,12 @@ export async function findOptimalRoute(
                   getUsdPriceOnChain(coinY)
                 ]);
 
-                const decX = metaX?.decimals ?? 9;
-                const decY = metaY?.decimals ?? 9;
-                const avgDec = (decX + decY) / 2;
+                if (priceX > 0 && priceY > 0 && metaX && metaY) {
+                  const decX = metaX.decimals;
+                  const decY = metaY.decimals;
+                  const avgDec = (decX + decY) / 2;
+                  const standardL = L / Math.pow(10, avgDec);
 
-                const standardL = L / Math.pow(10, avgDec);
-                if (priceX > 0 && priceY > 0) {
                   const activeTvlUsd = 2 * standardL * Math.sqrt(priceX * priceY);
                   if (activeTvlUsd > 0) {
                     routeNode.liquidityUsd = activeTvlUsd;

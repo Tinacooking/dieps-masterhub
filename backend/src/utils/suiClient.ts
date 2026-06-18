@@ -6,6 +6,12 @@
 
 import { SUI_MAINNET_RPC, SUI_API_KEY } from '../config/index.js';
 import { logger } from './logger.js';
+import { SuiGraphQLClient } from '@mysten/sui/graphql';
+
+const gqlClient = new SuiGraphQLClient({
+  network: 'mainnet',
+  url: 'https://graphql.mainnet.sui.io/graphql',
+});
 
 /** JSON-RPC request ID counter */
 let rpcIdCounter = 1;
@@ -152,14 +158,30 @@ export async function getCoinMetadata(coinType: string): Promise<{
   name: string;
 } | null> {
   try {
-    const result = await suiRpcCall('suix_getCoinMetadata', [coinType]);
-    if (!result) return null;
+    const query = `
+      query getMeta($coinType: String!) {
+        coinMetadata(coinType: $coinType) {
+          decimals
+          symbol
+          name
+        }
+      }
+    `;
+    const result = await gqlClient.query({
+      query,
+      variables: { coinType },
+    });
+
+    const meta = result.data?.coinMetadata;
+    if (!meta) return null;
+    
     return {
-      decimals: result.decimals ?? 9,
-      symbol: result.symbol ?? '',
-      name: result.name ?? '',
+      decimals: meta.decimals ?? 9,
+      symbol: meta.symbol ?? '',
+      name: meta.name ?? '',
     };
-  } catch {
+  } catch (err) {
+    logger.warn(`GraphQL getCoinMetadata failed for ${coinType}`, { error: (err as Error).message });
     return null;
   }
 }

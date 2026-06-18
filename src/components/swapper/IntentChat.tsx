@@ -123,20 +123,20 @@ export const IntentChat: React.FC<IntentChatProps> = ({
               <button
                 type="button"
                 disabled={appState === 'processing'}
-                onClick={() => setIntentInput("Exchange 500 CETUS for SUI")}
+                onClick={() => setIntentInput("Exchange 690420 CETUS for SUI")}
                 className="whitespace-nowrap px-3.5 py-2 rounded-[12px] command-tag text-[10px] sm:text-[11px] font-mono tracking-wide transition-all duration-200 disabled:opacity-50 cursor-pointer flex items-center gap-1.5"
               >
                 <span className="material-symbols-outlined text-[11px] text-[#38bdf8]/70">bolt</span>
-                Exchange 500 CETUS
+                Exchange 690420 CETUS
               </button>
               <button
                 type="button"
                 disabled={appState === 'processing'}
-                onClick={() => setIntentInput("Convert 100 SUI to WALRUS")}
+                onClick={() => setIntentInput("Convert 1000 SUI to WALRUS")}
                 className="whitespace-nowrap px-3.5 py-2 rounded-[12px] command-tag text-[10px] sm:text-[11px] font-mono tracking-wide transition-all duration-200 disabled:opacity-50 cursor-pointer flex items-center gap-1.5"
               >
                 <span className="material-symbols-outlined text-[11px] text-[#38bdf8]/70">bolt</span>
-                Convert 100 SUI to WALRUS
+                Convert 1000 SUI to WALRUS
               </button>
             </div>
           </div>

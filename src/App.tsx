@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { gsap } from 'gsap';
 import { Hero } from './components/landing/Hero';
 import { About } from './components/landing/About';
 import { Services } from './components/landing/Services';
@@ -103,22 +102,6 @@ function LandingPage() {
     };
   }, [activeSection, isDesktop]);
 
-  // Parallax Scale Effect for Sections (Desktop only)
-  useEffect(() => {
-    if (!isDesktop) return;
-    const sections = document.querySelectorAll('.section-inner');
-    sections.forEach((section, index) => {
-      if (index === activeSection) {
-        gsap.fromTo(section,
-          { scale: 1.15, opacity: 0.8 },
-          { scale: 1.0, opacity: 1, duration: 1.5, ease: 'power3.out' }
-        );
-      } else {
-        // Reset scale/opacity for inactive sections slightly
-        gsap.to(section, { scale: 0.95, opacity: 0.5, duration: 1.0, ease: 'power2.out' });
-      }
-    });
-  }, [activeSection]);
 
   const handleLaunch = () => {
     navigate('/app');

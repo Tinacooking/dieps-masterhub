@@ -78,6 +78,74 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
       destBob.kill();
     };
   }, []);
+
+  const getCombinedSlippageStatus = () => {
+    const slip = guardianChecks.find(c => c.name === 'Price Impact');
+    const liq = guardianChecks.find(c => c.name === 'Liquidity Risk');
+    if (slip?.status === 'DANGER' || liq?.status === 'DANGER') return { status: 'DANGER', label: 'High Slippage Risk', desc: slip?.status === 'DANGER' ? slip.message : liq?.message };
+    if (slip?.status === 'WARNING' || liq?.status === 'WARNING') return { status: 'WARNING', label: 'Moderate Slippage', desc: slip?.status === 'WARNING' ? slip.message : liq?.message };
+    return { status: 'SAFE', label: 'Safe Slippage', desc: 'Slippage is well within safe parameters.' };
+  };
+
+  const getCheckStatus = (name: string, safeLabel: string) => {
+    const c = guardianChecks.find(c => c.name === name);
+    if (!c) return { status: 'SAFE', label: safeLabel, desc: 'Verified on-chain' };
+    
+    let label = safeLabel;
+    let desc = c.message;
+
+    if (c.status === 'SAFE') {
+      if (name === 'Supply Concentration') desc = 'Token supply is safely distributed.';
+      if (name === 'Pool Age Activity') desc = 'Constant trading activity detected.';
+    } else if (c.status === 'DANGER' || c.status === 'WARNING') {
+      label = name === 'Supply Concentration' ? 'High Concentration' : 'Stale Pool Detected';
+    }
+    return { status: c.status, label, desc };
+  };
+
+  const slippageInfo = getCombinedSlippageStatus();
+  const concentrationInfo = getCheckStatus('Supply Concentration', 'Healthy Distribution');
+  const stalePoolInfo = getCheckStatus('Pool Age Activity', 'Active Pools');
+
+  const hasRisks = [slippageInfo.status, concentrationInfo.status, stalePoolInfo.status].some(s => s === 'DANGER' || s === 'WARNING');
+
+  const renderRiskCard = (info: { status: string, label: string, desc?: string }, icon: string) => {
+    const colors = {
+      DANGER: 'text-rose-500 bg-rose-500/10 border-rose-500/30',
+      WARNING: 'text-amber-400 bg-amber-400/10 border-amber-400/30',
+      SAFE: 'text-[#0ea5e9] bg-[#0ea5e9]/10 border-[#0ea5e9]/20',
+      NEUTRAL: 'text-[#a855f7] bg-[#a855f7]/10 border-[#a855f7]/20',
+    }[info.status] || 'text-white/70 bg-white/5 border-white/10';
+
+    const glow = info.status === 'DANGER' ? 'shadow-[0_0_15px_rgba(244,63,94,0.2)] animate-pulse' : 
+                 info.status === 'WARNING' ? 'shadow-[0_0_15px_rgba(251,191,36,0.15)] animate-pulse' : '';
+
+    return (
+      <div className={`p-2 rounded-lg border ${colors} ${glow} flex flex-col gap-1 transition-all`}>
+        <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase font-bold tracking-wider">
+          <span className="material-symbols-outlined text-[14px]">{icon}</span>
+          {info.label}
+        </div>
+        <div className="text-[10px] opacity-80 leading-tight line-clamp-2" title={info.desc}>
+          {info.desc}
+        </div>
+      </div>
+    );
+  };
+
+  const renderSkeletonCard = (label: string, icon: string) => {
+    return (
+      <div className="p-2 rounded-lg border border-white/5 bg-white/5 flex flex-col gap-1.5 transition-all opacity-60">
+        <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase font-bold tracking-wider text-white/50 animate-pulse">
+          <span className="material-symbols-outlined text-[14px]">{icon}</span>
+          {label}
+        </div>
+        <div className="h-2 bg-white/10 rounded w-full mt-0.5 animate-pulse" />
+        <div className="h-2 bg-white/10 rounded w-2/3 animate-pulse" />
+      </div>
+    );
+  };
+
   return (
     <div className={`lg:col-span-5 xl:col-span-5 flex flex-col h-full min-h-0 transition-all duration-700 ease-out ${appState === 'idle' ? 'opacity-40 scale-[0.99] pointer-events-none select-none' : 'opacity-100 scale-100'}`}>
       <div className="bg-[#0a0416]/90 border border-white/5 rounded-[20px] p-4 lg:p-5 flex-1 relative overflow-hidden flex flex-col min-h-0 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
@@ -89,6 +157,40 @@ export const RoutingPath: React.FC<RoutingPathProps> = ({
             Optimal Route Found
           </div>
         </div>
+
+        {/* --- GUARDIAN RISK HIGHLIGHT SECTION --- */}
+        {appState !== 'idle' && (appState === 'processing' || guardianChecks.length > 0) && (
+          <div className={`mb-3 p-3 rounded-xl border backdrop-blur-md transition-all duration-500 ${
+            appState === 'processing' ? 'border-white/10 bg-white/5' : 
+            hasRisks ? 'border-rose-500/30 bg-rose-500/5' : 'border-[#0ea5e9]/20 bg-[#0ea5e9]/5'
+          }`}>
+            <div className="text-[10px] font-mono text-white/60 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+              {appState === 'processing' ? (
+                <span className="material-symbols-outlined text-[14px] animate-spin text-white/50">sync</span>
+              ) : (
+                <span className={`material-symbols-outlined text-[14px] ${hasRisks ? 'text-rose-400' : 'text-[#0ea5e9]'}`}>
+                  {hasRisks ? 'warning' : 'verified_user'}
+                </span>
+              )}
+              {appState === 'processing' ? 'Guardian Analyzing Route...' : 'Guardian On-Chain Risk Analysis'}
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {appState === 'processing' ? (
+                <>
+                  {renderSkeletonCard('Slippage Risk', 'water_drop')}
+                  {renderSkeletonCard('Concentration', 'pie_chart')}
+                  {renderSkeletonCard('Pool Status', 'history')}
+                </>
+              ) : (
+                <>
+                  {renderRiskCard(slippageInfo, 'water_drop')}
+                  {renderRiskCard(concentrationInfo, 'pie_chart')}
+                  {renderRiskCard(stalePoolInfo, 'history')}
+                </>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Route Map Visualization */}
         <div className="flex-1 flex flex-col relative w-full overflow-hidden items-center justify-center">
