@@ -23,6 +23,7 @@ import {
 } from '../types/index.js';
 import { parseIntent } from '../services/llm/intentParser.js';
 import { findOptimalRoute } from '../services/router/cetusRouter.js';
+import { resolveToken } from '../services/coin/tokenResolver.js';
 import { riskGuardian } from '../services/risk/LiquidityRiskGuardian.js';
 import { getFormattedBalance } from '../services/coin/coinService.js';
 import { buildSwapPTB } from '../services/router/ptbBuilder.js';

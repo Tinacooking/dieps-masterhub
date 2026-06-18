@@ -172,7 +172,7 @@ export async function getCoinMetadata(coinType: string): Promise<{
       variables: { coinType },
     });
 
-    const meta = result.data?.coinMetadata;
+    const meta = result.data?.coinMetadata as { decimals?: number; symbol?: string; name?: string } | undefined;
     if (!meta) return null;
     
     return {

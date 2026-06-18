@@ -42,7 +42,11 @@ export async function findOptimalRoute(
   const amountInSmallestUnit = BigInt(Math.floor(parseFloat(amount) * Math.pow(10, sourceDecimals)));
 
   // Initialize Cetus Aggregator Client V3
-  const clientSDK = new AggregatorClient('https://api-sui.cetus.zone/router_v3', '0x2', Env.Mainnet);
+  const clientSDK = new AggregatorClient({
+    endpoint: 'https://api-sui.cetus.zone/router_v3',
+    signer: '0x2',
+    env: Env.Mainnet
+  });
   let routers: any = null;
 
   try {
@@ -283,7 +287,11 @@ export async function getUsdPriceOnChain(coinType: string): Promise<number> {
   if (cached && cached.expiresAt > Date.now()) return cached.price;
 
   try {
-    const clientSDK = new AggregatorClient('https://api-sui.cetus.zone/router_v3', '0x2', Env.Mainnet);
+    const clientSDK = new AggregatorClient({
+      endpoint: 'https://api-sui.cetus.zone/router_v3',
+      signer: '0x2',
+      env: Env.Mainnet
+    });
     const meta = await getCoinMetadata(coinType);
     const decimals = meta?.decimals ?? 9;
     const amountIn = new BN(10).pow(new BN(decimals)); // 1 Token

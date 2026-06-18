@@ -11,7 +11,7 @@ import { logger, createTimer } from '../../utils/logger.js';
 import { AggregatorClient, Env } from '@cetusprotocol/aggregator-sdk';
 import BN from 'bn.js';
 import type { ExecuteSwapResult, PtbStep, RouteResult } from '../../types/index.js';
-import { SuiJsonRpcClient } from '@mysten/sui/jsonRpc';
+import { SuiJsonRpcClient, JsonRpcHTTPTransport } from '@mysten/sui/jsonRpc';
 
 /**
  * Build a serialized PTB for wallet signing.
@@ -99,7 +99,11 @@ export async function buildSwapPTB(params: {
     tx.setSender(senderAddress);
 
     // Initialize Cetus Aggregator Client
-    const clientSDK = new AggregatorClient('https://api-sui.cetus.zone/router_v3', senderAddress, Env.Mainnet);
+    const clientSDK = new AggregatorClient({
+    endpoint: 'https://api-sui.cetus.zone/router_v3',
+    signer: senderAddress,
+    env: Env.Mainnet
+  });
 
     // Fetch exact route specifically for PTB Building, using the same providers as the UI route
     const providers = params.routeData.dex_sequence.map(dex => dex.toUpperCase());
@@ -130,7 +134,10 @@ export async function buildSwapPTB(params: {
     // Set gas budget for simulation
     tx.setGasBudget(50_000_000); // 0.05 SUI
 
-    const client = new SuiJsonRpcClient({ url: SUI_MAINNET_RPC });
+    const client = new SuiJsonRpcClient({ 
+      transport: new JsonRpcHTTPTransport({ url: SUI_MAINNET_RPC }),
+      network: 'mainnet' as any
+    });
 
     // Build to bytes for simulation
     const builtBytes = await tx.build({ client });
