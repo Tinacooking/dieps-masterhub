@@ -8,4 +8,9 @@ coverage/
 !.env.example
 .agents/
 
+# Sui & Move
+.dieps_registry
+dieps_registry/
+move-analyzer.exe
+sui.exe
 
