@@ -33,17 +33,17 @@ function LandingPage() {
       e.preventDefault();
       if (isScrolling.current) return;
 
-      if (e.deltaY > 60) {
+      if (e.deltaY > 35) {
         if (activeSection < totalSections - 1) {
           isScrolling.current = true;
           setActiveSection(prev => prev + 1);
-          setTimeout(() => isScrolling.current = false, 1200);
+          setTimeout(() => isScrolling.current = false, 850);
         }
-      } else if (e.deltaY < -60) {
+      } else if (e.deltaY < -35) {
         if (activeSection > 0) {
           isScrolling.current = true;
           setActiveSection(prev => prev - 1);
-          setTimeout(() => isScrolling.current = false, 1200);
+          setTimeout(() => isScrolling.current = false, 850);
         }
       }
     };
@@ -73,17 +73,17 @@ function LandingPage() {
       const touchEnd = e.touches[0].clientY;
       const diff = touchStart.current - touchEnd;
 
-      if (diff > 50) {
+      if (diff > 35) {
         if (activeSection < totalSections - 1) {
           isScrolling.current = true;
           setActiveSection(prev => prev + 1);
-          setTimeout(() => isScrolling.current = false, 1000);
+          setTimeout(() => isScrolling.current = false, 850);
         }
-      } else if (diff < -50) {
+      } else if (diff < -35) {
         if (activeSection > 0) {
           isScrolling.current = true;
           setActiveSection(prev => prev - 1);
-          setTimeout(() => isScrolling.current = false, 1000);
+          setTimeout(() => isScrolling.current = false, 850);
         }
       }
     };
@@ -110,7 +110,7 @@ function LandingPage() {
   return (
     <div id="landing-container" className={`bg-[#030008] w-full text-white font-body selection:bg-[#a855f7]/30 ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative flex flex-col'}`}>
       <div
-        className={`w-full ${isDesktop ? 'h-full transition-transform duration-[1200ms] ease-[cubic-bezier(0.645,0.045,0.355,1.000)]' : 'flex flex-col'}`}
+        className={`w-full ${isDesktop ? 'h-full transition-transform duration-[800ms] ease-[cubic-bezier(0.65,0,0.05,1)]' : 'flex flex-col'}`}
         style={isDesktop ? { transform: `translateY(-${activeSection * 100}svh)` } : undefined}
       >
         <div className={`w-full ${isDesktop ? 'h-[100svh] overflow-hidden' : 'min-h-[100svh] relative overflow-hidden'} flex-shrink-0 relative`}>
