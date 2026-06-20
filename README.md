@@ -31,6 +31,43 @@ The core architecture runs on a 4-step pipeline designed to securely transition 
     *   Upon clearing the risk threshold (or receiving user override for flagged risks), the engine compiles a Sui Programmable Transaction Block (MoveCalls, Split/MergeCoins) ready for wallet signature.
 
 ---
+### Sequence Diagram: End-to-End Execution Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User
+    participant Frontend as DIEPS UI (React)
+    participant NLP as Intent Engine (Gemini)
+    participant Router as Smart Router (Cetus SDK)
+    participant Guardian as On-Chain Guardian
+    participant Blockchain as Sui Mainnet (GraphQL)
+
+    User->>Frontend: Enters intent (e.g., "Swap 1000 SUI for USDC safely")
+    Frontend->>NLP: Sends raw text intent
+    NLP-->>Frontend: Returns structured JSON payload (Source, Dest, Amount)
+    
+    Frontend->>Router: Requests optimal execution route
+    Router->>Blockchain: Discovers deep liquidity pools & graphs
+    Blockchain-->>Router: Returns graph state
+    Router-->>Frontend: Returns Best Route (Multi-hop Arbitrage)
+    
+    Frontend->>Guardian: Submits Route for Risk Assessment
+    Guardian->>Blockchain: Queries Token Decimals & Pool TVL (Slippage Check)
+    Guardian->>Blockchain: Queries Token Total Supply (Rug-pull Check)
+    Guardian->>Blockchain: Queries Last TX Timestamp (Stale Pool Check)
+    Blockchain-->>Guardian: Returns 100% Live On-Chain Data
+    
+    Guardian-->>Frontend: Returns Risk Analysis (Safe / Warning / Danger)
+    
+    alt Risk == Danger
+        Frontend-->>User: Displays Red Alert. Blocks execution unless explicitly overridden.
+    else Risk == Safe / Warning
+        Frontend->>User: Prompts Wallet Signature for PTB
+        User->>Blockchain: Signs & Executes Programmable Transaction Block
+        Blockchain-->>User: Transaction Confirmed (Success)
+    end
+```
 
 ## 🧠 2. Core Technologies & Architecture
 
