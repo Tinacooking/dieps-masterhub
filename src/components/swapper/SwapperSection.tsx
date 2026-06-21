@@ -14,7 +14,7 @@ export const SwapperSection: React.FC = () => {
   const disconnect = () => dAppKit.disconnectWallet();
   const walletAddress = currentAccount?.address || null;
 
-  const [intentInput, setIntentInput] = useState("Swap 1000 SUI to USDC");
+  const [intentInput, setIntentInput] = useState("Swap 10000 SUI to USDC");
   const [appState, setAppState] = useState<'idle' | 'processing' | 'done'>('idle');
   const [processStep, setProcessStep] = useState(0);
   const [submittedIntent, setSubmittedIntent] = useState("");
